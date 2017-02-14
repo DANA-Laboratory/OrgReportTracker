@@ -1,9 +1,9 @@
-# Performance Indicator Manager
-Small app to manage Performance Indicators for organizations 
+# Report Tracker
+Small app to track reporting process of a set of *Performance Indicators* for organizations 
 
 This project is a open source app with different incentives which involves: 
   - Creation of training contants for a workshop about web apps. 
-  - Also we want to develop a practical simple application to help managers getting, collecting, saveing, analysing, exporting, trending, searching different a set of performance indicators.
+  - Also we want to develop a practical simple application to help create seasonal reports of a set of performance indicators.
   - Also we want to introduce capabilities and encourage use of open-source codes that are freely avaliable.  
   
 ## Understanding Performance Indicators:
@@ -11,3 +11,6 @@ This project is a open source app with different incentives which involves:
 
 ## What is everything about:
   A set of seasonal measured PIs will palce in a formated report that mirrors conditions of organization in different aspects.
+
+## How it helps:
+  This app could help managers getting, collecting, saveing, analysing, exporting, trending, searching different
