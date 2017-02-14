@@ -1,4 +1,4 @@
-# PerformanceIndicatorsManager
+# Performance Indicator Manager
 Small app to manage Performance Indicators for organizations 
 
 This project is a open source app with different hopes that include: 
