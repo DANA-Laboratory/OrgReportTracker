@@ -30,12 +30,9 @@ Small app to track reporting process of a set of *Performance Indicators* for or
 [![Git](https://git-scm.com/images/logo@2x.png)](https://git-scm.com)
 [![travis](https://comodojo.org/wp-content/uploads/2015/06/travis_logo.png)](https://travis-ci.org/)
 
-[bootstrap](http://getbootstrap.com/) HTML, CSS, and JS framework  
-[bootstrap-rtl](https://github.com/morteza/bootstrap-rtl)   
-[pugjs](https://github.com/pugjs/pug) A high performance template engine, (rename from "Jade")
-
 [![Node.js](https://www.shareicon.net/data/128x128/2015/10/06/112725_development_512x512.png/)](https://nodejs.org)
 
+[pugjs](https://github.com/pugjs/pug) A high performance template engine, (rename from "Jade")
 [Grunt.js](http://gruntjs.com) The JavaScript Task Runner  
 [Mocha](https://mochajs.org/) The fun, simple, flexible JavaScript test framework  
 [node-loggly](https://github.com/winstonjs/node-loggly) A client implementation for Loggly in node.js  
@@ -46,3 +43,5 @@ Small app to track reporting process of a set of *Performance Indicators* for or
 
 [![Angular](http://helpacoder.com/wp-content/uploads/2015/07/angular.jpeg)](https://github.com/angular)
 
+[bootstrap](http://getbootstrap.com/) HTML, CSS, and JS framework  
+[bootstrap-rtl](https://github.com/morteza/bootstrap-rtl)   
