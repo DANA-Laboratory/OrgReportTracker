@@ -1,4 +1,4 @@
-# Report Tracker
+# Performance Indicator Reporting and Managing Application 
 Small app to track reporting process of a set of *Performance Indicators* for organizations 
 
 ## Understanding Performance Indicators
