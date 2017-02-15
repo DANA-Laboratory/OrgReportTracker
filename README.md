@@ -29,7 +29,7 @@ Small app to track reporting process of a set of *Performance Indicators* for or
 [![Node.js](https://www.shareicon.net/data/128x128/2015/10/06/112725_development_512x512.png/)](https://nodejs.org)
 [![TeX](http://www.tug.org/images/tuglogo.png)](http://www.tug.org/)
 [![Git](https://git-scm.com/images/logo@2x.png)](https://git-scm.com)
-[![]()]()
+[![Angular](https://avatars2.githubusercontent.com/u/139426?v=3&s=200)](https://github.com/angular)
 
 [Grunt.js](http://gruntjs.com) The JavaScript Task Runner  
 [node-loggly](https://github.com/winstonjs/node-loggly) A client implementation for Loggly in node.js  
