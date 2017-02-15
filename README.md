@@ -36,6 +36,7 @@ Small app to track reporting process of a set of *Performance Indicators* for or
 [pugjs](https://github.com/pugjs/pug) A high performance template engine, (rename from "Jade")
 [Grunt.js](http://gruntjs.com) The JavaScript Task Runner  
 [Mocha](https://mochajs.org/) The fun, simple, flexible JavaScript test framework  
+[SQLite3.js](https://github.com/mapbox/node-sqlite3) Asynchronous, non-blocking SQLite3 bindings for Node.js  
 [node-loggly](https://github.com/winstonjs/node-loggly) A client implementation for Loggly in node.js  
 [passportjs](http://passportjs.org/) Simple, unobtrusive authentication for Node.js  
 [simple-git](https://www.npmjs.com/package/simple-git) A light weight interface for running git commands in any node.js application  
