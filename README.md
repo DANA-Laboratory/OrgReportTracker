@@ -29,10 +29,12 @@ Small app to track reporting process of a set of *Performance Indicators* for or
 [![Node.js](https://www.shareicon.net/data/128x128/2015/10/06/112725_development_512x512.png/)](https://nodejs.org)
 [![TeX](http://www.tug.org/images/tuglogo.png)](http://www.tug.org/)
 [![Git](https://git-scm.com/images/logo@2x.png)](https://git-scm.com)
+[![]()]()
 
 [Grunt.js](http://gruntjs.com) The JavaScript Task Runner  
 [node-loggly](https://github.com/winstonjs/node-loggly) A client implementation for Loggly in node.js  
 [passportjs](http://passportjs.org/) Simple, unobtrusive authentication for Node.js  
 [simple-git](https://www.npmjs.com/package/simple-git) A light weight interface for running git commands in any node.js application  
 [moment-jalaali](https://github.com/jalaali/moment-jalaali) A Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js
-[Chai Assertion Library](http://chaijs.com/)
+[Chai Assertion Library](http://chaijs.com/) Chai is a BDD / TDD assertion library
+[Mocha](https://mochajs.org/) The fun, simple, flexible JavaScript test framework
