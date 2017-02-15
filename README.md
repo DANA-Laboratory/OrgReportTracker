@@ -28,3 +28,4 @@ Small app to track reporting process of a set of *Performance Indicators* for or
 
 [![Node.js](https://www.shareicon.net/data/128x128/2015/10/06/112725_development_512x512.png/)](https://nodejs.org)
 [![SQLite](https://www.sqlite.org/images/sqlite370_banner.gif)](https://www.sqlite.org/)
+[![Grunt.js](http://gruntjs.com/img/og.png)](http://gruntjs.com)
