@@ -1,3 +1,5 @@
+# PIReporter [![Build Status](https://secure.travis-ci.org/DANA-Laboratory/PIReporter.png?branch=master)](http://travis-ci.org/DANA-Laboratory/PIReporter)
+
 # Performance Indicator Reporting and Managing Application 
 Small app to track reporting process of a set of *Performance Indicators* for organizations 
 
@@ -44,3 +46,7 @@ Small app to track reporting process of a set of *Performance Indicators* for or
 [Chai Assertion Library](http://chaijs.com/) Chai is a BDD / TDD assertion library   
 [bootstrap](http://getbootstrap.com/) HTML, CSS, and JS framework  
 [bootstrap-rtl](https://github.com/morteza/bootstrap-rtl)   
+
+## License
+Copyright (c) 2017 Reza Afzalan  
+Licensed under the MIT license.

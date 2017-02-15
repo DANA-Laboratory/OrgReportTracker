@@ -1,0 +1,38 @@
+{
+  "name": "PIReporter",
+  "description": "Small app for tracking reporting process of a set of Performance Indicators for organizations",
+  "version": "0.0.1",
+  "homepage": "https://github.com/DANA-Laboratory/PIReporter",
+  "author": {
+    "name": "Reza Afzalan",
+    "email": "rafzalan@gmail.com",
+    "url": "www.rfpc.ir"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DANA-Laboratory/PIReporter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DANA-Laboratory/PIReporter/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/DANA-Laboratory/PIReporter/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/PIReporter",
+  "engines": {
+    "node": ">=7.5.0"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.4",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt": "~0.4.5"
+  },
+  "keywords": []
+}
