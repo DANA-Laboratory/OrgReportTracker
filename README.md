@@ -22,7 +22,7 @@ Small app to track reporting process of a set of *Performance Indicators* for or
 ## Users
  Beside *provider* and *ownner* of PI, *report* could have *reviewer*, *owner* and *reader*.
 
-## Use cases
+## Some special use-cases
   The process involves, adding attachment to report and commenting on PIs.
 
 [![SQLite](https://www.sqlite.org/images/sqlite370_banner.gif)](https://www.sqlite.org/)
