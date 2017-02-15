@@ -5,7 +5,7 @@ Small app to track reporting process of a set of *Performance Indicators* for or
   PIs are directly *measured* or *calculated* values that are important indicators of performance for managers of organizations. They are measured periodically in predefined *units* by authorized personals that we will call them *providers*. Providers are employees of different sub departments of organization that are responsible for providing a set of related PIs by measuring them before a dead time. Also PIs could have *target* values, targets are set by PI *ownners* for oncomming measuring priods, (that are mostly seasonal) before a financial year begins.
 
 ## What is everything about
-  A set of seasonal|monthly measured PIs will palce in a formated report that mirrors conditions of organization in different aspects.
+  A set of seasonal or monthly measured PIs will palce in a formated report that mirrors conditions of organization in different aspects.
 
 ## How it could help
   This app could help managers getting, collecting, saveing, analysing, exporting, trending, reporting or searching through PIs.
