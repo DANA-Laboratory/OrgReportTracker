@@ -33,4 +33,5 @@ Small app to track reporting process of a set of *Performance Indicators* for or
 [Grunt.js](http://gruntjs.com) The JavaScript Task Runner  
 [node-loggly](https://github.com/winstonjs/node-loggly) A client implementation for Loggly in node.js  
 [passportjs](http://passportjs.org/) Simple, unobtrusive authentication for Node.js  
-[simple-git](https://www.npmjs.com/package/simple-git) A light weight interface for running git commands in any node.js application.  
+[simple-git](https://www.npmjs.com/package/simple-git) A light weight interface for running git commands in any node.js application  
+[moment-jalaali](https://github.com/jalaali/moment-jalaali) A Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js
