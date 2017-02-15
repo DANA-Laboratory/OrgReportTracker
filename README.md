@@ -31,6 +31,7 @@ Small app to track reporting process of a set of *Performance Indicators* for or
 [![travis](https://comodojo.org/wp-content/uploads/2015/06/travis_logo.png)](https://travis-ci.org/)
 
 [![Node.js](https://www.shareicon.net/data/128x128/2015/10/06/112725_development_512x512.png/)](https://nodejs.org)
+[![Angular](http://helpacoder.com/wp-content/uploads/2015/07/angular.jpeg)](https://github.com/angular)
 
 [pugjs](https://github.com/pugjs/pug) A high performance template engine, (rename from "Jade")
 [Grunt.js](http://gruntjs.com) The JavaScript Task Runner  
@@ -40,8 +41,5 @@ Small app to track reporting process of a set of *Performance Indicators* for or
 [simple-git](https://www.npmjs.com/package/simple-git) A light weight interface for running git commands in any node.js application  
 [moment-jalaali](https://github.com/jalaali/moment-jalaali) A Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js  
 [Chai Assertion Library](http://chaijs.com/) Chai is a BDD / TDD assertion library   
-
-[![Angular](http://helpacoder.com/wp-content/uploads/2015/07/angular.jpeg)](https://github.com/angular)
-
 [bootstrap](http://getbootstrap.com/) HTML, CSS, and JS framework  
 [bootstrap-rtl](https://github.com/morteza/bootstrap-rtl)   
