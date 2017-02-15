@@ -30,7 +30,7 @@ Small app to track reporting process of a set of *Performance Indicators* for or
 [![TeX](http://www.tug.org/images/tuglogo.png)](http://www.tug.org/)
 [![Git](https://git-scm.com/images/logo@2x.png)](https://git-scm.com)
 
-[Grunt.js](http://gruntjs.com) The JavaScript Task Runner
-[node-loggly](https://github.com/winstonjs/node-loggly) A client implementation for Loggly in node.js
-[passportjs](http://passportjs.org/) Simple, unobtrusive authentication for Node.js
-[simple-git](https://www.npmjs.com/package/simple-git) A light weight interface for running git commands in any node.js application.
+[Grunt.js](http://gruntjs.com) The JavaScript Task Runner  
+[node-loggly](https://github.com/winstonjs/node-loggly) A client implementation for Loggly in node.js  
+[passportjs](http://passportjs.org/) Simple, unobtrusive authentication for Node.js  
+[simple-git](https://www.npmjs.com/package/simple-git) A light weight interface for running git commands in any node.js application.  
