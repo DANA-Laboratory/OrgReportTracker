@@ -26,19 +26,22 @@ Small app to track reporting process of a set of *Performance Indicators* for or
   The process involves, adding attachment and commenting on PIs
 
 [![SQLite](https://www.sqlite.org/images/sqlite370_banner.gif)](https://www.sqlite.org/)
-[![Node.js](https://www.shareicon.net/data/128x128/2015/10/06/112725_development_512x512.png/)](https://nodejs.org)
 [![TeX](http://www.tug.org/images/tuglogo.png)](http://www.tug.org/)
 [![Git](https://git-scm.com/images/logo@2x.png)](https://git-scm.com)
-[![Angular](http://helpacoder.com/wp-content/uploads/2015/07/angular.jpeg)](https://github.com/angular)
 [![travis](https://comodojo.org/wp-content/uploads/2015/06/travis_logo.png)](https://travis-ci.org/)
 
+[![Node.js](https://www.shareicon.net/data/128x128/2015/10/06/112725_development_512x512.png/)](https://nodejs.org)
+
 [Grunt.js](http://gruntjs.com) The JavaScript Task Runner  
+[Mocha](https://mochajs.org/) The fun, simple, flexible JavaScript test framework  
 [node-loggly](https://github.com/winstonjs/node-loggly) A client implementation for Loggly in node.js  
 [passportjs](http://passportjs.org/) Simple, unobtrusive authentication for Node.js  
 [simple-git](https://www.npmjs.com/package/simple-git) A light weight interface for running git commands in any node.js application  
 [moment-jalaali](https://github.com/jalaali/moment-jalaali) A Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js  
 [Chai Assertion Library](http://chaijs.com/) Chai is a BDD / TDD assertion library   
-[Mocha](https://mochajs.org/) The fun, simple, flexible JavaScript test framework  
+
+[![Angular](http://helpacoder.com/wp-content/uploads/2015/07/angular.jpeg)](https://github.com/angular)
+
 [bootstrap](http://getbootstrap.com/) HTML, CSS, and JS framework  
 [bootstrap-rtl](https://github.com/morteza/bootstrap-rtl)   
 [pugjs](https://github.com/pugjs/pug) A high performance template engine, (rename from "Jade")
