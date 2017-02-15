@@ -24,3 +24,7 @@ Small app to track reporting process of a set of *Performance Indicators* for or
 
 ## Use cases
   The process involves, adding attachment and commenting on PIs
+
+
+[![Node.js](https://nodejs.org/)](https://nodejs.org/static/images/logo.svg)
+[![SQLite](https://www.sqlite.org/images/sqlite370_banner.gif)](https://www.sqlite.org/)
