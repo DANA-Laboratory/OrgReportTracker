@@ -17,7 +17,7 @@ Small app to track reporting process of a set of *Performance Indicators* for or
   PIs are directly *measured* or *calculated* values that are important indicators of performance for managers of organizations. They are measured periodically in predefined *units* by authorized personals that we will call them *providers*. Providers are employees of different sub departments of organization that are responsible for providing a set of related PIs by measuring them before a dead time. Also PIs could have *target* values, targets are set by PI *ownners* for oncomming measuring priods, (that are mostly seasonal) before a financial year begins.
   
 ## Report
-  Values of a set of periodically measured PIs for the time of reporting will be arrange to create a printable view.
+  Values of a set of periodically measured PIs for the time of reporting will be arrange to create a printable view. They have *attachemnts* and a *time limit* which after that time the report state will be read only.
   
 ## Users:
  Beside *providers*, *ownners* of PIs, *report* could have *reviewer*, *owner* and *reader*.
