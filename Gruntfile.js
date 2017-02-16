@@ -4,6 +4,11 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
+    env : {
+      dev : {
+        NODE_ENV : 'development'
+      }
+    },
     mochaTest: {
      test: {
        options: {
@@ -50,8 +55,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.loadNpmTasks('grunt-env');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'mochaTest']);
+  grunt.registerTask('default', ['env:dev', 'jshint', 'mochaTest']);
 
 };
