@@ -27,14 +27,14 @@
     "node": ">=7.5.0"
   },
   "scripts": {
-    "test": "grunt nodeunit"
+    "test": "grunt mochaTest"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-mocha-test": "^0.13.2",
-    "mocha": "^3.2.0"
+    "grunt-mocha-test": "~0.13.2",
+    "mocha": "~3.2.0"
   },
   "keywords": []
 }
