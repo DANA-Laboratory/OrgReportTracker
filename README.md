@@ -26,6 +26,14 @@ Small app to track reporting process of a set of *Performance Indicators* for or
 
 ## Some special use-cases
   The process involves, adding attachment to report and commenting on PIs.
+_____
+
+## _To Test_
+1. install nodejs & git
+2. nodejs command prompt -> `npm install -g grunt-cli`
+3. git commant prompt -> `clone https://github.com/DANA-Laboratory/PIReporter.git`
+4. cd PIReporter
+5. npm test
 
 [![SQLite](https://www.sqlite.org/images/sqlite370_banner.gif)](https://www.sqlite.org/)
 [![TeX](http://www.tug.org/images/tuglogo.png)](http://www.tug.org/)
