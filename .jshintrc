@@ -11,5 +11,7 @@
   "boss": true,
   "eqnull": true,
   "node": true,
-  "mocha": true
+  "mocha": true,
+  "esversion": 6,
+  "multistr": true
 }
