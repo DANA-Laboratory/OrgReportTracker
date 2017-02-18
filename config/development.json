@@ -1,3 +1,3 @@
 {
-    "dbPath": "path/to/db" 
+    "dbPath": "./db/devlop.sqlite3"
 }
