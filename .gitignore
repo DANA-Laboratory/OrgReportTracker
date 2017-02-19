@@ -2,3 +2,5 @@ node_modules
 db
 .ctags*
 .idea
+*.log
+results.txt
