@@ -1,7 +1,7 @@
 # PIReporter [![Build Status](https://secure.travis-ci.org/DANA-Laboratory/PIReporter.png?branch=master)](http://travis-ci.org/DANA-Laboratory/PIReporter)
 
-# Performance Indicator Reporting and Managing Application 
-Small app to track reporting process of a set of *Performance Indicators* for organizations 
+# Performance Indicator Reporting and Managing Application
+Small app to track reporting process of a set of *Performance Indicators* for organizations
 
 ## Understanding Performance Indicators
   PIs are directly *measured* or *calculated* values that are important indicators of performance for managers of organizations. They are measured periodically in predefined *units* by authorized personals that we will call them *providers*. Providers are employees of different sub departments of organization that are responsible for providing a set of related PIs by measuring them before a dead time. Also PIs could have *target* values, targets are set by PI *ownners* for oncomming measuring priods, (that are mostly seasonal) before a financial year begins.
@@ -13,14 +13,14 @@ Small app to track reporting process of a set of *Performance Indicators* for or
   This app could help managers getting, collecting, saveing, analysing, exporting, trending, reporting or searching through PIs.
 
 ## Motivations for us
-  This project is a open source app with different incentives which involves: 
-  - Creation of training contants for a workshop about web apps. 
+  This project is a open source app with different incentives which involves:
+  - Creation of training contants for a workshop about web apps.
   - Also we want to develop a practical simple application to help create seasonal reports of a set of performance indicators.
   - Also we want to introduce capabilities and encourage use of open-source codes that are freely avaliable.  
-  
+
 ## Report
   Values of a set of periodically measured PIs for the time of reporting will be arrange to create a printable view that called *report*. reports have *attachemnts* and a *time limit* which after that time its state will be read only.
-  
+
 ## Users
  Beside *provider* and *ownner* of PI, *report* could have *reviewer*, *owner* and *reader*.
 
@@ -45,7 +45,9 @@ _____
 
 [pugjs](https://github.com/pugjs/pug) A high performance template engine, (rename from "Jade")
 [Grunt.js](http://gruntjs.com) The JavaScript Task Runner  
-[Mocha](https://mochajs.org/) The fun, simple, flexible JavaScript test framework  
+[Express.js](http://expressjs.com/) Fast, unopinionated, minimalist web framework
+[Mocha.js](https://mochajs.org/) The fun, simple, flexible JavaScript test framework  
+[SuperTest.js](https://github.com/visionmedia/supertest) HTTP assertions made easy via superagent
 [SQLite3.js](https://github.com/mapbox/node-sqlite3) Asynchronous, non-blocking SQLite3 bindings for Node.js  
 [node-loggly](https://github.com/winstonjs/node-loggly) A client implementation for Loggly in node.js  
 [passportjs](http://passportjs.org/) Simple, unobtrusive authentication for Node.js  
