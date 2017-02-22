@@ -50,10 +50,10 @@ _____
 [SuperTest.js](https://github.com/visionmedia/supertest) HTTP assertions made easy via superagent
 [SQLite3.js](https://github.com/mapbox/node-sqlite3) Asynchronous, non-blocking SQLite3 bindings for Node.js  
 [node-loggly](https://github.com/winstonjs/node-loggly) A client implementation for Loggly in node.js  
-[passportjs](http://passportjs.org/) Simple, unobtrusive authentication for Node.js  
+[passportjs + local + telegram](http://passportjs.org/) Simple, unobtrusive authentication for Node.js  
 [simple-git](https://www.npmjs.com/package/simple-git) A light weight interface for running git commands in any node.js application  
 [moment-jalaali](https://github.com/jalaali/moment-jalaali) A Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js  
-[Chai Assertion Library](http://chaijs.com/) Chai is a BDD / TDD assertion library   
+[chartist ](https://www.npmjs.com/package/chartist) Simple, responsive charts 
 [bootstrap](http://getbootstrap.com/) HTML, CSS, and JS framework  
 [bootstrap-rtl](https://github.com/morteza/bootstrap-rtl)   
 
