@@ -27,7 +27,8 @@
     "node": ">=7.5.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "start": "set NODE_ENV=start&&node ./lib/PIReporter.js"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
@@ -45,6 +46,8 @@
     "express": "^4.14.1",
     "express-session": "^1.15.1",
     "passport": "^0.3.2",
+    "passport-github": "^1.1.0",
+    "passport-google-oauth2": "^0.1.6",
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-beta11",
     "sqlite3": "^3.1.8"
