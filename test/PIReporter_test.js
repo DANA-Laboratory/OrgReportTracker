@@ -31,6 +31,26 @@ describe('Api test', function() {
           .expect(200)
           .end(done);
   });
+  it('redirect to login when wrong', function(done) {
+    let data = {username : 'rafzalan', password : 'wrong'};
+    supertest
+      .post('/login')
+      .type('json')
+      .send(data)
+      .expect(302)
+      .expect('Location', '/login')
+      .end(done);
+  });
+  it('redirect to /', function(done) {
+    let data = {username : 'rafzalan', password : 'master'};
+    supertest
+      .post('/login')
+      .type('json')
+      .send(data)
+      .expect(302)
+      .expect('Location', '/')
+      .end(done);
+  });
   it('addUser', function(done) {
       let data  = '{"verb":"addUser", "data":{"workunit":"un1", "sysadmin":true, "pcode":"555555", "account":"rafzalan", "password":"vafa01", "fname":"رضا", "lname":"افضلان"}}';
       supertest

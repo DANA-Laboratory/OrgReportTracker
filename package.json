@@ -41,7 +41,9 @@
   "keywords": [],
   "dependencies": {
     "config": "^1.25.1",
+    "connect-flash": "^0.1.1",
     "express": "^4.14.1",
+    "express-session": "^1.15.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-beta11",
