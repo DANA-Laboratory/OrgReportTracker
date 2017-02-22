@@ -52,12 +52,13 @@ module.exports = function(grunt) {
   });
 
   // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('grunt-env');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha-test');
-  grunt.loadNpmTasks('grunt-env');
 
   // Default task.
   grunt.registerTask('default', ['env:dev', 'jshint', 'mochaTest']);
+  grunt.registerTask('test', ['env:dev', 'mochaTest']);
 
 };

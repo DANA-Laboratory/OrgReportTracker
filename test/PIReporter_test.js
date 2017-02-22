@@ -32,7 +32,7 @@ describe('Api test', function() {
           .end(done);
   });
   it('addUser', function(done) {
-      let data  = '{"verb":"addUser", "data":{"workunit":"un1", "pcode":"555555", "account":"rafzalan", "password":"vafa01", "fname":"رضا", "lname":"افضلان"}}';
+      let data  = '{"verb":"addUser", "data":{"workunit":"un1", "sysadmin":true, "pcode":"555555", "account":"rafzalan", "password":"vafa01", "fname":"رضا", "lname":"افضلان"}}';
       supertest
           .post('/insert')
           .type('json')

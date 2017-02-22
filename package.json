@@ -27,7 +27,7 @@
     "node": ">=7.5.0"
   },
   "scripts": {
-    "test": "grunt mochaTest"
+    "test": "grunt test"
   },
   "devDependencies": {
     "grunt": "~0.4.5",
