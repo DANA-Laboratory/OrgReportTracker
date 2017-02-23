@@ -9,7 +9,13 @@ html(dir='rtl')
     link(rel='shortcut icon', href='favicon.ico')
     meta(name='theme-color', content='#ffffff')
     link(rel='stylesheet', href='bower_components/chartist/dist/chartist.min.css')
+    link(rel='stylesheet', href='bower_components/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='bower_components/bootstrap-rtl/dist/bootstrap-rtl.min.css')
   body
     h1= message
-    .ct-chart.ct-perfect-fourth
+    .col-md-4
+    .col-md-4.ct-chart.ct-minor-sixth
+    .col-md-4
     script(src='bower_components/chartist/dist/chartist.min.js')
+    script
+      include script.js

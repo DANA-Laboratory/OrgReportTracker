@@ -21,6 +21,8 @@
     "tests"
   ],
   "dependencies": {
-    "chartist": "^0.10.1"
+    "chartist": "^0.10.1",
+    "bootstrap": "^3.3.7",
+    "bootstrap-rtl": "^3.4.0"
   }
 }
