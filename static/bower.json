@@ -1,0 +1,26 @@
+{
+  "name": "PIReporter",
+  "description": "Small app for tracking reporting process of a set of Performance Indicators for organizations",
+  "main": "lib/PIReporter",
+  "authors": [
+    "Reza Afzalan"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "DANA-Laboratory",
+    "KPI",
+    "Rahavaran",
+    "bspc"
+  ],
+  "homepage": "https://github.com/DANA-Laboratory/PIReporter",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chartist": "^0.10.1"
+  }
+}
