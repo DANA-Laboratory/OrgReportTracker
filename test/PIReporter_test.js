@@ -34,26 +34,32 @@ describe('Api test', function() {
   it('redirect to login when wrong', function(done) {
     let data = {username : 'rafzalan', password : 'wrong'};
     supertest
-      .post('/login')
+      .post('/auth/login')
       .type('json')
       .send(data)
       .expect(302)
-      .expect('Location', '/login')
+      .expect('Location', '/auth/login')
       .end(done);
   });
   it('redirect to / after login', function(done) {
     let data = {username : 'rafzalan', password : 'master'};
     supertest
-      .post('/login')
+      .post('/auth/login')
       .type('json')
       .send(data)
       .expect(302)
       .expect('Location', '/')
       .end(done);
   });
-  it('possible login with github', function(done) {
+  it('redirect when login with github', function(done) {
     supertest
       .get('/auth/github')
+      .expect(302)
+      .end(done);
+  });
+  it('redirect when login with telegram', function(done) {
+    supertest
+      .get('/auth/telegram')
       .expect(302)
       .end(done);
   });
