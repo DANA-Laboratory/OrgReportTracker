@@ -1,4 +1,5 @@
-html(dir='rtl')
+doctype html
+html(ng-app='PIR')
   head
     title= title
     link(rel='apple-touch-icon', sizes='180x180', href='/apple-touch-icon.png')
@@ -8,14 +9,20 @@ html(dir='rtl')
     link(rel='mask-icon', href='/safari-pinned-tab.svg', color='#5bbad5')
     link(rel='shortcut icon', href='favicon.ico')
     meta(name='theme-color', content='#ffffff')
-    link(rel='stylesheet', href='bower_components/chartist/dist/chartist.min.css')
-    link(rel='stylesheet', href='bower_components/bootstrap/dist/css/bootstrap.min.css')
-    link(rel='stylesheet', href='bower_components/bootstrap-rtl/dist/bootstrap-rtl.min.css')
-  body
-    h1= message
-    .col-md-4
-    .col-md-4.ct-chart.ct-minor-sixth
-    .col-md-4
-    script(src='bower_components/chartist/dist/chartist.min.js')
+    link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/bower_components/bootstrap-rtl/dist/css/bootstrap-rtl.min.css')
+    link(rel='stylesheet', href='site.css')
+    // Reference AngularJS and D3.js
+    script(src='bower_components/angular/angular.min.js')
+    script(src='bower_components/chart.js/dist/Chart.min.js')
+    script(src='bower_components/angular-chart.js/dist/angular-chart.min.js')
+  body(ng-controller='LineCtrl')
+    .col-md-12
+      | سایت در حال طراحی است-
+      a(href='https://github.com/DANA-Laboratory/PIReporter') سورس کد
+    .col-md-9.text-center.chart-container
+      canvas.chart.chart-line(chart-data='data', chart-labels='labels', chart-series='series', chart-click='onClick')
+    .col-md-3.text-center
+      img.img-responsive.thumbnail(src='/images/logo.png')
     script
-      include script.js
+      include sample.js

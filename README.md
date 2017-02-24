@@ -53,7 +53,7 @@ _____
 [passportjs with local telegram github strategies](http://passportjs.org/) Simple, unobtrusive authentication for Node.js  
 [simple-git](https://www.npmjs.com/package/simple-git) A light weight interface for running git commands in any node.js application  
 [moment-jalaali](https://github.com/jalaali/moment-jalaali) A Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js  
-[chartist ](https://www.npmjs.com/package/chartist) Simple, responsive charts   
+[n3-charts](https://github.com/n3-charts) Making AngularJS charts as easy as pie   
 [bootstrap](http://getbootstrap.com/) HTML, CSS, and JS framework  
 [bootstrap-rtl](https://github.com/morteza/bootstrap-rtl)   
 
