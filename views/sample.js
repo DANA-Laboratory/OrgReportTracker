@@ -12,7 +12,6 @@ angular.module("PIR", ["chart.js"])
       titleMarginBottom: 15,
       bodyFontFamily: 'b yekan',
       footerFontFamily: 'tahoma'
-
     });
     ChartJsProvider.setOptions('layout', {
       padding: 10
@@ -48,7 +47,6 @@ angular.module("PIR", ["chart.js"])
     $scope.onClick = function (points, evt) {
       console.log(points, evt);
     };
-
     // Simulate async data update
     $timeout(function () {
       $scope.data = [

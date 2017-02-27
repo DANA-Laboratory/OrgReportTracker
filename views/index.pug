@@ -1,6 +1,6 @@
-include langs.pug
 doctype html
-html(lang='en')
+include langs.pug
+html(ng-app='app')
   head
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -8,17 +8,25 @@ html(lang='en')
     meta(name='description', content='')
     meta(name='author', content='')
     title SB Admin - Bootstrap Admin Template
+    // Angular
+    script(src='bower_components/angular/angular.min.js')
+    script(src='grid.js')
+    // ui-grid
+    script(src='bower_components/angular-ui-grid/ui-grid.min.js')
+    // ui-grid css
+    link(href='bower_components/angular-ui-grid/ui-grid.min.css', rel='stylesheet')
     // Bootstrap Core CSS
-    link(href='css/bootstrap.min.css', rel='stylesheet')
+    link(href='bower_components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
     // Bootstrap Core CSS RTL
-    link(href='css/bootstrap-rtl.min.css', rel='stylesheet')
+    link(href='bower_components/bootstrap-rtl/dist/css/bootstrap-rtl.min.css', rel='stylesheet')
     // Custom CSS
     link(href='css/sb-admin.css', rel='stylesheet')
     link(href='css/sb-admin-rtl.css', rel='stylesheet')
     // Morris Charts CSS
     link(href='css/plugins/morris.css', rel='stylesheet')
+    link(rel='stylesheet', href='site.css')
     // Custom Fonts
-    link(href='font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
+    link(href='bower_components/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
     // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
     // WARNING: Respond.js doesn't work if you view the page via file://
     //if lt IE 9
@@ -88,27 +96,27 @@ html(lang='en')
             ul.dropdown-menu.alert-dropdown
               li
                 a(href='#')
-                  | Alert Name 
+                  | Alert Name
                   span.label.label-default Alert Badge
               li
                 a(href='#')
-                  | Alert Name 
+                  | Alert Name
                   span.label.label-primary Alert Badge
               li
                 a(href='#')
-                  | Alert Name 
+                  | Alert Name
                   span.label.label-success Alert Badge
               li
                 a(href='#')
-                  | Alert Name 
+                  | Alert Name
                   span.label.label-info Alert Badge
               li
                 a(href='#')
-                  | Alert Name 
+                  | Alert Name
                   span.label.label-warning Alert Badge
               li
                 a(href='#')
-                  | Alert Name 
+                  | Alert Name
                   span.label.label-danger Alert Badge
               li.divider
               li
@@ -116,7 +124,7 @@ html(lang='en')
           li.dropdown
             a.dropdown-toggle(href='#', data-toggle='dropdown')
               i.fa.fa-user
-              |  John Smith 
+              |  John Smith
               b.caret
             ul.dropdown-menu
               li
@@ -166,7 +174,7 @@ html(lang='en')
             li
               a(href='javascript:;', data-toggle='collapse', data-target='#demo')
                 i.fa.fa-fw.fa-arrows-v
-                |  Dropdown 
+                |  Dropdown
                 i.fa.fa-fw.fa-caret-down
               ul#demo.collapse
                 li
@@ -188,7 +196,7 @@ html(lang='en')
           .row
             .col-lg-12
               h1.page-header
-                | Dashboard 
+                | Dashboard
                 small Statistics Overview
               ol.breadcrumb
                 li.active
@@ -201,55 +209,29 @@ html(lang='en')
                 button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
                 i.fa.fa-info-circle
                 strong Like SB Admin?
-                |  Try out 
+                |  Try out
                 a.alert-link(href='http://startbootstrap.com/template-overviews/sb-admin-2') SB Admin 2
                 |  for additional features!
           // /.row
+          - var n = 0
+          - var cn = ['1d 12h 30min', '1d 12h 30min', '1d 12h 30min', '1d 12h 30min']
+          - var tx = ['New Comments!', 'New Tasks!', 'New Orders!', 'Support Tickets!']
           .row
-            .col-lg-3.col-md-6
-              .panel.panel-primary
-                .panel-heading
-                  .row
-                    .col-xs-7.text-right
-                      .huge 26
-                      div= fa['New Comments!']
-                    .col-xs-5
-                      i.fa.fa-comments.fa-5x
-                a(href='#')
-                  include panel.pug
-            .col-lg-3.col-md-6
-              .panel.panel-green
-                .panel-heading
-                  .row
-                    .col-xs-7.text-right
-                      .huge 12
-                      div= fa['New Tasks!']
-                    .col-xs-5
-                      i.fa.fa-tasks.fa-5x
-                a(href='#')
-                  include panel.pug
-            .col-lg-3.col-md-6
-              .panel.panel-yellow
-                .panel-heading
-                  .row
-                    .col-xs-7.text-right
-                      .huge 124
-                      div= fa['New Orders!']
-                    .col-xs-5
-                      i.fa.fa-shopping-cart.fa-5x
-                a(href='#')
-                  include panel.pug
-            .col-lg-3.col-md-6
-              .panel.panel-red
-                .panel-heading
-                  .row
-                    .col-xs-7.text-right
-                      .huge 13
-                      div= fa['Support Tickets!']
-                    .col-xs-5
-                      i.fa.fa-support.fa-5x
-                a(href='#')
-                  include panel.pug
+            include panels/openreport.pug
+          - var n = 0
+          - var fc = ['fa-comments', 'fa-tasks', 'fa-shopping-cart', 'fa-support']
+          - var pc = ['panel-primary', 'panel-green', 'panel-yellow', 'panel-red']
+          .row
+            while n < 4
+              include panels/panelex.pug
+          - var n = 0
+          - var pc = ['panel-primary', 'panel-green', 'panel-yellow', 'panel-red']
+          - var cn = [26, 10, 112, 1]
+          - var tx = ['New Comments!', 'New Tasks!', 'New Orders!', 'Support Tickets!']
+          - var fc = ['fa-comments', 'fa-tasks', 'fa-shopping-cart', 'fa-support']
+          .row
+            while n < 4
+              include panels/panel.pug
           // /.row
           .row
             .col-lg-12
@@ -272,7 +254,7 @@ html(lang='en')
                   #morris-donut-chart
                   .text-right
                     a(href='#')
-                      | View Details 
+                      | View Details
                       i.fa.fa-arrow-circle-right
             .col-lg-4
               .panel.panel-default
@@ -316,7 +298,7 @@ html(lang='en')
                       |  Completed task: "fix error on sales page"
                   .text-right
                     a(href='#')
-                      | View All Activity 
+                      | View All Activity
                       i.fa.fa-arrow-circle-right
             .col-lg-4
               .panel.panel-default
@@ -376,7 +358,7 @@ html(lang='en')
                           td $943.45
                   .text-right
                     a(href='#')
-                      | View All Transactions 
+                      | View All Transactions
                       i.fa.fa-arrow-circle-right
           // /.row
         // /.container-fluid
