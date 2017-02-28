@@ -40,3 +40,6 @@ kbd {
   height: 400px;
   font-size: smaller;
 }
+.anchor-grid {
+  margin: 0.2em
+}

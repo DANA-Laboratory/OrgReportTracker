@@ -1,29 +1,51 @@
-var app = angular.module('app', ['ui.grid', 'ui.grid.edit']);
+var fa={}
+fa['PI'] = 'شاخص'
+fa['PI real'] = 'دستاورد'
+fa['Edit Time'] = 'زمان ویرایش'
+fa['Upper Limit'] = 'حد بالا'
+fa['Lower Limit'] = 'حد پایین'
+fa['Unit'] = 'واحد'
+fa['Commands'] = 'دستورات'
+var app = angular.module('app', ['ui.grid', 'ui.grid.edit', 'ui.grid.cellNav']);
+
 app.controller('GridCtrl', ['$scope', '$http', function ($scope) {
-    $scope.myData = [
-      {
-          "شاخص": "Cox",
-          "دستاورد": "Enormo",
-          "واحد": "تن",
-          "حد پایین": 100,
-          "حد بالا": 150,
-          "زمان ویرایش": ""
-      },
-      {
-          "شاخص": "Lorraine",
-          "دستاورد": "Comveyer",
-          "واحد": "درصد",
-          "حد پایین": 0,
-          "حد بالا": 10,
-          "زمان ویرایش": ""
-      },
-      {
-          "شاخص": "Nancy",
-          "دستاورد": "Fuelton",
-          "واحد": "بی بعد",
-          "حد پایین": 1000,
-          "حد بالا": 10000,
-          "زمان ویرایش": ""
-      }
-  ];
+    $scope.gridOptions = {
+      enableColumnMenus: false,
+      enableFiltering: true,
+      columnDefs: [
+        { name:fa['Commands'], enableCellEdit:false, enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents text-center"><a href="#" class="anchor-grid glyphicon glyphicon-stats"></a><a href="#" class="anchor-grid glyphicon glyphicon-pencil"></a><a href="#" class="anchor-grid glyphicon glyphicon-flag"></a></div>'},
+        { name:fa['PI'], field: 'PI', enableCellEdit:false },
+        { name:fa['PI real'], field: 'PI real' },
+        { name:fa['Unit'], field: 'Unit', enableCellEdit:false},
+        { name:fa['Lower Limit'], field: 'Lower Limit', enableCellEdit:false},
+        { name:fa['Upper Limit'], field: 'Upper Limit', enableCellEdit:false},
+        { name:fa['Edit Time'], field: 'Edit Time', enableCellEdit:false}
+      ],
+      data : [
+        {
+            "PI": "عملکرد واحد",
+            "PI real": "125",
+            "Unit": "تن",
+            "Lower Limit": 100,
+            "Upper Limit": 150,
+            "Edit Time": ""
+        },
+        {
+            "PI": "بهره وری",
+            "PI real": "8.5",
+            "Unit": "درصد",
+            "Lower Limit": 0,
+            "Upper Limit": 10,
+            "Edit Time": ""
+        },
+        {
+            "PI": "نسبت سود",
+            "PI real": "8001.2",
+            "Unit": "بی بعد",
+            "Lower Limit": 1000,
+            "Upper Limit": 10000,
+            "Edit Time": ""
+        }
+      ]
+    };
 }]);
