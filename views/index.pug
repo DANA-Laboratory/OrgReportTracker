@@ -149,46 +149,28 @@ html(ng-app='app')
           ul.nav.navbar-nav.side-nav
             li
               a(href='/')
-                i.fa.fa-fw.fa-dashboard
-                |  Dashboard
+                i.fa.fa-fw.fa-desktop
+                =  fa['Dashboard']
             li
               a(href='charts.html')
-                i.fa.fa-fw.fa-bar-chart-o
-                |  Charts
+                i.fa.fa-fw.fa-archive
+                =  fa['Reports Archive']
             li
               a(href='tables.html')
-                i.fa.fa-fw.fa-table
-                |  Tables
-            li
-              a(href='forms.html')
-                i.fa.fa-fw.fa-edit
-                |  Forms
-            li
-              a(href='bootstrap-elements.html')
-                i.fa.fa-fw.fa-desktop
-                |  Bootstrap Elements
-            li
-              a(href='bootstrap-grid.html')
-                i.fa.fa-fw.fa-wrench
-                |  Bootstrap Grid
+                i.fa.fa-fw.fa-users
+                = fa['Users']
             li
               a(href='javascript:;', data-toggle='collapse', data-target='#demo')
-                i.fa.fa-fw.fa-arrows-v
-                |  Dropdown
+                i.fa.fa-fw.fa-wrench
+                = fa['Design']
                 i.fa.fa-fw.fa-caret-down
               ul#demo.collapse
                 li
-                  a(href='#') Dropdown Item
+                  a(href='#')= fa['Categories']
                 li
-                  a(href='#') Dropdown Item
-            li
-              a(href='blank-page.html')
-                i.fa.fa-fw.fa-file
-                |  Blank Page
-            li.active
-              a(href='index-rtl.html')
-                i.fa.fa-fw.fa-dashboard
-                |  RTL Dashboard
+                  a(href='#')= fa['PIs']
+                li
+                  a(href='#')= fa['Reports']
         // /.navbar-collapse
       #page-wrapper
         .container-fluid
@@ -196,12 +178,12 @@ html(ng-app='app')
           .row
             .col-lg-12
               h1.page-header
-                | Dashboard
-                small Statistics Overview
+                = fa['Dashboard']
+                span.small= fa['Statistics Overview']
               ol.breadcrumb
                 li.active
                   i.fa.fa-dashboard
-                  |  Dashboard
+                  = fa['Dashboard']
           // /.row
           .row
             .col-lg-12
