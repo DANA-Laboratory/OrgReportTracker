@@ -1,0 +1,44 @@
+ul.nav.navbar-nav.side-nav
+  li
+    a(href='/')
+      i.fa.fa-fw.fa-desktop
+      =  fa['Dashboard']
+    hr(style = "margin-top:0")
+  li
+    .col-md-12
+      input(type="text" class="form-control" placeholder="جستجو ....")
+    .col-md-12
+      ul.well.nav
+        li
+          a(href='#')
+            = fa['result 1']
+        a(href='#')
+          li= fa['result 2']
+        a(href='#')
+          li= fa['result 3']
+        a(href='#')
+          li= fa['result 4']
+        a(href='#')
+          li= fa['result 5']
+  li
+    hr(style = "margin:0")
+    a(href='#')
+      i.fa.fa-fw.fa-archive
+      =  fa['Reports Archive']
+    hr(style = "margin:0")
+  li
+    a(href='javascript:;', data-toggle='collapse', data-target='#demo')
+      i.fa.fa-fw.fa-wrench
+      = fa['Design']
+      i.fa.fa-fw.fa-caret-down
+    ul#demo.collapse
+      li
+        a(href='#')= fa['Categories']
+      li
+        a(href='#')= fa['PIs']
+      li
+        a(href='#')= fa['Reports']
+  li
+    a(href='#')
+      i.fa.fa-fw.fa-users
+      = fa['Users']

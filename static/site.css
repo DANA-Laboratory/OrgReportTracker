@@ -43,3 +43,6 @@ kbd {
 .anchor-grid {
   margin: 0.2em
 }
+.label {
+  font-weight: normal
+}

@@ -45,132 +45,10 @@ html(ng-app='app')
             span.icon-bar
           a.navbar-brand(href='/')= fa['title']
         // Top Menu Items
-        ul.nav.navbar-right.top-nav
-          li.dropdown
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
-              i.fa.fa-envelope
-              b.caret
-            ul.dropdown-menu.message-dropdown
-              li.message-preview
-                a(href='#')
-                  .media
-                    span.pull-left
-                      img.media-object(src='http://placehold.it/50x50', alt='')
-                    .media-body
-                      h5.media-heading
-                        strong John Smith
-                      p.small.text-muted
-                        i.fa.fa-clock-o
-                        |  Yesterday at 4:32 PM
-                      p Lorem ipsum dolor sit amet, consectetur...
-              li.message-preview
-                a(href='#')
-                  .media
-                    span.pull-left
-                      img.media-object(src='http://placehold.it/50x50', alt='')
-                    .media-body
-                      h5.media-heading
-                        strong John Smith
-                      p.small.text-muted
-                        i.fa.fa-clock-o
-                        |  Yesterday at 4:32 PM
-                      p Lorem ipsum dolor sit amet, consectetur...
-              li.message-preview
-                a(href='#')
-                  .media
-                    span.pull-left
-                      img.media-object(src='http://placehold.it/50x50', alt='')
-                    .media-body
-                      h5.media-heading
-                        strong John Smith
-                      p.small.text-muted
-                        i.fa.fa-clock-o
-                        |  Yesterday at 4:32 PM
-                      p Lorem ipsum dolor sit amet, consectetur...
-              li.message-footer
-                a(href='#') Read All New Messages
-          li.dropdown
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
-              i.fa.fa-bell
-              b.caret
-            ul.dropdown-menu.alert-dropdown
-              li
-                a(href='#')
-                  | Alert Name
-                  span.label.label-default Alert Badge
-              li
-                a(href='#')
-                  | Alert Name
-                  span.label.label-primary Alert Badge
-              li
-                a(href='#')
-                  | Alert Name
-                  span.label.label-success Alert Badge
-              li
-                a(href='#')
-                  | Alert Name
-                  span.label.label-info Alert Badge
-              li
-                a(href='#')
-                  | Alert Name
-                  span.label.label-warning Alert Badge
-              li
-                a(href='#')
-                  | Alert Name
-                  span.label.label-danger Alert Badge
-              li.divider
-              li
-                a(href='#') View All
-          li.dropdown
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
-              i.fa.fa-user
-              |  John Smith
-              b.caret
-            ul.dropdown-menu
-              li
-                a(href='#')
-                  i.fa.fa-fw.fa-user
-                  |  Profile
-              li
-                a(href='#')
-                  i.fa.fa-fw.fa-envelope
-                  |  Inbox
-              li
-                a(href='#')
-                  i.fa.fa-fw.fa-gear
-                  |  Settings
-              li.divider
-              li
-                a(href='#')
-                  i.fa.fa-fw.fa-power-off
-                  |  Log Out
+        include top-nav.pug
         // Sidebar Menu Items - These collapse to the responsive navigation menu on small screens
         .collapse.navbar-collapse.navbar-ex1-collapse
-          ul.nav.navbar-nav.side-nav
-            li
-              a(href='/')
-                i.fa.fa-fw.fa-desktop
-                =  fa['Dashboard']
-            li
-              a(href='charts.html')
-                i.fa.fa-fw.fa-archive
-                =  fa['Reports Archive']
-            li
-              a(href='tables.html')
-                i.fa.fa-fw.fa-users
-                = fa['Users']
-            li
-              a(href='javascript:;', data-toggle='collapse', data-target='#demo')
-                i.fa.fa-fw.fa-wrench
-                = fa['Design']
-                i.fa.fa-fw.fa-caret-down
-              ul#demo.collapse
-                li
-                  a(href='#')= fa['Categories']
-                li
-                  a(href='#')= fa['PIs']
-                li
-                  a(href='#')= fa['Reports']
+          include side-nav.pug
         // /.navbar-collapse
       #page-wrapper
         .container-fluid
@@ -182,7 +60,7 @@ html(ng-app='app')
                 span.small= fa['Statistics Overview']
               ol.breadcrumb
                 li.active
-                  i.fa.fa-dashboard
+                  i.fa.fa-desktop
                   = fa['Dashboard']
           // /.row
           .row
@@ -190,10 +68,9 @@ html(ng-app='app')
               .alert.alert-info.alert-dismissable
                 button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
                 i.fa.fa-info-circle
-                strong Like SB Admin?
-                |  Try out
-                a.alert-link(href='http://startbootstrap.com/template-overviews/sb-admin-2') SB Admin 2
-                |  for additional features!
+                strong پیام آزمایشی:
+                a.alert-link(href='http://github.com/Dana-Laboratory/PIReporter') PI Reporter
+                | یک نرم افزار آزاد جهت کمک به تهیه گزارشات مدیریت میباشد.
           // /.row
           - var n = 0
           - var cn = ['1d 12h 30min', '1d 12h 30min', '1d 12h 30min', '1d 12h 30min']
