@@ -7,8 +7,8 @@ fa['Upper Limit'] = 'حد بالا'
 fa['Lower Limit'] = 'حد پایین'
 fa['Unit'] = 'واحد'
 fa['Commands'] = ' '
-var app = angular.module('app', ['ui.grid', 'ui.grid.edit', 'ui.grid.cellNav']);
-app.controller('GridCtrl', ['$scope', '$http', function ($scope) {
+
+angular.module('PIR').controller('GridCtrl', ['$scope', '$http', function ($scope) {
     $scope.gridOptions = {
       enableColumnMenus: false,
       enableFiltering: true,

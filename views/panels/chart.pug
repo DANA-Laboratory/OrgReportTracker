@@ -1,0 +1,8 @@
+.panel.panel-default
+  .panel-heading
+    h3.panel-title
+      i.fa.fa-long-arrow-right.fa-fw
+      |  Donut Chart
+  .panel-body
+    .col-md-12.text-center.chart-container(ng-controller='LineCtrl')
+      canvas.chart.chart-line(chart-data='data', chart-labels='labels', chart-series='series', chart-click='onClick')
