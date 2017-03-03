@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    env : {
+    env: {
       dev : {
         NODE_ENV : 'development'
       },

@@ -8,7 +8,13 @@ fa['Lower Limit'] = 'حد پایین'
 fa['Unit'] = 'واحد'
 fa['Commands'] = ' '
 
-angular.module('PIR').controller('GridCtrl', ['$scope', '$http', function ($scope) {
+angular.module('PIR').controller('GridCtrl', ['$scope', '$http', function ($scope, $http) {
+    $http.post('data/grid/', {PI: 'test'}).then(function(res){
+      console.log(res.data);
+    }).catch(function(e){
+      console.log(e);
+      // handle errors in processing or in error.
+    });
     $scope.gridOptions = {
       enableColumnMenus: false,
       enableFiltering: true,
