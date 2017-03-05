@@ -1,11 +1,20 @@
-'use strict';
 const fs = require('fs');
 const config = require('config');
 const assert = require('assert');
 const modelsSqlite3 = require('../lib/models-sqlite3');
+const importer = require('../lib/models-sqlite3/importCSV');
+const sqldelete = require('../lib/models-sqlite3/sql/delete');
 const app = require('../');
+const validator = require('../lib/models-sqlite3/validate.js');
 const supertest = require('supertest')(app);
-
+var db = null;
+function transformUserData(csvData) {
+  try {
+    return validator.fvalidateInsert('addUser', csvData);
+  } catch(err) {
+    console.log(err);
+  }
+}
 describe('DataBase', function() {
   describe('Configuration', function() {
     it('should exists: dbPath', function(done) {
@@ -20,7 +29,23 @@ describe('DataBase', function() {
         }
     });
     it('should create database', function(done) {
-      modelsSqlite3.createDB(modelsSqlite3.ddl).then(() => done()).catch((err)=>console.log(err));
+      modelsSqlite3.createDB(modelsSqlite3.ddl).then((_db) => {
+        db = _db;
+        done();
+      }).catch((err)=>console.log(err));
+    });
+  });
+  describe('import data from csv', function() {
+    it('should import users data', function(done) {
+      importer.importUserFromCSV(db, __dirname + '/csv/users.csv', transformUserData).then(() => done()).catch((err) => console.log(err));
+    });
+  });
+  describe('remove users data', function() {
+    it('should remove all users data', function(done) {
+      let data = {};
+      validator.validateForDelete('deleteAllUsers', data).then((data) => {
+        sqldelete.deleteAllUsers(db, data).then(() => done());
+      });
     });
   });
 });
@@ -69,7 +94,6 @@ describe('Api test', function() {
           .post('/insert')
           .type('json')
           .send(data)
-          .expect('{"id":1}')
           .expect(200)
           .end(done);
   });
