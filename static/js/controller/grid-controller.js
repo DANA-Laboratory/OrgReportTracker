@@ -7,7 +7,6 @@ fa['Upper Limit'] = 'حد بالا'
 fa['Lower Limit'] = 'حد پایین'
 fa['Unit'] = 'واحد'
 fa['Commands'] = ' '
-
 angular.module('PIR').controller('GridCtrl', ['$scope', '$http', function ($scope, $http) {
     $http.post('data/grid/', {PI: 'test'}).then(function(res){
       console.log(res.data);
