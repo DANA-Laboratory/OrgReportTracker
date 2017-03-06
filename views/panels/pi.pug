@@ -1,9 +1,10 @@
+-var tx = 'PI title'
 .col-lg-12.col-md-12
   .panel.panel-default
-    .panel-heading
-      h3.panel-title
-        i.fa.fa-long-arrow-right.fa-fw
-        |  Donut Chart
+    .panel-heading.text-center
+        span(style='padding-left : 2.5em')= fa[tx]
+        a(href='#').pull-left
+          .fa.fa-cogs(data-toggle="tooltip" title=fa['config'])
     .panel-body
       .col-md-12.text-center.chart-container(ng-controller='LineCtrl')
         canvas.chart.chart-line(chart-data='data', chart-labels='labels', chart-series='series', chart-click='onClick', chart-options='options')
