@@ -38,6 +38,8 @@
               .span.pull-left
                 = fa['from']
       .col-md-4
+        div(ng-controller='PolarAreaCtrl')
+          canvas#polar-area.chart.chart-polar-area(chart-data="data" chart-labels="labels" chart-options="options")
       .col-md-4
         table.table.table-bordered
           tr
@@ -55,9 +57,31 @@
               .span.pull-left
                 = fa['from']
       .col-md-12
-        button.btn
-          = fa['Attach']
-          span(class="btn glyphicon glyphicon-paperclip")
+        form.well(style='margin-bottom:0')
+          i.fa.fa-cubes
+          span.lead
+            | &nbsp
+            =fa['filter for categories']
+            | :
+          label.radio-inline
+            input(type='radio', name='optradio')
+            = fa['Option 0']
+          label.radio-inline
+            input(type='radio', name='optradio')
+            = fa['Option 1']
+          label.radio-inline
+            input(type='radio', name='optradio')
+            = fa['Option 2']
+          label.radio-inline
+            input(type='radio', name='optradio')
+            = fa['Option 3']
+          span.pull-left.lead
+            | &#x03A3
+            =fa['summery of results']
+            | :
+            kbd 
+              | 78%
+          
       .col-md-12
         div(ng-controller='GridCtrl')
           div(ui-grid='gridOptions' class="grid" dir='rtl' ui-grid-edit ui-grid-cellnav)
