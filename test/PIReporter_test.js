@@ -4,17 +4,12 @@ const assert = require('assert');
 const modelsSqlite3 = require('../lib/models-sqlite3');
 const importer = require('../lib/models-sqlite3/importCSV');
 const sqldelete = require('../lib/models-sqlite3/sql/delete');
+const sqlselect= require('../lib/models-sqlite3/sql/select');
 const app = require('../');
 const validator = require('../lib/models-sqlite3/validate.js');
 const supertest = require('supertest')(app);
 var db = null;
-function transformUserData(csvData) {
-  try {
-    return validator.fvalidateInsert('addUser', csvData);
-  } catch(err) {
-    console.log(err);
-  }
-}
+
 describe('DataBase', function() {
   describe('Configuration', function() {
     it('should exists: dbPath', function(done) {
@@ -37,13 +32,31 @@ describe('DataBase', function() {
   });
   describe('import data from csv', function() {
     it('should import users data', function(done) {
-      importer.importUserFromCSV(db, __dirname + '/csv/users.csv', transformUserData).then(() => done()).catch((err) => console.log(err));
+      importer.importFromCSV(db, __dirname + '/csv/users.csv', (csvData) => validator.fvalidateInsert('addUser', csvData)).then(() => done()).catch((err) => console.log(err));
+    });
+    it('should import report class data', function(done) {
+      importer.importFromCSV(db, __dirname + '/csv/reportclass.csv', (csvData) => validator.fvalidateInsert('addReportClass', csvData)).then(() => done()).catch((err) => console.log(err));
+    });
+    it('should select users', function(done) {
+      let data = {_verb : 'selectUser'};
+      validator.validateSelect(data).then((data)=>sqlselect[data._verb](db, data)).then((data)=>{
+        assert(data.length===8);
+        done();
+      });
+    });
+    it('should select reportclasses', function(done) {
+      let data = {_verb : 'selectReportClass'};
+      validator.validateSelect(data).then((data)=>sqlselect[data._verb](db, data)).then((data)=>{
+        console.log(data);
+        assert(data.duration==='3m');
+        done();
+      });
     });
   });
   describe('remove users data', function() {
     it('should remove all users data', function(done) {
-      let data = {};
-      validator.validateForDelete('deleteAllUsers', data).then((data) => {
+      let data = {_verb : 'deleteAllUsers'};
+      validator.validateDelete(data).then((data) => {
         sqldelete.deleteAllUsers(db, data).then(() => done());
       });
     });
