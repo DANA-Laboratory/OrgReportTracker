@@ -47,13 +47,24 @@ describe('DataBase', function() {
     it('should select reportclasses', function(done) {
       let data = {_verb : 'selectReportClass'};
       validator.validateSelect(data).then((data)=>sqlselect[data._verb](db, data)).then((data)=>{
-        console.log(data);
-        assert(data.duration==='3m');
+        assert(data[0].duration==='3M');
         done();
       });
     });
   });
   describe('remove users data', function() {
+    it('should not remove all users data', function(done) {
+      let data = {_verb : 'deleteAllUsers'};
+      validator.validateDelete(data).then((data) => {
+        sqldelete.deleteAllUsers(db, data).catch(() => done());
+      });
+    });
+    it('should remove all report classes', function(done) {
+      let data = {_verb : 'deleteAllReportClasses'};
+      validator.validateDelete(data).then((data) => {
+        sqldelete.deleteAllUsers(db, data).then(() => done());
+      });
+    });
     it('should remove all users data', function(done) {
       let data = {_verb : 'deleteAllUsers'};
       validator.validateDelete(data).then((data) => {
@@ -102,7 +113,7 @@ describe('Api test', function() {
       .end(done);
   });
   it('addUser', function(done) {
-      let data  = '{"verb":"addUser", "data":{"workunit":"un1", "sysadmin":true, "pcode":"555555", "account":"rafzalan", "password":"vafa01", "fname":"رضا", "lname":"افضلان"}}';
+      let data  = '{"verb":"addUser", "data":{"workunit":"un1", "sysadmin":true, "pcode":"555555", "account":"rafzalan2", "password":"vafa01", "fname":"رضا", "lname":"افضلان"}}';
       supertest
           .post('/insert')
           .type('json')

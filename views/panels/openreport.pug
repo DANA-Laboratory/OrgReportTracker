@@ -61,9 +61,25 @@
       .col-md-12
         div(ng-controller='GridCtrl')
           div(ui-grid='gridOptions' class="grid" dir='rtl' ui-grid-edit ui-grid-cellnav)
-    a(href='#')
-      .panel-footer
-        span.pull-right= fa['View Details']
-        span.pull-left
-          i.fa.fa-arrow-circle-left
-        .clearfix
+    .panel-footer
+      span.pull-right= fa['Attachments']
+      | &nbsp
+      | :
+      span.label
+        a(href='#')
+          i.fa.fa-paperclip
+          =fa['fname1']
+        a(href='#')
+          i.fa.fa-remove
+      | -
+      span.label
+        a(href='#')
+          i.fa.fa-paperclip
+          =fa['fname2']
+        a(href='#')
+          i.fa.fa-remove
+      a(href='#').pull-left
+        =fa['New Attachment']
+        span
+          i.fa.fa-plus
+      .clearfix
