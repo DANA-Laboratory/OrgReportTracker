@@ -30,13 +30,24 @@ describe('DataBase', function() {
       }).catch((err)=>console.log(err));
     });
   });
-  describe('import data from csv', function() {
+  describe('should import data from csv', function() {
     it('should import users data', function(done) {
       importer.importFromCSV(db, __dirname + '/csv/users.csv', (csvData) => validator.fvalidateInsert('addUser', csvData)).then(() => done()).catch((err) => console.log(err));
     });
     it('should import report class data', function(done) {
       importer.importFromCSV(db, __dirname + '/csv/reportclass.csv', (csvData) => validator.fvalidateInsert('addReportClass', csvData)).then(() => done()).catch((err) => console.log(err));
     });
+    it('should import pitype_1', function(done) {
+      importer.importFromCSV(db, __dirname + '/csv/pitype_1.csv', (csvData) => validator.fvalidateInsert('addPIType_1', csvData)).then(() => done()).catch((err) => console.log(err));
+    });
+    it('should import pitype_2', function(done) {
+      importer.importFromCSV(db, __dirname + '/csv/pitype_2.csv', (csvData) => validator.fvalidateInsert('addPIType_2', csvData)).then(() => done()).catch((err) => console.log(err));
+    });
+    it('should import pitype_2', function(done) {
+        importer.importFromCSV(db, __dirname + '/csv/pitype_3.csv', (csvData) => validator.fvalidateInsert('addPIType_3', csvData)).then(() => done()).catch((err) => console.log(err));
+    });
+  });
+  describe('should select', function() {
     it('should select users', function(done) {
       let data = {_verb : 'selectUser'};
       validator.validateSelect(data).then((data)=>sqlselect[data._verb](db, data)).then((data)=>{
@@ -52,7 +63,7 @@ describe('DataBase', function() {
       });
     });
   });
-  describe('remove users data', function() {
+  describe('should remove users data', function() {
     it('should not remove all users data', function(done) {
       let data = {_verb : 'deleteAllUsers'};
       validator.validateDelete(data).then((data) => {
