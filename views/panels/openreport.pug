@@ -75,13 +75,13 @@
           label.radio-inline
             input(type='radio', name='optradio')
             = fa['Option 3']
-          span.pull-left.lead
+          span.col-md-3.text-left.pull-left.lead
             | &#x03A3
             =fa['summery of results']
             | :
-            kbd 
+            kbd
               | 78%
-          
+
       .col-md-12
         div(ng-controller='GridCtrl')
           div(ui-grid='gridOptions' class="grid" dir='rtl' ui-grid-edit ui-grid-cellnav)
