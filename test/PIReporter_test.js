@@ -24,8 +24,8 @@ describe('DataBase', function() {
         }
     });
     it('should create database', function(done) {
-      modelsSqlite3.createDB(modelsSqlite3.ddl).then((_db) => {
-        db = _db;
+      modelsSqlite3.createDB(modelsSqlite3.ddl).then((db_) => {
+        db = db_;
         done();
       }).catch((err)=>console.log(err));
     });
