@@ -32,6 +32,7 @@ describe('DataBase', function() {
   });
   describe('should import data from csv', function() {
     it('should import users data', function(done) {
+      this.timeout(9500);
       importer.importFromCSV(db, __dirname + '/csv/users.csv', (csvData) => validator.fvalidateInsert('addUser', csvData)).then(() => done()).catch((err) => console.log(err));
     });
     it('should import report class data', function(done) {
@@ -86,6 +87,7 @@ describe('DataBase', function() {
 });
 describe('Api test', function() {
   it('get home', function(done) {
+      this.timeout(3500);
       supertest
           .get('/')
           .expect(200)
