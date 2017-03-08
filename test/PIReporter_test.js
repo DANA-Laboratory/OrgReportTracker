@@ -11,24 +11,23 @@ const supertest = require('supertest')(app);
 var db = null;
 
 describe('DataBase', function() {
+  before(function () {
+      if (fs.existsSync(config.get('dbPath'))) {
+          fs.unlinkSync(config.get('dbPath'));
+      }
+  });
+  it('should create database', function(done) {
+    modelsSqlite3.createDB(modelsSqlite3.ddl).then((db_) => {
+        assert(db_);
+        db = db_;
+        done();
+    }).catch((err)=>console.log(err));
+  });
+
   describe('Configuration', function() {
     it('should exists: dbPath', function(done) {
       assert(config.get('dbPath'));
       done();
-    });
-  });
-  describe('Db Create', function() {
-    before(function () {
-        if (fs.existsSync(config.get('dbPath'))) {
-            fs.unlinkSync(config.get('dbPath'));
-        }
-    });
-    it('should create database', function(done) {
-      modelsSqlite3.createDB(modelsSqlite3.ddl).then((db_) => {
-          assert(db_);
-          db = db_;
-          done();
-      }).catch((err)=>console.log(err));
     });
   });
   describe('should import data from csv', function() {
