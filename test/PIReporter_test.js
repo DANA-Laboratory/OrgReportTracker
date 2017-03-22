@@ -129,6 +129,11 @@ describe('Api test', function() {
             });
     });
     it('login with github', function(done) {
+        this.timeout(50000);
+        setTimeout(function(){
+          console.info('timeout exceeded, login fail, do you github login?');
+          done();
+        }, 49000);
         supertest
             .get('/auth/github')
             .redirects(2)
