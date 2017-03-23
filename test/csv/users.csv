@@ -1,9 +1,9 @@
-account,password,fname,lname,pcode,workunit,sysadmin,attribute
-rafzalan,arg707,رضا,افضلان,564870,آموزش,true,{telegram : 09163074752}
-kiani,123456,محسن,کیانی,560000,آموزش,false,{}
-sadeghian,123456,محسن,صادقیان,561000,مالی,false,{}
-jaberi,123456,سعید,جابری,562000,اداری;بازاریابی,false,{}
-taraz,123456,محمد علی,تراز,563000,حراست,false,{}
-danesh,123456,محسن,دانش,564000,روابط عمومی,false,{}
-riahi,123456,محسن,ریاحی,565000,HSE,false,{}
-naderpoor,123456,566000,نوید,نادرپور,مدیریت,false,{}
+account,password,fname,lname,pcode,workunit,sysadmin,github,telegram,attribute
+rafzalan,arg707,رضا,افضلان,564870,آموزش,true,DANA-Laboratory,09163074752,{}
+kiani,123456,محسن,کیانی,560000,آموزش,false,,,{}
+sadeghian,123456,محسن,صادقیان,561000,مالی,false,,,{}
+jaberi,123456,سعید,جابری,562000,اداری;بازاریابی,false,,,{}
+taraz,123456,محمد علی,تراز,563000,حراست,false,,,{}
+danesh,123456,محسن,دانش,564000,روابط عمومی,false,,,{}
+riahi,123456,محسن,ریاحی,565000,HSE,false,,,{}
+naderpoor,123456,566000,نوید,نادرپور,مدیریت,false,,,{}
