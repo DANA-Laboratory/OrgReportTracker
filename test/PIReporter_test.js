@@ -14,16 +14,22 @@ describe('DataBase', function() {
     before(function (done) {
         this.timeout(9500);
         assert(config.get('dbPath'));
-        modelsSqlite3.closedb().then(() => {
-            if (fs.existsSync(config.get('dbPath'))) {
+        if (fs.existsSync(config.get('dbPath'))) {
+            modelsSqlite3.closedb().then(() => {
                 fs.unlinkSync(config.get('dbPath'));
-            }
+                modelsSqlite3.createDB(modelsSqlite3.ddl).then((db_) => {
+                    assert(db_);
+                    db = db_;
+                    done();
+                }).catch((err)=>console.log(err));
+            });
+        } else {
             modelsSqlite3.createDB(modelsSqlite3.ddl).then((db_) => {
                 assert(db_);
                 db = db_;
                 done();
             }).catch((err)=>console.log(err));
-        });
+        };
     });
     after(function (done) {
         this.timeout(9500);
