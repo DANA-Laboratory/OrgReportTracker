@@ -29,7 +29,7 @@ describe('DataBase', function() {
                 db = db_;
                 done();
             }).catch((err)=>console.log(err));
-        };
+        }
     });
     after(function (done) {
         this.timeout(9500);
@@ -127,7 +127,12 @@ describe('Api test', function() {
             .send(data)
             .expect(302)
             .expect('Location', '/')
-            .end(done);
+            .end(function(err) {
+                if (err) {
+                  return done(err);
+                }
+                done();
+            });
     });
     it('redirect when login with github', function(done) {
         supertest
