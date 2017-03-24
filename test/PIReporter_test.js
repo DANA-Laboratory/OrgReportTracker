@@ -93,7 +93,17 @@ describe('Api test', function() {
             .expect(200)
             .end(done);
     });
-    it('redirect to login when wrong', function(done) {
+    it('redirect to login when user undefined', function(done) {
+        let data = {username : 'undefined', password : 'wrong'};
+        supertest
+            .post('/auth/login')
+            .type('json')
+            .send(data)
+            .expect(302)
+            .expect('Location', '/auth/login')
+            .end(done);
+    });
+    it('redirect to login when pass is wrong', function(done) {
         let data = {username : 'rafzalan', password : 'wrong'};
         supertest
             .post('/auth/login')
@@ -104,7 +114,7 @@ describe('Api test', function() {
             .end(done);
     });
     it('redirect to / after login', function(done) {
-        let data = {username : 'rafzalan', password : 'master'};
+        let data = {username : 'rafzalan', password : 'arg707'};
         supertest
             .post('/auth/login')
             .type('json')
