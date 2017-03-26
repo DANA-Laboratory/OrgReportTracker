@@ -127,8 +127,6 @@ describe('Api test', function() {
                 if (err) {
                   return done(err);
                 }
-                console.log(agent.jar.setCookie(res.headers['set-cookie'][0]));
-                //agent.saveCookies(res);
                 done();
             });
     });
