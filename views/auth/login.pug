@@ -1,101 +1,52 @@
 doctype html
 html
   head
-    // Bootstrap Core CSS
-    link(href='/bower_components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
-    // Bootstrap Core CSS RTL
-    link(href='/bower_components/bootstrap-rtl/dist/css/bootstrap-rtl.min.css', rel='stylesheet')
-    // Font awesome
-    link(href='/bower_components/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
-    // Custom CSS
-    link(href='/site.css', rel='stylesheet')
+    include ../head/head-icon.pug
+    include ../head/head-common.pug
   body
     .container
       #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2(style='margin-top:50px;')
         .panel.panel-info
           .panel-heading
-            .panel-title ورود
-            div(style='float:left; font-size: 80%; position: relative; top:-10px')
+            .panel-title= fa['Sign In']
+              span.label.label-warning.pull-left(style='direction: ltr')= flash
+            div(style='float:right; font-size: 80%; position: relative; top:-10px')
               a(href='#')
-              | فراموش کرده اید؟
+              = fa['Forgot password?']
           .panel-body(style='padding-top:30px')
-            #login-alert.alert.alert-danger.col-sm-12(style='display:none')
-            form#loginform.form-horizontal(role='form')
+            form#loginform.form-horizontal(role='form', action='/auth/login', method='post')
               .input-group(style='margin-bottom: 25px')
                 span.input-group-addon
                   i.glyphicon.glyphicon-user
-                input#login-username.form-control(type='text', name='username', value='', placeholder='نام کاربری')
+                input#login-username.form-control(type='text', name='username', value='', placeholder=fa['username'])
               .input-group(style='margin-bottom: 25px')
                 span.input-group-addon
                   i.glyphicon.glyphicon-lock
-                input#login-password.form-control(type='password', name='password', placeholder='کلمه عبور')
+                input#login-password.form-control(type='password', name='password', placeholder=fa['password'])
               .input-group
                 .checkbox
                   label
                     input#login-remember(type='checkbox', name='remember', value='1')
-                    |  بخاطر بسپار
+                    = fa['Remember me']
               .form-group(style='margin-top:10px')
                 // Button
                 .col-sm-12
-                  a#btn-login.btn.btn-sm.btn-success(href='#')
+                  button#btn-login.btn.btn-sm.btn-default(type="submit")
                     i.fa.fa-sign-in
                     | &nbsp;
-                    | ورود
-                  a#btn-tllogin.btn.btn-sm.btn-primary.pull-left(href='#')
+                    = fa['Login']
+                  a#btn-tllogin.btn.btn-sm.btn-primary.pull-left(href='/auth/telegram')
                     | Login with Telegram
                     | &nbsp;
                     i.fa.fa-paper-plane-o
-                  a#btn-ghlogin.btn.btn-sm.btn-primary.pull-left(href='#')
+                  a#btn-ghlogin.btn.btn-sm.btn-primary.pull-left(href='/auth/github')
                     | Login with GitHub
                     | &nbsp;
                     i.fa.fa-github
               .form-group
                 .col-md-12
                   div(style='border-top: 1px solid#888; padding-top:15px; font-size:85%')
-                    | نام کاربری ندارید!
+                    =fa['Dont have an account!']
                     | &nbsp;
-                    a(href='#', onclick="$('#loginbox').hide(); $('#signupbox').show()")
-                      | ثبت نام کنید.
-      #signupbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2(style='display:none; margin-top:50px')
-        .panel.panel-info
-          .panel-heading
-            .panel-title Sign Up
-            div(style='float:right; font-size: 85%; position: relative; top:-10px')
-              a#signinlink(href='#', onclick="$('#signupbox').hide(); $('#loginbox').show()") Sign In
-          .panel-body
-            form#signupform.form-horizontal(role='form')
-              #signupalert.alert.alert-danger(style='display:none')
-                p Error:
-                span
-              .form-group
-                label.col-md-3.control-label(for='email') Email
-                .col-md-9
-                  input.form-control(type='text', name='email', placeholder='Email Address')
-              .form-group
-                label.col-md-3.control-label(for='firstname') First Name
-                .col-md-9
-                  input.form-control(type='text', name='firstname', placeholder='First Name')
-              .form-group
-                label.col-md-3.control-label(for='lastname') Last Name
-                .col-md-9
-                  input.form-control(type='text', name='lastname', placeholder='Last Name')
-              .form-group
-                label.col-md-3.control-label(for='password') Password
-                .col-md-9
-                  input.form-control(type='password', name='passwd', placeholder='Password')
-              .form-group
-                label.col-md-3.control-label(for='icode') Invitation Code
-                .col-md-9
-                  input.form-control(type='text', name='icode', placeholder='')
-              .form-group
-                // Button
-                .col-md-offset-3.col-md-9
-                  button#btn-signup.btn.btn-info(type='button')
-                    i.icon-hand-right
-                    |  &nbsp Sign Up
-                  span(style='margin-left:8px;') or
-              .form-group(style='border-top: 1px solid #999; padding-top:20px')
-                .col-md-offset-3.col-md-9
-                  button#btn-fbsignup.btn.btn-primary(type='button')
-                    i.icon-facebook
-                    |    Sign Up with Facebook
+                    a(href='#')
+                      =fa['Sign Up Here']

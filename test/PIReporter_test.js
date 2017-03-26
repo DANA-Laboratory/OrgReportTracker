@@ -92,18 +92,11 @@ describe('DataBase', function() {
     });
 });
 describe('Api test', function() {
-    it('get home', function(done) {
-        this.timeout(3500);
-        supertest
-            .get('/')
-            .expect(200)
-            .end(done);
-    });
     it('redirect to login when user undefined', function(done) {
         let data = {username : 'undefined', password : 'wrong'};
         supertest
             .post('/auth/login')
-            .type('json')
+            .type('form')
             .send(data)
             .expect(302)
             .expect('Location', '/auth/login')
@@ -113,21 +106,39 @@ describe('Api test', function() {
         let data = {username : 'rafzalan', password : 'wrong'};
         supertest
             .post('/auth/login')
-            .type('json')
+            .type('form')
             .send(data)
             .expect(302)
             .expect('Location', '/auth/login')
-            .end(done);
+            .end(function(err, res) {
+                done();
+            });
     });
+    var agent = require('supertest').agent(app);
     it('redirect to / after login', function(done) {
         let data = {username : 'rafzalan', password : 'arg707'};
-        supertest
+        agent
             .post('/auth/login')
-            .type('json')
+            .type('form')
             .send(data)
             .expect(302)
             .expect('Location', '/')
-            .end(function(err) {
+            .end(function(err, res) {
+                if (err) {
+                  return done(err);
+                }
+                console.log(agent.jar.setCookie(res.headers['set-cookie'][0]));
+                //agent.saveCookies(res);
+                done();
+            });
+    });
+    it('get home after login', function(done) {
+        this.timeout(3500);
+        agent
+            .get('/')
+            .expect('Location', '/')
+            .expect(200)
+            .end(function(err, res) {
                 if (err) {
                   return done(err);
                 }

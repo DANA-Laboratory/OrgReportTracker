@@ -1,45 +1,11 @@
 
 title= title
-link(rel='apple-touch-icon', sizes='180x180', href='/apple-touch-icon.png')
-link(rel='icon', type='image/png', href='/favicon-32x32.png', sizes='32x32')
-link(rel='icon', type='image/png', href='/favicon-16x16.png', sizes='16x16')
-link(rel='manifest', href='/manifest.json')
-link(rel='mask-icon', href='/safari-pinned-tab.svg', color='#5bbad5')
-link(rel='shortcut icon', href='favicon.ico')
+include head/head-icon.pug
 meta(name='theme-color', content='#ffffff')
 meta(charset='utf-8')
 meta(http-equiv='X-UA-Compatible', content='IE=edge')
 meta(name='viewport', content='width=device-width, initial-scale=1')
 meta(name='description', content='Performance Indicators Reporter for Companies')
 meta(name='author', content='Reza Afzalan')
-// Angular
-script(src='/bower_components/angular/angular.min.js')
-script(src='/bower_components/angular-route/angular-route.min.js')
-// Site app
-script(src='/js/angular-app.js')
-script(src='/js/config/router-config.js')
-script(src='/js/config/pi-config.js')
-script(src='/js/controller/pi-controller.js')
-script(src='/js/controller/report-controller.js')
-// Reference chart.js angular-chart
-script(src='/bower_components/chart.js/dist/Chart.min.js')
-script(src='/bower_components/angular-chart.js/dist/angular-chart.min.js')
-// ui-grid
-script(src='/bower_components/angular-ui-grid/ui-grid.min.js')
-// ui-grid css
-link(href='/bower_components/angular-ui-grid/ui-grid.min.css', rel='stylesheet')
-// Bootstrap Core CSS
-link(href='/bower_components/bootstrap/dist/css/bootstrap.min.css', rel='stylesheet')
-// Bootstrap Core CSS RTL
-link(href='/bower_components/bootstrap-rtl/dist/css/bootstrap-rtl.min.css', rel='stylesheet')
-// Custom CSS
-link(href='/site.css', rel='stylesheet')
-link(href='/css/sb-admin.css', rel='stylesheet')
-link(href='/css/sb-admin-rtl.css', rel='stylesheet')
-// Font awesome
-link(href='/bower_components/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
-// HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
-// WARNING: Respond.js doesn't work if you view the page via file://
-//if lt IE 9
-  script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
-  script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+include head/head-common.pug
+include head/head-js.pug
