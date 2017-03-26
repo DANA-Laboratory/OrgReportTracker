@@ -1,5 +1,4 @@
 {
     "dbPath": "./db/devlop.sqlite3",
-    "couldCreateAdmin": true,
-    "session": false
+    "couldCreateAdmin": true
 }

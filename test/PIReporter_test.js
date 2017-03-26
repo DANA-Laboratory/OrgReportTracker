@@ -134,7 +134,6 @@ describe('Api test', function() {
         this.timeout(3500);
         agent
             .get('/')
-            .expect('Location', '/')
             .expect(200)
             .end(function(err, res) {
                 if (err) {
@@ -199,8 +198,8 @@ describe('Api test', function() {
             .end(done);
     });
     it('addUser', function(done) {
-        let data  = '{"verb":"addUser", "data":{"workunit":"un1", "sysadmin":true, "pcode":"555555", "account":"rafzalan2", "password":"vafa01", "fname":"رضا", "lname":"افضلان"}}';
-        supertest
+        let data  = '{"verb":"addUser", "data":{"workunit":"un1", "sysadmin":true, "pcode":"555555", "account":"rafzalan2", "password":"vafa01", "fname":"رضا", "lname":"افضلان", "github":"", "telegram":""}}';
+        agent
             .post('/insert')
             .type('json')
             .send(data)
