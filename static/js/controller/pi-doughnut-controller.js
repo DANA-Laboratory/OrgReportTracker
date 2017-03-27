@@ -1,67 +1,67 @@
 var start=0;
 var stop=100;
 var part=(stop-start)/3;
-var pi_value=4.999;
+var pi_value=10;
 var pi_name="مدت توقف";
 var pi_unit="(روز)";
-var pi_data=[30, 30, 20, 1, 9];
-var inner={
-    backgroundColor: [
-        "rgba(0, 0, 0, 0)",
-        "rgba(0, 0, 0, 0)",
-        "rgba(0, 0, 0, 0)",
-        "rgba(0, 0, 0, 1)",
-        "rgba(0, 0, 0, 0)"
-    ],
-    borderWidth: 0,
-    hoverBackgroundColor: [
-        "rgba(0, 0, 0, 0)",
-        "rgba(0, 0, 0, 0)",
-        "rgba(0, 0, 0, 0)",
-        "rgba(0, 0, 0, 1)",
-        "rgba(0, 0, 0, 0)"
-    ],
-    hoverBorderWidth: 0
-};
+var pi_data=[30, 30, 30];
 angular.module('PIR').controller("DoughnutCtrl", ['$scope', function ($scope) {
   var originalDraw = Chart.controllers.doughnut.prototype.draw;
   Chart.controllers.doughnut.prototype.draw = function(ease) {
-    //this.innerRadius = this.outerRadius - 10;
-    //console.log(ease);
-    console.log(this);
-    if(this.index == 1){
-      let x = (this.chart.boxes[this.index].right)/2;
-      this.chart.chart.ctx.textAlign = "center";
-      this.chart.chart.ctx.fillText(pi_value, x, x*3/2);
-      this.chart.chart.ctx.fillText(start, 4*this.chart.boxes[this.index].left, x*3/2);
-      this.chart.chart.ctx.fillText(stop, this.chart.boxes[this.index].right-3*this.chart.boxes[this.index].left, x*3/2);
-    }
+    let ctx = this.chart.chart.ctx;
+    let left = this.chart.boxes[this.index].left;
+    let right = this.chart.boxes[this.index].right;
+    let top = this.chart.boxes[this.index].top;
+    let bottom = this.chart.boxes[this.index].bottom;
+    let centerx = (left+right)/2 + this.chart.offsetX;
+    let centery = (top+bottom)/2 - this.chart.offsetY;
+    let radius = this.chart.outerRadius;
+    let width = this.chart.outerRadius - this.chart.innerRadius;
+    let x = (right)/2;
+    let teta=Math.PI/(stop-start)*pi_value;
     originalDraw.call(this, ease);
+    ctx.beginPath();
+    ctx.lineWidth=1;
+    ctx.moveTo(centerx, centery);
+    ctx.lineTo(centerx-radius*Math.cos(teta), centery-radius*Math.sin(teta));
+    ctx.arc(centerx-radius*Math.cos(teta), centery-radius*Math.sin(teta), 2, 0, 2*Math.PI);
+    ctx.strokeStyle="gray";
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(centerx, centery, 2, 0, 2*Math.PI);
+    ctx.stroke();
+
+    ctx.fillStyle="black";
+    ctx.textAlign = "center";
+    ctx.font="18px yekan";
+    ctx.fillText(pi_value, centerx, centery-40);
+    ctx.font="10px yekan";
+    ctx.fillText(pi_name + ' ' + pi_unit, centerx, centery+20);
+    ctx.fillText(start, left+width/2, centery+12);
+    ctx.fillText(stop, right-width/2, centery+12);
+
+
   };
-  $scope.data = [pi_data, pi_data];
+  $scope.data = [pi_data];
   $scope.datasetOverride = [
     {
         backgroundColor: [
             "rgb(255, 69, 96)",
             "rgb(206, 148, 73)",
-            "rgb(153, 223, 89)",
-            "rgba(0, 0, 0, 1)",
             "rgb(153, 223, 89)"
         ],
         borderWidth: 0,
         hoverBackgroundColor: [
             "rgb(255, 69, 96)",
             "rgb(206, 148, 73)",
-            "rgb(153, 223, 89)",
-            "rgba(0, 0, 0, 1)",
             "rgb(153, 223, 89)"
         ],
         hoverBorderWidth: 0,
-    },
-    inner
+    }
   ];
   $scope.options = {
-    cutoutPercentage: 0,
+    cutoutPercentage: 95,
     rotation: -3.1415926535898,
     circumference: 3.1415926535898,
     legend: {
@@ -72,8 +72,7 @@ angular.module('PIR').controller("DoughnutCtrl", ['$scope', function ($scope) {
     },
     title: {
         display: true,
-        text: pi_name + ' ' + pi_unit,
-        fontSize: 14,
+        fontSize: 12,
         fontFamily: 'yekan',
         position: 'bottom'
     }
