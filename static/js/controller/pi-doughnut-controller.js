@@ -23,8 +23,11 @@ angular.module('PIR').controller("DoughnutCtrl", ['$scope', function ($scope) {
     ctx.beginPath();
     ctx.lineWidth=1;
     ctx.moveTo(centerx, centery);
+    ctx.lineTo(centerx-(radius*3/4)*Math.cos(teta+0.02), centery-(radius*3/4)*Math.sin(teta+0.02));
     ctx.lineTo(centerx-radius*Math.cos(teta), centery-radius*Math.sin(teta));
-    ctx.arc(centerx-radius*Math.cos(teta), centery-radius*Math.sin(teta), 2, 0, 2*Math.PI);
+    ctx.moveTo(centerx, centery);
+    ctx.lineTo(centerx-(radius*3/4)*Math.cos(teta-0.02), centery-(radius*3/4)*Math.sin(teta-0.02));
+    ctx.lineTo(centerx-radius*Math.cos(teta), centery-radius*Math.sin(teta));
     ctx.strokeStyle="gray";
     ctx.stroke();
 
@@ -61,7 +64,7 @@ angular.module('PIR').controller("DoughnutCtrl", ['$scope', function ($scope) {
     }
   ];
   $scope.options = {
-    cutoutPercentage: 95,
+    cutoutPercentage: 97,
     rotation: -3.1415926535898,
     circumference: 3.1415926535898,
     legend: {
