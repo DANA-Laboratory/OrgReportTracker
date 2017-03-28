@@ -1,10 +1,13 @@
-var start=0;
-var stop=100;
-var part=(stop-start)/3;
-var pi_value=10;
+var start=8000;
+var stop=1000000000;
+var pi_value=(start+stop)/2;
 var pi_name="مدت توقف";
 var pi_unit="(روز)";
 var pi_data=[30, 30, 30];
+var small=[12, 16];
+var normall=[16, 24];
+var big=[18, 28];
+var size=normall;
 angular.module('PIR').controller("DoughnutCtrl", ['$scope', function ($scope) {
   var originalDraw = Chart.controllers.doughnut.prototype.draw;
   Chart.controllers.doughnut.prototype.draw = function(ease) {
@@ -30,21 +33,20 @@ angular.module('PIR').controller("DoughnutCtrl", ['$scope', function ($scope) {
     ctx.lineTo(centerx-radius*Math.cos(teta), centery-radius*Math.sin(teta));
     ctx.strokeStyle="gray";
     ctx.stroke();
-
     ctx.beginPath();
     ctx.arc(centerx, centery, 2, 0, 2*Math.PI);
     ctx.stroke();
-
     ctx.fillStyle="black";
     ctx.textAlign = "center";
-    ctx.font="18px yekan";
-    ctx.fillText(pi_value, centerx, centery-40);
-    ctx.font="10px yekan";
-    ctx.fillText(pi_name + ' ' + pi_unit, centerx, centery+20);
-    ctx.fillText(start, left+width/2, centery+12);
-    ctx.fillText(stop, right-width/2, centery+12);
-
-
+    ctx.font= size[0] + "px Yekan";
+    ctx.fillText(pi_name + ' ' + pi_unit, centerx, centery + 2 * size[0]);
+    ctx.font= size[1] + "px WWDigital";
+    ctx.fillText(pi_value.toLocaleString(), centerx, centery - size[0]);
+    ctx.font= size[0] + "px WWDigital";
+    ctx.textAlign = "left";
+    ctx.fillText(start.toLocaleString(), left, centery + size[0]);
+    ctx.textAlign = "right";
+    ctx.fillText(stop.toLocaleString(), right, centery + size[0]);
   };
   $scope.data = [pi_data];
   $scope.datasetOverride = [
@@ -64,7 +66,7 @@ angular.module('PIR').controller("DoughnutCtrl", ['$scope', function ($scope) {
     }
   ];
   $scope.options = {
-    cutoutPercentage: 97,
+    cutoutPercentage: 95,
     rotation: -3.1415926535898,
     circumference: 3.1415926535898,
     legend: {
@@ -75,8 +77,6 @@ angular.module('PIR').controller("DoughnutCtrl", ['$scope', function ($scope) {
     },
     title: {
         display: true,
-        fontSize: 12,
-        fontFamily: 'yekan',
         position: 'bottom'
     }
   };

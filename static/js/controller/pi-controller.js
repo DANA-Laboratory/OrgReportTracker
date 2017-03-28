@@ -13,20 +13,20 @@ angular.module('PIR').controller("LineCtrl", ['$scope', '$timeout', function ($s
       display: true,
       position: 'right',
       labels: {
-        fontFamily: 'b yekan', fontSize: 8, usePointStyle:true
+        fontFamily: 'Yekan', fontSize: 10, usePointStyle:true
       }
     },
     title: {
       fontSize: 18,
       display: true,
       text: 'توقف تولید (روز)',
-      fontFamily: 'koodak',
+      fontFamily: 'Yekan',
     },
     scales: {
       xAxes: [{
           ticks: {
               fontSize: 12,
-              fontFamily: 'koodak'
+              fontFamily: 'Yekan'
           }
       }]
     }

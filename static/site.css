@@ -3,21 +3,26 @@
     src: url('/fonts/wwDigital.ttf') format('truetype');
 }
 @font-face {
-    font-family: Koodak;
-    src: url('/fonts/BKOODB.ttf') format('truetype');
+    font-family: Yekan;
+    src: url('/fonts/BYekan+ Bold.ttf') format('truetype');
+    font-weight: bold;
 }
 @font-face {
     font-family: Yekan;
-    src: url('/fonts/BYekan.ttf') format('truetype');
+    src: url('/fonts/BYekan+.ttf') format('truetype');
 }
 @font-face {
     font-family: Elham;
-    src: url('/fonts/Elham.ttf') format('truetype');
+    src: url('/fonts/elham.ttf') format('truetype');
 }
 .chart-container {
   padding-top: 5px;
   padding-bottom: 35px;
-  direction: rtl;
+  direction: ltr;
+}
+.chart-line {
+}
+.chart-doughnut {
 }
 .zoomControls {
   text-align: left;
@@ -27,13 +32,13 @@
   direction: rtl;
 }
 body {
-  font-family: Elham, Koodak, Yekan, Tahoma, Arial;
+  font-family: Yekan, Elham, Tahoma, Arial;
 }
 kbd {
   font-family: WWDigital;
 }
 .title{
-  font-family: Elham;
+  font-family: Yekan;
   font-size: large;
 }
 .grid {

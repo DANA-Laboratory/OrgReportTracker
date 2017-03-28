@@ -5,11 +5,11 @@ angular.module('PIR').config(['ChartJsProvider', function (ChartJsProvider) {
     responsive: true
   });
   ChartJsProvider.setOptions('tooltips', {
-    titleFontFamily: 'koodak',
+    titleFontFamily: 'Yekan',
     position: 'nearest',
     titleMarginBottom: 15,
-    bodyFontFamily: 'koodak',
-    footerFontFamily: 'koodak'
+    bodyFontFamily: 'Yekan',
+    footerFontFamily: 'Yekan'
   });
   ChartJsProvider.setOptions('layout', {
     padding: 10
