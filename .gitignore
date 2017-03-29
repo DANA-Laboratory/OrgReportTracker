@@ -7,3 +7,4 @@ bower_components
 results.txt
 *.secret
 npm-debug.log.*
+sessions.db
