@@ -53,6 +53,9 @@ describe('DataBase', function() {
         it('should import pitype_2', function(done) {
             importer.importFromCSV(db, __dirname + '/csv/pitype_3.csv', (csvData) => validator.fvalidateInsert('addPIType_3', csvData)).then(() => done()).catch((err) => console.log(err));
         });
+        it('should import variable definitions', function(done) {
+            importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => validator.fvalidateInsert('addVariableDef', csvData)).then(() => done()).catch((err) => console.log(err));
+        });
     });
     describe('should select', function() {
         it('should select users', function(done) {
