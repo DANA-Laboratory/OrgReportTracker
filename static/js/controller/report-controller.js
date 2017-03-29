@@ -1,14 +1,3 @@
-var fa={}
-fa['PI'] = 'شاخص'
-fa['PI real'] = 'دستاورد'
-fa['PI target'] = 'هدف'
-fa['PI category'] = 'گروه'
-fa['PI weight'] = 'وزن'
-fa['Edit Time'] = 'زمان ویرایش'
-fa['Upper Limit'] = 'حد بالا'
-fa['Lower Limit'] = 'حد پایین'
-fa['Unit'] = 'واحد'
-fa['Commands'] = ' '
 angular.module("PIR").controller("PolarAreaCtrl", function ($scope) {
   $scope.labels = ["مالی", "ذی نفعان", "رشد و یادگیری", "فرآیندها"];
   $scope.data = [20, 10, 10, 30];

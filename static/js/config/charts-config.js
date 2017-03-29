@@ -2,7 +2,8 @@ angular.module('PIR').config(['ChartJsProvider', function (ChartJsProvider) {
   // Configure all charts
   ChartJsProvider.setOptions({
     chartColors: ['#005252', '#FF8A80'],
-    responsive: true
+    responsive: true,
+    animation: false
   });
   ChartJsProvider.setOptions('tooltips', {
     titleFontFamily: 'Yekan',

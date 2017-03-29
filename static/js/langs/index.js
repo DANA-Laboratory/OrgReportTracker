@@ -1,0 +1,11 @@
+fa={}
+fa['PI'] = 'شاخص'
+fa['PI real'] = 'دستاورد'
+fa['PI target'] = 'هدف'
+fa['PI category'] = 'گروه'
+fa['PI weight'] = 'وزن'
+fa['Edit Time'] = 'زمان ویرایش'
+fa['Upper Limit'] = 'حد بالا'
+fa['Lower Limit'] = 'حد پایین'
+fa['Unit'] = 'واحد'
+fa['Commands'] = ' '
