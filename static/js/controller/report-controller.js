@@ -19,19 +19,9 @@ angular.module("PIR").controller("PolarAreaCtrl", function ($scope) {
                max: 100
            }
        },
-       legend: {
-         display: true,
-         position: 'bottom'
-       }
   }
 });
 angular.module('PIR').controller('GridCtrl', ['$scope', '$http', function ($scope, $http) {
-    $http.post('data/grid/', {PI: 'test'}).then(function(res){
-      console.log(res.data);
-    }).catch(function(e){
-      console.log(e);
-      // handle errors in processing or in error.
-    });
     $scope.gridOptions = {
       enableColumnMenus: false,
       enableFiltering: true,
@@ -46,41 +36,12 @@ angular.module('PIR').controller('GridCtrl', ['$scope', '$http', function ($scop
         { name:fa['Lower Limit'], field: 'Lower Limit', enableCellEdit:false},
         { name:fa['Upper Limit'], field: 'Upper Limit', enableCellEdit:false},
         { name:fa['Edit Time'], field: 'Edit Time', enableCellEdit:false}
-      ],
-      data : [
-        {
-            "PI": "عملکرد واحد",
-            "PI real": "125",
-            "Unit": "تن",
-            "Lower Limit": 100,
-            "Upper Limit": 150,
-            "Edit Time": "",
-            "PI target": 120,
-            "PI weight": 1,
-            "PI category": "مالی"
-        },
-        {
-            "PI": "بهره وری",
-            "PI real": "8.5",
-            "Unit": "درصد",
-            "Lower Limit": 0,
-            "Upper Limit": 10,
-            "Edit Time": "",
-            "PI target": 9,
-            "PI weight": 1,
-            "PI category": "مالی"
-        },
-        {
-            "PI": "نسبت سود",
-            "PI real": "8001.2",
-            "Unit": "بی بعد",
-            "Lower Limit": 1000,
-            "Upper Limit": 10000,
-            "Edit Time": "",
-            "PI target": 9000,
-            "PI weight": 1,
-            "PI category": "مالی"
-        }
       ]
     };
+    $http.post('/data/report', {report: 'test'}).then(function(res){
+      $scope.gridOptions.data = res.data;
+    }).catch(function(e){
+      console.log(e);
+      // handle errors in processing or in error.
+    });
 }]);

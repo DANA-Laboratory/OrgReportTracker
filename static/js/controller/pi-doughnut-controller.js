@@ -10,19 +10,18 @@ var big=[18, 28];
 var size=normall;
 angular.module('PIR').controller("DoughnutCtrl", ['$scope', function ($scope) {
   var originalDraw = Chart.controllers.doughnut.prototype.draw;
-  Chart.controllers.doughnut.prototype.draw = function(ease) {
-    let ctx = this.chart.chart.ctx;
-    let left = this.chart.boxes[this.index].left;
-    let right = this.chart.boxes[this.index].right;
-    let top = this.chart.boxes[this.index].top;
-    let bottom = this.chart.boxes[this.index].bottom;
-    let centerx = (left+right)/2 + this.chart.offsetX;
-    let centery = (top+bottom)/2 - this.chart.offsetY;
-    let radius = this.chart.outerRadius;
-    let width = this.chart.outerRadius - this.chart.innerRadius;
+  var afterOriginalDraw = function(chart) {
+    let ctx = chart.chart.ctx;
+    let left = chart.boxes[0].left;
+    let right = chart.boxes[0].right;
+    let top = chart.boxes[0].top;
+    let bottom = chart.boxes[0].bottom;
+    let centerx = (left+right)/2 + chart.offsetX;
+    let centery = (top+bottom)/2 - chart.offsetY;
+    let radius = chart.outerRadius;
+    let width = chart.outerRadius - chart.innerRadius;
     let x = (right)/2;
     let teta=Math.PI/(stop-start)*pi_value;
-    originalDraw.call(this, ease);
     ctx.beginPath();
     ctx.lineWidth=1;
     ctx.moveTo(centerx, centery);
@@ -47,6 +46,12 @@ angular.module('PIR').controller("DoughnutCtrl", ['$scope', function ($scope) {
     ctx.fillText(start.toLocaleString(), left, centery + size[0]);
     ctx.textAlign = "right";
     ctx.fillText(stop.toLocaleString(), right, centery + size[0]);
+  };
+  Chart.controllers.doughnut.prototype.draw = function(ease) {
+    if(this.chart.options.customize){
+        afterOriginalDraw(this.chart);
+    };
+    originalDraw.call(this, ease);
   };
   $scope.data = [pi_data];
   $scope.datasetOverride = [
@@ -78,7 +83,8 @@ angular.module('PIR').controller("DoughnutCtrl", ['$scope', function ($scope) {
     title: {
         display: true,
         position: 'bottom'
-    }
+    },
+    customize: true
   };
 
 }]);

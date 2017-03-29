@@ -6,9 +6,6 @@ angular.module('PIR').config(function($routeProvider) {
     .when("/report", {
         templateUrl : 'panels/openreport.pug'
     })
-    .when("/tree", {
-        templateUrl : 'tree.pug'
-    })
     .otherwise({
         templateUrl : 'old.pug'
     });
