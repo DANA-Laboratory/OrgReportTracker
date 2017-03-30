@@ -113,7 +113,7 @@ describe('Api test', function() {
             .send(data)
             .expect(302)
             .expect('Location', '/auth/login')
-            .end(function(err, res) {
+            .end(function() {
                 done();
             });
     });
@@ -126,7 +126,7 @@ describe('Api test', function() {
             .send(data)
             .expect(302)
             .expect('Location', '/')
-            .end(function(err, res) {
+            .end(function(err) {
                 if (err) {
                   return done(err);
                 }
@@ -138,7 +138,7 @@ describe('Api test', function() {
         agent
             .get('/')
             .expect(200)
-            .end(function(err, res) {
+            .end(function(err) {
                 if (err) {
                   return done(err);
                 }
