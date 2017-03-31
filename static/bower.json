@@ -1,5 +1,5 @@
 {
-  "name": "PIReporter",
+  "name": "pireporter",
   "description": "Small app for tracking reporting process of a set of Performance Indicators for organizations",
   "main": "lib/PIReporter",
   "authors": [
