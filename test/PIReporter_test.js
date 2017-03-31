@@ -56,6 +56,13 @@ describe('DataBase', function() {
         it('should import variable definitions', function(done) {
             importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => validator.fvalidateInsert('addVariableDef', csvData)).then(() => done()).catch((err) => console.log(err));
         });
+        it('should add variables to report', function(done) {
+            importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => {
+                csvData.reportclass_id = 'BSC';
+                csvData.variabledef_id = csvData.caption;
+                return validator.fvalidateInsert('addReportVariable', csvData);
+            }).then(() => done()).catch((err) => console.log(err));
+        });
     });
     describe('should select', function() {
         it('should select users', function(done) {
@@ -73,23 +80,35 @@ describe('DataBase', function() {
             });
         });
     });
-    describe('should remove users data', function() {
-        it('should not remove all users data', function(done) {
+    describe('should delete users data', function() {
+        it('should not delete all users data', function(done) {
             let data = {_verb : 'deleteAllUsers'};
             validator.validateDelete(data).then((data) => {
-                sqldelete.deleteAllUsers(db, data).catch(() => done());
+                sqldelete.deleteAll(db, data).catch(() => done());
             });
         });
-        it('should remove all report classes', function(done) {
+        it('should remove variables from report', function(done){
+            let data = {_verb : 'removeAllVariables'};
+            validator.validateDelete(data).then((data) => {
+                sqldelete.deleteAll(db, data).catch(() => done());
+            });
+        });
+        it('should delete variables', function(done){
+            let data = {_verb : 'deleteAllVariables'};
+            validator.validateDelete(data).then((data) => {
+                sqldelete.deleteAll(db, data).catch(() => done());
+            });
+        });
+        it('should delete all report classes', function(done) {
             let data = {_verb : 'deleteAllReportClasses'};
             validator.validateDelete(data).then((data) => {
-                sqldelete.deleteAllUsers(db, data).then(() => done());
+                sqldelete.deleteAll(db, data).catch(() => done());
             });
         });
-        it('should remove all users data', function(done) {
+        it('should delete all users data', function(done) {
             let data = {_verb : 'deleteAllUsers'};
             validator.validateDelete(data).then((data) => {
-                sqldelete.deleteAllUsers(db, data).then(() => done());
+                sqldelete.deleteAll(db, data).catch(() => done());
             });
         });
     });
