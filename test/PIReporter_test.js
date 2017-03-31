@@ -80,7 +80,7 @@ describe('DataBase', function() {
             });
         });
     });
-    describe('should delete users data', function() {
+    describe('should delete data', function() {
         it('should not delete all users data', function(done) {
             let data = {_verb : 'deleteAllUsers'};
             validator.validateDelete(data).then((data) => {
