@@ -68,7 +68,7 @@ kbd {
         margin-left: -200px;
         border: none;
         border-radius: 0;
-        overflow-y: auto;
+        overflow-y: overlay;
         background-color: #222;
         bottom: 0;
         overflow-x: hidden;
@@ -86,13 +86,13 @@ kbd {
     }
 }
 
-.side-nav>li>ul {
+.side-nav>li>ul, .side-nav>ul, .side-nav>li>ul>li>ul {
     padding: 0;
 }
 
 .side-nav>li>ul>li>a {
     display: block;
-    padding: 5px 30px 10px 38px;
+    padding: 5px 20px 5px 38px;
     text-decoration: none;
     color: #999;
 }

@@ -3,20 +3,15 @@ ul.nav.navbar-nav.side-nav
     a(href='/')
       i.fa.fa-fw.fa-desktop
       =  fa['Dashboard']
-    hr(style = "margin-top:0")
-  .col-md-12
-    input(type="text" class="form-control" placeholder="جستجو ....")
-  .col-md-12
-      pre.small(style="font-weight:bold; height:110px")
-        a(href='#!report')= fa['result 1']
-        br
-        a(href='#!pi')= fa['result 2']
-        br
-        a(href='#')= fa['result 3']
-        br
-        a(href='#')= fa['result 4']
-        br
-        a(href='#')= fa['result 5']
+    hr(style = "margin:0")
+  - var menuitem = 'Fuzzy'
+  li
+    .col-md-12
+      .input-group
+        input(type="text", class="form-control", placeholder=`${fa["Search"]} ....`)
+        span.input-group-btn
+          button.btn.btn-default(data-toggle='collapse', data-target=`#${menuitem}`)= fa['Go!']
+  include ./panels/results.pug
   li
     hr(style = "margin:0")
     a(href='#')
@@ -29,13 +24,14 @@ ul.nav.navbar-nav.side-nav
       = fa['Design & Configurations']
       i.fa.fa-fw.fa-caret-down
     ul#DesignConfigurations.collapse
-      li
-        a(href='#')= fa['Categories']
-      li
-        a(href='#!variables')= fa['Variables']
-      li
-        a(href='#')= fa['Reports']
+      - var menuitem = 'Reports'
+      include ./panels/resultsmenuitem.pug
+      - var menuitem = 'Variables'
+      include ./panels/resultsmenuitem.pug
+      - var menuitem = 'Categories'
+      include ./panels/resultsmenuitem.pug
   li
+    hr(style = "margin:0")
     a(href='#')
       i.fa.fa-fw.fa-users
       = fa['User Config']
