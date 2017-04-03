@@ -44,14 +44,14 @@ describe('DataBase', function() {
         it('should import report class data', function(done) {
             importer.importFromCSV(db, __dirname + '/csv/reportclass.csv', (csvData) => validator.fvalidateInsert('addReportClass', csvData)).then(() => done()).catch((err) => console.log(err));
         });
-        it('should import pitype_1', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/pitype_1.csv', (csvData) => validator.fvalidateInsert('addPIType_1', csvData)).then(() => done()).catch((err) => console.log(err));
+        it('should import VariableCat_1', function(done) {
+            importer.importFromCSV(db, __dirname + '/csv/VariableCat_1.csv', (csvData) => validator.fvalidateInsert('addVariableCat_1', csvData)).then(() => done()).catch((err) => console.log(err));
         });
-        it('should import pitype_2', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/pitype_2.csv', (csvData) => validator.fvalidateInsert('addPIType_2', csvData)).then(() => done()).catch((err) => console.log(err));
+        it('should import VariableCat_2', function(done) {
+            importer.importFromCSV(db, __dirname + '/csv/VariableCat_2.csv', (csvData) => validator.fvalidateInsert('addVariableCat_2', csvData)).then(() => done()).catch((err) => console.log(err));
         });
-        it('should import pitype_2', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/pitype_3.csv', (csvData) => validator.fvalidateInsert('addPIType_3', csvData)).then(() => done()).catch((err) => console.log(err));
+        it('should import VariableCat_2', function(done) {
+            importer.importFromCSV(db, __dirname + '/csv/VariableCat_3.csv', (csvData) => validator.fvalidateInsert('addVariableCat_3', csvData)).then(() => done()).catch((err) => console.log(err));
         });
         it('should import variable definitions', function(done) {
             importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => validator.fvalidateInsert('addVariableDef', csvData)).then(() => done()).catch((err) => console.log(err));
