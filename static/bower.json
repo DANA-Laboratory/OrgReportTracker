@@ -28,6 +28,7 @@
     "font-awesome": "^4.7.0",
     "angular-ui-grid": "^4.0.2",
     "angular-route": "^1.6.2",
-    "angular-bootstrap": "^2.5.0"
+    "angular-bootstrap": "^2.5.0",
+    "angular-resource": "^1.6.4"
   }
 }
