@@ -1,0 +1,20 @@
+{
+  "name": "PIReporter",
+  "homepage": "https://github.com/DANA-Laboratory/PIReporter",
+  "authors": [
+    "reza afzalan <rafzalan@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.6"
+  }
+}

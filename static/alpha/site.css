@@ -1,0 +1,14 @@
+body {
+  color: #cfd2da;
+  background-color: #252830;
+}
+.row>.col {
+    margin: .5rem;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    background-color: rgba(86,61,124,.2);
+    border: 2px solid rgba(86,61,124,.9);
+}
+.form-control {
+    border: 1px solid rgba(255,255,255,.7);
+}

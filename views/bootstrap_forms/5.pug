@@ -1,0 +1,12 @@
+form.form-inline
+  label.mr-sm-2(for='inlineFormCustomSelect') Preference
+  select#inlineFormCustomSelect.custom-select.mb-2.mr-sm-2.mb-sm-0
+    option(selected='') Choose...
+    option(value='1') One
+    option(value='2') Two
+    option(value='3') Three
+  label.custom-control.custom-checkbox.mb-2.mr-sm-2.mb-sm-0
+    input.custom-control-input(type='checkbox')
+    span.custom-control-indicator
+    span.custom-control-description Remember my preference
+  button.btn.btn-primary(type='submit') Submit
