@@ -45,13 +45,13 @@ describe('DataBase', function() {
             importer.importFromCSV(db, __dirname + '/csv/reportclass.csv', (csvData) => validator.fvalidateInsert('addReportClass', csvData)).then(() => done()).catch((err) => console.log(err));
         });
         it('should import variablecat_1', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/variablecat_1.csv', (csvData) => validator.fvalidateInsert('addVariableCat_1', csvData)).then(() => done()).catch((err) => console.log(err));
+            importer.importFromCSV(db, __dirname + '/csv/variablecat1.csv', (csvData) => validator.fvalidateInsert('addVariableCat_1', csvData)).then(() => done()).catch((err) => console.log(err));
         });
         it('should import variablecat_2', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/variablecat_2.csv', (csvData) => validator.fvalidateInsert('addVariableCat_2', csvData)).then(() => done()).catch((err) => console.log(err));
+            importer.importFromCSV(db, __dirname + '/csv/variablecat2.csv', (csvData) => validator.fvalidateInsert('addVariableCat_2', csvData)).then(() => done()).catch((err) => console.log(err));
         });
-        it('should import variablecat_2', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/variablecat_3.csv', (csvData) => validator.fvalidateInsert('addVariableCat_3', csvData)).then(() => done()).catch((err) => console.log(err));
+        it('should import variablecat_3', function(done) {
+            importer.importFromCSV(db, __dirname + '/csv/variablecat3.csv', (csvData) => validator.fvalidateInsert('addVariableCat_3', csvData)).then(() => done()).catch((err) => console.log(err));
         });
         it('should import variable definitions', function(done) {
             importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => validator.fvalidateInsert('addVariableDef', csvData)).then(() => done()).catch((err) => console.log(err));
