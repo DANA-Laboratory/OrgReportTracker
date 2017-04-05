@@ -1,0 +1,63 @@
+nav.navbar.navbar-toggleable-md.navbar-inverse.bg-inverse
+  button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  a.navbar-brand(href='#')
+    img(src='/images/pi.png', width='30', height='30', alt='')
+    = fa['title']
+  #navbarSupportedContent.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.dropdown
+        a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+          i.fa.fa-user
+          | &nbsp
+          = fa['Sample User']
+          b.caret
+        .dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
+          a.dropdown-item(href='#')
+            i.fa.fa-fw.fa-gear
+            = fa['Settings']
+          a.dropdown-item(href='/auth/logout')
+            i.fa.fa-fw.fa-power-off
+            = fa['Log Out']
+      li.nav-item.dropdown
+        a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')
+          i.fa.fa-envelope
+          b.caret
+        ul.dropdown-menu.message-dropdown
+          li.message-preview
+            a(href='#')
+              .media
+                span.pull-left
+                  img.media-object(src='http://placehold.it/50x50', alt='')
+                .media-body
+                  h5.media-heading
+                    strong John Smith
+                  p.small.text-muted
+                    i.fa.fa-clock-o
+                    |  Yesterday at 4:32 PM
+                  p Lorem ipsum dolor sit amet, consectetur...
+    form.form-inline.my-2.my-lg-0
+      input.form-control.mr-sm-2(type='text', placeholder='Search')
+      button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+
+//nav.navbar.navbar-inverse.bg-inverse
+  ul.nav.nav-tabs.mr-auto
+    li.nav-item
+      a.nav-link.active(href='#' data-toggle="tab") Active
+    li.nav-item.dropdown
+      a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') Dropdown
+      .dropdown-menu
+        a.dropdown-item(href='#') Action
+        a.dropdown-item(href='#') Another action
+        a.dropdown-item(href='#') Something else here
+        .dropdown-divider
+        a.dropdown-item(href='#') Separated link
+    li.nav-item
+      a.nav-link(href='#' data-toggle="tab") Link
+    li.nav-item
+      a.nav-link.disabled(href='#') Disabled
+  form.form-inline
+    button.btn.btn-outline-success(type="button") 
+      | Main button
+    button.btn.btn-sm.align-middle.btn-outline-secondary(type="button")
+      | Smaller button
