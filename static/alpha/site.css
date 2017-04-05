@@ -12,3 +12,7 @@ body {
 .form-control {
     border: 1px solid rgba(255,255,255,.7);
 }
+li.message-preview {
+	width: 275px;
+	border-bottom: 1px solid rgba(0,0,0,.15);
+}
