@@ -2,7 +2,7 @@ body {
   color: #cfd2da;
   background-color: #252830;
 }
-.row>.col {
+.with-border{
     margin: .5rem;
     padding-top: .75rem;
     padding-bottom: .75rem;

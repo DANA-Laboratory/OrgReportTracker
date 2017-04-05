@@ -1,0 +1,55 @@
+form
+  .row
+    .col-lg-5.with-border
+      .form-group.row
+        label.col-2.col-form-label(for='example-text-input') Account
+        .col
+          input#example-text-input.form-control(type='text', value='Artisanal kale')
+          small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+      .form-group.row
+        label.col-2.col-form-label(for='example-search-input') Password
+        .col
+          input#example-search-input.form-control(type='search', value='How do I shoot web')
+          small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+      .form-check.disabled
+        label.form-check-label
+          input.form-check-input(type='checkbox', disabled='')
+          |       System Administrator
+    .col-lg
+    .col-lg-5.with-border
+      .form-group.row
+        label.col-2.col-form-label(for='example-text-input') Name
+        .col
+          input#example-text-input.form-control(type='text', value='Artisanal kale')
+      .form-group.row
+        label.col-2.col-form-label(for='example-search-input') Family
+        .col
+          input#example-search-input.form-control(type='search', value='How do I shoot web')
+      .form-group.row
+        label.col-5.col-form-label(for='exampleInputPassword1') Employee Id Code
+        .col
+          input#exampleInputPassword1.form-control(type='password', placeholder='Password')
+      .form-group.row
+        label.col-3.col-form-label(for='exampleSelect1') Department
+        .col
+          select#exampleSelect1.form-control
+            option 1
+            option 2
+            option 3
+            option 4
+            option 5
+  .row.align-items-end
+    .form-group.col-md-3
+      label(for='exampleInputEmail1') Telegram Account
+      input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
+      small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+    .form-group.col-md-3
+      label(for='exampleInputEmail1') GitHub Account
+      input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
+      small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+    .col-lg
+    .col-lg-5  
+      .d-flex.justify-content-around
+          button.btn.btn-warning(type='submit') Create New
+          button.btn.btn-danger(type='submit') Remove Account
+          button.btn.btn-primary(type='submit') Submit
