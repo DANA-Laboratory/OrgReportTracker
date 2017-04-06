@@ -15,16 +15,16 @@ angular.module('PIR').controller('GridCtrl', ['$scope', '$http', function ($scop
       enableColumnMenus: false,
       enableFiltering: true,
       columnDefs: [
-        { name:fa['Commands'], enableCellEdit:false, enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents text-center"><a href="#" class="anchor-grid glyphicon glyphicon-info-sign"></a><a href="#" class="anchor-grid fa fa-line-chart"></a><a href="#" class="anchor-grid fa fa-comments fa-red" style="color:orange"></a><a href="#" class="anchor-grid glyphicon glyphicon-flag"></a></div>'},
-        { name:fa['PI'], field: 'PI', enableCellEdit:false },
-        { name:fa['PI real'], field: 'PI real' },
-        { name:fa['PI category'], field: 'PI category' },
-        { name:fa['PI weight'], field: 'PI weight' },
-        { name:fa['PI target'], field: 'PI target' },
-        { name:fa['Unit'], field: 'Unit', enableCellEdit:false},
-        { name:fa['Lower Limit'], field: 'Lower Limit', enableCellEdit:false},
-        { name:fa['Upper Limit'], field: 'Upper Limit', enableCellEdit:false},
-        { name:fa['Edit Time'], field: 'Edit Time', enableCellEdit:false}
+        { name:fa['commands'], enableCellEdit:false, enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents text-center"><a href="#" class="anchor-grid glyphicon glyphicon-info-sign"></a><a href="#" class="anchor-grid fa fa-line-chart"></a><a href="#" class="anchor-grid fa fa-comments fa-red" style="color:orange"></a><a href="#" class="anchor-grid glyphicon glyphicon-flag"></a></div>'},
+        { name:fa['pi'], field: 'PI', enableCellEdit:false },
+        { name:fa['pi real'], field: 'PI real' },
+        { name:fa['pi category'], field: 'PI category' },
+        { name:fa['pi weight'], field: 'PI weight' },
+        { name:fa['pi target'], field: 'PI target' },
+        { name:fa['unit'], field: 'Unit', enableCellEdit:false},
+        { name:fa['lower limit'], field: 'Lower Limit', enableCellEdit:false},
+        { name:fa['upper limit'], field: 'Upper Limit', enableCellEdit:false},
+        { name:fa['edit time'], field: 'Edit Time', enableCellEdit:false}
       ]
     };
     $http.post('/data/report', {report: 'test'}).then(function(res){

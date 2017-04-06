@@ -3,19 +3,6 @@ html(ng-app='PIR')
   head
     include head.pug
   body
-    include nav.pug 
+    include nav.pug
     .container-fluid
-      .row
-        .col-1
-          #navbarSupportedContent
-            ul.nav.flex-column
-              li.nav-item
-                a.nav-link.active(href="#") Active
-              li.nav-item
-                a.nav-link(href="#") Link
-              li.nav-item
-                a.nav-link(href="#") Link
-              li.nav-item
-                a.nav-link.disabled(href="#") Disabled
-        .col-11
-            include forms/all.pug
+      include forms/all.pug

@@ -1,79 +1,83 @@
-nav.navbar.navbar-toggleable-md.navbar-inverse.bg-inverse
-  button.navbar-toggler.navbar-toggler-right(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+nav.navbar.navbar-toggleable-sm.navbar-inverse(style="background-color: #0b0019;")
+  button.navbar-toggler.navbar-toggler-left(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-badge='Toggle navigation')
     span.navbar-toggler-icon
   a.navbar-brand(href='#')
     img(src='/images/pi.png', width='30', height='30', alt='')
-    = fa['title']
+  .navbar-text.small= fa['title']
   #navbarSupportedContent.collapse.navbar-collapse
-    ul.navbar-nav.mr-auto
-      li.nav-item.dropdown
-        a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='#', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-          i.fa.fa-user
-          | &nbsp
-          = fa['Sample User']
-          b.caret
-        .dropdown-menu(aria-labelledby='navbarDropdownMenuLink')
-          a.dropdown-item(href='#')
-            i.fa.fa-fw.fa-gear
-            = fa['Settings']
-          a.dropdown-item(href='/auth/logout')
-            i.fa.fa-fw.fa-power-off
-            = fa['Log Out']
-      li.nav-item.dropdown
-        a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')
-          i.fa.fa-envelope
-          b.caret
+    ul.navbar-nav
+      form.form-inline
+        a.nav-link.btn.btn-sm.btn-outline-secondary(href='#', role='button')= fa['search']
+          i.fa.fa-search.fa-fw
+        a.nav-link.btn.btn-sm.btn-outline-secondary(href='#', role='button')= fa['dashboard']
+          i.fa.fa-desktop.fa-fw
+        a.nav-link.btn.btn-sm.btn-outline-secondary(href='#', role='button')= fa['reports archive']
+          i.fa.fa-archive.fa-fw
+        a.nav-link.btn.btn-sm.btn-outline-secondary(href='#', role='button')= fa['design & configurations']
+          i.fa.fa-wrench.fa-fw
+        a.nav-link.btn.btn-sm.btn-outline-secondary(href='#', role='button')= fa['user config']
+          i.fa.fa-users.fa-fw
+        li.nav-item.dropdown
+          a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')
+            i.fa.fa-bell
+          .dropdown-menu.dropdown-menu-left.alert-dropdown
+            a.dropdown-item(href='#')
+              span.badge.badge-default= fa['alert default']
+              | &nbsp
+              = fa['alert name']
+            a.dropdown-item(href='#')
+              span.badge.badge-primary= fa['alert primary']
+              | &nbsp
+              = fa['alert name']
+            a.dropdown-item(href='#')
+              span.badge.badge-success= fa['alert success']
+              | &nbsp
+              = fa['alert name']
+            a.dropdown-item(href='#')
+              span.badge.badge-info= fa['alert info']
+              | &nbsp
+              = fa['alert name']
+            a.dropdown-item(href='#')
+              span.badge.badge-warning= fa['alert warning']
+              | &nbsp
+              = fa['alert name']
+            a.dropdown-item(href='#')
+              span.badge.badge-danger= fa['alert danger']
+              | &nbsp
+              = fa['alert name']
+            .dropdown-divider
+            a.dropdown-item(href='#')= fa['view all']
 
-        ul.list-unstyled.dropdown-menu.message-dropdown
-          li.media.message-preview
-            img.d-flex.mr-3(src='...', alt='Generic placeholder image')
-            .media-body
-              h5.mt-0.mb-1 List-based media object
-              |       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              p.small.text-muted
-                i.fa.fa-clock-o
-                |  Yesterday at 4:32 PM
-              p Lorem ipsum dolor sit amet, consectetur...
-          li.media.my-4.message-preview
-            img.d-flex.mr-3(src='...', alt='Generic placeholder image')
-            .media-body
-              h5.mt-0.mb-1 List-based media object
-              |       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              p.small.text-muted
-                i.fa.fa-clock-o
-                |  Yesterday at 4:32 PM
-              p Lorem ipsum dolor sit amet, consectetur...
-          li.media.message-preview
-            img.d-flex.mr-3(src='...', alt='Generic placeholder image')
-            .media-body
-              h5.mt-0.mb-1 List-based media object
-              |       Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              p.small.text-muted
-                i.fa.fa-clock-o
-                |  Yesterday at 4:32 PM
-              p Lorem ipsum dolor sit amet, consectetur...
-    form.form-inline.my-2.my-lg-0
-      input.form-control.mr-sm-2(type='text', placeholder='Search')
-      button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
-
-//nav.navbar.navbar-inverse.bg-inverse
-  ul.nav.nav-tabs.mr-auto
-    li.nav-item
-      a.nav-link.active(href='#' data-toggle="tab") Active
-    li.nav-item.dropdown
-      a.nav-link.dropdown-toggle(data-toggle='dropdown', href='#', role='button', aria-haspopup='true', aria-expanded='false') Dropdown
-      .dropdown-menu
-        a.dropdown-item(href='#') Action
-        a.dropdown-item(href='#') Another action
-        a.dropdown-item(href='#') Something else here
-        .dropdown-divider
-        a.dropdown-item(href='#') Separated link
-    li.nav-item
-      a.nav-link(href='#' data-toggle="tab") Link
-    li.nav-item
-      a.nav-link.disabled(href='#') Disabled
-  form.form-inline
-    button.btn.btn-outline-success(type="button") 
-      | Main button
-    button.btn.btn-sm.align-middle.btn-outline-secondary(type="button")
-      | Smaller button
+        li.nav-item.dropdown
+          a.nav-link.dropdown-toggle(href='#', data-toggle='dropdown')
+            i.fa.fa-envelope.fa-fw
+            b.caret
+          .list-unstyled.dropdown-menu.dropdown-menu-left.message-dropdown
+            a.dropdown-item.media.message-preview(href='#')
+              img.d-flex.m-1.m-1(src='', alt='60x60', style="width: 64px; height: 64px;")
+              .media-body
+                dd.mr-1
+                  strong Reza Afzalan
+                p.small.text-muted
+                  i.fa.fa-clock-o
+                  |  Yesterday at 4:32 PM
+                p Lorem ipsum dolor sit amet, consectetur...
+            .dropdown-divider
+            a.dropdown-item.media.message-preview(href='#')
+              img.d-flex.m-1.m-1(src='', alt='60x60', style="width: 64px; height: 64px;")
+              .media-body
+                dd.mr-1
+                  strong Reza Afzalan
+                p.small.text-muted
+                  i.fa.fa-clock-o
+                  |  Yesterday at 4:32 PM
+                p Lorem ipsum dolor sit amet, consectetur...
+    .form-inline.mr-auto
+      .navbar-text
+        a(href='#')
+          = fa['sample user']
+          i.fa.fa-fw.fa-gear
+        | خوش آمدید.
+        | &nbsp
+      a(href='/auth/logout')
+        i.fa.fa-power-off.fa-2x

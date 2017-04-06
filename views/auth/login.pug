@@ -8,11 +8,11 @@ html
       #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2(style='margin-top:50px;')
         .panel.panel-info
           .panel-heading
-            .panel-title= fa['Sign In']
+            .panel-title= fa['sign in']
               span.label.label-warning.pull-left(style='direction: ltr')= flash
             div(style='float:right; font-size: 80%; position: relative; top:-10px')
               a(href='#')
-              = fa['Forgot password?']
+              = fa['forgot password?']
           .panel-body(style='padding-top:30px')
             form#loginform.form-horizontal(role='form', action='/auth/login', method='post')
               .input-group(style='margin-bottom: 25px')
@@ -27,14 +27,14 @@ html
                 .checkbox
                   label
                     input#login-remember(type='checkbox', name='remember', value='1')
-                    = fa['Remember me']
+                    = fa['remember me']
               .form-group(style='margin-top:10px')
                 // Button
                 .col-sm-12
                   button#btn-login.btn.btn-sm.btn-default(type="submit")
                     i.fa.fa-sign-in
                     | &nbsp;
-                    = fa['Login']
+                    = fa['login']
                   a#btn-tllogin.btn.btn-sm.btn-primary.pull-left(href='/auth/telegram')
                     | Login with Telegram
                     | &nbsp;
@@ -46,7 +46,7 @@ html
               .form-group
                 .col-md-12
                   div(style='border-top: 1px solid#888; padding-top:15px; font-size:85%')
-                    =fa['Dont have an account!']
+                    =fa['dont have an account!']
                     | &nbsp;
                     a(href='#')
-                      =fa['Sign Up Here']
+                      =fa['sign up here']
