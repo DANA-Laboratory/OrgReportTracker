@@ -5,7 +5,7 @@ form
         label.col-2.col-form-label(for='username')= fa['username']
         caption
         .col
-          input#username.form-control(type='text', ng-model='username')
+          input#username.form-control(type='text', ng-model='account')
           small#usernameHelp.form-text.text-muted= fa['username help']
       .form-group.row
         label.col-2.col-form-label(for='password')= fa['password']
@@ -19,38 +19,78 @@ form
     .col-lg
     .col-lg-5.with-border
       .form-group.row
-        label.col-2.col-form-label(for='example-text-input')= fa['name']
+        label.col-2.col-form-label(for='name')= fa['name']
         .col
-          input#example-text-input.form-control(type='text', value='Artisanal kale')
+          input#name.form-control(type='text', ng-model='fname')
       .form-group.row
-        label.col-2.col-form-label(for='example-search-input')= fa['family']
+        label.col-2.col-form-label(for='family')= fa['family']
         .col
-          input#example-search-input.form-control(type='search', value='How do I shoot web')
+          input#family.form-control(type='family', ng-model='lname')
       .form-group.row
-        label.col-5.col-form-label(for='exampleInputPassword1')= fa['employee id code']
+        label.col-5.col-form-label(for='pcode')= fa['employee id code']
         .col
-          input#exampleInputPassword1.form-control(type='password', placeholder='Password')
+          input#pcode.form-control(type='text', ng-model='pcode')
       .form-group.row
-        label.col-3.col-form-label(for='exampleSelect1')= fa['department']
+        label.col-3.col-form-label(for='workunit')= fa['workunit']
         .col
-          select#exampleSelect1.form-control
+          select#workunit.form-control
             option 1
             option 2
             option 3
             option 4
             option 5
-  .row.align-items-end
-    .form-group.col-md-3
-      label(for='exampleInputEmail1')= fa['telegram tccount']
-      input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
-      small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
-    .form-group.col-md-3
-      label(for='exampleInputEmail1')= fa['github account']
-      input#exampleInputEmail1.form-control(type='email', aria-describedby='emailHelp', placeholder='Enter email')
-      small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
-    .col-lg
-    .col-lg-5
-      .d-flex.justify-content-around
-          button.btn.btn-warning.btn-sm(type='submit')= fa['create new']
-          button.btn.btn-danger.btn-sm(type='submit')= fa['remove account']
-          button.btn.btn-primary.btn-sm(type='submit')= fa['submit']
+  .row
+    .form-group.col-lg-3
+      label(for='telegram')= fa['telegram account']
+      input#telegram.form-control(type='text', ng-model='telegram')
+      small#telegram.form-text.text-muted= fa['telegram help']
+    .form-group.col-lg-3
+      label(for='github')= fa['github account']
+      input#github.form-control(type='email', ng-model='github')
+      small#github.form-text.text-muted= fa['github help']
+    .col-lg.with-border(style="max-height:140px; overflow-y:scroll")
+      .text-inline
+        = fa['user permission']
+        .pull-left
+          span.p-2.badge.badge-success= fa['provider']
+          span.p-2.badge.badge-warning= fa['reviewer']
+          span.p-2.badge.badge-primary= fa['reader']
+      hr.mb-0
+      span.mr-1.badge.badge-success= fa['sample variable']
+        a.fa.fa-fw.fa-remove.close
+      span.mr-1.badge.badge-warning= fa['sample variable']
+        a.fa.fa-fw.fa-remove.close
+      span.mr-1.badge.badge-primary= fa['sample variable']
+        a.fa.fa-fw.fa-remove.close
+      span.mr-1.badge.badge-primary= fa['sample variable']
+        a.fa.fa-fw.fa-remove.close
+      span.mr-1.badge.badge-primary= fa['sample variable']
+        a.fa.fa-fw.fa-remove.close
+      span.mr-1.badge.badge-primary= fa['sample variable']
+        a.fa.fa-fw.fa-remove.close
+      span.mr-1.badge.badge-primary= fa['sample variable']
+        a.fa.fa-fw.fa-remove.close
+      span.mr-1.badge.badge-primary= fa['sample variable']
+        a.fa.fa-fw.fa-remove.close
+      span.mr-1.badge.badge-primary= fa['sample variable']
+        a.fa.fa-fw.fa-remove.close
+  #accordion.mb-3(role='tablist', aria-multiselectable='true')
+    .card.bg-inverse
+      #headingOne.card-header.card-outline-primary(role='tab')
+        .mb-0
+          = fa['user log']
+          a.fa.fa-fw.fa-caret-down(data-toggle='collapse', data-parent='#accordion', href='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
+      #collapseOne.collapse(role='tabpanel', aria-labelledby='headingOne')
+        .card-block(style="font-family: monospace; direction: ltr; max-height: 200px; overflow-y: scroll")
+          = fa['sample log']
+
+  .d-flex.flex-row-reverse
+    .pr-2
+      button.btn.btn-outline-success(type='submit')= fa['submit']
+        i.fa.fa-check.fa-fw
+    .pr-2
+      button.btn.btn-outline-warning(type='submit')= fa['create new']
+        i.fa.fa-plus.fa-fw
+    .pr-2
+      button.btn.btn-outline-danger(type='submit')= fa['remove account']
+        i.fa.fa-remove.fa-fw

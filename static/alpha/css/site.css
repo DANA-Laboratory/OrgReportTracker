@@ -5,7 +5,9 @@ body {
   font-family: Tanha;
 }
 .with-border{
-    margin: .5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
     padding-top: .75rem;
     padding-bottom: .75rem;
     background-color: rgba(86,61,124,.2);
@@ -26,6 +28,10 @@ body {
 .navbar-inverse .navbar-nav .btn-outline-secondary:focus {
   box-shadow: 0 0 0 2px rgba(2,117,216,.7);
 }
-.form-control {
+button, input, optgroup, select, textarea {
   font-family: Yekan;
+}
+.badge {
+  font-family: Sahel;
+  color: black;
 }
