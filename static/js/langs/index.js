@@ -64,7 +64,7 @@ const fa = {
   'result 5': 'پیام',
   'remove account': 'حذف کاربری',
   'reviewer': 'ناظر',
-  'sample log': "how to add a line break here: &#13; <br/> \n \\n \\\n \r \\r &#10; &#13; must be on a new line.",
+  'sample log': "how to add a line break here: <br/> must be on a new line.",
   'sample user': 'حامد روحانی',
   'sample variable': 'یک متغییر با نام نسبتا طولانی میتواند باشد',
   'settings': 'تنظیمات',

@@ -56,23 +56,23 @@ form
           span.p-2.badge.badge-warning= fa['reviewer']
           span.p-2.badge.badge-primary= fa['reader']
       hr.mb-0
-      span.mr-1.badge.badge-success= fa['sample variable']
+      button.btn.mr-1.badge.badge-success(href='#')= fa['sample variable']
         a.fa.fa-fw.fa-remove.close
-      span.mr-1.badge.badge-warning= fa['sample variable']
+      button.btn.mr-1.badge.badge-warning(href='#')= fa['sample variable']
         a.fa.fa-fw.fa-remove.close
-      span.mr-1.badge.badge-primary= fa['sample variable']
+      button.btn.mr-1.badge.badge-primary(href='#')= fa['sample variable']
         a.fa.fa-fw.fa-remove.close
-      span.mr-1.badge.badge-primary= fa['sample variable']
+      button.btn.mr-1.badge.badge-primary(href='#')= fa['sample variable']
         a.fa.fa-fw.fa-remove.close
-      span.mr-1.badge.badge-primary= fa['sample variable']
+      button.btn.mr-1.badge.badge-primary(href='#')= fa['sample variable']
         a.fa.fa-fw.fa-remove.close
-      span.mr-1.badge.badge-primary= fa['sample variable']
+      button.btn.mr-1.badge.badge-primary(href='#')= fa['sample variable']
         a.fa.fa-fw.fa-remove.close
-      span.mr-1.badge.badge-primary= fa['sample variable']
+      button.btn.mr-1.badge.badge-primary(href='#')= fa['sample variable']
         a.fa.fa-fw.fa-remove.close
-      span.mr-1.badge.badge-primary= fa['sample variable']
+      button.btn.mr-1.badge.badge-primary(href='#')= fa['sample variable']
         a.fa.fa-fw.fa-remove.close
-      span.mr-1.badge.badge-primary= fa['sample variable']
+      button.btn.mr-1.badge.badge-primary(href='#')= fa['sample variable']
         a.fa.fa-fw.fa-remove.close
   #accordion.mb-3(role='tablist', aria-multiselectable='true')
     .card.bg-inverse
@@ -82,7 +82,7 @@ form
           a.fa.fa-fw.fa-caret-down(data-toggle='collapse', data-parent='#accordion', href='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
       #collapseOne.collapse(role='tabpanel', aria-labelledby='headingOne')
         .card-block(style="font-family: monospace; direction: ltr; max-height: 200px; overflow-y: scroll")
-          = fa['sample log']
+          != fa['sample log']
 
   .d-flex.flex-row-reverse
     .pr-2
