@@ -29,6 +29,9 @@ body{
 button, input, optgroup, select, textarea {
   font-family: Yekan;
 }
+.report {
+  font-family: Yekan;
+}
 .badge {
   font-family: Sahel;
   color: black;

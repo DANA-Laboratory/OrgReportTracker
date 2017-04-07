@@ -15,7 +15,7 @@ angular.module('PIR').controller('GridCtrl', ['$scope', '$http', function ($scop
       enableColumnMenus: false,
       enableFiltering: true,
       columnDefs: [
-        { name:fa['commands'], enableCellEdit:false, enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents text-center"><a href="#" class="anchor-grid glyphicon glyphicon-info-sign"></a><a href="#" class="anchor-grid fa fa-line-chart"></a><a href="#" class="anchor-grid fa fa-comments fa-red" style="color:orange"></a><a href="#" class="anchor-grid glyphicon glyphicon-flag"></a></div>'},
+        { name:fa['commands'], enableCellEdit:false, enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents text-center"><a href="#" class="anchor-grid fa fa-info fa-fw"></a><a href="#" class="anchor-grid fa fa-line-chart fa-fw"></a><a href="#" class="anchor-grid fa fa-comments fa-red fa-fw" style="color:orange"></a><a href="#" class="anchor-grid fa fa-flag fa-fw"></a></div>'},
         { name:fa['pi'], field: 'PI', enableCellEdit:false },
         { name:fa['pi real'], field: 'PI real' },
         { name:fa['pi category'], field: 'PI category' },
