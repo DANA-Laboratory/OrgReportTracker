@@ -1,0 +1,46 @@
+.card
+  .card-header.card-primary
+    .card-title= fa['sign in']
+      span.badge.badge-warning.pull-left(style='direction: ltr')= flash
+    div(style='float:right; font-size: 80%; position: relative; top:-10px')
+      a(href='#')
+      = fa['forgot password?']
+  .card-block
+    form#loginform(role='form', action='/auth/login', method='post')
+      .form-group.row
+        .input-group
+          span.input-group-addon
+            i.fa.fa-user
+          input#login-username.form-control(type='text', name='username', value='', placeholder=fa['username'])
+      .form-group.row
+        .input-group
+          span.input-group-addon
+            i.fa.fa-lock
+          input#login-password.form-control(type='password', name='password', placeholder=fa['password'])
+      .form-group.row
+        .form-check
+          label.form-check-label
+            input.form-check-input.form-check-input-rtl(type='checkbox')
+            =fa['remember me']
+      .form-group.row
+        // Button
+        .col-sm-12
+          button#btn-login.btn.btn-sm.btn-secondary(type="submit")
+            i.fa.fa-sign-in
+            | &nbsp;
+            = fa['login']
+          button#btn-tllogin.btn.btn-sm.btn-primary.pull-left.mr-1(href='/auth/telegram')
+            | Login with Telegram
+            | &nbsp;
+            i.fa.fa-paper-plane-o
+          button#btn-ghlogin.btn.btn-sm.btn-primary.pull-left(href='/auth/github')
+            | Login with GitHub
+            | &nbsp;
+            i.fa.fa-github
+      .form-group
+        .col-md-12
+          div(style='border-top: 1px solid#888; padding-top:15px; font-size:85%')
+            =fa['dont have an account!']
+            | &nbsp;
+            a(href='#')
+              =fa['sign up here']

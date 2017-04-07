@@ -1,3 +1,9 @@
 body {
   direction: rtl;
 }
+/* HACK:  */
+.form-check-input:only-child {
+    position: absolute;
+    margin-top: 0.5rem;
+    margin-right: -1.25rem;
+}
