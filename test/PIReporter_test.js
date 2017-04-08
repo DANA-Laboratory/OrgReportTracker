@@ -88,7 +88,7 @@ describe('DataBase', function() {
             });
         });
         it('should remove variables from report', function(done){
-            let data = {_verb : 'removeAllVariables'};
+            let data = {_verb : 'removeAllReportVariables'};
             validator.validateDelete(data).then((data) => {
                 sqldelete[data._verb](db, data).then(() => done());
             });
