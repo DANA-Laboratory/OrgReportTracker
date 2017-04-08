@@ -60,7 +60,7 @@ describe('DataBase', function() {
             importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => {
                 csvData.reportclass_id = 'BSC';
                 csvData.variabledef_id = csvData.caption;
-                return validator.fvalidateInsert('addReportVariable', csvData);
+                return validator.fvalidateInsert('addReportClassVariable', csvData);
             }).then(() => done()).catch((err) => console.log(err));
         });
     });
@@ -88,7 +88,7 @@ describe('DataBase', function() {
             });
         });
         it('should remove variables from report', function(done){
-            let data = {_verb : 'removeAllVariables'};
+            let data = {_verb : 'removeAllReportClassVariables'};
             validator.validateDelete(data).then((data) => {
                 sqldelete[data._verb](db, data).then(() => done());
             });
