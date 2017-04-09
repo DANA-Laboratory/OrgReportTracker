@@ -85,6 +85,7 @@ const fa = {
   'user log': 'فعالیت های کاربر:(کلیک نمایید)',
   'user progress': 'وضعیت کاربر',
   'user permission': 'مجوزهای کاربر',
+  'userform': 'اطلاعات کاربری',
   'username': 'نام کاربری',
   'users': 'کاربران',
   'view all': 'نمایش همه',

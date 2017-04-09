@@ -1,88 +1,99 @@
-form
-  .row
-    .col-lg-5.with-border
-      .form-group.row
-        label.col-2.col-form-label(for='username')= fa['username']
-        caption
-        .col
-          input#username.form-control(type='text', ng-model='account')
-          small#usernameHelp.form-text.text-muted= fa['username help']
-      .form-group.row
-        label.col-2.col-form-label(for='password')= fa['password']
-        .col
-          input#password.form-control(type='password', ng-model='password')
-          small#passwordHelp.form-text.text-muted= fa['password help']
-      .form-check.disabled
-        label.form-check-label
-          input.form-check-input.form-check-input-rtl(type='checkbox', disabled='')
-          =fa['system administrator']
-    .col-lg
-    .col-lg-5.with-border
-      .form-group.row
-        label.col-2.col-form-label(for='name')= fa['name']
-        .col
-          input#name.form-control(type='text', ng-model='fname')
-      .form-group.row
-        label.col-2.col-form-label(for='family')= fa['family']
-        .col
-          input#family.form-control(type='family', ng-model='lname')
-      .form-group.row
-        label.col-5.col-form-label(for='pcode')= fa['employee id code']
-        .col
-          input#pcode.form-control(type='text', ng-model='pcode')
-      .form-group.row
-        label.col-3.col-form-label(for='workunit')= fa['workunit']
-        .col
-          select#workunit.form-control
-            option 1
-            option 2
-            option 3
-            option 4
-            option 5
-  .row
-    .form-group.col-lg-3
-      label(for='telegram')= fa['telegram account']
-      input#telegram.form-control(type='text', ng-model='telegram')
-      small#telegram.form-text.text-muted= fa['telegram help']
-    .form-group.col-lg-3
-      label(for='github')= fa['github account']
-      input#github.form-control(type='email', ng-model='github')
-      small#github.form-text.text-muted= fa['github help']
-    .col-lg.with-border(style="max-height:140px; overflow-y:scroll")
-      .text-inline
-        = fa['user permission']
-        .pull-left
-          span.p-2.badge.badge-success= fa['provider']
-          span.p-2.badge.badge-warning= fa['reviewer']
-          span.p-2.badge.badge-primary= fa['reader']
-      hr.mb-0
-      span.btn.badge.badge-success.mr-1(href='#')= fa['sample variable']
-        a.fa.fa-fw.fa-remove.close(style='float: unset')
-      span.btn.badge.badge-warning.mr-1(href='#') test
-        a.fa.fa-fw.fa-remove.close(style='float: unset')
-      span.btn.badge.badge-primary.mr-1(href='#')= fa['sample variable']
-        a.fa.fa-fw.fa-remove.close(style='float: unset')
-      span.btn.badge.badge-primary.mr-1(href='#')= fa['sample variable']
-        a.fa.fa-fw.fa-remove.close(style='float: unset')
-      span.btn.mr-1.badge.badge-primary.mr-1(href='#')= fa['sample variable']
-        a.fa.fa-fw.fa-remove.close(style='float: unset')
-  #accordion.mb-3(role='tablist', aria-multiselectable='true')
-    .card.bg-inverse
-      #headingOne.card-header.card-outline-primary(role='tab')
-        .mb-0
-          = fa['user log']
-          a.fa.fa-fw.fa-caret-down(data-toggle='collapse', data-parent='#accordion', href='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
-      #collapseOne.collapse(role='tabpanel', aria-labelledby='headingOne')
-        .card-block(style="font-family: monospace; direction: ltr; max-height: 200px; overflow-y: scroll")
-          != fa['sample log']
+form.card.form.mb-3
+  .card-header.card-warning.text-center= fa['userform']
+  .card-block
+    .row
+      .card.col-lg-5.mr-3.mb-3
+        .card-block
+          .form-group.row
+            label.col-2.col-form-label(for='username')= fa['username']
+            caption
+            .col
+              input#username.form-control(type='text', ng-model='account')
+              small#usernameHelp.form-text.text-muted= fa['username help']
+          .form-group.row
+            label.col-2.col-form-label(for='password')= fa['password']
+            .col
+              input#password.form-control(type='password', ng-model='password')
+              small#passwordHelp.form-text.text-muted= fa['password help']
+          .form-check.disabled
+            label.form-check-label
+              input.form-check-input.form-check-input-rtl(type='checkbox', disabled='')
+              =fa['system administrator']
+      .col-lg
+      .card.col-lg-5.ml-3.mb-3
+        .card-block
+          .form-group.row
+            label.col-2.col-form-label(for='name')= fa['name']
+            .col
+              input#name.form-control(type='text', ng-model='fname')
+          .form-group.row
+            label.col-2.col-form-label(for='family')= fa['family']
+            .col
+              input#family.form-control(type='family', ng-model='lname')
+          .form-group.row
+            label.col-5.col-form-label(for='pcode')= fa['employee id code']
+            .col
+              input#pcode.form-control(type='text', ng-model='pcode')
+          .form-group.row
+            label.col-3.col-form-label(for='workunit')= fa['workunit']
+            .col
+              .dropdown
+                button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle.col(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')= fa['workunit']
+                .dropdown-menu(aria-labelledby='dropdownMenuButton')
+                  a.dropdown-item(href='#') Action
+                  a.dropdown-item(href='#') Another action
+                  a.dropdown-item(href='#') Something else here
+    .row
+      .form-group.col-lg-3
+        label(for='telegram')= fa['telegram account']
+        input#telegram.form-control(type='text', ng-model='telegram')
+        small#telegram.form-text.text-muted= fa['telegram help']
+      .form-group.col-lg-3
+        label(for='github')= fa['github account']
+        input#github.form-control(type='email', ng-model='github')
+        small#github.form-text.text-muted= fa['github help']
+      .col-lg
+        .card
+          .card-header
+            .text-inline
+              = fa['user permission']
+              .pull-left
+                span.p-2.badge.badge-success= fa['provider']
+                span.p-2.badge.badge-warning= fa['reviewer']
+                span.p-2.badge.badge-primary= fa['reader']
+          .card-block(style='max-height:140px; overflow-y:scroll')
+            span.btn.badge.badge-success.mr-1(href='#')= fa['sample variable']
+              a.fa.fa-fw.fa-remove.close(style='float: unset')
+            span.btn.badge.badge-warning.mr-1(href='#') test
+              a.fa.fa-fw.fa-remove.close(style='float: unset')
+            span.btn.badge.badge-primary.mr-1(href='#')= fa['sample variable']
+              a.fa.fa-fw.fa-remove.close(style='float: unset')
+            span.btn.badge.badge-primary.mr-1(href='#')= fa['sample variable']
+              a.fa.fa-fw.fa-remove.close(style='float: unset')
+            span.btn.mr-1.badge.badge-primary.mr-1(href='#')= fa['sample variable']
+              a.fa.fa-fw.fa-remove.close(style='float: unset')
+            span.btn.badge.badge-success.mr-1(href='#')= fa['sample variable']
+              a.fa.fa-fw.fa-remove.close(style='float: unset')
+            span.btn.badge.badge-warning.mr-1(href='#') test
+              a.fa.fa-fw.fa-remove.close(style='float: unset')
 
-  .d-flex.flex-row-reverse
-    .pr-2
-      button.btn.btn-outline-success(type='submit')= fa['submit']
-        i.fa.fa-check.fa-fw
-    .pr-2
-      button.btn.btn-outline-warning(type='submit')= fa['create new']
-        i.fa.fa-plus.fa-fw
-    .pr-2
-      button.btn.btn-outline-danger(type='submit')= fa['remove account']
-        i.fa.fa-remove.fa-fw
+    #accordion.mt-3(role='tablist')
+      .card
+        #headingOne.card-header(role='tab')
+          .mb-0
+            = fa['user log']
+            a.fa.fa-fw.fa-caret-down(data-toggle='collapse', data-parent='#accordion', href='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
+        #collapseOne.collapse(role='tabpanel', aria-labelledby='headingOne')
+          .card-block(style="font-family: monospace; direction: ltr; max-height: 200px; overflow-y: scroll")
+            != fa['sample log']
+  .card-footer
+    .d-flex.flex-row-reverse
+      .pr-2
+        button.btn.btn-success(type='submit')= fa['submit']
+          i.fa.fa-check.fa-fw
+      .pr-2
+        button.btn.btn-warning(type='submit')= fa['create new']
+          i.fa.fa-plus.fa-fw
+      .pr-2
+        button.btn.btn-danger(type='submit')= fa['remove account']
+          i.fa.fa-remove.fa-fw

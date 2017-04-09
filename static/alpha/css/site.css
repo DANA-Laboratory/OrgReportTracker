@@ -3,6 +3,9 @@ body{
   font-family: Tanha;
   background-color: #252830;
 }
+select > option {
+   background: pink; /* Or an hexadecimal value */
+}
 .with-border{
     color: #cfd2da;
     margin-left: 1rem;
@@ -13,23 +16,20 @@ body{
     background-color: rgba(86,61,124,.2);
     border: 2px solid rgba(86,61,124,.9);
 }
-
 .message-dropdown {
     padding: 0;
     max-height: 250px;
     overflow-x: hidden;
     overflow-y: auto;
 }
-.navbar-inverse .navbar-nav .btn-outline-secondary:hover {
+.navbar-inverse .navbar-nav {
     color: rgba(0,0,0,0.9);
-}
-.navbar-inverse .navbar-nav .btn-outline-secondary:focus {
-  box-shadow: 0 0 0 2px rgba(2,117,216,.7);
+    box-shadow: 0 0 0 2px rgba(2,117,216,.7);
 }
 button, input, optgroup, select, textarea {
   font-family: Yekan;
 }
-.report {
+.form {
   font-family: Yekan;
 }
 .badge {
