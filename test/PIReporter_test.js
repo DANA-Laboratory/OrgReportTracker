@@ -115,7 +115,7 @@ describe('DataBase', function() {
     });
     describe('logger', function() {
         it('should filter logs', function() {
-            logger.queryUserLog('rafzalan').then((result)=>console.log(result));
+            logger.queryUserLog({account: 'rafzalan'}).catch((err) => assert(err));
         });
     });
 });
