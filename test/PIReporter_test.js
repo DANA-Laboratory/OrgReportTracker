@@ -8,6 +8,7 @@ const sqlselect= require('../lib/models-sqlite3/sql/select');
 const app = require('../');
 const validator = require('../lib/models-sqlite3/validate.js');
 const supertest = require('supertest')(app);
+const logger = require('../lib/logger');
 var db = null;
 
 describe('DataBase', function() {
@@ -110,6 +111,11 @@ describe('DataBase', function() {
             validator.validateDelete(data).then((data) => {
                 sqldelete[data._verb](db, data).then(() => done());
             });
+        });
+    });
+    describe('logger', function() {
+        it('should filter logs', function() {
+            logger.queryUserLog('rafzalan').then((result)=>console.log(result));
         });
     });
 });
