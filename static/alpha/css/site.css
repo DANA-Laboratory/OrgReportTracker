@@ -3,9 +3,6 @@ body{
   font-family: Tanha;
   background-color: #252830;
 }
-select > option {
-   background: pink; /* Or an hexadecimal value */
-}
 .with-border{
     color: #cfd2da;
     margin-left: 1rem;
@@ -22,8 +19,10 @@ select > option {
     overflow-x: hidden;
     overflow-y: auto;
 }
-.navbar-inverse .navbar-nav {
+.navbar-inverse .navbar-nav .btn-outline-secondary:hover {
     color: rgba(0,0,0,0.9);
+}
+.navbar-inverse .navbar-nav .btn-outline-secondary:focus {
     box-shadow: 0 0 0 2px rgba(2,117,216,.7);
 }
 button, input, optgroup, select, textarea {

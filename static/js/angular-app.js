@@ -30,3 +30,9 @@ app.directive("searchresult", function() {
     }]
   );
 });
+
+app.controller('SubjectDropDownController', function ($scope) {
+    $scope.dropboxitemselected = function (x) {
+        $scope.selectedWorkunit = x;
+    }
+});

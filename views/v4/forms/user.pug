@@ -37,12 +37,10 @@ form.card.form.mb-3
           .form-group.row
             label.col-3.col-form-label(for='workunit')= fa['workunit']
             .col
-              .dropdown
-                button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle.col(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')= fa['workunit']
+              .dropdown(ng-controller="SubjectDropDownController")
+                button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle.col(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false', ng-init=`selectedWorkunit="${fa['workunit']}"`) {{selectedWorkunit}}
                 .dropdown-menu(aria-labelledby='dropdownMenuButton')
-                  a.dropdown-item(href='#') Action
-                  a.dropdown-item(href='#') Another action
-                  a.dropdown-item(href='#') Something else here
+                  a.dropdown-item(ng-href='#' ng-click='dropboxitemselected(x)' ng-repeat=`x in ${fa["workunits"]}`) {{x}}
     .row
       .form-group.col-lg-3
         label(for='telegram')= fa['telegram account']
