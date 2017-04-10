@@ -31,8 +31,8 @@ app.directive("searchresult", function() {
   );
 });
 
-app.controller('SubjectDropDownController', function ($scope) {
-    $scope.dropboxitemselected = function (x) {
-        $scope.selectedWorkunit = x;
+app.controller('scopeUpdater', function ($scope) {
+    $scope.setVar = function (varName, x) {
+        $scope[varName] = x;
     }
 });
