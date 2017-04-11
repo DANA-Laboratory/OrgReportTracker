@@ -48,12 +48,16 @@ app.directive("searchresult", function() {
 
 ['log']
 .forEach((urlobject)=>{
-  app.controller(urlobject + 'Controller',['$scope', urlobject, function ($scope, urlobject) {
-      $scope.test = function () {
-          var res = urlobject.get({}, function() {
-            console.log(res);
-          });
-      }
+  app.controller(urlobject + 'Controller',['$scope', urlobject, function ($scope, resource) {
+      if(urlobject==='log'){
+          $scope.get = function () {
+              var res = resource.get({}, function() {
+                  $scope.data = res.data;
+                  $scope.log = "";
+                  $scope.data.forEach((item)=>{$scope.log += item.message + " @ " + item.timestamp + "\n"});
+              });
+          };
+      };
   }]);
 });
 
