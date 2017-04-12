@@ -213,7 +213,7 @@ describe('Api test', function() {
                 done();
             });
     });
-    it('display logs', function(done) {
+    it('display logs with winston-log-display', function(done) {
         supertest
             .get('/logs')
             .expect(200)
@@ -234,4 +234,16 @@ describe('Api test', function() {
             .expect(200)
             .end(done);
     });
+    it('logout', function(done) {
+        agent
+            .get('/auth/logout')
+            .expect(302)
+            .expect('Location', '/')
+            .end(function(err) {
+                if (err) {
+                  return done(err);
+                }
+                done();
+            });
+    })
 });

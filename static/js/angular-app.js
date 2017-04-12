@@ -17,7 +17,7 @@ app.directive("searchresult", function() {
     };
 });
 
-['user', 'reportClass', 'variableCat_1', 'variableCat_2', 'variableCat_3', 'variableCat_1', 'variableDef', 'report', 'variable', 'reportVariable', 'attachement', 'value', 'target', 'message']
+['user', 'reportclass', 'variablecat_1', 'variablecat_2', 'variablecat_3', 'variablecat_1', 'variabledef', 'report', 'variable', 'reportvariable', 'attachement', 'value', 'target', 'message']
 .forEach((urlobject)=>{
   app.factory(urlobject, ['$resource',
     function($resource) {
@@ -37,10 +37,10 @@ app.directive("searchresult", function() {
     function($resource) {
       return $resource(`/restful/${urlobject}`, {}, {
           'get':    {method:'GET'},
-          'save':   {method:'POST'},
-          'query':  {method:'GET', isArray:true},
-          'remove': {method:'DELETE'},
-          'delete': {method:'DELETE'}
+          //'save':   {method:'POST'},
+          //'query':  {method:'GET', isArray:true},
+          //'remove': {method:'DELETE'},
+          //'delete': {method:'DELETE'}
       });
     }]
   );

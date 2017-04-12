@@ -16,7 +16,7 @@ module.exports = function(grunt) {
       }
     },
     mochaTest: {
-     test: {
+     all: {
        options: {
          reporter: 'spec',
          captureFile: 'results.txt', // Optionally capture the reporter output to a file
@@ -26,6 +26,17 @@ module.exports = function(grunt) {
          bail: true
        },
        src: ['test/**/*.js']
+     },
+     restful: {
+       options: {
+         reporter: 'spec',
+         captureFile: 'results.txt', // Optionally capture the reporter output to a file
+         quiet: false, // Optionally suppress output to standard out (defaults to false)
+         clearRequireCache: false, // Optionally clear the require cache before running tests (defaults to false)
+         noFail: false, // Optionally set to not fail on failed tests (will still fail on other errors)
+         bail: true
+       },
+       src: ['test/restful.js']
      }
     },
     jshint: {
@@ -67,5 +78,5 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['env:test', 'jshint', 'mochaTest']);
   grunt.registerTask('test', ['env:test', 'mochaTest']);
-
+  grunt.registerTask('subtest', ['env:test', 'mochaTest:restful']);
 };
