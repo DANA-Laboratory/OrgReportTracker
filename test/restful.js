@@ -31,84 +31,84 @@ describe('restful', function() {
     });
     it('should get current user logs', function(done) {
         agent
-            .get('/restful/log')
+            .get('/restful/Log')
             .expect('Content-Type', /json/)
             .expect(200)
             .end(done);
     });
     it('should get current user', function(done) {
         agent
-            .get('/restful/user')
+            .get('/restful/User')
             .expect('Content-Type', /json/)
             .expect(200)
             .end(done);
     });
-    it('should query reportclasses', function(done) {
+    it('should query ReportClass', function(done) {
         agent
-            .get('/restful/reportclass')
+            .get('/restful/ReportClass')
             .expect('Content-Type', /json/)
             .expect(200)
             .end(done);
     });
-    it('should get a reportclass', function(done) {
+    it('should get a ReportClass', function(done) {
         agent
-            .get('/restful/reportclass/1')
+            .get('/restful/ReportClass/1')
             .expect('Content-Type', /json/)
             .expect(200)
             .end(done);
     });
-    it('should query variablecat_1', function(done) {
+    it('should query VariableCat_1', function(done) {
         agent
-            .get('/restful/variablecat_1')
+            .get('/restful/VariableCat_1')
             .expect('Content-Type', /json/)
             .expect(200)
             .end(done);
     });
-    it('should get a variablecat_1', function(done) {
+    it('should get a VariableCat_1', function(done) {
         agent
-            .get('/restful/variablecat_1/1')
+            .get('/restful/VariableCat_1/1')
             .expect('Content-Type', /json/)
             .expect(200)
             .end(done);
     });
-    it('should query variablecat_2', function(done) {
+    it('should query VariableCat_2', function(done) {
         agent
-            .get('/restful/variablecat_2')
+            .get('/restful/VariableCat_2')
             .expect('Content-Type', /json/)
             .expect(200)
             .end(done);
     });
-    it('should get a variablecat_2', function(done) {
+    it('should get a VariableCat_2', function(done) {
         agent
-            .get('/restful/variablecat_2/1')
+            .get('/restful/VariableCat_2/1')
             .expect('Content-Type', /json/)
             .expect(200)
             .end(done);
     });
-    it('should query variablecat_3', function(done) {
+    it('should query VariableCat_3', function(done) {
         agent
-            .get('/restful/variablecat_3')
+            .get('/restful/VariableCat_3')
             .expect('Content-Type', /json/)
             .expect(200)
             .end(done);
     });
-    it('should get a variablecat_3', function(done) {
+    it('should get a VariableCat_3', function(done) {
         agent
-            .get('/restful/variablecat_3/1')
+            .get('/restful/VariableCat_3/1')
             .expect('Content-Type', /json/)
             .expect(200)
             .end(done);
     });
-    it('should query variabledef', function(done) {
+    it('should query VariableDef', function(done) {
         agent
-            .get('/restful/variabledef')
+            .get('/restful/VariableDef')
             .expect('Content-Type', /json/)
             .expect(200)
             .end(done);
     });
-    it('should get a variabledef', function(done) {
+    it('should get a VariableDef', function(done) {
         agent
-            .get('/restful/variabledef/1')
+            .get('/restful/VariableDef/1')
             .expect('Content-Type', /json/)
             .expect(200)
             .end(done);

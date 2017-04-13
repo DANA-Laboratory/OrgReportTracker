@@ -17,7 +17,7 @@ app.directive("searchresult", function() {
     };
 });
 
-['user', 'reportclass', 'variablecat_1', 'variablecat_2', 'variablecat_3', 'variablecat_1', 'variabledef', 'report', 'variable', 'reportvariable', 'attachement', 'value', 'target', 'message']
+['User', 'reportclass', 'variablecat_1', 'variablecat_2', 'variablecat_3', 'variablecat_1', 'variabledef', 'report', 'variable', 'reportvariable', 'attachement', 'value', 'target', 'message']
 .forEach((urlobject)=>{
   app.factory(urlobject, ['$resource',
     function($resource) {
