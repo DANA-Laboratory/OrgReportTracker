@@ -82,7 +82,7 @@ form.card.form.mb-3
             = fa['user log']
             a.fa.fa-fw.fa-caret-down(data-toggle='collapse', data-parent='#accordion', href='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
         #collapseOne.collapse(role='tabpanel', aria-labelledby='headingOne')
-          .card-block(ng-controller="logController", ng-init="get()", style="font-family: monospace; direction: ltr; max-height: 200px; overflow-y: scroll; white-space: pre") {{log}}
+          .card-block(ng-controller="LogController", ng-init="get()", style="font-family: monospace; direction: ltr; max-height: 200px; overflow-y: scroll; white-space: pre") {{log}}
   .card-footer
     .d-flex.flex-row-reverse
       .pr-2

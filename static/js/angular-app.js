@@ -17,7 +17,7 @@ app.directive("searchresult", function() {
     };
 });
 
-['User', 'reportclass', 'variablecat_1', 'variablecat_2', 'variablecat_3', 'variablecat_1', 'variabledef', 'report', 'variable', 'reportvariable', 'attachement', 'value', 'target', 'message']
+['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'Report', 'Variable', 'ReportVariable', 'Attachement', 'Value', 'Target', 'Message']
 .forEach((urlobject)=>{
   app.factory(urlobject, ['$resource',
     function($resource) {
@@ -31,7 +31,7 @@ app.directive("searchresult", function() {
   );
 });
 
-['log']
+['Log']
 .forEach((urlobject)=>{
   app.factory(urlobject, ['$resource',
     function($resource) {
@@ -46,10 +46,10 @@ app.directive("searchresult", function() {
   );
 });
 
-['log']
+['Log']
 .forEach((urlobject)=>{
   app.controller(urlobject + 'Controller',['$scope', urlobject, function ($scope, resource) {
-      if(urlobject==='log'){
+      if(urlobject==='Log'){
           $scope.get = function () {
               var res = resource.get({}, function() {
                   $scope.data = res.data;
