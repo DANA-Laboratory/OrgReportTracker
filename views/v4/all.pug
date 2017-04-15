@@ -1,5 +1,17 @@
 .row.align-items-start.mb-3
-  .col.with-border
+  .col
+    - var menuitem = 'User'
+    include forms/resultsmenuitem.pug
+    - var menuitem = 'ReportClass'
+    include forms/resultsmenuitem.pug    
+    - var menuitem = 'VariableCat_1'
+    include forms/resultsmenuitem.pug
+    - var menuitem = 'VariableCat_2'
+    include forms/resultsmenuitem.pug
+    - var menuitem = 'VariableCat_3'
+    include forms/resultsmenuitem.pug
+    - var menuitem = 'VariableDef'
+    include forms/resultsmenuitem.pug
   .col-9
     include forms/openreport.pug
 .row.align-items-start

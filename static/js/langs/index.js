@@ -106,6 +106,12 @@ const fa = {
   'username help': 'این عبارت جهت ورود به سیستم استفاده خواهد شد.',
   'password help': 'کلمه عبور حداقل 5 حرف باشد.',
   'system administrator': 'مدیر سیستم',
+  'User': 'کاربران',
+  'ReportClass': 'گزارشات',
+  'VariableCat_1':'مجموعه ها',
+  'VariableCat_2':'گروه ها',
+  'VariableCat_3':'زیر گروه ها',
+  'VariableDef':'متغییرها',
 };
 if(typeof exports !== 'undefined') {
   module.exports = fa;

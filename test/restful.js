@@ -72,7 +72,7 @@ describe('restful', function() {
     });
     it('should get current user logs', function(done) {
         agent
-            .get('/restful/log')
+            .get('/restful/Log')
             .expect('Content-Type', /json/)
             .expect(200)
             .end(done);

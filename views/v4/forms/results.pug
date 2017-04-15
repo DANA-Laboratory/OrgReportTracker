@@ -1,0 +1,7 @@
+ul.collapse(searchresult search-query=`${menuitem}` id= `${menuitem}` ng-controller=`${menuitem}Controller` ng-init='query()')
+  .col-md-12
+     pre.small(style="font-weight:bold; height:110px")
+       div(ng-repeat=`item in data`)
+         a(href='#!report')
+           | {{item.caption  || item.account}}
+         br

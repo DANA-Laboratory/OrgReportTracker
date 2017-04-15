@@ -1,0 +1,18 @@
+#accordion.mt-3(role='tablist')
+  .card.with-border
+    #headingOne.card-header.card-outline-primary(role='tab')
+      .mb-0
+        | {{selectitem}}
+        = fa[menuitem]
+        a.fa.fa-fw.fa-caret-down(data-toggle='collapse', data-parent='#accordion', href=`#${menuitem}`, aria-expanded='true', aria-controls=`${menuitem}`)
+    .collapse(role='tabpanel', aria-labelledby='headingOne', id= `${menuitem}`)
+      .card-block(ng-controller=`${menuitem}Controller`, ng-init="query()", style="font-family: Yekan; direction: rtl; max-height: 200px; overflow-x:hidden; overflow-y: auto")
+        div(ng-repeat='item in data')
+          a(href='#!report', ng-click='selectitem(item.id)')
+            i.fa.fa-check(ng-show='selecteditem===item.id')
+            | {{item.caption  || item.account}}
+          br
+
+//a(href='javascript:;', data-toggle='collapse', data-target= `#${menuitem}`)= fa[menuitem]
+//  i.fa.fa-fw.fa-caret-down
+//include results.pug

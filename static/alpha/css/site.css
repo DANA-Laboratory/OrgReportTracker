@@ -5,11 +5,10 @@ body{
 }
 .with-border{
     color: #cfd2da;
-    margin-left: 1rem;
     margin-right: 1rem;
     margin-bottom: 1rem;
-    padding-top: .75rem;
-    padding-bottom: .75rem;
+    padding-top: .1rem;
+    padding-bottom: .5rem;
     background-color: rgba(86,61,124,.2);
     border: 2px solid rgba(86,61,124,.9);
 }

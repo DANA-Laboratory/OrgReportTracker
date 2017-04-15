@@ -19,16 +19,21 @@ app.directive("searchresult", function() {
 
 ['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'Report', 'Variable', 'ReportVariable', 'Attachement', 'Value', 'Target', 'Message']
 .forEach((urlobject)=>{
-  app.factory(urlobject, ['$resource',
-    function($resource) {
-      return $resource(`/restful/${urlobject}`, {}, {
-        get: {method: 'GET', cache: false, isArray: false},
-        save: {method: 'POST', cache: false, isArray: false},
-        update: {method: 'PUT', cache: false, isArray: false},
-        delete: {method: 'DELETE', cache: false, isArray: false}
-      });
-    }]
-  );
+    app.factory(urlobject, ['$resource',
+        function($resource) {
+            return $resource(`/restful/${urlobject}`, {}, {
+                get: {method: 'GET', cache: false, isArray: false},
+                query:  {method:'GET', isArray:true, transformResponse: function (data)
+                    {
+                        return angular.fromJson(data);
+                    },
+                },
+                save: {method: 'POST', cache: false, isArray: false},
+                update: {method: 'PUT', cache: false, isArray: false},
+                delete: {method: 'DELETE', cache: false, isArray: false}
+            });
+        }]
+    );
 });
 
 ['Log']
@@ -46,18 +51,28 @@ app.directive("searchresult", function() {
   );
 });
 
-['Log']
+['Log', 'User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef']
 .forEach((urlobject)=>{
   app.controller(urlobject + 'Controller',['$scope', urlobject, function ($scope, resource) {
-      if(urlobject==='Log'){
-          $scope.get = function () {
-              var res = resource.get({}, function() {
-                  $scope.data = res.data;
-                  $scope.log = "";
-                  $scope.data.forEach((item)=>{$scope.log += item.message + " @ " + item.timestamp + "\n"});
-              });
-          };
-      };
+        $scope.get = function () {
+            var res = resource.get({}, function() {
+                $scope.data = res.data;
+                if(urlobject==='Log') {
+                    $scope.log = "";
+                    $scope.data.forEach((item)=>{$scope.log += item.message + " @ " + item.timestamp + "\n"});
+                };
+            });
+        };
+        if(urlobject!=='Log'){
+            $scope.query = function () {
+                var res = resource.query({}, function() {
+                    $scope.data = res;
+                });
+            };
+        };
+        $scope.selectitem = function (id) {
+            $scope.selecteditem=id;
+        }
   }]);
 });
 
