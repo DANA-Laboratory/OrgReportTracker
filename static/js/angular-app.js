@@ -1,3 +1,12 @@
+var sort_by = function(field, reverse, primer){
+   var key = primer ?
+       function(x) {return primer(x[field])} :
+       function(x) {return x[field]};
+   reverse = !reverse ? 1 : -1;
+   return function (a, b) {
+       return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+     }
+}
 var app = angular.module('PIR', ['ui.grid', 'ui.grid.edit', 'ui.grid.cellNav', 'ngRoute', 'chart.js', 'ui.bootstrap', 'ngResource']);
 app.directive("searchresult", function() {
     return {
@@ -63,17 +72,44 @@ app.directive("searchresult", function() {
                 };
             });
         };
-        if(urlobject!=='Log'){
-            $scope.query = function () {
+        $scope.query = function () {
+            if(urlobject!=='Log'){
                 var res = resource.query({}, function() {
-                    $scope.data = res;
+                    if (urlobject!=='User') {
+                        $scope.data = res.sort(sort_by('code'));
+                    } else {
+                        $scope.data = res.sort(sort_by('lname'));
+                    }
                 });
             };
         };
         $scope.selectitem = function (id) {
-            $scope.selecteditem=id;
+            if ($scope.selecteditem != id) {
+                $scope.selecteditem = id;
+                $scope.selected[urlobject] = id;
+            } else {
+                $scope.selecteditem = -1;
+                $scope.selected[urlobject] = -1;
+            }
+        }
+        $scope.filter = function (item) {
+            var show = true;
+            for (key in $scope.selected) {
+                let _key = key.toLowerCase() + '_id';
+                if (!item.hasOwnProperty(_key)) {
+                    continue;
+                }
+                if (item.hasOwnProperty(_key)) {
+                    show = show && ($scope.selected[key] == -1 || item[_key] == $scope.selected[key])
+                }
+            }
+            return show;
         }
   }]);
+});
+
+app.controller('selectController', function ($scope) {
+    $scope.selected = {};
 });
 
 app.controller('scopeUpdater', function ($scope) {
