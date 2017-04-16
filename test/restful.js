@@ -25,7 +25,7 @@ describe('restful', function() {
               csvData.reportclass_id = 'BSC';
               csvData.variabledef_id = csvData.caption;
               csvData._verb = 'updateReportClassVariableSetCat_3';
-              return (csvData);
+              validator.update.validate(db, csvData).then((data)=>{return data;});
           });
           p1().then(p2).then(p3).then(p4).then(p5).then(p6).then(p7).then(p8).then(()=>done()).catch((err) => console.log(err));
         };
