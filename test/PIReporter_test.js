@@ -6,7 +6,7 @@ const importer = require('../lib/models-sqlite3/importCSV');
 const sqldelete = require('../lib/models-sqlite3/sql/delete');
 const sqlselect= require('../lib/models-sqlite3/sql/select');
 const app = require('../');
-const validator = require('../lib/models-sqlite3/validate.js');
+const validator = require('../lib/models-sqlite3/validate');
 const supertest = require('supertest')(app);
 const logger = require('../lib/logger');
 var db = null;
@@ -34,34 +34,34 @@ describe('DataBase', function() {
     });
     after(function (done) {
         this.timeout(9500);
-        importer.importFromCSV(db, __dirname + '/csv/users.csv', (csvData) => validator.fvalidateInsert('addUser', csvData)).then(() => done()).catch((err) => console.log(err));
+        importer.importFromCSV(db, __dirname + '/csv/users.csv', (csvData) => validator.insert.fvalidate('addUser', csvData)).then(() => done()).catch((err) => console.log(err));
     });
     describe('should import data from csv', function() {
         it('should import users data', function(done) {
             assert(db);
             this.timeout(9500);
-            importer.importFromCSV(db, __dirname + '/csv/users.csv', (csvData) => validator.fvalidateInsert('addUser', csvData)).then(() => done()).catch((err) => console.log(err));
+            importer.importFromCSV(db, __dirname + '/csv/users.csv', (csvData) => validator.insert.fvalidate('addUser', csvData)).then(() => done()).catch((err) => console.log(err));
         });
         it('should import report class data', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/reportclass.csv', (csvData) => validator.fvalidateInsert('addReportClass', csvData)).then(() => done()).catch((err) => console.log(err));
+            importer.importFromCSV(db, __dirname + '/csv/reportclass.csv', (csvData) => validator.insert.fvalidate('addReportClass', csvData)).then(() => done()).catch((err) => console.log(err));
         });
         it('should import variablecat_1', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/variablecat1.csv', (csvData) => validator.fvalidateInsert('addVariableCat_1', csvData)).then(() => done()).catch((err) => console.log(err));
+            importer.importFromCSV(db, __dirname + '/csv/variablecat1.csv', (csvData) => validator.insert.fvalidate('addVariableCat_1', csvData)).then(() => done()).catch((err) => console.log(err));
         });
         it('should import variablecat_2', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/variablecat2.csv', (csvData) => validator.fvalidateInsert('addVariableCat_2', csvData)).then(() => done()).catch((err) => console.log(err));
+            importer.importFromCSV(db, __dirname + '/csv/variablecat2.csv', (csvData) => validator.insert.fvalidate('addVariableCat_2', csvData)).then(() => done()).catch((err) => console.log(err));
         });
         it('should import variablecat_3', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/variablecat3.csv', (csvData) => validator.fvalidateInsert('addVariableCat_3', csvData)).then(() => done()).catch((err) => console.log(err));
+            importer.importFromCSV(db, __dirname + '/csv/variablecat3.csv', (csvData) => validator.insert.fvalidate('addVariableCat_3', csvData)).then(() => done()).catch((err) => console.log(err));
         });
         it('should import variable definitions', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => validator.fvalidateInsert('addVariableDef', csvData)).then(() => done()).catch((err) => console.log(err));
+            importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => validator.insert.fvalidate('addVariableDef', csvData)).then(() => done()).catch((err) => console.log(err));
         });
         it('should add variables to report', function(done) {
             importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => {
                 csvData.reportclass_id = 'BSC';
                 csvData.variabledef_id = csvData.caption;
-                return validator.fvalidateInsert('addReportClassVariable', csvData);
+                return validator.insert.fvalidate('addReportClassVariable', csvData);
             }).then(() => done()).catch((err) => console.log(err));
         });
         it('should set cat_3 for variable in report', function(done) {
@@ -76,14 +76,14 @@ describe('DataBase', function() {
     describe('should select', function() {
         it('should select users', function(done) {
             let data = {_verb : 'selectUser'};
-            validator.validateSelect(data).then((data)=>sqlselect[data._verb](db, data)).then((data)=>{
+            validator.select.validate(data).then((data)=>sqlselect[data._verb](db, data)).then((data)=>{
                 assert(data.length===8);
                 done();
             });
         });
         it('should select reportclasses', function(done) {
             let data = {_verb : 'selectReportClass'};
-            validator.validateSelect(data).then((data)=>sqlselect[data._verb](db, data)).then((data)=>{
+            validator.select.validate(data).then((data)=>sqlselect[data._verb](db, data)).then((data)=>{
                 assert(data[0].duration==='3M');
                 done();
             });
@@ -92,31 +92,31 @@ describe('DataBase', function() {
     describe('should delete data', function() {
         it('should not delete all users data', function(done) {
             let data = {_verb : 'deleteAllUsers'};
-            validator.validateDelete(data).then((data) => {
+            validator.delete.validate(data).then((data) => {
                 sqldelete[data._verb](db, data).catch(() => done());
             });
         });
         it('should remove variables from report', function(done){
             let data = {_verb : 'removeAllReportClassVariables'};
-            validator.validateDelete(data).then((data) => {
+            validator.delete.validate(data).then((data) => {
                 sqldelete[data._verb](db, data).then(() => done());
             });
         });
         it('should delete variables', function(done){
             let data = {_verb : 'deleteAllVariables'};
-            validator.validateDelete(data).then((data) => {
+            validator.delete.validate(data).then((data) => {
                 sqldelete[data._verb](db, data).then(() => done());
             });
         });
         it('should delete all report classes', function(done) {
             let data = {_verb : 'deleteAllReportClasses'};
-            validator.validateDelete(data).then((data) => {
+            validator.delete.validate(data).then((data) => {
                 sqldelete[data._verb](db, data).then(() => done());
             });
         });
         it('should delete all users data', function(done) {
             let data = {_verb : 'deleteAllUsers'};
-            validator.validateDelete(data).then((data) => {
+            validator.delete.validate(data).then((data) => {
                 sqldelete[data._verb](db, data).then(() => done());
             });
         });
@@ -253,5 +253,5 @@ describe('Api test', function() {
                 }
                 done();
             });
-    })
+    });
 });

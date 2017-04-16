@@ -4,22 +4,22 @@ const assert = require('assert');
 const fs = require('fs');
 const config = require('config');
 const modelsSqlite3 = require('../lib/models-sqlite3');
-const validator = require('../lib/models-sqlite3/validate.js');
+const validator = require('../lib/models-sqlite3/validate');
 
 describe('restful', function() {
     before(function (done) {
         var db = null;
         var importall = function(done) {
-          var p1 = () => importer.importFromCSV(db, __dirname + '/csv/users.csv', (csvData) => validator.fvalidateInsert('addUser', csvData));
-          var p2 = () => importer.importFromCSV(db, __dirname + '/csv/reportclass.csv', (csvData) => validator.fvalidateInsert('addReportClass', csvData));
-          var p3 = () => importer.importFromCSV(db, __dirname + '/csv/variablecat1.csv', (csvData) => validator.fvalidateInsert('addVariableCat_1', csvData));
-          var p4 = () => importer.importFromCSV(db, __dirname + '/csv/variablecat2.csv', (csvData) => validator.fvalidateInsert('addVariableCat_2', csvData));
-          var p5 = () => importer.importFromCSV(db, __dirname + '/csv/variablecat3.csv', (csvData) => validator.fvalidateInsert('addVariableCat_3', csvData));
-          var p6 = () => importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => validator.fvalidateInsert('addVariableDef', csvData));
+          var p1 = () => importer.importFromCSV(db, __dirname + '/csv/users.csv', (csvData) => validator.insert.fvalidate('addUser', csvData));
+          var p2 = () => importer.importFromCSV(db, __dirname + '/csv/reportclass.csv', (csvData) => validator.insert.fvalidate('addReportClass', csvData));
+          var p3 = () => importer.importFromCSV(db, __dirname + '/csv/variablecat1.csv', (csvData) => validator.insert.fvalidate('addVariableCat_1', csvData));
+          var p4 = () => importer.importFromCSV(db, __dirname + '/csv/variablecat2.csv', (csvData) => validator.insert.fvalidate('addVariableCat_2', csvData));
+          var p5 = () => importer.importFromCSV(db, __dirname + '/csv/variablecat3.csv', (csvData) => validator.insert.fvalidate('addVariableCat_3', csvData));
+          var p6 = () => importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => validator.insert.fvalidate('addVariableDef', csvData));
           var p7 = () => importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => {
               csvData.reportclass_id = 'BSC';
               csvData.variabledef_id = csvData.caption;
-              return validator.fvalidateInsert('addReportClassVariable', csvData);
+              return validator.insert.fvalidate('addReportClassVariable', csvData);
           });
           var p8 = () => importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => {
               csvData.reportclass_id = 'BSC';
@@ -28,7 +28,7 @@ describe('restful', function() {
               return (csvData);
           });
           p1().then(p2).then(p3).then(p4).then(p5).then(p6).then(p7).then(p8).then(()=>done()).catch((err) => console.log(err));
-        }
+        };
         this.timeout(20000);
         assert(config.get('dbPath'));
         if (fs.existsSync(config.get('dbPath'))) {
