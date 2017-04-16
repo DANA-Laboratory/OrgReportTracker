@@ -74,6 +74,7 @@ app.directive("searchresult", function() {
         };
         $scope.query = function () {
             if(urlobject!=='Log'){
+                $scope.selected[urlobject] = new Set();
                 var res = resource.query({}, function() {
                     if (urlobject!=='User') {
                         $scope.data = res.sort(sort_by('code'));
@@ -83,28 +84,31 @@ app.directive("searchresult", function() {
                 });
             };
         };
+        $scope.isSelected = function (id) {
+            return $scope.selected[urlobject].has(id);
+        };
         $scope.selectitem = function (id) {
-            if ($scope.selecteditem != id) {
-                $scope.selecteditem = id;
-                $scope.selected[urlobject] = id;
+            if ($scope.selected[urlobject].has(id)) {
+                $scope.selected[urlobject].delete(id);
             } else {
-                $scope.selecteditem = -1;
-                $scope.selected[urlobject] = -1;
+                $scope.selected[urlobject].add(id);
             }
-        }
+        };
         $scope.filter = function (item) {
-            var show = true;
+            var show = false;
+            var hasrelation = false;
             for (key in $scope.selected) {
                 let _key = key.toLowerCase() + '_id';
                 if (!item.hasOwnProperty(_key)) {
                     continue;
                 }
+                hasrelation = true;
                 if (item.hasOwnProperty(_key)) {
-                    show = show && ($scope.selected[key] == -1 || item[_key] == $scope.selected[key])
+                    show = show || (($scope.selected[key].size==0) || $scope.selected[key].has(item[_key]))
                 }
             }
-            return show;
-        }
+            return !hasrelation || show;
+        };
   }]);
 });
 
