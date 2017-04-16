@@ -64,6 +64,14 @@ describe('DataBase', function() {
                 return validator.fvalidateInsert('addReportClassVariable', csvData);
             }).then(() => done()).catch((err) => console.log(err));
         });
+        it('should set cat_3 for variable in report', function(done) {
+            importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => {
+                csvData.reportclass_id = 'BSC';
+                csvData.variabledef_id = csvData.caption;
+                csvData._verb = 'updateReportClassVariableSetCat_3';
+                return (csvData);
+            }).then(() => done()).catch((err) => console.log(err));
+        });
     });
     describe('should select', function() {
         it('should select users', function(done) {

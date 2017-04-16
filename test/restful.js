@@ -21,7 +21,13 @@ describe('restful', function() {
               csvData.variabledef_id = csvData.caption;
               return validator.fvalidateInsert('addReportClassVariable', csvData);
           });
-          p1().then(p2).then(p3).then(p4).then(p5).then(p6).then(p7).then(()=>done()).catch((err) => console.log(err));
+          var p8 = () => importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => {
+              csvData.reportclass_id = 'BSC';
+              csvData.variabledef_id = csvData.caption;
+              csvData._verb = 'updateReportClassVariableSetCat_3';
+              return (csvData);
+          });
+          p1().then(p2).then(p3).then(p4).then(p5).then(p6).then(p7).then(p8).then(()=>done()).catch((err) => console.log(err));
         }
         this.timeout(20000);
         assert(config.get('dbPath'));
