@@ -34,34 +34,34 @@ describe('DataBase', function() {
     });
     after(function (done) {
         this.timeout(9500);
-        importer.importFromCSV(db, __dirname + '/csv/users.csv', (csvData) => validator.insert.fvalidate('addUser', csvData)).then(() => done()).catch((err) => console.log(err));
+        importer.importFromCSV(db, __dirname + '/csv/users.csv', (csvData) => validator.insert.validate(csvData, 'addUser')).then(() => done()).catch((err) => console.log(err));
     });
     describe('should import data from csv', function() {
         it('should import users data', function(done) {
             assert(db);
             this.timeout(9500);
-            importer.importFromCSV(db, __dirname + '/csv/users.csv', (csvData) => validator.insert.fvalidate('addUser', csvData)).then(() => done()).catch((err) => console.log(err));
+            importer.importFromCSV(db, __dirname + '/csv/users.csv', (csvData) => validator.insert.validate(csvData, 'addUser')).then(() => done()).catch((err) => console.log(err));
         });
         it('should import report class data', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/reportclass.csv', (csvData) => validator.insert.fvalidate('addReportClass', csvData)).then(() => done()).catch((err) => console.log(err));
+            importer.importFromCSV(db, __dirname + '/csv/reportclass.csv', (csvData) => validator.insert.validate(csvData, 'addReportClass')).then(() => done()).catch((err) => console.log(err));
         });
         it('should import variablecat_1', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/variablecat1.csv', (csvData) => validator.insert.fvalidate('addVariableCat_1', csvData)).then(() => done()).catch((err) => console.log(err));
+            importer.importFromCSV(db, __dirname + '/csv/variablecat1.csv', (csvData) => validator.insert.validate(csvData, 'addVariableCat_1')).then(() => done()).catch((err) => console.log(err));
         });
         it('should import variablecat_2', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/variablecat2.csv', (csvData) => validator.insert.fvalidate('addVariableCat_2', csvData)).then(() => done()).catch((err) => console.log(err));
+            importer.importFromCSV(db, __dirname + '/csv/variablecat2.csv', (csvData) => validator.insert.validate(csvData, 'addVariableCat_2')).then(() => done()).catch((err) => console.log(err));
         });
         it('should import variablecat_3', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/variablecat3.csv', (csvData) => validator.insert.fvalidate('addVariableCat_3', csvData)).then(() => done()).catch((err) => console.log(err));
+            importer.importFromCSV(db, __dirname + '/csv/variablecat3.csv', (csvData) => validator.insert.validate(csvData, 'addVariableCat_3')).then(() => done()).catch((err) => console.log(err));
         });
         it('should import variable definitions', function(done) {
-            importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => validator.insert.fvalidate('addVariableDef', csvData)).then(() => done()).catch((err) => console.log(err));
+            importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => validator.insert.validate(csvData, 'addVariableDef')).then(() => done()).catch((err) => console.log(err));
         });
         it('should add variables to report', function(done) {
             importer.importFromCSV(db, __dirname + '/csv/variables.csv', (csvData) => {
                 csvData.reportclass_id = 'BSC';
                 csvData.variabledef_id = csvData.caption;
-                return validator.insert.fvalidate('addReportClassVariable', csvData);
+                return validator.insert.validate(csvData, 'addReportClassVariable');
             }).then(() => done()).catch((err) => console.log(err));
         });
         it('should set cat_3 for variable in report', function(done) {
@@ -69,7 +69,7 @@ describe('DataBase', function() {
                 csvData.reportclass_id = 'BSC';
                 csvData.variabledef_id = csvData.caption;
                 csvData._verb = 'updateReportClassVariableSetCat_3';
-                return (csvData);
+                return validator.update.validate(db, csvData);
             }).then(() => done()).catch((err) => console.log(err));
         });
     });
