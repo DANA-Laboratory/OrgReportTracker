@@ -112,6 +112,7 @@ const fa = {
   'VariableCat_2':'گروه ها',
   'VariableCat_3':'زیر گروه ها',
   'VariableDef':'متغییرها',
+  'vVariableDef':'متغییرها',
 };
 if(typeof exports !== 'undefined') {
   module.exports = fa;

@@ -1,3 +1,4 @@
+var app = angular.module('PIR', ['ui.grid', 'ui.grid.edit', 'ui.grid.cellNav', 'ngRoute', 'chart.js', 'ui.bootstrap', 'ngResource']);
 var sort_by = function(field, reverse, primer){
    var key = primer ?
        function(x) {return primer(x[field])} :
@@ -6,27 +7,9 @@ var sort_by = function(field, reverse, primer){
    return function (a, b) {
        return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
      }
-}
-var app = angular.module('PIR', ['ui.grid', 'ui.grid.edit', 'ui.grid.cellNav', 'ngRoute', 'chart.js', 'ui.bootstrap', 'ngResource']);
-app.directive("searchresult", function() {
-    return {
-        link: function(scope, el, attrs) {
-          if(scope.results === undefined) {
-            scope.results = {};
-          }
-          scope.results[attrs.searchQuery] = [
-            {
-              text: attrs.searchQuery
-            },
-            {
-              text: attrs.searchQuery
-            }
-          ]
-        }
-    };
-});
+};
 
-['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'Report', 'Variable', 'ReportVariable', 'Attachement', 'Value', 'Target', 'Message']
+['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'vVariableDef']
 .forEach((urlobject)=>{
     app.factory(urlobject, ['$resource',
         function($resource) {
@@ -60,7 +43,7 @@ app.directive("searchresult", function() {
   );
 });
 
-['Log', 'User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef']
+['Log', 'User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'vVariableDef']
 .forEach((urlobject)=>{
   app.controller(urlobject + 'Controller',['$scope', urlobject, function ($scope, resource) {
         $scope.get = function () {
@@ -95,7 +78,7 @@ app.directive("searchresult", function() {
             }
         };
         $scope.filter = function (item) {
-            var show = false;
+            var show = true;
             var hasrelation = false;
             for (key in $scope.selected) {
                 let _key = key.toLowerCase() + '_id';
@@ -103,9 +86,7 @@ app.directive("searchresult", function() {
                     continue;
                 }
                 hasrelation = true;
-                if (item.hasOwnProperty(_key)) {
-                    show = show || (($scope.selected[key].size==0) || $scope.selected[key].has(item[_key]))
-                }
+                show = show && (($scope.selected[key].size==0) || $scope.selected[key].has(item[_key]))
             }
             return !hasrelation || show;
         };
@@ -120,4 +101,22 @@ app.controller('scopeUpdater', function ($scope) {
     $scope.setVar = function (varName, x) {
         $scope[varName] = x;
     }
+});
+
+app.directive("searchresult", function() {
+    return {
+        link: function(scope, el, attrs) {
+          if(scope.results === undefined) {
+            scope.results = {};
+          }
+          scope.results[attrs.searchQuery] = [
+            {
+              text: attrs.searchQuery
+            },
+            {
+              text: attrs.searchQuery
+            }
+          ]
+        }
+    };
 });
