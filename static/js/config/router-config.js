@@ -1,15 +1,15 @@
 angular.module('PIR').config(function($routeProvider) {
   $routeProvider
     .when("/pi", {
-        templateUrl : 'panels/pi.pug'
+        templateUrl : 'all.pug'
     })
     .when("/report", {
-        templateUrl : 'panels/openreport.pug'
+        templateUrl : 'all.pug'
     })
     .when("/variables", {
-        templateUrl : 'panels/variables.pug'
+        templateUrl : 'all.pug'
     })
     .otherwise({
-        templateUrl : 'old.pug'
+        templateUrl : 'all.pug'
     });
 });

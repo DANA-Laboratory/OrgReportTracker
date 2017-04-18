@@ -1,45 +1,46 @@
 doctype html
-html
+html(ng-app='PIR')
   head
-    include ../head/head-icon.pug
-    include ../head/head-common.pug
+    include ../head.pug
   body
-    .container
-      #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2(style='margin-top:50px;')
-        .panel.panel-info
-          .panel-heading
-            .panel-title= fa['sign in']
-              span.label.label-warning.pull-left(style='direction: ltr')= flash
+    .row.justify-content-center.mt-3
+      .col-6
+        .card
+          .card-header.card-primary
+            .card-title= fa['sign in']
+              span.badge.badge-warning.pull-left(style='direction: ltr')= flash
             div(style='float:right; font-size: 80%; position: relative; top:-10px')
               a(href='#')
               = fa['forgot password?']
-          .panel-body(style='padding-top:30px')
-            form#loginform.form-horizontal(role='form', action='/auth/login', method='post')
-              .input-group(style='margin-bottom: 25px')
-                span.input-group-addon
-                  i.glyphicon.glyphicon-user
-                input#login-username.form-control(type='text', name='username', value='', placeholder=fa['username'])
-              .input-group(style='margin-bottom: 25px')
-                span.input-group-addon
-                  i.glyphicon.glyphicon-lock
-                input#login-password.form-control(type='password', name='password', placeholder=fa['password'])
-              .input-group
-                .checkbox
-                  label
-                    input#login-remember(type='checkbox', name='remember', value='1')
-                    = fa['remember me']
-              .form-group(style='margin-top:10px')
+          .card-block
+            form#loginform(role='form', action='/auth/login', method='post')
+              .form-group.row
+                .input-group
+                  span.input-group-addon
+                    i.fa.fa-user
+                  input#login-username.form-control(type='text', name='username', value='', placeholder=fa['username'])
+              .form-group.row
+                .input-group
+                  span.input-group-addon
+                    i.fa.fa-lock
+                  input#login-password.form-control(type='password', name='password', placeholder=fa['password'])
+              .form-group.row
+                .form-check
+                  label.form-check-label
+                    input.form-check-input.form-check-input-rtl(type='checkbox')
+                    =fa['remember me']
+              .form-group.row
                 // Button
                 .col-sm-12
-                  button#btn-login.btn.btn-sm.btn-default(type="submit")
+                  button#btn-login.btn.btn-sm.btn-secondary(type="submit")
                     i.fa.fa-sign-in
                     | &nbsp;
                     = fa['login']
-                  a#btn-tllogin.btn.btn-sm.btn-primary.pull-left(href='/auth/telegram')
+                  button#btn-tllogin.btn.btn-sm.btn-primary.pull-left.mr-1(href='/auth/telegram')
                     | Login with Telegram
                     | &nbsp;
                     i.fa.fa-paper-plane-o
-                  a#btn-ghlogin.btn.btn-sm.btn-primary.pull-left(href='/auth/github')
+                  button#btn-ghlogin.btn.btn-sm.btn-primary.pull-left(href='/auth/github')
                     | Login with GitHub
                     | &nbsp;
                     i.fa.fa-github
