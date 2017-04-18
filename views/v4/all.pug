@@ -1,14 +1,13 @@
-.row.align-items-start.mb-3
+.row.justify-content-center
+  a.col-3.with-border.text-center(ng-controller='DoughnutCtrl', href='#')
+    canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
+  a.col-3.with-border.text-center(ng-controller='DoughnutCtrl', href='#')
+    canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
+  a.col-3.with-border.text-center(ng-controller='DoughnutCtrl', href='#')
+    canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
+.row.align-items-start.ml-1
   .col
-  a.col-3.with-border.text-center(ng-controller='DoughnutCtrl', href='#')
-    canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
-  a.col-3.with-border.text-center(ng-controller='DoughnutCtrl', href='#')
-    canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
-  a.col-3.with-border.text-center(ng-controller='DoughnutCtrl', href='#')
-    canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
-.row.align-items-start.mb-3
-  .col
-  .col-9
+  .col-9.with-border
     include forms/pi.pug
 - var n = 0
 - var cn = ['1d 12h 30min', '1d 12h 30min', '1d 12h 30min', '1d 12h 30min']
@@ -53,83 +52,3 @@
   .col-6
     include auth/login.pug
   .col-3
-.row.align-items-start
-  .col.with-border
-    include forms/1.pug
-  .col.with-border
-    include forms/2.pug
-.row.align-items-start
-  .col.with-border
-    include forms/3.pug
-  .col.with-border
-    include forms/4.pug
-.row.align-items-start
-  .col.with-border
-    include forms/5.pug
-  .col.with-border
-    include forms/6.pug
-.row.align-items-start
-  .col.with-border
-    include forms/7.pug
-  .col.with-border
-    include forms/8.pug
-.row.align-items-start
-  .col.with-border
-    include forms/9.pug
-  .col.with-border
-    include forms/10.pug
-.row.align-items-start
-  .col.with-border
-    include forms/11.pug
-  .col.with-border
-    include forms/12.pug
-.row.align-items-start
-  .col.with-border
-    include forms/13.pug
-  .col.with-border
-    include forms/14.pug
-.row.align-items-start
-  .col.with-border
-    include forms/15.pug
-  .col.with-border
-    include forms/16.pug
-.row.align-items-start
-  .col.with-border
-    include forms/17.pug
-  .col.with-border
-    include forms/18.pug
-.row.align-items-start
-  .col.with-border
-    include forms/19.pug
-  .col.with-border
-    include forms/20.pug
-.row.align-items-start
-  .col.with-border
-    include forms/21.pug
-  .col.with-border
-    include forms/22.pug
-.row.align-items-start
-  .col.with-border
-    include forms/23.pug
-  .col.with-border
-    include forms/24.pug
-.row.align-items-start
-  .col.with-border
-    include forms/25.pug
-  .col.with-border
-    include forms/26.pug
-.row.align-items-start
-  .col.with-border
-    include forms/27.pug
-  .col.with-border
-    include forms/28.pug
-.row.align-items-start
-  .col.with-border
-    include forms/29.pug
-  .col.with-border
-    include forms/30.pug
-.row.align-items-start
-  .col.with-border
-    include forms/31.pug
-  .col.with-border
-    include forms/32.pug

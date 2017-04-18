@@ -1,9 +1,8 @@
--var tx = 'PI title'
-.card.card-inverse.card-outline-success
-  .card-header.text-center
-      span(style='padding-left : 2.5em')= fa[tx]
-      a(href='#').pull-left
-        .fa.fa-cogs(data-toggle="tooltip" title=fa['config'])
-  .card-block
-    .col-md-12.text-center.chart-container(ng-controller='LineCtrl')
-      canvas.chart.chart-line(chart-data='data', chart-labels='labels', chart-series='series', chart-click='onClick', chart-options='options')
+-var tx = 'pi title'
+.row.text-center
+  .col= fa['pi title']
+    a(href='#').float-left
+      .fa.fa-cogs(data-toggle="tooltip" title=fa['config'])
+.row
+  .col-md-12.text-center.chart-container(ng-controller='LineCtrl')
+    canvas.chart.chart-line(chart-data='data', chart-labels='labels', chart-series='series', chart-click='onClick', chart-options='options')
