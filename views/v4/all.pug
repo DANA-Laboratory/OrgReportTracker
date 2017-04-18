@@ -1,5 +1,13 @@
 .row.align-items-start.mb-3
   .col
+  a.col-3.with-border.text-center(ng-controller='DoughnutCtrl', href='#')
+    canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
+  a.col-3.with-border.text-center(ng-controller='DoughnutCtrl', href='#')
+    canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
+  a.col-3.with-border.text-center(ng-controller='DoughnutCtrl', href='#')
+    canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
+.row.align-items-start.mb-3
+  .col
   .col-9
     include forms/pi.pug
 - var n = 0

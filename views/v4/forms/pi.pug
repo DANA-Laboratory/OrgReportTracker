@@ -1,16 +1,9 @@
 -var tx = 'PI title'
-.col-lg-12.col-md-12
-  .card.card-secondary
-    .card-header.text-center
-        span(style='padding-left : 2.5em')= fa[tx]
-        a(href='#').pull-left
-          .fa.fa-cogs(data-toggle="tooltip" title=fa['config'])
-    .card-block
-      .col-md-12.text-center.chart-container(ng-controller='LineCtrl')
-        canvas.chart.chart-line(chart-data='data', chart-labels='labels', chart-series='series', chart-click='onClick', chart-options='options')
-      .col-md-4.text-center.chart-container(ng-controller='DoughnutCtrl')
-          canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
-      .col-md-4.text-center.chart-container(ng-controller='DoughnutCtrl')
-        canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
-      .col-md-4.text-center.chart-container(ng-controller='DoughnutCtrl')
-        canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
+.card.card-inverse.card-outline-success
+  .card-header.text-center
+      span(style='padding-left : 2.5em')= fa[tx]
+      a(href='#').pull-left
+        .fa.fa-cogs(data-toggle="tooltip" title=fa['config'])
+  .card-block
+    .col-md-12.text-center.chart-container(ng-controller='LineCtrl')
+      canvas.chart.chart-line(chart-data='data', chart-labels='labels', chart-series='series', chart-click='onClick', chart-options='options')

@@ -12,6 +12,10 @@ body{
     background-color: rgba(86,61,124,.2);
     border: 2px solid rgba(86,61,124,.9);
 }
+.with-border:hover{
+    background-color: rgba(86,61,124,.3);
+    border: solid rgba(86,61,124,.6);
+}
 .message-dropdown {
     padding: 0;
     max-height: 250px;
@@ -33,4 +37,7 @@ button, input, optgroup, select, textarea {
 .badge {
   font-family: Sahel;
   color: black;
+}
+kbd {
+  font-family: WWDigital;
 }
