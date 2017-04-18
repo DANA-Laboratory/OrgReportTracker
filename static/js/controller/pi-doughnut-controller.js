@@ -35,7 +35,7 @@ angular.module('PIR').controller("DoughnutCtrl", ['$scope', function ($scope) {
     ctx.beginPath();
     ctx.arc(centerx, centery, 2, 0, 2*Math.PI);
     ctx.stroke();
-    ctx.fillStyle="black";
+    ctx.fillStyle="#cfd2da";
     ctx.textAlign = "center";
     ctx.font= size[0] + "px Yekan";
     ctx.fillText(pi_name + ' ' + pi_unit, centerx, centery + 2 * size[0]);
