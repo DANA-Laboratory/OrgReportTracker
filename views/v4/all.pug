@@ -1,4 +1,15 @@
-.row.justify-content-center
+.row.align-items-start
+  .col
+  .col-9
+    .alert.alert-info.alert-dismissable
+        button.close(type='button', data-dismiss='alert', aria-hidden='true') ×
+        i.fa.fa-info-circle
+        strong پیام آزمایشی:
+        a.alert-link(href='http://github.com/Dana-Laboratory/PIReporter') PI Reporter
+        | یک نرم افزار آزاد جهت کمک به تهیه گزارشات مدیریت میباشد.
+
+.row.align-items-start.ml-1
+  .col
   a.col-3.with-border.text-center(ng-controller='DoughnutCtrl', href='#')
     canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
   a.col-3.with-border.text-center(ng-controller='DoughnutCtrl', href='#')
