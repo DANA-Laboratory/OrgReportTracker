@@ -1,4 +1,4 @@
-var app = angular.module('PIR', ['ui.grid', 'ui.grid.edit', 'ui.grid.cellNav', 'ngRoute', 'chart.js', 'ui.bootstrap', 'ngResource']);
+var app = angular.module('PIR', ['ui.grid', 'ui.grid.edit', 'ui.grid.cellNav', 'ngRoute', 'chart.js', 'ngResource']);
 var sort_by = function(field, reverse, primer){
    var key = primer ?
        function(x) {return primer(x[field])} :
@@ -81,7 +81,7 @@ var sort_by = function(field, reverse, primer){
             var show = true;
             var hasrelation = false;
             for (key in $scope.selected) {
-                let _key = key.toLowerCase() + '_id';
+                var _key = key.toLowerCase() + '_id';
                 if (!item.hasOwnProperty(_key)) {
                     continue;
                 }

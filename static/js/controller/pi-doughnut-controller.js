@@ -11,17 +11,17 @@ var size=normall;
 angular.module('PIR').controller("DoughnutCtrl", ['$scope', function ($scope) {
   var originalDraw = Chart.controllers.doughnut.prototype.draw;
   var afterOriginalDraw = function(chart) {
-    let ctx = chart.chart.ctx;
-    let left = chart.boxes[0].left;
-    let right = chart.boxes[0].right;
-    let top = chart.boxes[0].top;
-    let bottom = chart.boxes[0].bottom;
-    let centerx = (left+right)/2 + chart.offsetX;
-    let centery = (top+bottom)/2 - chart.offsetY;
-    let radius = chart.outerRadius;
-    let width = chart.outerRadius - chart.innerRadius;
-    let x = (right)/2;
-    let teta=Math.PI/(stop-start)*pi_value;
+    var ctx = chart.chart.ctx;
+    var left = chart.boxes[0].left;
+    var right = chart.boxes[0].right;
+    var top = chart.boxes[0].top;
+    var bottom = chart.boxes[0].bottom;
+    var centerx = (left+right)/2 + chart.offsetX;
+    var centery = (top+bottom)/2 - chart.offsetY;
+    var radius = chart.outerRadius;
+    var width = chart.outerRadius - chart.innerRadius;
+    var x = (right)/2;
+    var teta=Math.PI/(stop-start)*pi_value;
     ctx.beginPath();
     ctx.lineWidth=1;
     ctx.moveTo(centerx, centery);

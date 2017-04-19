@@ -6,7 +6,8 @@ angular.module('PIR').config(['ChartJsProvider', function (ChartJsProvider) {
     animation: false,
   });
   ChartJsProvider.setOptions('global', {
-    defaultFontColor: '#cfd2da'
+    defaultFontColor: '#cfd2da',
+    defaultFontFamily: 'Yekan'
   });
   ChartJsProvider.setOptions('tooltips', {
     titleFontFamily: 'Yekan',

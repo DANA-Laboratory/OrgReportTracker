@@ -1,102 +1,43 @@
-@font-face {
-    font-family: WWDigital;
-    src: url('/fonts/wwDigital.ttf') format('truetype');
+
+body{
+  font-family: Tanha;
+  background-color: #252830;
 }
-@font-face {
-    font-family: Yekan;
-    src: url('/fonts/BYekan+ Bold.ttf') format('truetype');
-    font-weight: bold;
+.with-border{
+    color: #cfd2da;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    padding-top: .1rem;
+    padding-bottom: .5rem;
+    background-color: rgba(86,61,124,.2);
+    border: 2px solid rgba(86,61,124,.9);
 }
-@font-face {
-    font-family: Yekan;
-    src: url('/fonts/BYekan+.ttf') format('truetype');
+.with-border:hover{
+    background-color: rgba(86,61,124,.3);
+    border: 2px solid rgba(86,61,124,.6);
 }
-@font-face {
-    font-family: Elham;
-    src: url('/fonts/elham.ttf') format('truetype');
+.message-dropdown {
+    padding: 0;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
-.chart-container {
-  padding-top: 5px;
-  padding-bottom: 35px;
+.navbar-inverse .navbar-nav .btn-outline-secondary:hover {
+    color: rgba(0,0,0,0.9);
 }
-.chart-line {
+.navbar-inverse .navbar-nav .btn-outline-secondary:focus {
+    box-shadow: 0 0 0 2px rgba(2,117,216,.7);
 }
-.chart-doughnut {
+button, input, optgroup, select, textarea {
+  font-family: Yekan;
 }
-.zoomControls {
-  text-align: left;
+.form {
+  font-family: Yekan;
 }
-#_AnnotationChart_legendContainer {
-  text-align: right;
-  direction: rtl;
-}
-body {
-  font-family: Yekan, Elham, Tahoma, Arial;
+.badge {
+  font-family: Sahel;
+  color: black;
 }
 kbd {
   font-family: WWDigital;
-}
-.title{
-  font-family: Yekan;
-  font-size: large;
-}
-.grid {
-  height: 400px;
-  font-size: smaller;
-}
-.anchor-grid {
-  margin: 0.2em
-}
-.label {
-  font-weight: normal
-}
-
-/*
-  ****
-    From sb-admin
-  ****
-*/
-
-/* Side Navigation */
-
-@media(min-width:768px) {
-    .side-nav {
-        position: fixed;
-        top: 51px;
-        left: 200px;
-        width: 200px;
-        margin-left: -200px;
-        border: none;
-        border-radius: 0;
-        overflow-y: overlay;
-        background-color: #222;
-        bottom: 0;
-        overflow-x: hidden;
-        padding-bottom: 40px;
-    }
-
-    .side-nav>li>a {
-        width: 200px;
-    }
-
-    .side-nav li a:hover,
-    .side-nav li a:focus {
-        outline: none;
-        background-color: #500 !important;
-    }
-}
-
-.side-nav>li>ul, .side-nav>ul, .side-nav>li>ul>li>ul {
-    padding: 0;
-}
-
-.side-nav>li>ul>li>a {
-    display: block;
-    padding: 5px 20px 5px 38px;
-    text-decoration: none;
-    color: #999;
-}
-
-.side-nav>li>ul>li>a:hover {
-    color: #fff;
 }
