@@ -1,8 +1,10 @@
 doctype html
-html(ng-app='PIR')
+html(ng-cloak ng-app='PIR')
   head
     include head.pug
   body
     include nav.pug
     .container-fluid
       include all.pug
+// Site app
+include head/scripts.pug

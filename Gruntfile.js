@@ -4,13 +4,6 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    copy: {
-      main: {
-          // includes files within path
-          src: 'static/css/bootstrap-rtl.css',
-          dest: 'static/bower_components/bootstrap/dist/css/bootstrap-rtl.css',
-      },
-    },
     env: {
       dev : {
         NODE_ENV : 'development'
@@ -81,7 +74,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha-test');
-  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Default task.
   grunt.registerTask('default', ['env:test', 'jshint', 'mochaTest']);
