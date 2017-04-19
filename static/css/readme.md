@@ -14,3 +14,11 @@ Make a RTL vertion of _BootStrap V4_
   sed -i 's/.pl-/.pr-/g' ./bootstrap-rtl.css
   sed -i 's/.pright-/.pl-/g' ./bootstrap-rtl.css
 ```
+A hake:
+  html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+Remember to remove bootstrap.css.map line
