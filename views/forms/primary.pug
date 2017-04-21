@@ -1,0 +1,27 @@
+each primaryFormName in  ['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef']
+  form.card.form.mb-3
+    .card-header.card-primary.text-center= fa[primaryFormName]['header']
+    .card-block
+      if primaryFormName === 'User'
+        include primary-block-User.pug
+      if primaryFormName === 'ReportClass'
+        include primary-block-ReportClass.pug
+      if primaryFormName === 'VariableCat_1'
+        include primary-block-VariableCat_1.pug
+      if primaryFormName === 'VariableCat_2'
+        include primary-block-VariableCat_2.pug
+      if primaryFormName === 'VariableCat_3'
+        include primary-block-VariableCat_3.pug
+      if primaryFormName === 'VariableDef'
+        include primary-block-VariableDef.pug
+    .card-footer
+      .d-flex.flex-row-reverse
+        .pr-2
+          button.btn.btn-success(type='submit')= fa['submit']
+            i.fa.fa-check.fa-fw
+        .pr-2
+          button.btn.btn-warning(type='submit')= fa['create new']
+            i.fa.fa-plus.fa-fw
+        .pr-2
+          button.btn.btn-danger(type='submit')= fa['remove']
+            i.fa.fa-remove.fa-fw

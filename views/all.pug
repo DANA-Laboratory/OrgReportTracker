@@ -7,19 +7,6 @@
         strong پیام آزمایشی:
         a.alert-link(href='http://github.com/Dana-Laboratory/PIReporter') PI Reporter
         | یک نرم افزار آزاد جهت کمک به تهیه گزارشات مدیریت میباشد.
-
-.row.align-items-start.ml-1
-  .col
-  a.col-3.with-border.text-center(ng-controller='DoughnutCtrl', href='#')
-    canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
-  a.col-3.with-border.text-center(ng-controller='DoughnutCtrl', href='#')
-    canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
-  a.col-3.with-border.text-center(ng-controller='DoughnutCtrl', href='#')
-    canvas.chart.chart-doughnut(chart-data='data', chart-options='options', chart-dataset-override='datasetOverride')
-.row.align-items-start.ml-1
-  .col
-  .col-9.with-border
-    include forms/pi.pug
 - var n = 0
 - var cn = ['1d 12h 30min', '1d 12h 30min', '1d 12h 30min', '1d 12h 30min']
 - var tx = ['New Comments!', 'New Tasks!', 'Users', 'Support Tickets!']
@@ -43,7 +30,7 @@
       - var menuitem = 'User'
       include forms/resultsmenuitem.pug
       - var menuitem = 'ReportClass'
-      include forms/resultsmenuitem.pug    
+      include forms/resultsmenuitem.pug
       - var menuitem = 'VariableCat_1'
       include forms/resultsmenuitem.pug
       - var menuitem = 'VariableCat_2'
@@ -53,8 +40,8 @@
       - var menuitem = 'vVariableDef'
       include forms/resultsmenuitem.pug
   .col-9
-    include forms/openreport.pug
+    include forms/primary.pug
 .row.align-items-start
   .col.with-border
   .col-9
-    include forms/user.pug
+    include forms/openreport.pug

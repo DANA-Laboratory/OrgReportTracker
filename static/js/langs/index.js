@@ -10,7 +10,7 @@ const fa = {
   'attachments': 'پیوست ها',
   'categories': 'طبقه بندی شاخص ها',
   'config': 'تنظیمات',
-  'create new': 'کاربری جدید',
+  'create new': 'جدید',
   'dashboard': 'داشبورد',
   'design': 'طراحی',
   'design & configurations': 'طراحی و تنظیم',
@@ -62,7 +62,7 @@ const fa = {
   'result 3': 'گزارش',
   'result 4': 'کاربر',
   'result 5': 'پیام',
-  'remove account': 'حذف کاربری',
+  'remove': 'حذف',
   'reviewer': 'ناظر',
   'sample log': "how to add a line break here: <br/> must be on a new line.",
   'sample user': 'حامد روحانی',
@@ -85,7 +85,6 @@ const fa = {
   'user log': 'فعالیت های کاربر:(کلیک نمایید)',
   'user progress': 'وضعیت کاربر',
   'user permission': 'مجوزهای کاربر',
-  'userform': 'اطلاعات کاربری',
   'username': 'نام کاربری',
   'users': 'کاربران',
   'view all': 'نمایش همه',
@@ -114,6 +113,9 @@ const fa = {
   'VariableCat_3':'زیر گروه ها',
   'VariableDef':'متغییرها',
   'vVariableDef':'متغییرها',
+  'User': {
+    'header': 'اطلاعات کاربری',
+  },
 };
 if(typeof exports !== 'undefined') {
   module.exports = fa;

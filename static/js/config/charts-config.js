@@ -5,10 +5,10 @@ angular.module('PIR').config(['ChartJsProvider', function (ChartJsProvider) {
     responsive: true,
     animation: false,
   });
-  ChartJsProvider.setOptions('global', {
-    defaultFontColor: '#cfd2da',
-    defaultFontFamily: 'Yekan'
-  });
+//  ChartJsProvider.setOptions('global', {
+//    defaultFontColor: '#cfd2da',
+//    defaultFontFamily: 'Yekan'
+//  });
   ChartJsProvider.setOptions('tooltips', {
     titleFontFamily: 'Yekan',
     position: 'nearest',

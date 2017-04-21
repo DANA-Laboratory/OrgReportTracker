@@ -1,0 +1,14 @@
+caption , duration , caption_pitypes , weight_pitypes , attribute );\
+
+.row
+  .form-group.row
+    label.col-2.col-form-label(for='family')= fa['family']
+    .col
+      input#family.form-control(type='family', ng-model='lname')
+  .form-group.row
+    label.col-3.col-form-label(for='workunit')= fa['workunit']
+    .col
+      .dropdown(ng-controller="scopeUpdater")
+        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle.col(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false', ng-init=`selectedWorkunit="${fa['workunit']}"`) {{selectedWorkunit}}
+        .dropdown-menu(aria-labelledby='dropdownMenuButton')
+          a.dropdown-item(ng-href='#' ng-click='setVar("selectedWorkunit", x)' ng-repeat=`x in ${fa["workunits"]}`) {{x}}

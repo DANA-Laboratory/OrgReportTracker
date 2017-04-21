@@ -9,7 +9,7 @@ var sort_by = function(field, reverse, primer){
      }
 };
 
-['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'vVariableDef']
+['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'vVariableDef']
 .forEach((urlobject)=>{
     app.factory(urlobject, ['$resource',
         function($resource) {
@@ -43,7 +43,7 @@ var sort_by = function(field, reverse, primer){
   );
 });
 
-['Log', 'User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'vVariableDef']
+['Log', 'User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'vVariableDef']
 .forEach((urlobject)=>{
   app.controller(urlobject + 'Controller',['$scope', urlobject, function ($scope, resource) {
         $scope.get = function () {

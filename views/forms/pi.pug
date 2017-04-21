@@ -1,8 +1,11 @@
--var tx = 'pi title'
-.row.text-center
-  .col= fa['pi title']
-    a(href='#').float-left
-      .fa.fa-cogs(data-toggle="tooltip" title=fa['config'])
-.row
-  .col-md-12.text-center.chart-container(ng-controller='LineCtrl')
-    canvas.chart.chart-line(chart-data='data', chart-labels='labels', chart-series='series', chart-click='onClick', chart-options='options')
+.row.align-items-start.ml-1
+  .col
+  .col-9.with-border
+    -var tx = 'pi title'
+    .row.text-center
+      .col= fa['pi title']
+        a(href='#').float-left
+          .fa.fa-cogs(data-toggle="tooltip" title=fa['config'])
+    .row
+      .col-md-12.text-center.chart-container(ng-controller='LineCtrl')
+        canvas.chart.chart-line(chart-data='data', chart-labels='labels', chart-series='series', chart-click='onClick', chart-options='options')
