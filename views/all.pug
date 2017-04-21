@@ -24,21 +24,20 @@
 .row.align-items-start.mb-3
   while n < 4
     include forms/panel.pug
-.row.align-items-start.mb-3
+.row.align-items-start.mb-3(ng-controller="selectController")
   .col
-    div(ng-controller="selectController")
-      - var menuitem = 'User'
-      include forms/resultsmenuitem.pug
-      - var menuitem = 'ReportClass'
-      include forms/resultsmenuitem.pug
-      - var menuitem = 'VariableCat_1'
-      include forms/resultsmenuitem.pug
-      - var menuitem = 'VariableCat_2'
-      include forms/resultsmenuitem.pug
-      - var menuitem = 'VariableCat_3'
-      include forms/resultsmenuitem.pug
-      - var menuitem = 'vVariableDef'
-      include forms/resultsmenuitem.pug
+    - var menuitem = 'User'
+    include forms/resultsmenuitem.pug
+    - var menuitem = 'ReportClass'
+    include forms/resultsmenuitem.pug
+    - var menuitem = 'VariableCat_1'
+    include forms/resultsmenuitem.pug
+    - var menuitem = 'VariableCat_2'
+    include forms/resultsmenuitem.pug
+    - var menuitem = 'VariableCat_3'
+    include forms/resultsmenuitem.pug
+    - var menuitem = 'vVariableDef'
+    include forms/resultsmenuitem.pug
   .col-9
     include forms/primary.pug
 .row.align-items-start
