@@ -1,8 +1,17 @@
 .row
   div(ng-controller=`VariableCat_2Controller`, ng-init="query()", style="font-family: Yekan;")
-    div(ng-repeat='item in data')
-      .row(ng-if='filter(item)')
-        i.fa.fa-check(ng-show='isSelected(item.id)')
-        span.badge.badge-pill.badge-info.mx-1
-          | {{item.code}}
-        | {{item.caption}}
+    table.table.table-hover.table-responsive
+      thead
+        tr
+          th= fa['code']
+          th= fa['caption']
+          th= fa['weight']
+      tbody
+        tr(ng-repeat='item in data', ng-if='filter(item)')
+          th(scope='row') 
+            span.badge.badge-pill.badge-info.mx-1
+              | {{item.code}}
+          td
+            | {{item.caption}}
+          td
+            input(type="number" ng-model="item.weight")
