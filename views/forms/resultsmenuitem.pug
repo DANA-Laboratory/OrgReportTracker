@@ -4,7 +4,7 @@
       = fa[menuitem]['header']
       i.fa.fa-fw.fa-caret-down
   .collapse(role='tabpanel', aria-labelledby='headingOne', id= `${menuitem}`)
-    .card-block(ng-controller=`${menuitem}Controller`, ng-init="query()", style="font-family: Yekan; direction: rtl; max-height: 200px; overflow-x:hidden; overflow-y: auto")
+    .card-block.with-nav-block(ng-controller=`${menuitem}Controller`, ng-init="query()")
       div(ng-repeat='item in data')
         a(href=``, ng-click='selectitem(item.id)', ng-if='filter(item)')
           i.fa.fa-check(ng-show='isSelected(item.id)')

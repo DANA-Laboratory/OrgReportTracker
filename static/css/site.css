@@ -16,6 +16,13 @@ body{
     background-color: rgba(86,61,124,.3);
     border: 2px solid rgba(86,61,124,.6);
 }
+.with-nav-block {
+    font-family: Yekan;
+    direction: rtl;
+    max-height: 200px;
+    overflow-x:hidden;
+    overflow-y: auto;
+}
 .message-dropdown {
     padding: 0;
     max-height: 250px;
