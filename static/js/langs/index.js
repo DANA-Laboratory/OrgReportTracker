@@ -8,6 +8,7 @@ const fa = {
   'alert warning': 'هشدار',
   'attach': 'پیوست',
   'attachments': 'پیوست ها',
+  'attribute': 'مشخصات',
   'caption': 'عنوان',
   'categories': 'طبقه بندی شاخص ها',
   'code': 'کد',

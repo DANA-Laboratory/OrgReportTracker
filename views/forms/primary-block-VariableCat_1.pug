@@ -1,17 +1,2 @@
-.row
-  div(ng-controller=`VariableCat_2Controller`, ng-init="query()", style="font-family: Yekan;")
-    table.table.table-hover.table-responsive
-      thead
-        tr
-          th= fa['code']
-          th= fa['caption']
-          th= fa['weight']
-      tbody
-        tr(ng-repeat='item in data', ng-if='filter(item)')
-          th(scope='row') 
-            span.badge.badge-pill.badge-info.mx-1
-              | {{item.code}}
-          td
-            | {{item.caption}}
-          td
-            input(type="number" ng-model="item.weight")
+-var contoroller = 'VariableCat_2Controller'
+include primary-block-VariableCat.pug
