@@ -57,7 +57,7 @@ var sort_by = function(field, reverse, primer){
         };
         $scope.query = function (callback) {
             if(urlobject!=='Log'){
-                $scope.selected[urlobject] = new Set();
+                $scope.registerSelected(urlobject, callback);
                 var res = resource.query({}, function(data) {
                     if (urlobject !== 'User') {
                         $scope.data = res.sort(sort_by('code'));
@@ -71,33 +71,58 @@ var sort_by = function(field, reverse, primer){
             };
         };
         $scope.isSelected = function (id) {
-            return $scope.selected[urlobject].has(id);
+            return $scope.selectedHas(urlobject, id);
         };
         $scope.selectitem = function (id) {
-            if ($scope.selected[urlobject].has(id)) {
-                $scope.selected[urlobject].delete(id);
-            } else {
-                $scope.selected[urlobject].add(id);
-            }
-        };
-        $scope.filter = function (item) {
-            var show = true;
-            var hasrelation = false;
-            for (key in $scope.selected) {
-                var _key = key.toLowerCase() + '_id';
-                if (!item.hasOwnProperty(_key)) {
-                    continue;
-                }
-                hasrelation = true;
-                show = show && (($scope.selected[key].size==0) || $scope.selected[key].has(item[_key]))
-            }
-            return !hasrelation || show;
+            $scope.updateSelected(urlobject, id);
         };
   }]);
 });
 
 app.controller('selectController', function ($scope) {
-    $scope.selected = {};
+    var selected = {};
+    var callbacks = {};
+    $scope.registerSelected = function(key, callback) {
+        selected[key] = new Set();
+        if (callback !== undefined) {
+            callbacks[key] = callback;
+        }
+    }
+    $scope.updateSelected = function(key, value) {
+        if (selected[key].has(value)) {
+            selected[key].delete(value);
+        } else {
+            selected[key].add(value);
+        }
+    }
+    $scope.selectedHas = function(key, value) {
+        return selected[key].has(value);
+    }
+    $scope.selectedIsEmpty = function(key) {
+        return (selected[key].size === 0)
+    }
+    $scope.filter = function (item) {
+        var show = true;
+        var hasrelation = false;
+        for (key in selected) {
+            var _key = key.toLowerCase() + '_id';
+            if (_key !== 'user_id') {
+                if (!item.hasOwnProperty(_key)) {
+                    continue;
+                }
+                hasrelation = true;
+                show = show && (($scope.selectedIsEmpty(key)) || $scope.selectedHas(key, item[_key]));
+            } else {
+                for (many in item) {
+                    if (many.substring(0, 5) === 'user_') {
+                        hasrelation = true;
+                        show = show && (($scope.selectedIsEmpty(key)) || $scope.selectedHas(key, item[many]));
+                    }
+                }
+            }
+        }
+        return !hasrelation || show;
+    };
 });
 
 app.controller('scopeUpdater', function ($scope) {

@@ -37,6 +37,6 @@ angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
     };
     $scope.callback = function(data) {
       $scope.gridOptions.data = data;
-      console.log(data);
+      //console.log(data);
     };
 }]);
