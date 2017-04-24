@@ -1,20 +1,4 @@
-.row
-  div(ng-controller=`${contoroller}`, ng-init="query()", style="font-family: Yekan;")
-    table.table.table-hover.table-responsive
-      thead
-        tr
-          th= fa['code']
-          th= fa['caption']
-          th= fa['weight']
-          th= fa['attribute']
-      tbody
-        tr(ng-repeat='item in data', ng-if='filter(item)')
-          th(scope='row') 
-            span.badge.badge-pill.badge-info.mx-1
-              | {{item.code}}
-          td
-            | {{item.caption}}
-          td
-            input(type="number" ng-model="item.weight")
-          td
-            | {{item.attribute}}
+div(ng-controller=`${contoroller}`, style="font-family: Yekan;")
+  .small
+    .div(ng-controller='cat-grid', ng-init='query(callback)')
+      div(ui-grid='gridOptions' class="grid" dir='rtl' ui-grid-edit ui-grid-cellnav)

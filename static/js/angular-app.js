@@ -55,14 +55,17 @@ var sort_by = function(field, reverse, primer){
                 };
             });
         };
-        $scope.query = function () {
+        $scope.query = function (callback) {
             if(urlobject!=='Log'){
                 $scope.selected[urlobject] = new Set();
-                var res = resource.query({}, function() {
-                    if (urlobject!=='User') {
+                var res = resource.query({}, function(data) {
+                    if (urlobject !== 'User') {
                         $scope.data = res.sort(sort_by('code'));
                     } else {
                         $scope.data = res.sort(sort_by('lname'));
+                    }
+                    if (callback !== undefined) {
+                        callback($scope.data);
                     }
                 });
             };
