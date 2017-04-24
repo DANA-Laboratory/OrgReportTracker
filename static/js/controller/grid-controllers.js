@@ -36,7 +36,12 @@ angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
       ]
     };
     $scope.callback = function(data) {
-      $scope.gridOptions.data = data;
+      if (data !== undefined) {
+        $scope.gridOptions.data = data;
+      } else {
+        $scope.gridOptions.data = $scope.data.filter($scope.filter);
+      }
       //console.log(data);
+      //console.log('here in callback');
     };
 }]);

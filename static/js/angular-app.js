@@ -94,6 +94,9 @@ app.controller('selectController', function ($scope) {
         } else {
             selected[key].add(value);
         }
+        for (key_ in callbacks) {
+            callbacks[key_]();
+        }
     }
     $scope.selectedHas = function(key, value) {
         return selected[key].has(value);
