@@ -95,7 +95,6 @@ var sort_by = function(field, reverse, primer){
 app.controller('selectController', function ($scope) {
     var selected = {};
     var callbacks = {};
-    var latestselected = {};
     $scope.registerSelected = function(key, callback) {
         if (!(key in selected)) {
           selected[key] = new Set();
@@ -105,12 +104,10 @@ app.controller('selectController', function ($scope) {
         }
     }
     $scope.updateSelected = function(key, value) {
-        latestselected = {};
         if (selected[key].has(value)) {
             selected[key].delete(value);
         } else {
             selected[key].add(value);
-            latestselected[key] = value;
         }
         for (key_ in callbacks) {
             callbacks[key_]();
@@ -122,7 +119,9 @@ app.controller('selectController', function ($scope) {
     $scope.selectedIsEmpty = function(key) {
         return (selected[key].size === 0)
     }
-    $scope.getlatestselected = (key) => {return (key in latestselected) ? latestselected[key] : -1;};
+    $scope.getlatestselected = (key) => {
+      return ((key in selected) && selected[key].size>0) ? [...selected[key]][selected[key].size-1] : -1;
+    };
     $scope.filter = function (item) {
         var show = true;
         var hasrelation = false;
