@@ -2,17 +2,17 @@ form.card.form.mb-3
   .card-header.card-primary.text-center= fa[menuitem]['header']
   .card-block
     if menuitem === 'User'
-      include primary-block-User.pug
+      include filtered-block-User.pug
     if menuitem === 'ReportClass'
-      include primary-block-ReportClass.pug
+      include filtered-block-ReportClass.pug
     if menuitem === 'VariableCat_1'
-      include primary-block-VariableCat_1.pug
+      include filtered-block-VariableCat_1.pug
     if menuitem === 'VariableCat_2'
-      include primary-block-VariableCat_2.pug
+      include filtered-block-VariableCat_2.pug
     if menuitem === 'VariableCat_3'
-      include primary-block-VariableCat_3.pug
+      include filtered-block-VariableCat_3.pug
     if menuitem === 'vVariableDef'
-      include primary-block-VariableDef.pug
+      include filtered-block-VariableDef.pug
   .card-footer
     .d-flex.flex-row-reverse
       .pr-2
