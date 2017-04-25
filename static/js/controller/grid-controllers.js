@@ -24,6 +24,10 @@ angular.module('PIR').controller('report-grid', ['$scope', '$http', function ($s
     });
 }]);
 angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
+    $scope.init = function(masterField) {
+        $scope.masterField = masterField;
+        $scope.query($scope.callback);
+    }
     $scope.gridOptions = {
       enableColumnMenus: false,
       enableFiltering: true,
@@ -36,10 +40,13 @@ angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
       ]
     };
     $scope.callback = function(data) {
-      if (data !== undefined) {
-        $scope.gridOptions.data = data;
+      if (data === undefined) {
+          data = $scope.data;
+      }
+      if (($scope.masterField !== undefined)) {
+          $scope.gridOptions.data = data.filter((item)=>{return item[$scope.masterField.toLowerCase()+'_id'] === $scope.getlatestselected($scope.masterField)});
       } else {
-        $scope.gridOptions.data = $scope.data.filter($scope.filter);
+          $scope.gridOptions.data = data.filter($scope.filter);
       }
       //console.log(data);
       //console.log('here in callback');
