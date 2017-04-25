@@ -42,7 +42,7 @@ var sort_by = function(field, reverse, primer){
     }]
   );
 });
-
+//controllers for resources
 ['Log', 'User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'vVariableDef']
 .forEach((urlobject)=>{
   app.controller(urlobject + 'Controller',['$scope', urlobject, function ($scope, resource) {
@@ -56,7 +56,7 @@ var sort_by = function(field, reverse, primer){
             });
         };
         $scope.query = function (callback) {
-            if(urlobject!=='Log'){
+            if(urlobject!=='Log') {
                 $scope.registerSelected(urlobject, callback);
                 var res = resource.query({}, function(data) {
                     if (urlobject !== 'User') {
@@ -64,8 +64,14 @@ var sort_by = function(field, reverse, primer){
                     } else {
                         $scope.data = res.sort(sort_by('lname'));
                     }
+
                     if (callback !== undefined) {
                         callback($scope.data);
+                    }
+                    if ($scope.getlatestselected(urlobject) > -1) {
+                        var i = 0;
+                        while(data[i++].id !== $scope.getlatestselected(urlobject));
+                        $scope.load(data[i-1]);
                     }
                 });
             };
@@ -76,23 +82,35 @@ var sort_by = function(field, reverse, primer){
         $scope.selectitem = function (id) {
             $scope.updateSelected(urlobject, id);
         };
+        $scope.load = function (item) {
+            for (key in item) {
+                if (item.hasOwnProperty(key)){
+                    $scope[key] = item[key];
+                }
+            }
+        };
   }]);
 });
 
 app.controller('selectController', function ($scope) {
     var selected = {};
     var callbacks = {};
+    var latestselected = {};
     $scope.registerSelected = function(key, callback) {
-        selected[key] = new Set();
+        if (!(key in selected)) {
+          selected[key] = new Set();
+        }
         if (callback !== undefined) {
             callbacks[key] = callback;
         }
     }
     $scope.updateSelected = function(key, value) {
+        latestselected = {};
         if (selected[key].has(value)) {
             selected[key].delete(value);
         } else {
             selected[key].add(value);
+            latestselected[key] = value;
         }
         for (key_ in callbacks) {
             callbacks[key_]();
@@ -104,6 +122,7 @@ app.controller('selectController', function ($scope) {
     $scope.selectedIsEmpty = function(key) {
         return (selected[key].size === 0)
     }
+    $scope.getlatestselected = (key) => {return (key in latestselected) ? latestselected[key] : -1;};
     $scope.filter = function (item) {
         var show = true;
         var hasrelation = false;

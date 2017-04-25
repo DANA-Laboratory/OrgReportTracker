@@ -25,11 +25,12 @@
   while n < 4
     include forms/panel.pug
 div(ng-controller="selectController")
-  each menuitem in ['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'vVariableDef']
-    .row.align-items-start.mb-3
-      .col
-        include forms/resultsmenuitem.pug
-      .col-9
+  .row.align-items-start.mb-3
+    .col
+      each menuitem in ['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'vVariableDef']
+        include forms/selectmenu.pug
+    .col-9
+      each menuitem in ['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'vVariableDef']
         include forms/filtered/filtered-card.pug
 .row.align-items-start
   .col.with-border

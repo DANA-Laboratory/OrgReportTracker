@@ -18,6 +18,7 @@ const fa = {
   'design': 'طراحی',
   'design & configurations': 'طراحی و تنظیم',
   'dont have an account!': 'حساب کابری ندارید!',
+  'duration': 'دوره',
   'edit time': 'زمان ویرایش',
   'employee id code': 'کد پرسنلی',
   'department': 'اداره',
@@ -44,6 +45,7 @@ const fa = {
   'option 1': 'مالی',
   'option 2': 'ذی نفعان',
   'option 3': 'رشد و یادگیری',
+  'owner': 'مالک',
   'password': 'کلمه عبور',
   'pi category': 'گروه',
   'pi entered': 'دستاورد های ثبت شده',
@@ -112,6 +114,10 @@ const fa = {
   'system administrator': 'مدیر سیستم',
   'ReportClass': {
     'header':  'گزارشات',
+    'caption_cat_1': 'معادل برای مجموعه ها',
+    'caption_cat_2': 'معادل برای گروهها',
+    'caption_cat_3': 'معادل برای زیرگروهها',
+    'caption_variable': 'معادل برای متغییرها',
   },
   'VariableCat_1': {
     'header':  'مجموعه ها',
