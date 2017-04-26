@@ -37,6 +37,7 @@ angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
         { name:fa['code'], width: '10%', field: 'code'},
         { name:fa['caption'], width: '50%', field: 'caption'},
         { name:fa['weight'], width: '10%', field: 'weight'},
+        { name:fa['share'], width: '10%', field: 'share', enableCellEdit:false},
         { name:fa['attribute'], field: 'attribute', enableCellEdit:false},
       ]
     };
@@ -49,5 +50,7 @@ angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
       } else {
           $scope.gridOptions.data = data.filter($scope.filter);
       }
+      var sum = $scope.gridOptions.data.reduce((a,b)=>(a+b.weight), 0);
+      $scope.gridOptions.data.forEach((item)=>{item.share=item.weight/sum*100});
     };
 }]);

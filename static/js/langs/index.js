@@ -73,6 +73,7 @@ const fa = {
   'sample user': 'حامد روحانی',
   'sample variable': 'یک متغییر با نام نسبتا طولانی میتواند باشد',
   'settings': 'تنظیمات',
+  'share': 'سهم(درصد)',
   'sign in': 'اشتراک',
   'sign up here': 'مشترک شوید',
   'statistics overview': 'آمار کلی',
