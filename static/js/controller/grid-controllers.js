@@ -31,6 +31,7 @@ angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
     $scope.gridOptions = {
       enableColumnMenus: false,
       enableFiltering: true,
+      enableRowHashing:false,
       columnDefs: [
         { name:fa['commands'], width: '5%', enableCellEdit:false, enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents text-center"><a href="#" class="anchor-grid fa fa-remove fa-fw" style="color:red"></a></div>'},
         { name:fa['code'], width: '10%', field: 'code'},
@@ -43,12 +44,10 @@ angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
       if (data === undefined) {
           data = $scope.data;
       }
-      if (($scope.masterField !== undefined)) {
+      if ($scope.masterField !== undefined) {
           $scope.gridOptions.data = data.filter((item)=>{return item[$scope.masterField.toLowerCase()+'_id'] === $scope.getlatestselected($scope.masterField)});
       } else {
           $scope.gridOptions.data = data.filter($scope.filter);
       }
-      //console.log(data);
-      //console.log('here in callback');
     };
 }]);
