@@ -9,10 +9,16 @@ angular.module('PIR').controller('report-grid', ['$scope', '$http', function ($s
         { name:fa['pi category'], field: 'PI category'},
         { name:fa['pi weight'], field: 'PI weight', type:'number' },
         { name:fa['pi target'], field: 'PI target', type:'number' },
-        { name:fa['unit'], field: 'Unit', enableCellEdit:false},
+        { name:fa['unit'], field: 'Unit', enableCellEdit:false },
         { name:fa['lower limit'], field: 'Lower Limit', enableCellEdit:false, type:'number'},
         { name:fa['upper limit'], field: 'Upper Limit', enableCellEdit:false, type:'number'},
-        { name:fa['edit time'], field: 'Edit Time', enableCellEdit:false}
+        { name:fa['edit time'], field: 'Edit Time', enableCellEdit:false},
+        { field: 'link', visible: false,
+          filter: {
+                      term: 1,
+                  }
+
+        }
       ]
     };
     $http.post('/data/report', {report: 'test'}).then(function(res){
