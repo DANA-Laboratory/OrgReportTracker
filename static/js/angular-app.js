@@ -13,9 +13,9 @@ var sort_by = function(field, reverse, primer){
 .forEach((urlobject)=>{
     app.factory(urlobject, ['$resource',
         function($resource) {
-            return $resource(`/restful/${urlobject}`, {}, {
+            return $resource(`/restful/${urlobject}/:where/:value`, {}, {
                 get: {method: 'GET', cache: false, isArray: false},
-                query:  {method:'GET', isArray:true, transformResponse: function (data)
+                query: {method:'GET', isArray:true, transformResponse: function (data)
                     {
                         return angular.fromJson(data);
                     },
@@ -55,10 +55,10 @@ var sort_by = function(field, reverse, primer){
                 };
             });
         };
-        $scope.query = function (callback) {
+        $scope.query = function (where, callback) {
             if(urlobject!=='Log') {
                 $scope.registerSelected(urlobject, callback);
-                var res = resource.query({}, function(data) {
+                var res = resource.query(where, function(data) {
                     if (urlobject !== 'User') {
                         $scope.data = res.sort(sort_by('code'));
                     } else {

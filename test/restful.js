@@ -125,6 +125,13 @@ describe('restful', function() {
             .expect(200)
             .end(done);
     });
+    it('should query where VariableCat_2', function(done) {
+        agent
+            .get('/restful/VariableCat_2/variablecat_1_id/1')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .end(done);
+    });
     it('should get a VariableCat_2', function(done) {
         agent
             .get('/restful/VariableCat_2/1')
@@ -135,6 +142,13 @@ describe('restful', function() {
     it('should query VariableCat_3', function(done) {
         agent
             .get('/restful/VariableCat_3')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .end(done);
+    });
+    it('should query where VariableCat_3', function(done) {
+        agent
+            .get('/restful/VariableCat_3/variablecat_2_id/1')
             .expect('Content-Type', /json/)
             .expect(200)
             .end(done);

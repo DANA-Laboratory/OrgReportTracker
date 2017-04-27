@@ -31,8 +31,7 @@ angular.module('PIR').controller('report-grid', ['$scope', '$http', function ($s
 }]);
 angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
     $scope.init = function(masterField) {
-        $scope.masterField = masterField;
-        $scope.query($scope.callback);
+        $scope.query({where: masterField.toLowerCase()+'_id', value: $scope.getlatestselected(masterField)}, $scope.callback);
     };
     $scope.$on('uiGridEventEndCellEdit', function (data) {
         updatesum();
@@ -55,15 +54,14 @@ angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
           data = $scope.data;
       }
       if ($scope.masterField !== undefined) {
-          $scope.gridOptions.data = data.filter((item)=>{return item[$scope.masterField.toLowerCase()+'_id'] === $scope.getlatestselected($scope.masterField)});
+          //$scope.gridOptions.data = data.filter((item)=>{return item[$scope.masterField.toLowerCase()+'_id'] === $scope.getlatestselected($scope.masterField)});
       } else {
-          $scope.gridOptions.data = data.filter($scope.filter);
+          //$scope.gridOptions.data = data.filter($scope.filter);
       }
       updatesum();
     };
     var updatesum = function() {
       var sum = $scope.gridOptions.data.reduce((a,b)=>((b.weight) + (a)), 0);
-      console.log(sum);
       $scope.gridOptions.data.forEach((item)=>{item.share = (item.weight/sum*100).toPrecision(4)});
     };
 }]);
