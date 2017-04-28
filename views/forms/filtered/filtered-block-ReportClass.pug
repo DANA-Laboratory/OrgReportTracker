@@ -1,4 +1,4 @@
-div(ng-controller='ReportClassController', ng-init='query()')
+div(ng-controller='ReportClassController', ng-init='get({where: getlatestselected("ReportClass")})')
   .form-group.row
     label.col-1.col-form-label(for='caption')= fa['caption']
     .col-4

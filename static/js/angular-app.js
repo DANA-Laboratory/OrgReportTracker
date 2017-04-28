@@ -46,12 +46,14 @@ var sort_by = function(field, reverse, primer){
 ['Log', 'User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'vVariableDef']
 .forEach((urlobject)=>{
   app.controller(urlobject + 'Controller',['$scope', urlobject, function ($scope, resource) {
-        $scope.get = function () {
-            var res = resource.get({}, function() {
-                $scope.data = res.data;
-                if(urlobject==='Log') {
+        $scope.get = function (where) {
+            var res = resource.get(where, function() {
+                if(urlobject === 'Log') {
                     $scope.log = "";
-                    $scope.data.forEach((item)=>{$scope.log += item.message + " @ " + item.timestamp + "\n"});
+                    res.data.forEach((item)=>{$scope.log += item.message + " @ " + item.timestamp + "\n"});
+                } else {
+                    //$scope.data = [res];
+                    $scope.load(res);
                 };
             });
         };
@@ -64,15 +66,16 @@ var sort_by = function(field, reverse, primer){
                     } else {
                         $scope.data = res.sort(sort_by('lname'));
                     }
-
                     if (callback !== undefined) {
                         callback($scope.data);
                     }
+                    /*
                     if ($scope.getlatestselected(urlobject) > -1) {
                         var i = 0;
                         while(data[i++].id !== $scope.getlatestselected(urlobject));
                         $scope.load(data[i-1]);
                     }
+                    */
                 });
             };
         };

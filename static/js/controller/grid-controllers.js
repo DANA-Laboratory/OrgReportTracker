@@ -17,7 +17,6 @@ angular.module('PIR').controller('report-grid', ['$scope', '$http', function ($s
           filter: {
                       term: 1,
                   }
-
         }
       ]
     };
@@ -30,7 +29,9 @@ angular.module('PIR').controller('report-grid', ['$scope', '$http', function ($s
     });
 }]);
 angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
+    $scope.masterField = null;
     $scope.init = function(masterField) {
+        $scope.masterField = masterField;
         $scope.query({where: masterField.toLowerCase()+'_id', value: $scope.getlatestselected(masterField)}, $scope.callback);
     };
     $scope.$on('uiGridEventEndCellEdit', function (data) {
@@ -51,14 +52,21 @@ angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
     };
     $scope.callback = function(data) {
       if (data === undefined) {
+          $scope.query({where: $scope.masterField.toLowerCase()+'_id', value: $scope.getlatestselected($scope.masterField)}, $scope.callback);
+      } else {
+          $scope.gridOptions.data = data;
+          updatesum();
+      }
+      /*
+      if (data === undefined) {
           data = $scope.data;
       }
       if ($scope.masterField !== undefined) {
-          //$scope.gridOptions.data = data.filter((item)=>{return item[$scope.masterField.toLowerCase()+'_id'] === $scope.getlatestselected($scope.masterField)});
+          $scope.gridOptions.data = data.filter((item)=>{return item[$scope.masterField.toLowerCase()+'_id'] === $scope.getlatestselected($scope.masterField)});
       } else {
-          //$scope.gridOptions.data = data.filter($scope.filter);
+          $scope.gridOptions.data = data.filter($scope.filter);
       }
-      updatesum();
+      */
     };
     var updatesum = function() {
       var sum = $scope.gridOptions.data.reduce((a,b)=>((b.weight) + (a)), 0);
