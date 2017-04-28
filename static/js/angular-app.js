@@ -32,7 +32,7 @@ var sort_by = function(field, reverse, primer){
 .forEach((urlobject)=>{
   app.factory(urlobject, ['$resource',
     function($resource) {
-      return $resource(`/restful/${urlobject}`, {}, {
+      return $resource(`/restful/${urlobject}/:where`, {}, {
           'get':    {method:'GET'},
           //'save':   {method:'POST'},
           //'query':  {method:'GET', isArray:true},
@@ -54,7 +54,7 @@ var sort_by = function(field, reverse, primer){
             //console.log(where);
             var res = resource.get(where, function() {
                 if(urlobject === 'Log') {
-                    $scope.log = "";
+                    $scope.log = '';
                     res.data.forEach((item)=>{$scope.log += item.message + " @ " + item.timestamp + "\n"});
                 } else {
                     //$scope.data = [res];
@@ -64,16 +64,19 @@ var sort_by = function(field, reverse, primer){
             });
         };
         $scope.getlatestselectedhandler = function() {
-            var res = resource.get({where: $scope.getlatestselected(urlobject)}, function() {
-                if(urlobject === 'Log') {
-                    $scope.log = "";
-                    res.data.forEach((item)=>{$scope.log += item.message + " @ " + item.timestamp + "\n"});
-                } else {
-                    //$scope.data = [res];
-                    //console.log(res);
-                    $scope.load(res);
-                };
-            });
+            var _where = (urlobject === 'Log') ? $scope.getlatestselected('User') : $scope.getlatestselected(urlobject);
+            if (_where >= 0) {
+                var res = resource.get({where: _where}, function() {
+                    if(urlobject === 'Log') {
+                        $scope.log = '';
+                        res.data.forEach((item)=>{$scope.log += item.message + " @ " + item.timestamp + "\n"});
+                    } else {
+                        //$scope.data = [res];
+                        //console.log(res);
+                        $scope.load(res);
+                    };
+                });              
+            }
         }
         $scope.query = function (where, callback) {
             if(urlobject!=='Log') {

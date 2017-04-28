@@ -15,7 +15,7 @@ div(ng-controller="UserController", ng-init="init(getlatestselectedhandler)")
             small#passwordHelp.form-text.text-muted= fa['password help']
         .form-check.disabled
           label.form-check-label
-            input.form-check-input.form-check-input-rtl(type='checkbox', disabled='true', ng-model='sysadmin')
+            input.form-check-input.form-check-input-rtl(type='checkbox', disabled='true', ng-checked='sysadmin')
             =fa['system administrator']
     .col-lg
     .card.col-lg-5.ml-3.mb-3
