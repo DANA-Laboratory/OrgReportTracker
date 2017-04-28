@@ -1,2 +1,7 @@
+div(ng-controller=`${menuitem}Controller`, ng-init='init(getlatestselectedhandler)')
+  .form-group.row
+    label.col-1.col-form-label(for='caption')= fa['caption']
+    .col-4
+      input#caption.form-control(type='caption', ng-model='caption')
 -var contoroller = 'VariableCat_3Controller'
 include filtered-block-VariableCat.pug

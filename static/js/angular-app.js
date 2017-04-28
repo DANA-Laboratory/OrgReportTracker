@@ -45,21 +45,39 @@ var sort_by = function(field, reverse, primer){
 //controllers for resources
 ['Log', 'User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'vVariableDef']
 .forEach((urlobject)=>{
-  app.controller(urlobject + 'Controller',['$scope', urlobject, function ($scope, resource) {
+    app.controller(urlobject + 'Controller',['$scope', urlobject, function ($scope, resource) {
+        $scope.init = function(handler) {
+          handler();
+          $scope.$on('eventUpdateSelected', handler);
+        };
         $scope.get = function (where) {
+            //console.log(where);
             var res = resource.get(where, function() {
                 if(urlobject === 'Log') {
                     $scope.log = "";
                     res.data.forEach((item)=>{$scope.log += item.message + " @ " + item.timestamp + "\n"});
                 } else {
                     //$scope.data = [res];
+                    //console.log(res);
                     $scope.load(res);
                 };
             });
         };
+        $scope.getlatestselectedhandler = function() {
+            var res = resource.get({where: $scope.getlatestselected(urlobject)}, function() {
+                if(urlobject === 'Log') {
+                    $scope.log = "";
+                    res.data.forEach((item)=>{$scope.log += item.message + " @ " + item.timestamp + "\n"});
+                } else {
+                    //$scope.data = [res];
+                    //console.log(res);
+                    $scope.load(res);
+                };
+            });
+        }
         $scope.query = function (where, callback) {
             if(urlobject!=='Log') {
-                $scope.registerSelected(urlobject, callback);
+                $scope.registerSelected(urlobject);
                 var res = resource.query(where, function(data) {
                     if (urlobject !== 'User') {
                         $scope.data = res.sort(sort_by('code'));
@@ -92,18 +110,14 @@ var sort_by = function(field, reverse, primer){
                 }
             }
         };
-  }]);
+    }]);
 });
 
 app.controller('selectController', function ($scope) {
     var selected = {};
-    var callbacks = {};
-    $scope.registerSelected = function(key, callback) {
+    $scope.registerSelected = function(key) {
         if (!(key in selected)) {
           selected[key] = new Set();
-        }
-        if (callback !== undefined) {
-            callbacks[key] = callback;
         }
     }
     $scope.updateSelected = function(key, value) {
@@ -112,9 +126,12 @@ app.controller('selectController', function ($scope) {
         } else {
             selected[key].add(value);
         }
+        /*
         for (key_ in callbacks) {
             callbacks[key_]();
         }
+        */
+        $scope.$broadcast("eventUpdateSelected", {key: key, value: value});
     }
     $scope.selectedHas = function(key, value) {
         return selected[key].has(value);

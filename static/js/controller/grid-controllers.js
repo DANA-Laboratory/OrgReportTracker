@@ -30,9 +30,13 @@ angular.module('PIR').controller('report-grid', ['$scope', '$http', function ($s
 }]);
 angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
     $scope.masterField = null;
-    $scope.init = function(masterField) {
+    $scope.init = function(masterField, handler) {
         $scope.masterField = masterField;
-        $scope.query({where: masterField.toLowerCase()+'_id', value: $scope.getlatestselected(masterField)}, $scope.callback);
+        handler();
+        $scope.$on('eventUpdateSelected', handler)
+    };
+    $scope.catgridhandler = function() {
+        $scope.query({where: $scope.masterField.toLowerCase()+'_id', value: $scope.getlatestselected($scope.masterField)}, $scope.callback);
     };
     $scope.$on('uiGridEventEndCellEdit', function (data) {
         updatesum();
@@ -51,12 +55,8 @@ angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
       ]
     };
     $scope.callback = function(data) {
-      if (data === undefined) {
-          $scope.query({where: $scope.masterField.toLowerCase()+'_id', value: $scope.getlatestselected($scope.masterField)}, $scope.callback);
-      } else {
-          $scope.gridOptions.data = data;
-          updatesum();
-      }
+      $scope.gridOptions.data = data;
+      updatesum();
       /*
       if (data === undefined) {
           data = $scope.data;
