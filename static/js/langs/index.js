@@ -120,6 +120,11 @@ const fa = {
     'caption_cat_3': 'معادل برای زیرگروهها',
     'caption_variable': 'معادل برای متغییرها',
   },
+  'VariableCat': {
+    'variablecat_1':'مجموعه',
+    'variablecat_2':'گروه',
+    'variablecat_3':'زیر گروه',
+  },
   'VariableCat_1': {
     'header':  'مجموعه ها',
   },

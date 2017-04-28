@@ -1,4 +1,23 @@
-div(ng-controller=`${contoroller}`)
+div(ng-controller=`${menuitem}Controller`, ng-init='init(getlatestselectedhandler)')
+  .form-group.row
+    label.col-1.col-form-label(for='caption')= fa['caption']
+    .col-5
+      input#caption.form-control(type='text', ng-model='caption')
+    label.col-1.col-form-label(for='code')= fa['code']
+    .col-2
+      input#code.form-control(type='text', ng-model='code')
+    label.col-1.col-form-label(for='weight')= fa['weight']
+    .col-2
+      input#weight.form-control(type='number', ng-model='weight')
+  .form-group.row
+    if (parent !== '')
+      label.col-1.col-form-label(for=`${parent}`)= fa['VariableCat'][`${parent}`]
+      .col-2
+        input.form-control(id=`${parent}`, type='text', ng-model=`${parent}_id`)
+    label.col-1.col-form-label(for='attribute')= fa['attribute']
+    .col-8
+      input#code.form-control(type='text', ng-model='attribute')
+div(ng-controller=`${child}Controller`)
   .small
     .div(ng-controller='cat-grid', ng-init=`init('${menuitem}', catgridhandler)`)
       div(ui-grid='gridOptions' class="grid" dir='rtl' ui-grid-edit ui-grid-cellnav style='min-height: 300px')
