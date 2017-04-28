@@ -53,14 +53,7 @@ var sort_by = function(field, reverse, primer){
         $scope.get = function (where) {
             //console.log(where);
             var res = resource.get(where, function() {
-                if(urlobject === 'Log') {
-                    $scope.log = '';
-                    res.data.forEach((item)=>{$scope.log += item.message + " @ " + item.timestamp + "\n"});
-                } else {
-                    //$scope.data = [res];
-                    //console.log(res);
-                    $scope.load(res);
-                };
+                $scope.load(res);
             });
         };
         $scope.getlatestselectedhandler = function() {
@@ -75,7 +68,7 @@ var sort_by = function(field, reverse, primer){
                         //console.log(res);
                         $scope.load(res);
                     };
-                });              
+                });
             }
         }
         $scope.query = function (where, callback) {

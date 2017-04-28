@@ -12,8 +12,8 @@ div(ng-controller=`${menuitem}Controller`, ng-init='init(getlatestselectedhandle
   .form-group.row
     if (parent !== '')
       label.col-1.col-form-label(for=`${parent}`)= fa['VariableCat'][`${parent}`]
-      .col-2
-        input.form-control(id=`${parent}`, type='text', ng-model=`${parent}_id`)
+      .col-2(ng-controller=`${parent}Controller`, ng-init='query()')
+        input.form-control(id=`${parent}`, type='text', ng-model=`${parent_lo}_id`)
     label.col-1.col-form-label(for='attribute')= fa['attribute']
     .col-8
       input#code.form-control(type='text', ng-model='attribute')
