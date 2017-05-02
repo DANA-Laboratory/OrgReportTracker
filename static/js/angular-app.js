@@ -46,6 +46,7 @@ var sort_by = function(field, reverse, primer){
 ['Log', 'User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'vVariableDef']
 .forEach((urlobject)=>{
     app.controller(urlobject + 'Controller',['$scope', urlobject, function ($scope, resource) {
+        const newitem = -2;
         $scope.init = function(handler) {
           handler();
           $scope.$on('eventUpdateSelected', handler);
@@ -106,6 +107,9 @@ var sort_by = function(field, reverse, primer){
                 }
             }
         };
+        $scope.addnew = function () {
+            $scope.updateSelected(urlobject, newitem);
+        }
     }]);
 });
 
