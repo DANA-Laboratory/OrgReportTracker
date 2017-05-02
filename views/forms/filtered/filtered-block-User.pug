@@ -77,6 +77,6 @@ div(ng-controller="UserController", ng-init="init(getlatestselectedhandler)")
       #headingOne.card-header(role='tab')
         .mb-0
           = fa['user log']
-          a.fa.fa-fw.fa-caret-down(data-toggle='collapse', data-parent='#accordion', href='#collapseOne', aria-expanded='true', aria-controls='collapseOne')
-      #collapseOne.collapse(role='tabpanel', aria-labelledby='headingOne')
+          a.fa.fa-fw.fa-caret-down(href='', data-toggle='collapse', data-target='#logCollapse' data-parent='#accordion', aria-expanded='true', aria-controls='collapseOne')
+      #logCollapse.collapse(role='tabpanel', aria-labelledby='headingOne')
         .card-block(ng-controller="LogController", ng-init="init(getlatestselectedhandler)", style="font-family: monospace; direction: ltr; max-height: 200px; overflow-y: scroll; white-space: pre") {{log}}
