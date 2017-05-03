@@ -36,6 +36,7 @@ const fa = {
   'login': 'ورود',
   'lower limit': 'حد پایین',
   'name': 'نام',
+  'new': 'جدید',
   'new attachment': 'پیوست دیگر',
   'new comments!': 'پیام جدید',
   'new orders!': 'درخواست جدید',
