@@ -1,4 +1,19 @@
--var child = 'vVariableDef'
--var parent = 'VariableCat_2'
--var parent_lo = parent.toLowerCase()
-include filtered-block-VariableCat.pug
+form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller=`${menuitem}Controller`, ng-init='init(getlatestselectedhandler)')
+  .card-header.card-primary.text-center= fa[menuitem]['header']
+    button.close(type='button', aria-hidden='true', ng-click='selectitem(item.id)') ×
+  .card-block
+    -var child = 'vVariableDef'
+    -var parent = 'VariableCat_2'
+    -var parent_lo = parent.toLowerCase()
+    include filtered-block-VariableCat.pug
+  .card-footer
+    .d-flex.flex-row-reverse
+      .pr-2
+        button.btn.btn-success(type='submit')= fa['submit']
+          i.fa.fa-check.fa-fw
+      .pr-2
+        button.btn.btn-warning(type='submit')= fa['create new']
+          i.fa.fa-plus.fa-fw
+      .pr-2
+        button.btn.btn-danger(type='submit')= fa['remove']
+          i.fa.fa-remove.fa-fw

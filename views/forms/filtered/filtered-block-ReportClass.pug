@@ -1,31 +1,45 @@
-div(ng-controller='ReportClassController', ng-init='get({where: getlatestselected("ReportClass")})')
-  .form-group.row
-    label.col-1.col-form-label(for='caption')= fa['caption']
-    .col-4
-      input#caption.form-control(type='text', ng-model='item.caption')
-    label.col-1.col-form-label(for='user_owner')= fa['owner']
-    .col-3
-      .dropdown#user_owner(ng-controller="scopeUpdater")
-        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle.col(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false', ng-init=`selectedWorkunit="${fa['user']}"`) {{selectedUser}}
-        .dropdown-menu(aria-labelledby='dropdownMenuButton')
-          a.dropdown-item(ng-href='#' ng-click='setVar("selectedUser", x)' ng-repeat=`x in []`) {{x}}
-    label.col-1.col-form-label(for='duration')= fa['duration']
-    .col-2
-      input#duration.form-control(type='text', ng-model='item.duration')
-  .form-group.row.small
-    .col-3
-      label.col-form-label(for='caption_cat_1')= fa['ReportClass']['caption_cat_1']
-      input#caption_cat_1.form-control.form-control-sm(type='text', ng-model='item.caption_cat_1')
-    .col-3
-      label.col-form-label(for='caption_cat_2')= fa['ReportClass']['caption_cat_2']
-      input#caption_cat_2.form-control.form-control-sm(type='text', ng-model='item.caption_cat_2')
-    .col-3
-      label.col-form-label(for='caption_cat_3')= fa['ReportClass']['caption_cat_3']
-      input#caption_cat_3.form-control.form-control-sm(type='text', ng-model='item.caption_cat_3')
-    .col-3
-      label.col-form-label(for='caption_variable')= fa['ReportClass']['caption_variable']
-      input#caption_variable.form-control.form-control-sm(type='text', ng-model='item.caption_variable')
-  .form-group
-    label(for='attribute')= fa['attribute']
-    input#attribute.form-control(type='text', ng-model='item.attribute')
-  .form-group
+form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller='ReportClassController', ng-init='get({where: getlatestselected("ReportClass")})')
+  .card-header.card-primary.text-center= fa[menuitem]['header']
+    button.close(type='button', aria-hidden='true', ng-click='selectitem(item.id)') ×
+  .card-block
+    .form-group.row
+      label.col-1.col-form-label(for='caption')= fa['caption']
+      .col-4
+        input#caption.form-control(type='text', ng-model='item.caption')
+      label.col-1.col-form-label(for='user_owner')= fa['owner']
+      .col-3
+        .dropdown#user_owner(ng-controller="scopeUpdater")
+          button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle.col(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false', ng-init=`selectedWorkunit="${fa['user']}"`) {{selectedUser}}
+          .dropdown-menu(aria-labelledby='dropdownMenuButton')
+            a.dropdown-item(ng-href='#' ng-click='setVar("selectedUser", x)' ng-repeat=`x in []`) {{x}}
+      label.col-1.col-form-label(for='duration')= fa['duration']
+      .col-2
+        input#duration.form-control(type='text', ng-model='item.duration')
+    .form-group.row.small
+      .col-3
+        label.col-form-label(for='caption_cat_1')= fa['ReportClass']['caption_cat_1']
+        input#caption_cat_1.form-control.form-control-sm(type='text', ng-model='item.caption_cat_1')
+      .col-3
+        label.col-form-label(for='caption_cat_2')= fa['ReportClass']['caption_cat_2']
+        input#caption_cat_2.form-control.form-control-sm(type='text', ng-model='item.caption_cat_2')
+      .col-3
+        label.col-form-label(for='caption_cat_3')= fa['ReportClass']['caption_cat_3']
+        input#caption_cat_3.form-control.form-control-sm(type='text', ng-model='item.caption_cat_3')
+      .col-3
+        label.col-form-label(for='caption_variable')= fa['ReportClass']['caption_variable']
+        input#caption_variable.form-control.form-control-sm(type='text', ng-model='item.caption_variable')
+    .form-group
+      label(for='attribute')= fa['attribute']
+      input#attribute.form-control(type='text', ng-model='item.attribute')
+    .form-group
+  .card-footer
+    .d-flex.flex-row-reverse
+      .pr-2
+        button.btn.btn-success(type='submit')= fa['submit']
+          i.fa.fa-check.fa-fw
+      .pr-2
+        button.btn.btn-warning(type='submit')= fa['create new']
+          i.fa.fa-plus.fa-fw
+      .pr-2
+        button.btn.btn-danger(type='submit')= fa['remove']
+          i.fa.fa-remove.fa-fw

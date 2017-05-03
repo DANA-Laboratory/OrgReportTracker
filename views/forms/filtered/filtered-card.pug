@@ -1,31 +1,12 @@
-form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-hide='hide')
-  .card-header.card-primary.text-center= fa[menuitem]['header']
-    button.close(type='button', aria-hidden='true', ng-click='hide=true') ×
-  .card-block
-    //div(ng-controller="UserController", ng-init="init(getlatestselectedhandler)")
-    //div(ng-controller='ReportClassController', ng-init='get({where: getlatestselected("ReportClass")})')
-    //div(ng-controller=`${menuitem}Controller`, ng-init='init(getlatestselectedhandler)')
-
-    if menuitem === 'User'
-      include filtered-block-User.pug
-    if menuitem === 'ReportClass'
-      include filtered-block-ReportClass.pug
-    if menuitem === 'VariableCat_1'
-      include filtered-block-VariableCat_1.pug
-    if menuitem === 'VariableCat_2'
-      include filtered-block-VariableCat_2.pug
-    if menuitem === 'VariableCat_3'
-      include filtered-block-VariableCat_3.pug
-    if menuitem === 'vVariableDef'
-      include filtered-block-VariableDef.pug
-  .card-footer
-    .d-flex.flex-row-reverse
-      .pr-2
-        button.btn.btn-success(type='submit')= fa['submit']
-          i.fa.fa-check.fa-fw
-      .pr-2
-        button.btn.btn-warning(type='submit')= fa['create new']
-          i.fa.fa-plus.fa-fw
-      .pr-2
-        button.btn.btn-danger(type='submit')= fa['remove']
-          i.fa.fa-remove.fa-fw
+if menuitem === 'VariableCat_1'
+  include filtered-block-VariableCat_1.pug
+else if menuitem === 'VariableCat_2'
+  include filtered-block-VariableCat_2.pug
+else if menuitem === 'VariableCat_3'
+  include filtered-block-VariableCat_3.pug
+else if menuitem === 'ReportClass'
+  include filtered-block-ReportClass.pug
+else if menuitem === 'vVariableDef'
+  include filtered-block-VariableDef.pug
+else if menuitem === 'User'
+  include filtered-block-User.pug
