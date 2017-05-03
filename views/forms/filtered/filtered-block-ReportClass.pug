@@ -1,6 +1,6 @@
-form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller='ReportClassController', ng-init='get({where: getlatestselected("ReportClass")})')
+form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller='ReportClassController', ng-init='get({where: getlatestselected("ReportClass")})', ng-hide='hide')
   .card-header.card-primary.text-center= fa[menuitem]['header']
-    button.close(type='button', aria-hidden='true', ng-click='selectitem(item.id)') ×
+    button.close(type='button', aria-hidden='true', ng-click='hide=true') ×
   .card-block
     .form-group.row
       label.col-1.col-form-label(for='caption')= fa['caption']
