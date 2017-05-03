@@ -101,11 +101,14 @@ var sort_by = function(field, reverse, primer){
             $scope.updateSelected(urlobject, id);
         };
         $scope.load = function (item) {
+            $scope.item = item;
+            /*
             for (key in item) {
                 if (item.hasOwnProperty(key)){
                     $scope[key] = item[key];
                 }
             }
+            */
         };
         $scope.addnew = function () {
             $scope.updateSelected(urlobject, newitem);

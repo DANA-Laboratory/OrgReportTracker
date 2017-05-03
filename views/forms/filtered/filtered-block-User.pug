@@ -6,16 +6,16 @@ div(ng-controller="UserController", ng-init="init(getlatestselectedhandler)")
           label.col-2.col-form-label(for='username')= fa['username']
           caption
           .col
-            input#username.form-control(type='text', ng-model='account')
+            input#username.form-control(type='text', ng-model='item.account')
             small#usernameHelp.form-text.text-muted= fa['username help']
         .form-group.row
           label.col-2.col-form-label(for='password')= fa['password']
           .col
-            input#password.form-control(type='password', ng-model='password')
+            input#password.form-control(type='password', ng-model='item.password')
             small#passwordHelp.form-text.text-muted= fa['password help']
         .form-check.disabled
           label.form-check-label
-            input.form-check-input.form-check-input-rtl(type='checkbox', disabled='true', ng-checked='sysadmin')
+            input.form-check-input.form-check-input-rtl(type='checkbox', disabled='true', ng-checked='item.sysadmin')
             =fa['system administrator']
     .col-lg
     .card.col-lg-5.ml-3.mb-3
@@ -23,15 +23,15 @@ div(ng-controller="UserController", ng-init="init(getlatestselectedhandler)")
         .form-group.row
           label.col-2.col-form-label(for='name')= fa['name']
           .col
-            input#name.form-control(type='text', ng-model='fname')
+            input#name.form-control(type='text', ng-model='item.fname')
         .form-group.row
           label.col-2.col-form-label(for='family')= fa['family']
           .col
-            input#family.form-control(type='family', ng-model='lname')
+            input#family.form-control(type='family', ng-model='item.lname')
         .form-group.row
           label.col-5.col-form-label(for='pcode')= fa['employee id code']
           .col
-            input#pcode.form-control(type='text', ng-model='pcode')
+            input#pcode.form-control(type='text', ng-model='item.pcode')
         .form-group.row
           label.col-3.col-form-label(for='workunit')= fa['workunit']
           .col
@@ -42,11 +42,11 @@ div(ng-controller="UserController", ng-init="init(getlatestselectedhandler)")
   .row
     .form-group.col-lg-3
       label(for='telegram')= fa['telegram account']
-      input#telegram.form-control(type='text', ng-model='telegram')
+      input#telegram.form-control(type='text', ng-model='item.telegram')
       small#telegram.form-text.text-muted= fa['telegram help']
     .form-group.col-lg-3
       label(for='github')= fa['github account']
-      input#github.form-control(type='email', ng-model='github')
+      input#github.form-control(type='text', ng-model='item.github')
       small#github.form-text.text-muted= fa['github help']
     .col-lg
       .card
@@ -79,4 +79,4 @@ div(ng-controller="UserController", ng-init="init(getlatestselectedhandler)")
           = fa['user log']
           a.fa.fa-fw.fa-caret-down(href='', data-toggle='collapse', data-target='#logCollapse' data-parent='#accordion', aria-expanded='true', aria-controls='collapseOne')
       #logCollapse.collapse(role='tabpanel', aria-labelledby='headingOne')
-        .card-block(ng-controller="LogController", ng-init="init(getlatestselectedhandler)", style="font-family: monospace; direction: ltr; max-height: 200px; overflow-y: scroll; white-space: pre") {{log}}
+        .card-block(ng-controller="LogController", ng-init="init(getlatestselectedhandler)", style="font-family: monospace; direction: ltr; max-height: 200px; overflow-y: scroll; white-space: pre") {{item.log}}

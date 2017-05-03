@@ -2,21 +2,21 @@ div(ng-controller=`${menuitem}Controller`, ng-init='init(getlatestselectedhandle
   .form-group.row
     label.col-1.col-form-label(for='caption')= fa['caption']
     .col-5
-      input#caption.form-control(type='text', ng-model='caption')
+      input#caption.form-control(type='text', ng-model='item.caption')
     label.col-1.col-form-label(for='code')= fa['code']
     .col-2
-      input#code.form-control(type='text', ng-model='code')
+      input#code.form-control(type='text', ng-model='item.code')
     label.col-1.col-form-label(for='weight')= fa['weight']
     .col-2
-      input#weight.form-control(type='number', ng-model='weight')
+      input#weight.form-control(type='number', ng-model='item.weight')
   .form-group.row
     if (parent !== '')
       label.col-1.col-form-label(for=`${parent}`)= fa['VariableCat'][`${parent}`]
       .col-2(ng-controller=`${parent}Controller`, ng-init='query()')
-        input.form-control(id=`${parent}`, type='text', ng-model=`${parent_lo}_id`)
+        input.form-control(id=`${parent}`, type='text', ng-model=`item.${parent_lo}_id`)
     label.col-1.col-form-label(for='attribute')= fa['attribute']
     .col-8
-      input#code.form-control(type='text', ng-model='attribute')
+      input#code.form-control(type='text', ng-model='item.attribute')
 div(ng-controller=`${child}Controller`)
   .small
     .div(ng-controller='cat-grid', ng-init=`init('${menuitem}', catgridhandler)`)
