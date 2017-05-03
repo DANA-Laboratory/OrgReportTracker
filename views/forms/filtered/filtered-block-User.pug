@@ -48,7 +48,7 @@ div(ng-controller="UserController", ng-init="init(getlatestselectedhandler)")
       label(for='github')= fa['github account']
       input#github.form-control(type='text', ng-model='item.github')
       small#github.form-text.text-muted= fa['github help']
-    .col-lg
+    .col-lg(ng-if='item.id !== undefined')
       .card
         .card-header
           .text-inline
@@ -72,7 +72,7 @@ div(ng-controller="UserController", ng-init="init(getlatestselectedhandler)")
             a.fa.fa-fw.fa-remove.close(style='float: unset')
           span.btn.badge.badge-warning.mr-1(href='#') test
             a.fa.fa-fw.fa-remove.close(style='float: unset')
-  #accordion.mt-3(role='tablist')
+  #accordion.mt-3(role='tablist', ng-if='item.id !== undefined')
     .card
       #headingOne.card-header(role='tab')
         .mb-0

@@ -71,6 +71,8 @@ var sort_by = function(field, reverse, primer){
                         $scope.load(res);
                     };
                 });
+            } else if (_where == newitem) {
+                $scope.load({});
             }
         }
         $scope.query = function (where, callback) {
@@ -103,14 +105,6 @@ var sort_by = function(field, reverse, primer){
         };
         $scope.load = function (item) {
             $scope.item = item;
-            console.log(item.sysadmin);
-            /*
-            for (key in item) {
-                if (item.hasOwnProperty(key)){
-                    $scope[key] = item[key];
-                }
-            }
-            */
         };
         $scope.addnew = function () {
             $scope.updateSelected(urlobject, newitem);
@@ -130,6 +124,9 @@ app.controller('selectController', function ($scope) {
             selected[key].delete(value);
         } else {
             selected[key].add(value);
+            if (value !== -2) {
+                selected[key].delete(-2);
+            }
         }
         /*
         for (key_ in callbacks) {

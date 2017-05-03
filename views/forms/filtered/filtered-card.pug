@@ -2,6 +2,10 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-hide='hide
   .card-header.card-primary.text-center= fa[menuitem]['header']
     button.close(type='button', aria-hidden='true', ng-click='hide=true') ×
   .card-block
+    //div(ng-controller="UserController", ng-init="init(getlatestselectedhandler)")
+    //div(ng-controller='ReportClassController', ng-init='get({where: getlatestselected("ReportClass")})')
+    //div(ng-controller=`${menuitem}Controller`, ng-init='init(getlatestselectedhandler)')
+
     if menuitem === 'User'
       include filtered-block-User.pug
     if menuitem === 'ReportClass'
