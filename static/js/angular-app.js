@@ -103,6 +103,7 @@ var sort_by = function(field, reverse, primer){
         };
         $scope.load = function (item) {
             $scope.item = item;
+            console.log(item.sysadmin);
             /*
             for (key in item) {
                 if (item.hasOwnProperty(key)){
