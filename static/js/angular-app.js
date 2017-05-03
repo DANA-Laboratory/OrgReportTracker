@@ -62,8 +62,9 @@ var sort_by = function(field, reverse, primer){
             if (_where >= 0) {
                 var res = resource.get({where: _where}, function() {
                     if(urlobject === 'Log') {
-                        $scope.log = '';
-                        res.data.forEach((item)=>{$scope.log += item.message + " @ " + item.timestamp + "\n"});
+                        $scope.item = {};
+                        $scope.item.log = '';
+                        res.data.forEach((item)=>{$scope.item.log += item.message + " @ " + item.timestamp + "\n"});
                     } else {
                         //$scope.data = [res];
                         //console.log(res);
