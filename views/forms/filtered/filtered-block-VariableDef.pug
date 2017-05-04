@@ -6,6 +6,8 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
     -var parent = 'VariableCat_3'
     -var parent_lo = parent.toLowerCase()
     .row
+      div#the-basics
+        input.form-control.typeahead(type="text" placeholder="نام" style="text-align:right")
   .card-footer
     .d-flex.flex-row-reverse
       .pr-2
@@ -17,3 +19,5 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
       .pr-2
         button.btn.btn-danger(type='submit')= fa['remove']
           i.fa.fa-remove.fa-fw
+  script
+    include typeahead.js
