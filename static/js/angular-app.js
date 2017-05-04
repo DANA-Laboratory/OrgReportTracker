@@ -52,7 +52,6 @@ var sort_by = function(field, reverse, primer){
           $scope.$on('eventUpdateSelected', handler);
         };
         $scope.get = function (where) {
-            //console.log(where);
             var res = resource.get(where, function() {
                 $scope.load(res);
             });
@@ -66,8 +65,6 @@ var sort_by = function(field, reverse, primer){
                         $scope.item.log = '';
                         res.data.forEach((item)=>{$scope.item.log += item.message + " @ " + item.timestamp + "\n"});
                     } else {
-                        //$scope.data = [res];
-                        //console.log(res);
                         $scope.load(res);
                     };
                 });
@@ -87,13 +84,6 @@ var sort_by = function(field, reverse, primer){
                     if (callback !== undefined) {
                         callback($scope.data);
                     }
-                    /*
-                    if ($scope.getlatestselected(urlobject) > -1) {
-                        var i = 0;
-                        while(data[i++].id !== $scope.getlatestselected(urlobject));
-                        $scope.load(data[i-1]);
-                    }
-                    */
                 });
             };
         };
@@ -128,18 +118,17 @@ app.controller('selectController', function ($scope) {
                 selected[key].delete(-2);
             }
         }
-        /*
-        for (key_ in callbacks) {
-            callbacks[key_]();
-        }
-        */
         $scope.$broadcast("eventUpdateSelected", {key: key, value: value});
     }
     $scope.selectedHas = function(key, value) {
         return selected[key].has(value);
     }
     $scope.selectedIsEmpty = function(key) {
-        return (selected[key].size === 0)
+        if ($scope.selectedHas(key, -2)) {
+          return (selected[key].size === 1)
+        } else {
+          return (selected[key].size === 0)
+        }
     }
     $scope.getlatestselected = (key) => {
       return ((key in selected) && selected[key].size>0) ? [...selected[key]][selected[key].size-1] : -1;
