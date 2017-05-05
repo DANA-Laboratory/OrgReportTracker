@@ -123,26 +123,6 @@ var substringMatcher = function(strs) {
     }]);
 });
 
-app.controller('typeaheadController', function ($scope) {
-    $scope.init = function(id) {
-        var name = '';
-        var source = {};
-        if (id == 'workunits') {
-            name = id;
-            source = fa[id]
-        }
-        $(`#${id} .typeahead`).typeahead({
-          hint: true,
-          highlight: true,
-          minLength: 1
-        },
-        {
-          name: name,
-          source: substringMatcher(source)
-        });
-    }
-});
-
 app.controller('selectController', function ($scope) {
     var selected = {};
     $scope.registerSelected = function(key) {
@@ -203,3 +183,41 @@ app.controller('scopeUpdater', function ($scope) {
         $scope[varName] = x;
     }
 });
+
+app.directive('typeaheadDirective', ['User', function (resource) {
+   return {
+     restrict: 'A',
+     link: function (scope, el, attrs) {
+       var options = {
+         hint: true,
+         highlight: true,
+         minLength: 1
+       };
+       if (attrs.id == 'users') {
+         var rec = resource.query({}, function(data) {
+           var source = [];
+           data.forEach((item)=>{source.push(item.lname + ' ' + item.fname + ' ' + item.pcode)});
+           var rec = resource.query({}, function(data) {
+             $(`#${attrs.id} .typeahead`).typeahead(
+             options,
+             {
+               name: attrs.id,
+               source: substringMatcher(source)
+             });
+             $(`#${attrs.id} .typeahead`).bind('typeahead:select', function(ev, suggestion) {
+               scope[attrs.bind] = data[source.indexOf(suggestion)].id;
+               console.log(scope.test);
+             });
+           });
+         });
+       } else {
+         $(`#${attrs.id} .typeahead`).typeahead(
+         options,
+         {
+           name: attrs.id,
+           source: substringMatcher(fa[attrs.id])
+         });
+      }
+   }
+ };
+}])
