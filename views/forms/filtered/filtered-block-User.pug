@@ -38,8 +38,8 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
               input#pcode.form-control(type='text', ng-model='item.pcode')
           .form-group.row
             label.col-3.col-form-label(for='workunit')= fa['workunit']
-            div.col#workunits(typeahead-directive, bind='item.workunit')
-              input.form-control.typeahead(type="text", placeholder=`${fa['workunit']}`, style="text-align:right")
+            div.col#workunits(typeahead-directive)
+              input.form-control.typeahead(type="text", placeholder=`${fa['workunit']}`, style="text-align:right", ng-model='item.workunit')
     .row
       .form-group.col-lg-3
         label(for='telegram')= fa['telegram account']

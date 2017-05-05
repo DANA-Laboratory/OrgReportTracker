@@ -204,10 +204,11 @@ app.directive('typeaheadDirective', ['User', function (resource) {
                name: attrs.id,
                source: substringMatcher(source)
              });
-             $(`#${attrs.id} .typeahead`).bind('typeahead:select', function(ev, suggestion) {
-               scope[attrs.bind] = data[source.indexOf(suggestion)].id;
-               console.log(scope.test);
-             });
+             if(attrs.bind) {
+               $(`#${attrs.id} .typeahead`).bind('typeahead:select', function(ev, suggestion) {
+                 scope[attrs.bind] = data[source.indexOf(suggestion)].id;
+               });               
+             }
            });
          });
        } else {
