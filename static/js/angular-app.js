@@ -8,7 +8,28 @@ var sort_by = function(field, reverse, primer){
        return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
      }
 };
+//twitter-typeahead
+var substringMatcher = function(strs) {
+  return function findMatches(q, cb) {
+    var matches, substringRegex;
 
+    // an array that will be populated with substring matches
+    matches = [];
+
+    // regex used to determine if a string contains the substring `q`
+    substrRegex = new RegExp(q, 'i');
+
+    // iterate through the pool of strings and for any string that
+    // contains the substring `q`, add it to the `matches` array
+    $.each(strs, function(i, str) {
+      if (substrRegex.test(str)) {
+        matches.push(str);
+      }
+    });
+
+    cb(matches);
+  };
+};
 ['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'vVariableDef']
 .forEach((urlobject)=>{
     app.factory(urlobject, ['$resource',
@@ -102,6 +123,26 @@ var sort_by = function(field, reverse, primer){
     }]);
 });
 
+app.controller('typeaheadController', function ($scope) {
+    $scope.init = function(id) {
+        var name = '';
+        var source = {};
+        if (id == 'workunits') {
+            name = id;
+            source = fa[id]
+        }
+        $(`#${id} .typeahead`).typeahead({
+          hint: true,
+          highlight: true,
+          minLength: 1
+        },
+        {
+          name: name,
+          source: substringMatcher(source)
+        });
+    }
+});
+
 app.controller('selectController', function ($scope) {
     var selected = {};
     $scope.registerSelected = function(key) {
@@ -161,22 +202,4 @@ app.controller('scopeUpdater', function ($scope) {
     $scope.setVar = function (varName, x) {
         $scope[varName] = x;
     }
-});
-
-app.directive("searchresult", function() {
-    return {
-        link: function(scope, el, attrs) {
-          if(scope.results === undefined) {
-            scope.results = {};
-          }
-          scope.results[attrs.searchQuery] = [
-            {
-              text: attrs.searchQuery
-            },
-            {
-              text: attrs.searchQuery
-            }
-          ]
-        }
-    };
 });
