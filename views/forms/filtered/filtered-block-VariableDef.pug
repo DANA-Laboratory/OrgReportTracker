@@ -6,8 +6,7 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
     -var parent = 'VariableCat_3'
     -var parent_lo = parent.toLowerCase()
     .row
-      div#users(typeahead-directive, bind='test')
-        input.form-control.typeahead(type="text", placeholder=`${fa['workunit']}`, style="text-align:right")
+      input.form-control.typeahead(typeahead-directive rowsource='workunits', type="text", placeholder=`${fa['workunit']}`, style="text-align:right")
   .card-footer
     .d-flex.flex-row-reverse
       .pr-2

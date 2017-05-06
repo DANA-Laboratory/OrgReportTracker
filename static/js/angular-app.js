@@ -193,15 +193,16 @@ app.directive('typeaheadDirective', ['User', function (resource) {
          highlight: true,
          minLength: 1
        };
-       if (attrs.id == 'users') {
+       var rowsource = attrs.rowsource;
+       if (rowsource == 'users') {
          var rec = resource.query({}, function(data) {
            var source = [];
            data.forEach((item)=>{source.push(item.lname + ' ' + item.fname + ' ' + item.pcode)});
            var rec = resource.query({}, function(data) {
-             $(`#${attrs.id} .typeahead`).typeahead(
+             el.typeahead(
              options,
              {
-               name: attrs.id,
+               name: rowsource,
                source: substringMatcher(source)
              });
              if(attrs.bind) {
@@ -209,18 +210,18 @@ app.directive('typeaheadDirective', ['User', function (resource) {
                   var current = data.filter((item)=>{return (item.id === scope.item[attrs.bind])})[0];
                   scope.current_owner = current.lname + ' ' + current.fname + ' ' + current.pcode;
                }
-               $(`#${attrs.id} .typeahead`).bind('typeahead:select', function(ev, suggestion) {
+               el.bind('typeahead:select', function(ev, suggestion) {
                  scope.item[attrs.bind] = data[source.indexOf(suggestion)].id;
                });
              }
            });
          });
        } else {
-         $(`#${attrs.id} .typeahead`).typeahead(
+         el.typeahead(
          options,
          {
-           name: attrs.id,
-           source: substringMatcher(fa[attrs.id])
+           name: rowsource,
+           source: substringMatcher(fa[rowsource])
          });
       }
    }
