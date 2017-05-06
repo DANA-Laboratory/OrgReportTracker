@@ -206,9 +206,9 @@ app.directive('typeaheadDirective', ['User', function (resource) {
                source: substringMatcher(source)
              });
              if(attrs.bind) {
-               if( scope.item.id >= 0) {
+               if((scope.item[attrs.bind] >= 0) && (attrs.ngModel !== undefined)) {
                   var current = data.filter((item)=>{return (item.id === scope.item[attrs.bind])})[0];
-                  scope.current_owner = current.lname + ' ' + current.fname + ' ' + current.pcode;
+                  scope[attrs.ngModel] = current.lname + ' ' + current.fname + ' ' + current.pcode;
                }
                el.bind('typeahead:select', function(ev, suggestion) {
                  scope.item[attrs.bind] = data[source.indexOf(suggestion)].id;
