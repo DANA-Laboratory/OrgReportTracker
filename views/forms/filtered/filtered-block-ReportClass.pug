@@ -7,12 +7,9 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
       label.col-1.col-form-label(for='caption')= fa['caption']
       .col-4
         input#caption.form-control(type='text', ng-model='item.caption')
-      label.col-1.col-form-label(for='user_owner')= fa['owner']
-      .col-3
-        .dropdown#user_owner(ng-controller="scopeUpdater")
-          button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle.col(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false', ng-init=`selectedWorkunit="${fa['user']}"`) {{selectedUser}}
-          .dropdown-menu(aria-labelledby='dropdownMenuButton')
-            a.dropdown-item(ng-href='#' ng-click='setVar("selectedUser", x)' ng-repeat=`x in []`) {{x}}
+      label.col-1.col-form-label(for='users')= fa['owner']
+      div#users.col-3(typeahead-directive, bind='user_owner')
+        input.form-control.typeahead(type="text", placeholder=`${fa['select owner']}`, style="text-align:right", ng-model='current_owner')
       label.col-1.col-form-label(for='duration')= fa['duration']
       .col-2
         input#duration.form-control(type='text', ng-model='item.duration')

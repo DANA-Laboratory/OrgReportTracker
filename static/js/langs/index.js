@@ -73,6 +73,8 @@ const fa = {
   'sample log': "how to add a line break here: <br/> must be on a new line.",
   'sample user': 'حامد روحانی',
   'sample variable': 'یک متغییر با نام نسبتا طولانی میتواند باشد',
+  'select owner': 'مالک را انتخاب کنید',
+  'select workunit': 'اداره را انتخاب کنید',
   'settings': 'تنظیمات',
   'share': 'سهم(درصد)',
   'sign in': 'اشتراک',

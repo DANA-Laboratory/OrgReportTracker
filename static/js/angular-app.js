@@ -205,9 +205,13 @@ app.directive('typeaheadDirective', ['User', function (resource) {
                source: substringMatcher(source)
              });
              if(attrs.bind) {
+               if( scope.item.id >= 0) {
+                  var current = data.filter((item)=>{return (item.id === scope.item[attrs.bind])})[0];
+                  scope.current_owner = current.lname + ' ' + current.fname + ' ' + current.pcode;
+               }
                $(`#${attrs.id} .typeahead`).bind('typeahead:select', function(ev, suggestion) {
-                 scope[attrs.bind] = data[source.indexOf(suggestion)].id;
-               });               
+                 scope.item[attrs.bind] = data[source.indexOf(suggestion)].id;
+               });
              }
            });
          });
