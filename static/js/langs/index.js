@@ -75,6 +75,7 @@ const fa = {
   'sample variable': 'یک متغییر با نام نسبتا طولانی میتواند باشد',
   'select owner': 'مالک را انتخاب کنید',
   'select workunit': 'اداره را انتخاب کنید',
+  'select by type': 'بخشی از عبارت را وارد نمایید',
   'settings': 'تنظیمات',
   'share': 'سهم(درصد)',
   'sign in': 'اشتراک',

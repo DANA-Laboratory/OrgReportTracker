@@ -188,6 +188,7 @@ app.directive('typeaheadDirective', ['User', 'VariableCat_1', 'VariableCat_2', '
    return {
      restrict: 'A',
      link: function (scope, el, attrs) {
+       scope.$on('eventUpdateSelected', ()=>{console.log('test')});
        var options = {
          hint: true,
          highlight: true,
@@ -195,11 +196,15 @@ app.directive('typeaheadDirective', ['User', 'VariableCat_1', 'VariableCat_2', '
        };
        var rowsource = attrs.rowsource;
        var resource = null;
-       if (rowsource == 'users') {
+       if (rowsource == 'User') {
          resource = resUser;
          var rowItem = (item)=>{return (item.lname + ' ' + item.fname + ' ' + item.pcode)};
        }
-       if (rowsource == 'users') {
+       if (rowsource == 'VariableCat_1') {
+         resource = resCat1;
+         var rowItem = (item)=>{return (item.caption)};
+       }
+       if (rowsource !== undefined) {
          var rec = resource.query({}, function(data) {
            var source = [];
            data.forEach((item)=>{source.push(rowItem(item))});
@@ -213,7 +218,7 @@ app.directive('typeaheadDirective', ['User', 'VariableCat_1', 'VariableCat_2', '
              if(attrs.bind) {
                if((scope.item[attrs.bind] >= 0) && (attrs.ngModel !== undefined)) {
                   var current = data.filter((item)=>{return (item.id === scope.item[attrs.bind])})[0];
-                  scope[attrs.ngModel] = rowItem(item);
+                  scope[attrs.ngModel] = rowItem(current);
                }
                el.bind('typeahead:select', function(ev, suggestion) {
                  scope.item[attrs.bind] = data[source.indexOf(suggestion)].id;

@@ -16,8 +16,8 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
     .form-group.row
       if (parent !== '')
         label.col-1.col-form-label(for=`${parent}`)= fa['VariableCat'][`${parent}`]
-        .col-2(ng-controller=`${parent}Controller`, ng-init='query()')
-          input.form-control(id=`${parent}`, type='text', ng-model=`item.${parent_lo}_id`)
+        .col-2
+          input.form-control.typeahead(id=`${parent}`, typeahead-directive, bind=`${parent_lo}_id`, rowsource=`${parent}`, type="text", placeholder=`${fa['select by type']}`, style="text-align:right", ng-model=`current_${parent_lo}_id`)
       label.col-1.col-form-label(for='attribute')= fa['attribute']
       .col-8
         input#code.form-control(type='text', ng-model='item.attribute')
