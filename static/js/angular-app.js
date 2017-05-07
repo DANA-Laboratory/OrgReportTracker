@@ -232,6 +232,10 @@ app.directive('typeaheadDirective', ['User', 'VariableCat_1', 'VariableCat_2', '
                el.bind('typeahead:select', function(ev, suggestion) {
                  scope.item[attrs.bind] = data[source.indexOf(suggestion)].id;
                });
+               el.blur(()=>{
+                 if(source.indexOf(el.val()) === -1)
+                  alert("Error : element not in list!");
+               });
              }
            });
          });
