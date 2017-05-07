@@ -1,6 +1,10 @@
 body {
   direction: rtl;
 }
+input.form-control.typeahead {
+  text-align:right;
+  direction:rtl;
+}
 /* HACK:  */
 .form-check-input:only-child {
     position: absolute;

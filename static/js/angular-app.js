@@ -207,7 +207,7 @@ app.directive('typeaheadDirective', ['User', 'VariableCat_1', 'VariableCat_2', '
          resource = resCat2;
          var rowItem = (item)=>{return (item.caption)};
        }
-       if (rowsource !== undefined) {
+       if (resource !== null) {
          var rec = resource.query({}, function(data) {
            var source = [];
            data.forEach((item)=>{source.push(rowItem(item))});
@@ -234,7 +234,8 @@ app.directive('typeaheadDirective', ['User', 'VariableCat_1', 'VariableCat_2', '
                });
                el.blur(()=>{
                  if(source.indexOf(el.val()) === -1)
-                  alert("Error : element not in list!");
+                  console.log(fa["Error : element not in list!"]);
+                  //scope.item[attrs.bind] = undefined;
                });
              }
            });

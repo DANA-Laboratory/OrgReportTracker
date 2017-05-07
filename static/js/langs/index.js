@@ -21,6 +21,7 @@ const fa = {
   'duration': 'دوره',
   'edit time': 'زمان ویرایش',
   'employee id code': 'کد پرسنلی',
+  'Error : element not in list!': 'خطا: گزینه در لیست وجود ندارد!',
   'department': 'اداره',
   'family': 'نام خانوادگی',
   'filter for categories': 'نمایش گروه های شاخص',
