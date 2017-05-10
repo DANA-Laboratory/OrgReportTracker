@@ -1,7 +1,5 @@
 form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller=`${menuitem}Controller`, ng-init='init(getlatestselectedhandler)', ng-hide='hide')
-  .card-header.card-primary.text-center= fa[menuitem]['header']
-    span.badge.badge-warning.pull-right(ng-if='item.id == undefined')= fa['new']
-    button.close(type='button', aria-hidden='true', ng-click='hide=true') ×
+  include filtered-block-header.pug
   .card-block
     .form-group.row
       label.col-1.col-form-label(for='caption')= fa['caption']

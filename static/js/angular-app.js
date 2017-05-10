@@ -68,14 +68,10 @@ var substringMatcher = function(strs) {
 .forEach((urlobject)=>{
     app.controller(urlobject + 'Controller',['$scope', urlobject, function ($scope, resource) {
         const newitem = -2;
+        $scope.changed = false;
         $scope.init = function(handler) {
-          handler();
-          $scope.$on('eventUpdateSelected', handler);
-        };
-        $scope.get = function (where) {
-            var res = resource.get(where, function() {
-                $scope.load(res);
-            });
+            handler();
+            $scope.$on('eventUpdateSelected', handler);
         };
         $scope.getlatestselectedhandler = function() {
             var _where = (urlobject === 'Log') ? $scope.getlatestselected('User') : $scope.getlatestselected(urlobject);
@@ -86,10 +82,12 @@ var substringMatcher = function(strs) {
                         $scope.item.log = '';
                         res.data.forEach((item)=>{$scope.item.log += item.message + " @ " + item.timestamp + "\n"});
                     } else {
+                        $scope.newitem = false;
                         $scope.load(res);
                     };
                 });
             } else if (_where == newitem) {
+                $scope.newitem = true;
                 $scope.load({});
             }
         }
@@ -114,8 +112,26 @@ var substringMatcher = function(strs) {
         $scope.selectitem = function (id) {
             $scope.updateSelected(urlobject, id);
         };
+        var originItem = {};
+        var listener = ()=>{};
         $scope.load = function (item) {
-            $scope.item = item;
+            //unwatch
+            listener();
+            $scope.item = Object.assign({}, item);
+            //watch for any change if is not a new item
+            if($scope.newitem === false) {
+              //record original value
+              originItem = Object.assign({}, item);
+              //deep watch
+              listener = $scope.$watch((scope)=>{return scope.item}, (newval)=>{
+                if(JSON.stringify(originItem) !== JSON.stringify(newval)) {
+                    console.log(JSON.stringify(originItem), '\n', JSON.stringify(newval))
+                    $scope.changed = true;
+                } else {
+                    $scope.changed = false;
+                }
+              }, true);
+            }
         };
         $scope.addnew = function () {
             $scope.updateSelected(urlobject, newitem);
@@ -222,7 +238,11 @@ app.directive('typeaheadDirective', ['User', 'VariableCat_1', 'VariableCat_2', '
                if((scope.item[attrs.bind] >= 0) && (attrs.ngModel !== undefined)) {
                   var selectid = (id) => {
                     var current = data.filter((item)=>{return (item.id === id)})[0];
-                    scope[attrs.ngModel] = rowItem(current);
+                    if(current !== undefined) {
+                      scope[attrs.ngModel] = rowItem(current);
+                    } else {
+                      scope[attrs.ngModel] = '';
+                    }
                   }
                   selectid(scope.item[attrs.bind]);
                   scope.$watch(function(scope) { return scope.item[attrs.bind] },

@@ -1,0 +1,8 @@
+.card-header.card-primary
+  .row
+    .col-2
+      span.badge.badge-warning.pull-right(ng-show='newitem')= fa['new']
+      span.badge.badge-warning.pull-right(ng-show='changed')= fa['need update']
+    .col-8.text-center= fa[menuitem]['header']
+    .col-2
+      button.close(type='button', aria-hidden='true', ng-click='hide=true') ×

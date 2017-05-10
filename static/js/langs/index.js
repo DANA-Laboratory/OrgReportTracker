@@ -11,6 +11,7 @@ const fa = {
   'attribute': 'مشخصات',
   'caption': 'عنوان',
   'categories': 'طبقه بندی شاخص ها',
+  'need update': 'تغییرات را ثبت کنید',
   'code': 'کد',
   'config': 'تنظیمات',
   'create new': 'جدید',
