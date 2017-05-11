@@ -135,7 +135,10 @@ var substringMatcher = function(strs) {
         };
         $scope.addnew = function () {
             $scope.updateSelected(urlobject, newitem);
-        }
+        };
+        $scope.updateitem = function (key, value) {
+            $scope.item[key] = value;
+        };
     }]);
 });
 

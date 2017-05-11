@@ -1,6 +1,6 @@
 form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller="UserController", ng-init="init(getlatestselectedhandler)", ng-hide='hide')
   include filtered-block-header.pug
-  .card-block
+  .card-block.small
     .row
       .card.col-lg-5.mr-3.mb-3
         .card-block
@@ -13,7 +13,10 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
           .form-group.row
             label.col-2.col-form-label(for='password')= fa['password']
             .col
-              input#password.form-control(type='password', ng-model='item.password')
+              .input-group
+                input#password.form-control(type='password', ng-model='_password')
+                span.input-group-btn
+                  button.btn.btn-outline-danger(type="button", ng-click="updateitem('password', _password)")= fa["submit"]
               small#passwordHelp.form-text.text-muted= fa['password help']
           .form-check
             label.form-check-label
