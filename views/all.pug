@@ -36,3 +36,9 @@ div(ng-controller="selectController")
   .col.with-border
   .col-9
     include forms/openreport.pug
+script.
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip({
+      trigger : 'hover'      
+    })
+  })

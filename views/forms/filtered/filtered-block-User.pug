@@ -8,19 +8,19 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
             label.col-2.col-form-label(for='username')= fa['username']
             caption
             .col
-              input#username.form-control(type='text', ng-model='item.account')
+              input#username.form-control(type='text', required, ng-model='item.account')
               small#usernameHelp.form-text.text-muted= fa['username help']
           .form-group.row
             label.col-2.col-form-label(for='password')= fa['password']
             .col
               .input-group
-                input#password.form-control(type='password', ng-model='_password')
+                input#password.form-control(type='password', required, ng-model='_password')
                 span.input-group-btn
                   button.btn.btn-outline-danger(type="button", ng-click="updateitem('password', _password)")= fa["submit"]
               small#passwordHelp.form-text.text-muted= fa['password help']
           .form-check
             label.form-check-label
-              input.form-check-input.form-check-input-rtl(type='checkbox', disabled='true', ng-checked='item.sysadmin==="true"')
+              input.form-check-input.form-check-input-rtl(type='checkbox', required, disabled='true', ng-checked='item.sysadmin==="true"')
               =fa['system administrator']
       .col-lg
       .card.col-lg-5.ml-3.mb-3
@@ -28,19 +28,19 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
           .form-group.row
             label.col-2.col-form-label(for='name')= fa['name']
             .col
-              input#name.form-control(type='text', ng-model='item.fname')
+              input#name.form-control(type='text', required, ng-model='item.fname')
           .form-group.row
             label.col-2.col-form-label(for='family')= fa['family']
             .col
-              input#family.form-control(type='family', ng-model='item.lname')
+              input#family.form-control(type='family', required, ng-model='item.lname')
           .form-group.row
             label.col-5.col-form-label(for='pcode')= fa['employee id code']
             .col
-              input#pcode.form-control(type='text', ng-model='item.pcode')
+              input#pcode.form-control(type='text', required, ng-model='item.pcode')
           .form-group.row
             label.col-3.col-form-label(for='workunit')= fa['workunit']
             .col
-              input#workunit.form-control.typeahead(typeahead-directive, rowsource="workunits", type="text", placeholder=`${fa['select workunit']}`, style="text-align:right", ng-model='item.workunit')
+              input#workunit.form-control.typeahead(typeahead-directive, rowsource="workunits", type="text", required, placeholder=`${fa['select workunit']}`, style="text-align:right", ng-model='item.workunit')
     .row
       .form-group.col-lg-3
         label(for='telegram')= fa['telegram account']
@@ -58,7 +58,7 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
               .pull-left
                 span.p-2.badge.badge-success= fa['provider']
                 span.p-2.badge.badge-warning= fa['reviewer']
-                span.p-2.badge.badge-primary= fa['reader']
+                span.p-2.badge.badge-primary= fa['owner']
           .card-block(style='max-height:140px; overflow-y:scroll')
             span.btn.badge.badge-success.mr-1(href='#')= fa['sample variable']
               a.fa.fa-fw.fa-remove.close(style='float: unset')

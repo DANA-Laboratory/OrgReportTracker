@@ -1,4 +1,5 @@
 const fa = {
+  'addnew': 'جدید',
   'alert danger': 'اخطار',
   'alert default': 'عادی',
   'alert info': 'اطلاع',
@@ -90,7 +91,7 @@ const fa = {
   'support tickets!': 'گزارش جدید',
   'search': 'جستجو',
   'telegram account': 'نام کاربری در تلگرام',
-  'telegram help': 'احراز هویت کاربر در صورت میتواند توسط نرم افزار telegram انجام شود',
+  'telegram help': 'درصورت ثبت، احراز هویت کاربر میتواند از طریق telegram انجام شود.',
   'time left': 'زمان باقی مانده',
   'title': 'سیستم تحلیل گزارشات مدیریت',
   'unit': 'واحد',
