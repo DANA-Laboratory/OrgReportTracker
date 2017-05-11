@@ -76,6 +76,8 @@ const fa = {
   'sample user': 'حامد روحانی',
   'sample variable': 'یک متغییر با نام نسبتا طولانی میتواند باشد',
   'select owner': 'مالک را انتخاب کنید',
+  'select provider': 'تامین کننده را انتخاب کنید',
+  'select reviewer': 'ناظر را انتخاب کنید',
   'select workunit': 'اداره را انتخاب کنید',
   'select by type': 'بخشی از عبارت را وارد نمایید',
   'settings': 'تنظیمات',

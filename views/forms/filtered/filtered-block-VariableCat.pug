@@ -23,14 +23,4 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
       .small
         .div(ng-controller='cat-grid', ng-init=`init('${menuitem}', catgridhandler)`)
           div(ui-grid='gridOptions' class="grid" dir='rtl' ui-grid-edit ui-grid-cellnav style='min-height: 300px')
-  .card-footer
-    .d-flex.flex-row-reverse
-      .pr-2
-        button.btn.btn-success(type='submit')= fa['submit']
-          i.fa.fa-check.fa-fw
-      .pr-2
-        button.btn.btn-warning(type='submit')= fa['create new']
-          i.fa.fa-plus.fa-fw
-      .pr-2
-        button.btn.btn-danger(type='submit')= fa['remove']
-          i.fa.fa-remove.fa-fw
+  include filtered-block-footer.pug

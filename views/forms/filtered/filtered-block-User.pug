@@ -82,14 +82,4 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
             a.fa.fa-fw.fa-caret-down(href='', data-toggle='collapse', data-target='#logCollapse' data-parent='#accordion', aria-expanded='true', aria-controls='collapseOne')
         #logCollapse.collapse(role='tabpanel', aria-labelledby='headingOne')
           .card-block(ng-controller="LogController", ng-init="init(getlatestselectedhandler)", style="font-family: monospace; direction: ltr; max-height: 200px; overflow-y: scroll; white-space: pre") {{item.log}}
-  .card-footer
-    .d-flex.flex-row-reverse
-      .pr-2
-        button.btn.btn-success(type='submit')= fa['submit']
-          i.fa.fa-check.fa-fw
-      .pr-2
-        button.btn.btn-warning(type='submit')= fa['create new']
-          i.fa.fa-plus.fa-fw
-      .pr-2
-        button.btn.btn-danger(type='submit')= fa['remove']
-          i.fa.fa-remove.fa-fw
+  include filtered-block-footer.pug

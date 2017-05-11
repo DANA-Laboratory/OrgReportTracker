@@ -3,16 +3,34 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
   .card-block
     -var parent = 'VariableCat_3'
     -var parent_lo = parent.toLowerCase()
+    .form-group.row
+      label.col-1.col-form-label(for='caption')= fa['caption']
+      .col-5
+        input#caption.form-control(type='text', ng-model='item.caption')
+      label.col-1.col-form-label(for='code')= fa['code']
+      .col-2
+        input#code.form-control(type='text', ng-model='item.code')
+      label.col-1.col-form-label(for='weight')= fa['weight']
+      .col-2
+        input#weight.form-control(type='number', ng-model='item.weight')
+    .form-group.row.small
+      label.col-1.col-form-label(for='unit')= fa['unit']
+      .col-3
+        input#code.form-control(type='text', ng-model='item.unit')
+      label.col-1.col-form-label(for='limit_lower')= fa['lower limit']
+      .col-3
+        input#limit_lower.form-control(type='number', ng-model='item.limit_lower')
+      label.col-1.col-form-label(for='limit_upper')= fa['upper limit']
+      .col-3
+        input#limit_upper.form-control(type='number', ng-model='item.limit_upper')
     .row
-      input.form-control.typeahead(typeahead-directive rowsource='workunits', type="text", placeholder=`${fa['workunit']}`, style="text-align:right")
-  .card-footer
-    .d-flex.flex-row-reverse
-      .pr-2
-        button.btn.btn-success(type='submit')= fa['submit']
-          i.fa.fa-check.fa-fw
-      .pr-2
-        button.btn.btn-warning(type='submit')= fa['create new']
-          i.fa.fa-plus.fa-fw
-      .pr-2
-        button.btn.btn-danger(type='submit')= fa['remove']
-          i.fa.fa-remove.fa-fw
+      .form-group.col-4
+        label(for='owners')= fa['owner']
+        input#owners.form-control.form-control.typeahead(typeahead-directive, bind='user_owner', rowsource="User", type="text", placeholder=`${fa['select owner']}`, style="text-align:right", ng-model='current_owner')
+      .form-group.col-4
+        label(for='providers')= fa['provider']
+        input#providers.form-control.form-control.typeahead(typeahead-directive, bind='user_provider', rowsource="User", type="text", placeholder=`${fa['select provider']}`, style="text-align:right", ng-model='current_provider')
+      .form-group.col-4
+        label(for='reviewers')= fa['reviewer']
+        input#reviewers.form-control.form-control.typeahead(typeahead-directive, bind='user_reviewer', rowsource="User", type="text", placeholder=`${fa['select reviewer']}`, style="text-align:right", ng-model='current_reviewer')
+  include filtered-block-footer.pug
