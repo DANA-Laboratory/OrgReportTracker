@@ -203,7 +203,7 @@ app.controller('scopeUpdater', function ($scope) {
     }
 });
 
-app.directive('typeaheadDirective', ['User', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', function (resUser, resCat1, resCat2, resCat3) {
+app.directive('typeaheadDirective', ['User', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3' , 'ReportClass', function (resUser, resCat1, resCat2, resCat3, resReport) {
    return {
      restrict: 'A',
      link: function (scope, el, attrs) {
@@ -224,6 +224,14 @@ app.directive('typeaheadDirective', ['User', 'VariableCat_1', 'VariableCat_2', '
        }
        if (rowsource == 'VariableCat_2') {
          resource = resCat2;
+         var rowItem = (item)=>{return (item.caption)};
+       }
+       if (rowsource == 'VariableCat_3') {
+         resource = resCat3;
+         var rowItem = (item)=>{return (item.caption)};
+       }
+       if (rowsource == 'ReportClass') {
+         resource = resReport;
          var rowItem = (item)=>{return (item.caption)};
        }
        if (resource !== null) {

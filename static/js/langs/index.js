@@ -62,6 +62,7 @@ const fa = {
   'provider': 'تامین کننده',
   'reader': 'دیدار',
   'remember me': 'بخاطر بسپار',
+  'report': 'گزارش',
   'report progress': 'پیشرفت گزارش',
   'report title': 'عنوان گزارش',
   'reports archive': 'بایگانی گزارشات',
