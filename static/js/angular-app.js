@@ -125,7 +125,7 @@ var substringMatcher = function(strs) {
               //deep watch
               listener = $scope.$watch((scope)=>{return scope.item}, (newval)=>{
                 if(JSON.stringify(originItem) !== JSON.stringify(newval)) {
-                    console.log(JSON.stringify(originItem), '\n', JSON.stringify(newval))
+                    //console.log(JSON.stringify(originItem), '\n', JSON.stringify(newval))
                     $scope.changed = true;
                 } else {
                     $scope.changed = false;
@@ -251,11 +251,14 @@ app.directive('typeaheadDirective', ['User', 'VariableCat_1', 'VariableCat_2', '
                     var current = data.filter((item)=>{return (item.id === id)})[0];
                     if(current !== undefined) {
                       scope[attrs.ngModel] = rowItem(current);
+                      el.typeahead('val', rowItem(current));
                     } else {
                       scope[attrs.ngModel] = '';
+                      console.log('no current value');
                     }
                   }
                   selectid(scope.item[attrs.bind]);
+                  //select into typeahead when item updates
                   scope.$watch(function(scope) { return scope.item[attrs.bind] },
                     function() {selectid(scope.item[attrs.bind])}
                   );
@@ -264,9 +267,9 @@ app.directive('typeaheadDirective', ['User', 'VariableCat_1', 'VariableCat_2', '
                  scope.item[attrs.bind] = data[source.indexOf(suggestion)].id;
                });
                el.blur(()=>{
-                 if(source.indexOf(el.val()) === -1)
-                  console.log(fa["Error : element not in list!"]);
-                  //scope.item[attrs.bind] = undefined;
+                 if(source.indexOf(el.val()) === -1) {
+                   console.log(fa["Error : element not in list!"]);
+                 }
                });
              }
            });
@@ -277,6 +280,13 @@ app.directive('typeaheadDirective', ['User', 'VariableCat_1', 'VariableCat_2', '
          {
            name: rowsource,
            source: substringMatcher(fa[rowsource])
+         });
+         //must set value property of typeahead if not
+         el.blur(()=>{
+           console.log(el.val());
+           console.log(scope[attrs.ngModel]);
+           console.log(scope);
+           console.log(attrs.ngModel);
          });
       }
    }
