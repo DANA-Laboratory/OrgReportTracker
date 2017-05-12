@@ -48,3 +48,8 @@ button, input, optgroup, select, textarea {
 kbd {
   font-family: WWDigital;
 }
+//scrollable twitter bs dropdown
+.tt-menu {
+   max-height: 150px;
+   overflow-y: auto;
+ }
