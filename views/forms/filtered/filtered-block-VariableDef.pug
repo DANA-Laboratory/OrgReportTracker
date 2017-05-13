@@ -30,24 +30,24 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
       .card-block.row
         .form-group.col-4
           label(for='owners')= fa['owner']
-          input#owners.form-control.form-control.typeahead(typeahead-directive, bind='user_owner', rowsource="User", type="text", placeholder=`${fa['select owner']}`, style="text-align:right", ng-model='current_owner')
+          input#owners.form-control.form-control.typeahead(typeahead-directive, bind='user_owner', rowsource="User", type="text", placeholder=`${fa['select owner']}`, style="text-align:right")
         .form-group.col-4
           label(for='providers')= fa['provider']
-          input#providers.form-control.form-control.typeahead(typeahead-directive, bind='user_provider', rowsource="User", type="text", placeholder=`${fa['select provider']}`, style="text-align:right", ng-model='current_provider')
+          input#providers.form-control.form-control.typeahead(typeahead-directive, bind='user_provider', rowsource="User", type="text", placeholder=`${fa['select provider']}`, style="text-align:right")
         .form-group.col-4
           label(for='reviewers')= fa['reviewer']
-          input#reviewers.form-control.form-control.typeahead(typeahead-directive, bind='user_reviewer', rowsource="User", type="text", placeholder=`${fa['select reviewer']}`, style="text-align:right", ng-model='current_reviewer')
+          input#reviewers.form-control.form-control.typeahead(typeahead-directive, bind='user_reviewer', rowsource="User", type="text", placeholder=`${fa['select reviewer']}`, style="text-align:right")
     .form-group.row
       label.col-1.col-form-label(for='weight')= fa['weight']
       .col-2
         input#weight.form-control(type='number', required, ng-model='item.weight')
       label.col-1.col-form-label(for='variablecat_3')= fa['VariableCat']['VariableCat_3']
       .col-4
-        input#variablecat_3.form-control.form-control.typeahead(typeahead-directive, bind='variablecat_3_id', rowsource="VariableCat_3", type="text", placeholder=`${fa['select variablecat_3']}`, style="text-align:right", ng-model='current_cat_3')
+        input#variablecat_3.form-control.form-control.typeahead(typeahead-directive, bind='variablecat_3_id', rowsource="VariableCat_3", type="text", placeholder=`${fa['select variablecat_3']}`, style="text-align:right")
         //input#variablecat_3.form-control(type='text', required, ng-model='item.variablecat_3_id')
       label.col-1.col-form-label(for='reportclass')= fa['report']
       .col-3
-        input#reportclass.form-control.form-control.typeahead(typeahead-directive, bind='reportclass_id', rowsource="ReportClass", type="text", placeholder=`${fa['select report']}`, style="text-align:right", ng-model='current_report')
+        input#reportclass.form-control.form-control.typeahead(typeahead-directive, bind='reportclass_id', rowsource="ReportClass", type="text", placeholder=`${fa['select report']}`, style="text-align:right")
         //input#reportclass.form-control(type='text', required, ng-model='item.reportclass_id')
       
       

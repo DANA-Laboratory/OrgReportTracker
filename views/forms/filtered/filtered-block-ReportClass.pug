@@ -7,7 +7,7 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
         input#caption.form-control.form-control(type='text', required, ng-model='item.caption')
       label.col-1.col-form-label(for='users')= fa['owner']
       .col-4
-        input#users.form-control.form-control.typeahead(typeahead-directive, bind='user_owner', rowsource="User", type="text", required, placeholder=`${fa['select owner']}`, style="text-align:right", ng-model='current_owner')
+        input#users.form-control.form-control.typeahead(typeahead-directive, bind='user_owner', rowsource="User", type="text", required, placeholder=`${fa['select owner']}`, style="text-align:right")
       .col-2
         .row
           label.col-3.col-form-label(for='duration')= fa['duration']

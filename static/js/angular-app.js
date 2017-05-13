@@ -246,14 +246,12 @@ app.directive('typeaheadDirective', ['User', 'VariableCat_1', 'VariableCat_2', '
                source: substringMatcher(source)
              });
              if(attrs.bind) {
-               if((scope.item[attrs.bind] >= 0) && (attrs.ngModel !== undefined)) {
+               if((scope.item[attrs.bind] >= 0)) {
                   var selectid = (id) => {
                     var current = data.filter((item)=>{return (item.id === id)})[0];
                     if(current !== undefined) {
-                      scope[attrs.ngModel] = rowItem(current);
                       el.typeahead('val', rowItem(current));
                     } else {
-                      scope[attrs.ngModel] = '';
                       console.log('no current value');
                     }
                   }
@@ -283,10 +281,12 @@ app.directive('typeaheadDirective', ['User', 'VariableCat_1', 'VariableCat_2', '
          });
          //must set value property of typeahead if not
          el.blur(()=>{
-           console.log(el.val());
-           console.log(scope[attrs.ngModel]);
-           console.log(scope);
-           console.log(attrs.ngModel);
+           if(el.val().length==0) {
+              var val = scope.item[(attrs.ngModel).split('.')[1]];
+              if (val.length>0) {
+                el.typeahead('val', val);
+              }
+           }
          });
       }
    }
