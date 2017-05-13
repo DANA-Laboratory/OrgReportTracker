@@ -4,5 +4,15 @@
       button.btn.btn-success(type='submit')= fa['submit']
         i.fa.fa-check.fa-fw
     .pr-2
-      button.btn.btn-danger(type='submit')= fa['remove']
+      button.btn.btn-danger(type='submit' data-toggle="modal" data-target="#modalDelConf")= fa['remove']
         i.fa.fa-remove.fa-fw
+      #modalDelConf.modal.fade(tabindex='-1', role='dialog', aria-labelledby='label', aria-hidden='true')
+        .modal-dialog(role='document')
+          .modal-content
+            .modal-header
+              h5#label.modal-title= fa['confirm delete']
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+            .modal-footer
+              button.btn.btn-secondary(type='button', data-dismiss='modal')= fa['cancel']
+              button.btn.btn-danger(type='button')= fa['confirm']
