@@ -4,5 +4,5 @@
       button.btn.btn-success(type='submit')= fa['submit']
         i.fa.fa-check.fa-fw
     .pr-2
-      button.btn.btn-danger(type='submit' data-toggle="modal" data-target="#modalDelConf" ng-click="modalcallback(delete)")= fa['remove']
+      button.btn.btn-danger(type='button' ng-click="confirm(delete, 'confirm delete')")= fa['remove']
         i.fa.fa-remove.fa-fw

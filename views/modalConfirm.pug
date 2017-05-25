@@ -1,0 +1,11 @@
+#modalConfirm.modal.fade(tabindex='-1', role='dialog', aria-labelledby='label', aria-hidden='true')
+  .modal-dialog(role='document')
+    .modal-content
+      .modal-header
+        h5#label.modal-title
+        | {{modalmessage}}
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') ×
+      .modal-footer
+        button.btn.btn-secondary(type='button', data-dismiss='modal')= fa['cancel']
+        button.btn.btn-danger(type='button', data-dismiss='modal', ng-click='modalcallback()')= fa['confirm']

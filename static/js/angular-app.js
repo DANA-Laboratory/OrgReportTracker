@@ -146,20 +146,14 @@ var substringMatcher = function(strs) {
         };
     }]);
 });
-
-app.controller('selectController', function ($scope) {
-    var modalcallback = undefined;
-    $scope.modalcallback = (cb) => {
-      if (cb==undefined) {
-        if (modalcallback==undefined) {
-          console.log('modalcallback not set.')
-        } else {
-          modalcallback();
-        }
-      } else {
-        modalcallback = cb;
-      };
+app.run(function($rootScope) {
+    $rootScope.confirm = (modalcallback, modalmessagekey) => {
+      $rootScope.modalcallback = modalcallback;
+      $rootScope.modalmessage = fa[modalmessagekey];
+      $('#modalConfirm').modal('toggle');
     };
+})
+app.controller('selectController', function ($scope) {
     var selected = {};
     $scope.registerSelected = function(key) {
         if (!(key in selected)) {

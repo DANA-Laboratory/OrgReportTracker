@@ -32,20 +32,11 @@ div(ng-controller="selectController")
     .col-9
       each menuitem in ['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'vVariableDef']
         include forms/filtered/filtered-card.pug
-  #modalDelConf.modal.fade(tabindex='-1', role='dialog', aria-labelledby='label', aria-hidden='true')
-    .modal-dialog(role='document')
-      .modal-content
-        .modal-header
-          h5#label.modal-title= fa['confirm delete']
-          button.close(type='button', data-dismiss='modal', aria-label='Close')
-            span(aria-hidden='true') ×
-        .modal-footer
-          button.btn.btn-secondary(type='button', data-dismiss='modal')= fa['cancel']
-          button.btn.btn-danger(type='button', data-dismiss='modal', ng-click='modalcallback()')= fa['confirm']
 .row.align-items-start
   .col.with-border
   .col-9
     include forms/openreport.pug
+include modalConfirm.pug
 script.
   $(function () {
     $('[data-toggle="tooltip"]').tooltip({
