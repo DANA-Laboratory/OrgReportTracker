@@ -140,17 +140,19 @@ var substringMatcher = function(strs) {
             $scope.item[key] = value;
         };
         $scope.delete = function () {
-            var res = resource.delete({id: $scope.item.id}, function(){
-                console.log(res);
-            });
+            var res = resource.delete({where: $scope.item.id}, ()=>{$scope.confirm('item removed')}, ()=>{$scope.confirm('error')});
         };
     }]);
 });
+//confirm method, will show #modalConfirm modal dialog
 app.run(function($rootScope) {
-    $rootScope.confirm = (modalcallback, modalmessagekey) => {
+    $rootScope.confirm = (modalmessagekey, modalcallback) => {
+      //called when confirm btn pressed
       $rootScope.modalcallback = modalcallback;
       $rootScope.modalmessage = fa[modalmessagekey];
-      $('#modalConfirm').modal('toggle');
+      if (!$('#modalConfirm').hasClass('show')) {
+        $('#modalConfirm').modal('toggle');
+      }
     };
 })
 app.controller('selectController', function ($scope) {
