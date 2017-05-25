@@ -94,7 +94,7 @@ var substringMatcher = function(strs) {
         $scope.query = function (where, callback) {
             if(urlobject!=='Log') {
                 $scope.registerSelected(urlobject);
-                var res = resource.query(where, function(data) {
+                var res = resource.query(where, function() {
                     if (urlobject !== 'User') {
                         $scope.data = res.sort(sort_by('code'));
                     } else {
@@ -139,10 +139,27 @@ var substringMatcher = function(strs) {
         $scope.updateitem = function (key, value) {
             $scope.item[key] = value;
         };
+        $scope.delete = function () {
+            var res = resource.delete({id: $scope.item.id}, function(){
+                console.log(res);
+            });
+        };
     }]);
 });
 
 app.controller('selectController', function ($scope) {
+    var modalcallback = undefined;
+    $scope.modalcallback = (cb) => {
+      if (cb==undefined) {
+        if (modalcallback==undefined) {
+          console.log('modalcallback not set.')
+        } else {
+          modalcallback();
+        }
+      } else {
+        modalcallback = cb;
+      };
+    };
     var selected = {};
     $scope.registerSelected = function(key) {
         if (!(key in selected)) {
