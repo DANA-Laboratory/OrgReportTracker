@@ -50,6 +50,7 @@ const fa = {
   'new comments!': 'پیام جدید',
   'new orders!': 'درخواست جدید',
   'new tasks!': 'دستور جدید',
+  'number of changes:': 'تعداد تغییرات',
   'open report': 'گزارش باز میباشد',
   'option 0': 'همه',
   'option 1': 'مالی',

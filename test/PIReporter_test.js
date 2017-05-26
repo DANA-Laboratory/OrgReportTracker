@@ -90,16 +90,49 @@ describe('DataBase', function() {
         });
     });
     describe('should delete data', function() {
+        it('should not delete user when related exists', function(done) {
+            let data = {_tbl : 'tblUser', _where : 'account', account : 'naderpoor'};
+            validator.delete.validate(data).then((data) => {
+                sqldelete[data._verb](db, data).catch((err) => {
+                  assert(err.code==='SQLITE_CONSTRAINT');
+                  done();
+                });
+            });
+        });
+        it('should not delete admin user', function(done) {
+            let data = {_tbl : 'tblUser', _where : 'sysadmin', sysadmin : true};
+            validator.delete.validate(data).then((data) => {
+                sqldelete[data._verb](db, data).then((res) => {
+                  assert(res.changes === 0);
+                  done();
+                }).catch((err)=>{console.log(err)});
+            });
+        });
+        it('should delete a user', function(done) {
+            let data = {_tbl : 'tblUser', _where : 'id', id : 3};
+            validator.delete.validate(data).then((data) => {
+                sqldelete[data._verb](db, data).then((res) => {
+                  assert(res.changes === 1);
+                  done();
+                });
+            });
+        });
         it('should not delete all users data', function(done) {
             let data = {_verb : 'deleteAllUsers'};
             validator.delete.validate(data).then((data) => {
-                sqldelete[data._verb](db, data).catch(() => done());
+                sqldelete[data._verb](db, data).catch((err) => {
+                  assert(err.code==='SQLITE_CONSTRAINT');
+                  done();
+                });
             });
         });
         it('should remove variables from report', function(done){
             let data = {_verb : 'removeAllReportClassVariables'};
             validator.delete.validate(data).then((data) => {
-                sqldelete[data._verb](db, data).then(() => done());
+                sqldelete[data._verb](db, data).then((res) => {
+                  assert(res.changes === 42);
+                  done();
+                });
             });
         });
         it('should delete variables', function(done){
