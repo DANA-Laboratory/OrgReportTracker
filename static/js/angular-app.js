@@ -125,7 +125,6 @@ var substringMatcher = function(strs) {
               //deep watch
               listener = $scope.$watch((scope)=>{return scope.item}, (newval)=>{
                 if(JSON.stringify(originItem) !== JSON.stringify(newval)) {
-                    //console.log(JSON.stringify(originItem), '\n', JSON.stringify(newval))
                     $scope.changed = true;
                 } else {
                     $scope.changed = false;
@@ -141,8 +140,16 @@ var substringMatcher = function(strs) {
         };
         $scope.delete = function () {
             var res = resource.delete({where: $scope.item.id},
-              (changes)=>{$scope.confirm(fa['item removed'] + ', ' + fa['number of changes:'] + ' ' + changes[0])},
-              (err)=>{$scope.confirm(fa['error'])});
+              (data)=>{
+                $scope.confirm(fa['item removed'] + ', ' + fa['number of changes:'] + ' ' + data.changes);
+              },
+              (err)=>{
+                if (err.status === 409) {
+                  $scope.confirm(fa['error'] + ': ' + fa[err.data]);
+                } else {
+                  $scope.confirm(fa['error']);
+                }
+              });
         };
     }]);
 });
