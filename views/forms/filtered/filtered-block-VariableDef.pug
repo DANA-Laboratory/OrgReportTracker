@@ -37,18 +37,21 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
         .form-group.col-4
           label(for='reviewers')= fa['reviewer']
           input#reviewers.form-control.form-control.typeahead(typeahead-directive, bind='user_reviewer', rowsource="User", type="text", placeholder=`${fa['select reviewer']}`, style="text-align:right")
-    .form-group.row
-      label.col-1.col-form-label(for='weight')= fa['weight']
-      .col-2
-        input#weight.form-control(type='number', required, ng-model='item.weight')
-      label.col-1.col-form-label(for='variablecat_3')= fa['VariableCat']['VariableCat_3']
-      .col-4
-        input#variablecat_3.form-control.form-control.typeahead(typeahead-directive, bind='variablecat_3_id', rowsource="VariableCat_3", type="text", placeholder=`${fa['select variablecat_3']}`, style="text-align:right")
-        //input#variablecat_3.form-control(type='text', required, ng-model='item.variablecat_3_id')
-      label.col-1.col-form-label(for='reportclass')= fa['report']
-      .col-3
-        input#reportclass.form-control.form-control.typeahead(typeahead-directive, bind='reportclass_id', rowsource="ReportClass", type="text", placeholder=`${fa['select report']}`, style="text-align:right")
-        //input#reportclass.form-control(type='text', required, ng-model='item.reportclass_id')
+    .card.form-group
+      .card-block.small
+        .lead.card-title= fa['report and cat_3'] 
+        .row
+          .col-1.align-self-center
+            a.fa.fa-remove(href="", style="color:red")
+          label.col-1.col-form-label(for='reportclass')= fa['report']
+          .col-2
+            input#reportclass.form-control.form-control-sm.typeahead(typeahead-directive, bind='reportclass_id', rowsource="ReportClass", type="text", placeholder=`${fa['select report']}`, style="text-align:right")
+          label.col-1.col-form-label(for='variablecat_3')= fa['VariableCat']['VariableCat_3']
+          .col-4
+            input#variablecat_3.form-control.form-control-sm.typeahead(typeahead-directive, bind='variablecat_3_id', rowsource="VariableCat_3", type="text", placeholder=`${fa['select variablecat_3']}`, style="text-align:right")
+          label.col-1.col-form-label(for='weight')= fa['weight']
+          .col-2
+            input#weight.form-control.form-control-sm(type='number', required, ng-model='item.weight')
       
       
   include filtered-block-footer.pug

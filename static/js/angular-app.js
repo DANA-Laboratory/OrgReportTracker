@@ -142,6 +142,7 @@ var substringMatcher = function(strs) {
             var res = resource.delete({where: $scope.item.id},
               (data)=>{
                 $scope.confirm(fa['item removed'] + ', ' + fa['number of changes:'] + ' ' + data.changes);
+                $scope.hide = true;
               },
               (err)=>{
                 if (err.status === 409) {

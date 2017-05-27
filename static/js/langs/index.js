@@ -81,6 +81,7 @@ const fa = {
   'result 4': 'کاربر',
   'result 5': 'پیام',
   'remove': 'حذف',
+  'report and cat_3': 'گزارش و زیر گروه',
   'reviewer': 'ناظر',
   'sample log': "how to add a line break here: <br/> must be on a new line.",
   'sample user': 'حامد روحانی',
