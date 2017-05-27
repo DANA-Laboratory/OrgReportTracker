@@ -1,0 +1,12 @@
+.col-1.align-self-center
+  a.fa.fa-remove(ng-if="item.id >= 0", href="", style="color:red")
+  a.fa.fa-check(ng-if="item.id == undefined", href="", style="color:red")
+label.col-1.col-form-label(for='reportclass')= fa['report']
+.col-2
+  input#reportclass.form-control.form-control-sm.typeahead(typeahead-directive, bind='reportclass_id', rowsource="ReportClass", type="text", placeholder=`${fa['select report']}`, style="text-align:right")
+label.col-1.col-form-label(for='variablecat_3')= fa['VariableCat']['VariableCat_3']
+.col-4
+  input#variablecat_3.form-control.form-control-sm.typeahead(typeahead-directive, bind='variablecat_3_id', rowsource="VariableCat_3", type="text", placeholder=`${fa['select variablecat_3']}`, style="text-align:right")
+label.col-1.col-form-label(for='weight')= fa['weight']
+.col-2
+  input#weight.form-control.form-control-sm(type='number', required, ng-model='item.weight')

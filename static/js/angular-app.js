@@ -30,7 +30,7 @@ var substringMatcher = function(strs) {
     cb(matches);
   };
 };
-['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'vVariableDef']
+['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'ReportClassVariable']
 .forEach((urlobject)=>{
     app.factory(urlobject, ['$resource',
         function($resource) {
@@ -64,7 +64,7 @@ var substringMatcher = function(strs) {
   );
 });
 //controllers for resources
-['Log', 'User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'vVariableDef']
+['Log', 'User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'ReportClassVariable']
 .forEach((urlobject)=>{
     app.controller(urlobject + 'Controller',['$scope', urlobject, function ($scope, resource) {
         const newitem = -2;
