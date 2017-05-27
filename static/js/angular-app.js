@@ -49,22 +49,34 @@ var substringMatcher = function(strs) {
     );
 });
 
+['vVariableDef']
+.forEach((urlobject)=>{
+  app.factory(urlobject, ['$resource',
+      function($resource) {
+          return $resource(`/restful/${urlobject}/:where/:value`, {}, {
+              get: {method: 'GET', cache: false, isArray: false},
+              query: {method:'GET', isArray:true, transformResponse: function (data)
+                  {
+                      return angular.fromJson(data);
+                  },
+              },
+          });
+      }]
+  );
+});
+
 ['Log']
 .forEach((urlobject)=>{
   app.factory(urlobject, ['$resource',
     function($resource) {
       return $resource(`/restful/${urlobject}/:where`, {}, {
           'get':    {method:'GET'},
-          //'save':   {method:'POST'},
-          //'query':  {method:'GET', isArray:true},
-          //'remove': {method:'DELETE'},
-          //'delete': {method:'DELETE'}
       });
     }]
   );
 });
 //controllers for resources
-['Log', 'User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'ReportClassVariable']
+['Log', 'User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'vVariableDef', 'ReportClassVariable']
 .forEach((urlobject)=>{
     app.controller(urlobject + 'Controller',['$scope', urlobject, function ($scope, resource) {
         const newitem = -2;
@@ -110,7 +122,7 @@ var substringMatcher = function(strs) {
             return $scope.selectedHas(urlobject, id);
         };
         $scope.selectitem = function (id) {
-            $scope.updateSelected(urlobject, id);
+           $scope.updateSelected(urlobject, id);
         };
         var originItem = {};
         var listener = ()=>{};
@@ -138,19 +150,25 @@ var substringMatcher = function(strs) {
         $scope.updateitem = function (key, value) {
             $scope.item[key] = value;
         };
-        $scope.delete = function () {
-            var res = resource.delete({where: $scope.item.id},
-              (data)=>{
-                $scope.confirm(fa['item removed'] + ', ' + fa['number of changes:'] + ' ' + data.changes);
-                $scope.hide = true;
-              },
-              (err)=>{
-                if (err.status === 409) {
-                  $scope.confirm(fa['error'] + ': ' + fa[err.data]);
-                } else {
-                  $scope.confirm(fa['error']);
-                }
-              });
+        $scope.delete = function (item) {
+            if (item == undefined) {
+                item = $scope.item;
+            };
+            $scope.confirm(fa['confirm delete'], ()=>{
+                var res = resource.delete({where: item.id},
+                    (data)=>{
+                        $scope.confirm(fa['item removed'] + ', ' + fa['number of changes:'] + ' ' + data.changes);
+                        $scope.hide = true;
+                    },
+                    (err)=>{
+                        if (err.status === 409) {
+                            $scope.confirm(fa['error'] + ': ' + fa[err.data]);
+                        } else {
+                            $scope.confirm(fa['error']);
+                        }
+                    }
+                );
+            });
         };
     }]);
 });
@@ -196,6 +214,9 @@ app.controller('selectController', function ($scope) {
         }
     }
     $scope.getlatestselected = (key) => {
+      if (key === 'VariableDef') {
+        key = 'vVariableDef';
+      }
       return ((key in selected) && selected[key].size>0) ? [...selected[key]][selected[key].size-1] : -1;
     };
     $scope.filter = function (item) {

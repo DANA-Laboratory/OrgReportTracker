@@ -1,5 +1,5 @@
 .col-1.align-self-center
-  a.fa.fa-remove(ng-if="item.id >= 0", href="", style="color:red")
+  a.fa.fa-remove(ng-if="item.id >= 0", href="", style="color:red", ng-click="delete(item)")
   a.fa.fa-check(ng-if="item.id == undefined", href="", style="color:red")
 label.col-1.col-form-label(for='reportclass')= fa['report']
 .col-2
