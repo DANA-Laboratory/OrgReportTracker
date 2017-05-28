@@ -16,6 +16,12 @@ app.controller('selectController', function ($scope) {
         }
         $scope.$broadcast("eventUpdateSelected", {key: key, value: value});
     }
+    $scope.unselect = function(key, value) {
+        if (selected[key].has(value)) {
+            selected[key].delete(value);
+        }
+        $scope.$broadcast("eventUpdateSelected", {key: key, value: value});
+    }
     $scope.selectedHas = function(key, value) {
         return selected[key].has(value);
     }
@@ -36,7 +42,7 @@ app.controller('selectController', function ($scope) {
       if (key === 'VariableDef') {
         key = 'vVariableDef';
       }
-      return selected[key].size;      
+      return selected[key].size;
     };
     $scope.getselection = (key) => {
       if (key === 'VariableDef') {

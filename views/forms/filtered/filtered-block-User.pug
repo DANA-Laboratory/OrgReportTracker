@@ -1,4 +1,4 @@
-form.card.form.mb-3(ng-controller="urlgetController", ng-init="init('User', getlatestselectedhandler)")
+form.card.form.mb-3(ng-controller="urlgetController", ng-init="init('User', getselectedhandler, selectedkey)")
   include filtered-block-header.pug
   div(ng-hide='hide')
     .card-block
@@ -80,7 +80,7 @@ form.card.form.mb-3(ng-controller="urlgetController", ng-init="init('User', getl
           #headingOne.card-header(role='tab')
             .mb-0
               = fa['user log']
-              a.fa.fa-fw.fa-caret-down(href='', data-toggle='collapse', data-target='#logCollapse' data-parent='#accordion', aria-expanded='true', aria-controls='collapseOne')
-          #logCollapse.collapse(role='tabpanel', aria-labelledby='headingOne')
-            .card-block(ng-controller="urlgetController", ng-init="init('Log', getlatestselectedhandler)", style="font-family: monospace; direction: ltr; max-height: 200px; overflow-y: scroll; white-space: pre") {{item.log}}
+              a.fa.fa-fw.fa-caret-down(href='', data-toggle='collapse', data-target='#logCollapse{{selectedkey}}' data-parent='#accordion', aria-expanded='true', aria-controls='collapseOne')
+          div.collapse(role='tabpanel', aria-labelledby='headingOne', id='logCollapse{{selectedkey}}')
+            .card-block(ng-controller="urlgetController", ng-init="init('Log', getselectedhandler, selectedkey)", style="font-family: monospace; direction: ltr; max-height: 200px; overflow-y: scroll; white-space: pre") {{item.log}}
     include filtered-block-footer.pug

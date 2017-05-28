@@ -6,6 +6,7 @@
     .col-8.text-center= fa[menuitem]['header']
       b
         | : {{item.caption}}{{item.account}}
-    .col-2
-      button.btn.btn-outline-secondary.btn-sm.fa.fa-sort-up.pull-left(ng-hide='!hide', href='', ng-click='hide=false')
-      button.btn.btn-outline-secondary.btn-sm.fa.fa-sort-down.pull-left(ng-hide='hide', href='', ng-click='hide=true')
+    .col-2.text-left
+      button.close.fa.fa-close.fa-fw(type='button', ng-click='close()')
+      button.close.fa.fa-window-restore.fa-fw(ng-hide='!hide', href='', ng-click='hide=false')
+      button.close.fa.fa-window-minimize.fa-fw(ng-hide='hide', href='', ng-click='hide=true')

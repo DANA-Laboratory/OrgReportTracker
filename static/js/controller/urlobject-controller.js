@@ -62,15 +62,36 @@ angular.module("PIR").controller('urlqueryController',function ($scope, $injecto
 angular.module("PIR").controller('urlgetController',function ($scope, $injector) {
     var resource = undefined;
     var urlobject = undefined;
+    var selectedkey = undefined;
     const newitem = -2;//id for a new item
     $scope.changed = false;//check if it need an update
     //callback called when selection changed
-    $scope.init = function(res, handler) {
+    $scope.init = function(res, handler, key) {
+        selectedkey = key;
         resource = $injector.get(res);
         urlobject = res;
         handler();
         $scope.$on('eventUpdateSelected', handler);
     };
+    //get latest selected item and load into $scope.item
+    $scope.getselectedhandler = function() {
+        //var _where = (urlobject === 'Log') ? $scope.getlatestselected('User') : $scope.getlatestselected(urlobject);
+        if (selectedkey >= 0) {
+            var res = resource.get({where: selectedkey}, function() {
+                if(urlobject === 'Log') {
+                    $scope.item = {};
+                    $scope.item.log = '';
+                    res.data.forEach((item)=>{$scope.item.log += item.message + " @ " + item.timestamp + "\n"});
+                } else {
+                    $scope.newitem = false;
+                    $scope.load(res);
+                };
+            });
+        } else if (selectedkey == newitem) {
+            $scope.newitem = true;
+            $scope.load({});
+        }
+    }
     //get latest selected item and load into $scope.item
     $scope.getlatestselectedhandler = function() {
         var _where = (urlobject === 'Log') ? $scope.getlatestselected('User') : $scope.getlatestselected(urlobject);
@@ -134,4 +155,8 @@ angular.module("PIR").controller('urlgetController',function ($scope, $injector)
             );
         });
     };
+    //close button click, unselect
+    $scope.close = function() {
+      $scope.unselect(urlobject, selectedkey);
+    }
 });
