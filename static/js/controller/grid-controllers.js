@@ -29,14 +29,16 @@ angular.module('PIR').controller('report-grid', ['$scope', '$http', function ($s
     });
 }]);
 angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
-    $scope.masterField = null;
-    $scope.init = function(masterField, handler) {
+    $scope.masterField = undefined;
+    var urlobject = undefined;
+    $scope.init = function(urlo, masterField, handler) {
         $scope.masterField = masterField;
+        urlobject = urlo;
         handler();
         $scope.$on('eventUpdateSelected', handler)
     };
     $scope.catgridhandler = function() {
-        $scope.query({where: $scope.masterField.toLowerCase()+'_id', value: $scope.getlatestselected($scope.masterField)}, $scope.callback);
+        $scope.query(urlobject, {where: $scope.masterField.toLowerCase()+'_id', value: $scope.getlatestselected($scope.masterField)}, $scope.callback);
     };
     $scope.$on('uiGridEventEndCellEdit', function (data) {
         updatesum();

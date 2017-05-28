@@ -1,4 +1,4 @@
-.card.with-border(ng-controller=`${menuitem}Controller`, ng-init="query()")
+.card.with-border(ng-controller=`urlqueryController`, ng-init=`query('${menuitem}')`)
   #headingOne.card-header.card-outline-primary
     a.btn.btn-outline-primary.col-9(href='', data-toggle="collapse", data-target=`#${menuitem}`, data-parent='#accordion', aria-expanded='true', aria-controls=`${menuitem}`)
       = fa[menuitem]['header']

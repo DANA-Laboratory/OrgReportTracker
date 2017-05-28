@@ -1,4 +1,4 @@
-form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller="UserController", ng-init="init(getlatestselectedhandler)", ng-hide='hide')
+form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller="urlgetController", ng-init="init('User', getlatestselectedhandler)", ng-hide='hide')
   include filtered-block-header.pug
   .card-block
     .row
@@ -81,5 +81,5 @@ form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller
             = fa['user log']
             a.fa.fa-fw.fa-caret-down(href='', data-toggle='collapse', data-target='#logCollapse' data-parent='#accordion', aria-expanded='true', aria-controls='collapseOne')
         #logCollapse.collapse(role='tabpanel', aria-labelledby='headingOne')
-          .card-block(ng-controller="LogController", ng-init="init(getlatestselectedhandler)", style="font-family: monospace; direction: ltr; max-height: 200px; overflow-y: scroll; white-space: pre") {{item.log}}
+          .card-block(ng-controller="urlgetController", ng-init="init('Log', getlatestselectedhandler)", style="font-family: monospace; direction: ltr; max-height: 200px; overflow-y: scroll; white-space: pre") {{item.log}}
   include filtered-block-footer.pug
