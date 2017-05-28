@@ -5,4 +5,5 @@
       span.badge.badge-warning.pull-right(ng-show='changed')= fa['need update']
     .col-8.text-center= fa[menuitem]['header']
     .col-2
-      button.close(type='button', aria-hidden='true', ng-click='hide=true') ×
+      button.btn.btn-outline-secondary.btn-sm.fa.fa-sort-up.pull-left(ng-hide='!hide', href='', ng-click='hide=false')
+      button.btn.btn-outline-secondary.btn-sm.fa.fa-sort-down.pull-left(ng-hide='hide', href='', ng-click='hide=true')

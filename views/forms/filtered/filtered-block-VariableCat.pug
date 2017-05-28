@@ -1,26 +1,27 @@
-form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller='urlgetController', ng-init=`init('${menuitem}', getlatestselectedhandler)`, ng-hide='hide')
+form.card.form.mb-3(ng-controller='urlgetController', ng-init=`init('${menuitem}', getlatestselectedhandler)`)
   include filtered-block-header.pug
-  .card-block
-    .form-group.row
-      label.col-1.col-form-label(for='caption')= fa['caption']
-      .col-5
-        input#caption.form-control(type='text', required, ng-model='item.caption')
-      label.col-1.col-form-label(for='code')= fa['code']
-      .col-2
-        input#code.form-control(type='text', required, ng-model='item.code')
-      label.col-1.col-form-label(for='weight')= fa['weight']
-      .col-2
-        input#weight.form-control(type='number', required, ng-model='item.weight')
-    .form-group.row
-      if (parent !== '')
-        label.col-1.col-form-label(for=`${parent}`)= fa['VariableCat'][`${parent}`]
-        .col-6
-          input.form-control.typeahead(id=`${parent}`, typeahead-directive, bind=`${parent_lo}_id`, rowsource=`${parent}`, type="text", required, placeholder=`${fa['select by type']}`)
-      label.col-1.col-form-label(for='attribute')= fa['attribute']
-      .col
-        input#code.form-control(type='text', ng-model='item.attribute')
-    div(ng-controller='urlqueryController')
-      .small
-        .div(ng-controller='cat-grid', ng-init=`init('${child}', '${menuitem}', catgridhandler)`)
-          div(ui-grid='gridOptions' class="grid" dir='rtl' ui-grid-edit ui-grid-cellnav style='min-height: 300px')
-  include filtered-block-footer.pug
+  div(ng-hide='hide')
+    .card-block
+      .form-group.row
+        label.col-1.col-form-label(for='caption')= fa['caption']
+        .col-5
+          input#caption.form-control(type='text', required, ng-model='item.caption')
+        label.col-1.col-form-label(for='code')= fa['code']
+        .col-2
+          input#code.form-control(type='text', required, ng-model='item.code')
+        label.col-1.col-form-label(for='weight')= fa['weight']
+        .col-2
+          input#weight.form-control(type='number', required, ng-model='item.weight')
+      .form-group.row
+        if (parent !== '')
+          label.col-1.col-form-label(for=`${parent}`)= fa['VariableCat'][`${parent}`]
+          .col-6
+            input.form-control.typeahead(id=`${parent}`, typeahead-directive, bind=`${parent_lo}_id`, rowsource=`${parent}`, type="text", required, placeholder=`${fa['select by type']}`)
+        label.col-1.col-form-label(for='attribute')= fa['attribute']
+        .col
+          input#code.form-control(type='text', ng-model='item.attribute')
+      div(ng-controller='urlqueryController')
+        .small
+          .div(ng-controller='cat-grid', ng-init=`init('${child}', '${menuitem}', catgridhandler)`)
+            div(ui-grid='gridOptions' class="grid" dir='rtl' ui-grid-edit ui-grid-cellnav style='min-height: 300px')
+    include filtered-block-footer.pug

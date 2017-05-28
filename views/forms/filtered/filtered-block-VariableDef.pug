@@ -1,47 +1,48 @@
-form.card.form.mb-3(ng-if=`getlatestselected('${menuitem}')!==-1`, ng-controller="urlgetController", ng-init=`init('${menuitem}', getlatestselectedhandler)`, ng-hide='hide')
+form.card.form.mb-3(ng-controller="urlgetController", ng-init=`init('${menuitem}', getlatestselectedhandler)`)
   include filtered-block-header.pug
-  .card-block
-    -var parent = 'VariableCat_3'
-    -var parent_lo = parent.toLowerCase()
-    .form-group.row
-      label.col-1.col-form-label(for='caption')= fa['caption']
-      .col-5
-        input#caption.form-control(type='text', required, ng-model='item.caption')
-      .col-2
-        .row
-          label.col-2.col-form-label(for='code')= fa['code']
-          .col
-            input#code.form-control(type='text', required, ng-model='item.code')
-      label.col-1.col-form-label(for='attribute')= fa['attribute']
-      .col-3
-        input#attribute.form-control(type='text', ng-model='item.attribute')    
-    .card.form-group
-      .card-block.row
-        .form-group.col-4
-          label(for='unit')= fa['unit']
-          input#unit.form-control(type='text', required, ng-model='item.unit')
-        .form-group.col-4
-          label(for='limit_lower')= fa['lower limit']
-          input#limit_lower.form-control(type='number', ng-model='item.limit_lower')
-        .form-group.col-4
-          label(for='limit_upper')= fa['upper limit']
-          input#limit_upper.form-control(type='number', ng-model='item.limit_upper')
-    .card.form-group
-      .card-block.row
-        .form-group.col-4
-          label(for='owners')= fa['owner']
-          input#owners.form-control.form-control.typeahead(typeahead-directive, bind='user_owner', rowsource="User", type="text", placeholder=`${fa['select owner']}`, style="text-align:right")
-        .form-group.col-4
-          label(for='providers')= fa['provider']
-          input#providers.form-control.form-control.typeahead(typeahead-directive, bind='user_provider', rowsource="User", type="text", placeholder=`${fa['select provider']}`, style="text-align:right")
-        .form-group.col-4
-          label(for='reviewers')= fa['reviewer']
-          input#reviewers.form-control.form-control.typeahead(typeahead-directive, bind='user_reviewer', rowsource="User", type="text", placeholder=`${fa['select reviewer']}`, style="text-align:right")
-    .card.form-group(ng-controller='urlqueryController')
-      .card-block.small(ng-controller='cat-grid', ng-init=`init('ReportClassVariable', '${menuitem}', catgridhandler)`)
-        .lead.card-title= fa['report and cat_3'] 
-        .row(ng-repeat='item in data')
-          include reportclassvariablerow.pug      
-        .row(ng-repeat='item in [{}]')
-          include reportclassvariablerow.pug      
-  include filtered-block-footer.pug
+  div(ng-hide='hide')
+    .card-block
+      -var parent = 'VariableCat_3'
+      -var parent_lo = parent.toLowerCase()
+      .form-group.row
+        label.col-1.col-form-label(for='caption')= fa['caption']
+        .col-5
+          input#caption.form-control(type='text', required, ng-model='item.caption')
+        .col-2
+          .row
+            label.col-2.col-form-label(for='code')= fa['code']
+            .col
+              input#code.form-control(type='text', required, ng-model='item.code')
+        label.col-1.col-form-label(for='attribute')= fa['attribute']
+        .col-3
+          input#attribute.form-control(type='text', ng-model='item.attribute')    
+      .card.form-group
+        .card-block.row
+          .form-group.col-4
+            label(for='unit')= fa['unit']
+            input#unit.form-control(type='text', required, ng-model='item.unit')
+          .form-group.col-4
+            label(for='limit_lower')= fa['lower limit']
+            input#limit_lower.form-control(type='number', ng-model='item.limit_lower')
+          .form-group.col-4
+            label(for='limit_upper')= fa['upper limit']
+            input#limit_upper.form-control(type='number', ng-model='item.limit_upper')
+      .card.form-group
+        .card-block.row
+          .form-group.col-4
+            label(for='owners')= fa['owner']
+            input#owners.form-control.form-control.typeahead(typeahead-directive, bind='user_owner', rowsource="User", type="text", placeholder=`${fa['select owner']}`, style="text-align:right")
+          .form-group.col-4
+            label(for='providers')= fa['provider']
+            input#providers.form-control.form-control.typeahead(typeahead-directive, bind='user_provider', rowsource="User", type="text", placeholder=`${fa['select provider']}`, style="text-align:right")
+          .form-group.col-4
+            label(for='reviewers')= fa['reviewer']
+            input#reviewers.form-control.form-control.typeahead(typeahead-directive, bind='user_reviewer', rowsource="User", type="text", placeholder=`${fa['select reviewer']}`, style="text-align:right")
+      .card.form-group(ng-controller='urlqueryController')
+        .card-block.small(ng-controller='cat-grid', ng-init=`init('ReportClassVariable', '${menuitem}', catgridhandler)`)
+          .lead.card-title= fa['report and cat_3'] 
+          .row(ng-repeat='item in data')
+            include reportclassvariablerow.pug      
+          .row(ng-repeat='item in [{}]')
+            include reportclassvariablerow.pug      
+    include filtered-block-footer.pug
