@@ -75,16 +75,19 @@ var substringMatcher = function(strs) {
     }]
   );
 });
+
 //controllers for resources
 ['Log', 'User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'vVariableDef', 'ReportClassVariable']
 .forEach((urlobject)=>{
     app.controller(urlobject + 'Controller',['$scope', urlobject, function ($scope, resource) {
-        const newitem = -2;
-        $scope.changed = false;
+        const newitem = -2;//id for a new item
+        $scope.changed = false;//check if it need an update
+        //callback called when selection changed
         $scope.init = function(handler) {
             handler();
             $scope.$on('eventUpdateSelected', handler);
         };
+        //get latest selected item and load into $scope.item
         $scope.getlatestselectedhandler = function() {
             var _where = (urlobject === 'Log') ? $scope.getlatestselected('User') : $scope.getlatestselected(urlobject);
             if (_where >= 0) {
@@ -103,6 +106,7 @@ var substringMatcher = function(strs) {
                 $scope.load({});
             }
         }
+        //query list
         $scope.query = function (where, callback) {
             if(urlobject!=='Log') {
                 $scope.registerSelected(urlobject);
@@ -118,14 +122,17 @@ var substringMatcher = function(strs) {
                 });
             };
         };
+        //check if an item is selected
         $scope.isSelected = function (id) {
             return $scope.selectedHas(urlobject, id);
         };
+        //select item from list
         $scope.selectitem = function (id) {
            $scope.updateSelected(urlobject, id);
         };
         var originItem = {};
         var listener = ()=>{};
+        //load an item, lissten for change
         $scope.load = function (item) {
             //unwatch
             listener();
@@ -144,12 +151,14 @@ var substringMatcher = function(strs) {
               }, true);
             }
         };
+        //new item btn pressed
         $scope.addnew = function () {
             $scope.updateSelected(urlobject, newitem);
         };
         $scope.updateitem = function (key, value) {
             $scope.item[key] = value;
         };
+        //delete current or the passed item
         $scope.delete = function (item) {
             if (item == undefined) {
                 item = $scope.item;
