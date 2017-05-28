@@ -57,7 +57,7 @@ angular.module('PIR').directive('typeaheadDirective', ['User', 'VariableCat_1', 
                   );
                }
                el.bind('typeahead:select', function(ev, suggestion) {
-                 scope.item[attrs.bind] = data[source.indexOf(suggestion)].id;
+                 scope.$apply(()=>{scope.item[attrs.bind] = data[source.indexOf(suggestion)].id});
                });
                el.blur(()=>{
                  if(source.indexOf(el.val()) === -1) {
@@ -73,6 +73,10 @@ angular.module('PIR').directive('typeaheadDirective', ['User', 'VariableCat_1', 
          {
            name: rowsource,
            source: substringMatcher(fa[rowsource])
+         });
+         //update scope if user select from list
+         el.bind('typeahead:select', function(ev, suggestion) {
+           scope.$apply(()=>{scope.item[(attrs.ngModel).split('.')[1]] = suggestion});
          });
          //must set value property of typeahead if not
          el.blur(()=>{

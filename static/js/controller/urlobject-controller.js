@@ -102,15 +102,17 @@ angular.module("PIR").controller('urlgetController',function ($scope, $injector)
           //record original value
           originItem = Object.assign({}, item);
           //deep watch
-          listener = $scope.$watch((scope)=>{return scope.item}, (newval)=>{
-            if(JSON.stringify(originItem) !== JSON.stringify(newval)) {
-                $scope.changed = true;
-            } else {
-                $scope.changed = false;
-            }
-          }, true);
+          listener = $scope.$watchCollection('item', watcher, true);
         }
     };
+    var watcher = (newval)=>{
+       if(JSON.stringify(originItem) !== JSON.stringify(newval)) {
+           $scope.changed = true;
+       } else {
+           $scope.changed = false;
+       }
+    }
+    //password update
     $scope.updateitem = function (key, value) {
         $scope.item[key] = value;
     };
