@@ -30,14 +30,30 @@ var substringMatcher = function(strs) {
     cb(matches);
   };
 };
+var angular_cache = undefined;
+//confirm method, will show #modalConfirm modal dialog
+app.run(function($rootScope, $cacheFactory) {
+    //load translation into rootScope
+    angular_cache = $cacheFactory('angular_cache');
+    $rootScope.fa = fa;
+    $rootScope.confirm = (modalmessagekey, modalcallback) => {
+      //called when confirm btn pressed
+      $rootScope.modalcallback = modalcallback;
+      $rootScope.modalmessage = modalmessagekey;
+      if (!$('#modalConfirm').hasClass('show')) {
+        $('#modalConfirm').modal('toggle');
+      }
+    };
+});
 ['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'ReportClassVariable']
 .forEach((urlobject)=>{
     app.factory(urlobject, ['$resource',
         function($resource) {
             return $resource(`/restful/${urlobject}/:where/:value`, {}, {
-                get: {method: 'GET', cache: false, isArray: false},
-                query: {method:'GET', isArray:true, transformResponse: function (data)
+                get: {method: 'GET', cache: angular_cache, isArray: false},
+                query: {method:'GET', cache: angular_cache, isArray:true, transformResponse: function (data)
                     {
+                        //console.log(angular_cache.info())
                         return angular.fromJson(data);
                     },
                 },
@@ -54,8 +70,8 @@ var substringMatcher = function(strs) {
   app.factory(urlobject, ['$resource',
       function($resource) {
           return $resource(`/restful/${urlobject}/:where/:value`, {}, {
-              get: {method: 'GET', cache: false, isArray: false},
-              query: {method:'GET', isArray:true, transformResponse: function (data)
+              get: {method: 'GET', cache: angular_cache, isArray: false},
+              query: {method:'GET', cache: angular_cache, isArray:true, transformResponse: function (data)
                   {
                       return angular.fromJson(data);
                   },
@@ -70,23 +86,10 @@ var substringMatcher = function(strs) {
   app.factory(urlobject, ['$resource',
     function($resource) {
       return $resource(`/restful/${urlobject}/:where`, {}, {
-          'get':    {method:'GET'},
+          'get':    {method:'GET', cache: angular_cache},
       });
     }]
   );
-});
-//confirm method, will show #modalConfirm modal dialog
-app.run(function($rootScope) {
-    //load translation into rootScope
-    $rootScope.fa = fa;
-    $rootScope.confirm = (modalmessagekey, modalcallback) => {
-      //called when confirm btn pressed
-      $rootScope.modalcallback = modalcallback;
-      $rootScope.modalmessage = modalmessagekey;
-      if (!$('#modalConfirm').hasClass('show')) {
-        $('#modalConfirm').modal('toggle');
-      }
-    };
 });
 //making a Socket Instance
 app.factory('socketio', function (socketFactory) {
