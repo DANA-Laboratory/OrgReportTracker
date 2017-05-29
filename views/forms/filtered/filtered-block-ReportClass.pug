@@ -30,5 +30,8 @@ form.card.form.mb-3(ng-controller='urlgetController', ng-init='init("ReportClass
       .form-group
         label(for='attribute')= fa['attribute']
         input#attribute.form-control(type='text', ng-model='item.attribute')
-      .form-group
+      div(ng-controller='urlqueryController')
+        .small
+          .div(ng-controller='cat-grid', ng-init=`init('vVariableDef', '${menuitem}', catgridhandler)`)
+            div(ui-grid='gridOptions' class="grid" dir='rtl' ui-grid-edit ui-grid-cellnav style='min-height: 300px')
     include filtered-block-footer.pug

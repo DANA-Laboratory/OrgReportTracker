@@ -73,28 +73,15 @@ angular.module("PIR").controller('urlgetController',function ($scope, $injector)
         handler();
         $scope.$on('eventUpdateSelected', handler);
     };
-    //get latest selected item and load into $scope.item
+    //get latest selected item if ($scope.config_show_only_latest===true) or (selectedkey) if ($scope.config_show_only_latest!==true) and load into $scope.item
     $scope.getselectedhandler = function() {
-        //var _where = (urlobject === 'Log') ? $scope.getlatestselected('User') : $scope.getlatestselected(urlobject);
-        if (selectedkey >= 0) {
-            var res = resource.get({where: selectedkey}, function() {
-                if(urlobject === 'Log') {
-                    $scope.item = {};
-                    $scope.item.log = '';
-                    res.data.forEach((item)=>{$scope.item.log += item.message + " @ " + item.timestamp + "\n"});
-                } else {
-                    $scope.newitem = false;
-                    $scope.load(res);
-                };
-            });
-        } else if (selectedkey == newitem) {
-            $scope.newitem = true;
-            $scope.load({});
+        if ($scope.config_show_only_latest === true) {
+          //get latest selected item and load into $scope.item
+          _where = (urlobject === 'Log') ? $scope.getlatestselected('User') : $scope.getlatestselected(urlobject);
+        } else {
+          //get item with key equals selectedkey
+          _where = selectedkey;
         }
-    }
-    //get latest selected item and load into $scope.item
-    $scope.getlatestselectedhandler = function() {
-        var _where = (urlobject === 'Log') ? $scope.getlatestselected('User') : $scope.getlatestselected(urlobject);
         if (_where >= 0) {
             var res = resource.get({where: _where}, function() {
                 if(urlobject === 'Log') {

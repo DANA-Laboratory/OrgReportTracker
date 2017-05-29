@@ -1,11 +1,11 @@
 .card.with-border(ng-controller=`urlqueryController`, ng-init=`query('${menuitem}')`)
   #headingOne.card-header.card-outline-primary
-    a.btn.btn-outline-primary.col-9(href='', data-toggle="collapse", data-target=`#${menuitem}`, data-parent='#accordion', aria-expanded='true', aria-controls=`${menuitem}`)
+    a.btn.btn-outline-primary.col-9.ml-4(href='', data-toggle="collapse", data-target=`#${menuitem}`, data-parent='#accordion', aria-expanded='true', aria-controls=`${menuitem}`)
       = fa[menuitem]['header']
       i.fa.fa-fw.fa-caret-down
-    a.fa-stack.col-2.pull-left(href='', ng-click='addnew()', data-toggle="tooltip" data-placement="left" title=`${fa['addnew']}`)
-      i.fa.fa-circle-thin.fa-stack-2x
-      i.fa.fa-plus.fa-stack-1x.text-success
+    a.fa-stack.col-2(href='', ng-click='addnew()', data-toggle="tooltip" data-placement="left" title=`${fa['addnew']}`)
+      i.fa.fa-plus-circle.fa-stack-2x
+      i.fa.fa-circle-o.fa-stack-2x.text-primary
   .collapse(role='tabpanel', aria-labelledby='headingOne', id= `${menuitem}`)
     .card-block.with-nav-block
       div(ng-repeat='item in data.filter(filter)')

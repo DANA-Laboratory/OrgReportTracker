@@ -17,6 +17,9 @@ app.controller('selectController', function ($scope) {
         $scope.$broadcast("eventUpdateSelected", {key: key, value: value});
     }
     $scope.unselect = function(key, value) {
+        if (key === 'VariableDef') {
+          key = 'vVariableDef';
+        }
         if (selected[key].has(value)) {
             selected[key].delete(value);
         }
