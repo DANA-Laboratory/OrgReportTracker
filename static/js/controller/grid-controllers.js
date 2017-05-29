@@ -62,9 +62,11 @@ angular.module('PIR').controller('cat-grid', ['$scope', function ($scope) {
     var reportClasscolumnDefs = [
             { name:fa['commands'], width: '5%', enableCellEdit:false, enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents text-center"><a href="#" class="anchor-grid fa fa-remove fa-fw" style="color:red"></a></div>'},
             { name:fa['code'], width: '10%', field: 'code', enableCellEdit:false},
-            { name:fa['caption'], width: '50%', field: 'caption', enableCellEdit:false},
-            { name:fa['VariableCat']['VariableCat_3'], width: '25%', field: 'variablecat_3_caption', enableCellEdit:false},
+            { name:fa['caption'], width: '35%', field: 'caption', enableCellEdit:false},
+            { name:fa['VariableCat']['VariableCat_3'], width: '20%', field: 'variablecat_3_caption', enableCellEdit:false},
             { name:fa['provider'], width: '10%', field: 'user_provider_account', enableCellEdit:false},
+            { name:fa['weight'], width: '10%', field: 'weight', type: 'number', enableCellEdit:false},
+            { name:fa['share'], width: '10%', field: 'share', enableCellEdit:false},
     ];
     var columnDefs = [
             { name:fa['commands'], width: '5%', enableCellEdit:false, enableFiltering: false, cellTemplate: '<div class="ui-grid-cell-contents text-center"><a href="#" class="anchor-grid fa fa-remove fa-fw" style="color:red"></a></div>'},
