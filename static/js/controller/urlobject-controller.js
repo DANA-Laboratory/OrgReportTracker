@@ -1,28 +1,37 @@
 //controllers for resources
-angular.module("PIR").controller('urlqueryController',function ($scope, $injector) {
+angular.module("PIR").controller('urlqueryController',function ($scope, $injector, socketio) {
     var resource = undefined;
     var urlobject = undefined;
+    var where = undefined;
+    var callback = undefined;
     const newitem = -2;//id for a new item
-    //query list
-    $scope.setResource = function(res) {
+    //first use
+    $scope.setResource = function(res, where_, callback_) {
       resource = $injector.get(res);
       urlobject = res;
+      where = where_;
+      callback = callback_;
+      $scope.registerSelected(urlobject);
+      //wake-up and query
+      socketio.on(urlobject, function () {
+        $scope.query();
+      });
     }
-    $scope.query = function (res, where, callback) {
-        $scope.setResource(res);
-        if(urlobject!=='Log') {
-            $scope.registerSelected(urlobject);
-            var res = resource.query(where, function() {
-                if (urlobject !== 'User') {
-                    $scope.data = res.sort(sort_by('code'));
-                } else {
-                    $scope.data = res.sort(sort_by('lname'));
-                }
-                if (callback !== undefined) {
-                    callback($scope.data);
-                }
-            });
-        };
+    //query list
+    $scope.query = function (res, where_, callback_) {
+        if(resource === undefined) {
+            $scope.setResource(res, where_, callback_);
+        }
+        var res = resource.query(where, function() {
+            if (urlobject !== 'User') {
+                $scope.data = res.sort(sort_by('code'));
+            } else {
+                $scope.data = res.sort(sort_by('lname'));
+            }
+            if (callback !== undefined) {
+                callback($scope.data);
+            }
+        });
     };
     //check if an item is selected
     $scope.isSelected = function (id) {
@@ -45,7 +54,6 @@ angular.module("PIR").controller('urlqueryController',function ($scope, $injecto
             var res = resource.delete({where: item.id},
                 (data)=>{
                     $scope.confirm(fa['item removed'] + ', ' + fa['number of changes:'] + ' ' + data.changes);
-                    $scope.hide = true;
                 },
                 (err)=>{
                     if (err.status === 409) {
@@ -130,7 +138,7 @@ angular.module("PIR").controller('urlgetController',function ($scope, $injector)
             var res = resource.delete({where: $scope.item.id},
                 (data)=>{
                     $scope.confirm(fa['item removed'] + ', ' + fa['number of changes:'] + ' ' + data.changes);
-                    $scope.hide = true;
+                    $scope.close();
                 },
                 (err)=>{
                     if (err.status === 409) {

@@ -1,8 +1,5 @@
-app.controller('selectController', function ($scope, socketio) {
+app.controller('selectController', function ($scope) {
     var selected = {};
-    socketio.on('something_deleted', function (data) {
-      console.log('someone_deleted in table: ', data);
-    });
     $scope.registerSelected = function(key) {
         if (!(key in selected)) {
           selected[key] = new Set();
