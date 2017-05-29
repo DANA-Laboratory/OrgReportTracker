@@ -28,6 +28,8 @@
     "angular-route": "^1.6.2",
     "angular-resource": "^1.6.4",
     "bootstrap": "4",
-    "typeahead.js": "^0.11.1"
+    "typeahead.js": "^0.11.1",
+    "angular-socket-io": "^0.7.0",
+    "socket.io-client": "^2.0.1"
   }
 }

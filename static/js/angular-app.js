@@ -1,4 +1,4 @@
-var app = angular.module('PIR', ['ui.grid', 'ui.grid.edit', 'ui.grid.cellNav', 'ngRoute', 'chart.js', 'ngResource']);
+var app = angular.module('PIR', ['ui.grid', 'ui.grid.edit', 'ui.grid.cellNav', 'ngRoute', 'chart.js', 'ngResource', 'btford.socket-io']);
 var sort_by = function(field, reverse, primer){
    var key = primer ?
        function(x) {return primer(x[field])} :
@@ -87,8 +87,11 @@ app.run(function($rootScope) {
         $('#modalConfirm').modal('toggle');
       }
     };
-})
-
+});
+//making a Socket Instance
+app.factory('socketio', function (socketFactory) {
+  return socketFactory();
+});
 app.controller('scopeUpdater', function ($scope) {
     $scope.setVar = function (varName, x) {
         $scope[varName] = x;
