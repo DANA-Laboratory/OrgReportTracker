@@ -41,7 +41,7 @@ angular.module('PIR').directive('typeaheadDirective', ['User', 'VariableCat_1', 
                source: substringMatcher(source)
              });
              if(attrs.bind) {
-               if((scope.item[attrs.bind] >= 0)) {
+               if(scope.item !== undefined && (scope.item[attrs.bind] >= 0)) {
                   var selectid = (id) => {
                     var current = data.filter((item)=>{return (item.id === id)})[0];
                     if(current !== undefined) {

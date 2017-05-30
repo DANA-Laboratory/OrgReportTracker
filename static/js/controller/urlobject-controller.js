@@ -22,9 +22,11 @@ angular.module("PIR").controller('urlqueryController',function ($scope, $injecto
         if(resource === undefined) {
             $scope.setResource(res, where_, callback_);
         }
+        console.log('query ', urlobject);
         var res = resource.query(where, function() {
             if (urlobject !== 'User') {
                 $scope.data = res.sort(sort_by('code'));
+                urlobject === 'vVariableDef' && console.log($scope.data);
             } else {
                 $scope.data = res.sort(sort_by('lname'));
             }

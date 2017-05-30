@@ -1,4 +1,4 @@
-var app = angular.module('PIR', ['ui.grid', 'ui.grid.edit', 'ui.grid.cellNav', 'ngRoute', 'chart.js', 'ngResource', 'btford.socket-io']);
+var app = angular.module('PIR', ['ui.grid', 'ui.grid.edit', 'ui.grid.cellNav', 'ngRoute', 'chart.js', 'ngResource', 'btford.socket-io', 'angular-cache']);
 var sort_by = function(field, reverse, primer){
    var key = primer ?
        function(x) {return primer(x[field])} :
@@ -30,12 +30,15 @@ var substringMatcher = function(strs) {
     cb(matches);
   };
 };
-var angular_cache = undefined;
-//confirm method, will show #modalConfirm modal dialog
-app.run(function($rootScope, $cacheFactory) {
+//alter $rootScope, create cache
+var resource_cache = undefined;
+app.run(function($rootScope, CacheFactory) {
+    //make a cache for resources
+    //resource_cache = $cacheFactory('resource_cache');
+    resource_cache = CacheFactory('resource_cache', {maxAge: 15 * 60 * 1000}); // Items added to this cache expire after 15 minutes.
     //load translation into rootScope
-    angular_cache = $cacheFactory('angular_cache');
     $rootScope.fa = fa;
+    //confirm method, will show #modalConfirm modal dialog
     $rootScope.confirm = (modalmessagekey, modalcallback) => {
       //called when confirm btn pressed
       $rootScope.modalcallback = modalcallback;
@@ -45,15 +48,28 @@ app.run(function($rootScope, $cacheFactory) {
       }
     };
 });
+//making a Socket Instance, inject it as *socketio*
+app.factory('socketio', function (socketFactory) {
+  return socketFactory();
+});
+
 ['User', 'ReportClass', 'VariableCat_1', 'VariableCat_2', 'VariableCat_3', 'VariableDef', 'ReportClassVariable']
 .forEach((urlobject)=>{
-    app.factory(urlobject, ['$resource',
-        function($resource) {
+    app.factory(urlobject, ['$resource', 'socketio',
+        function($resource, socketio) {
+            //remove cache
+            socketio.on(urlobject, function () {
+              for (k of resource_cache.keys()) {
+                  if (k.includes(`/restful/${urlobject}/`)) {
+                      resource_cache.remove(k);
+                  }
+              };
+            });
             return $resource(`/restful/${urlobject}/:where/:value`, {}, {
-                get: {method: 'GET', cache: angular_cache, isArray: false},
-                query: {method:'GET', cache: angular_cache, isArray:true, transformResponse: function (data)
+                get: {method: 'GET', cache: resource_cache, isArray: false},
+                query: {method:'GET', cache: resource_cache, isArray:true, transformResponse: function (data)
                     {
-                        //console.log(angular_cache.info())
+                        //console.log(resource_cache.info())
                         return angular.fromJson(data);
                     },
                 },
@@ -64,14 +80,24 @@ app.run(function($rootScope, $cacheFactory) {
         }]
     );
 });
-
+//views a getter and query
 ['vVariableDef']
 .forEach((urlobject)=>{
-  app.factory(urlobject, ['$resource',
-      function($resource) {
+  app.factory(urlobject, ['$resource', 'socketio',
+      function($resource, socketio) {
+          //remove cache
+          socketio.on(urlobject, function () {
+            console.log('search keys for ', urlobject, resource_cache.keys());
+            for (k of resource_cache.keys()) {
+                if (k.includes(`/restful/${urlobject}/`) || (k === `/restful/${urlobject}`)) {
+                    resource_cache.remove(k);
+                    console.log(k, ' removed');
+                }
+            };
+          });
           return $resource(`/restful/${urlobject}/:where/:value`, {}, {
-              get: {method: 'GET', cache: angular_cache, isArray: false},
-              query: {method:'GET', cache: angular_cache, isArray:true, transformResponse: function (data)
+              get: {method: 'GET', cache: resource_cache, isArray: false},
+              query: {method:'GET', cache: resource_cache, isArray:true, transformResponse: function (data)
                   {
                       return angular.fromJson(data);
                   },
@@ -80,23 +106,14 @@ app.run(function($rootScope, $cacheFactory) {
       }]
   );
 });
-
+//that only need getter
 ['Log']
 .forEach((urlobject)=>{
   app.factory(urlobject, ['$resource',
     function($resource) {
       return $resource(`/restful/${urlobject}/:where`, {}, {
-          'get':    {method:'GET', cache: angular_cache},
+          'get':    {method:'GET', cache: false},
       });
     }]
   );
-});
-//making a Socket Instance
-app.factory('socketio', function (socketFactory) {
-  return socketFactory();
-});
-app.controller('scopeUpdater', function ($scope) {
-    $scope.setVar = function (varName, x) {
-        $scope[varName] = x;
-    }
 });
