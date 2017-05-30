@@ -1,7 +1,7 @@
 .card-footer
   .d-flex.flex-row-reverse
     .pr-2
-      button.btn.btn-success(type='submit')= fa['submit']
+      button.btn.btn-success(type='submit' ng-disabled="changed!==true && newitem!==true")= fa['submit']
         i.fa.fa-check.fa-fw
     .pr-2
       button.btn.btn-danger(type='button' ng-click="delete()")= fa['remove']

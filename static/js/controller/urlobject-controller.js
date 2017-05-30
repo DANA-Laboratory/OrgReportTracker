@@ -22,11 +22,11 @@ angular.module("PIR").controller('urlqueryController',function ($scope, $injecto
         if(resource === undefined) {
             $scope.setResource(res, where_, callback_);
         }
-        console.log('query ', urlobject);
+        //console.log('query ', urlobject);
         var res = resource.query(where, function() {
             if (urlobject !== 'User') {
                 $scope.data = res.sort(sort_by('code'));
-                urlobject === 'vVariableDef' && console.log($scope.data);
+                //urlobject === 'vVariableDef' && console.log($scope.data);
             } else {
                 $scope.data = res.sort(sort_by('lname'));
             }
@@ -123,9 +123,19 @@ angular.module("PIR").controller('urlgetController',function ($scope, $injector)
           listener = $scope.$watchCollection('item', watcher, true);
         }
     };
+    var diff = undefined;
     var watcher = (newval)=>{
        if(JSON.stringify(originItem) !== JSON.stringify(newval)) {
            $scope.changed = true;
+           diff = {};
+           for (k in newval) {
+             if(newval.hasOwnProperty(k)) {
+               if(!(originItem.hasOwnProperty(k) && (newval[k] == originItem[k]))) {
+                 diff[k]=newval[k];
+               }
+             }
+           };
+           //console.log(diff);
        } else {
            $scope.changed = false;
        }
@@ -151,6 +161,43 @@ angular.module("PIR").controller('urlgetController',function ($scope, $injector)
                 }
             );
         });
+    };
+    $scope.update_or_insert = function() {
+      //check if is new item
+      if($scope.newitem === true) {
+        //insert
+        $scope.confirm(fa['confirm insert'], ()=>{
+            var res = resource.save({}, $scope.item,
+                (data)=>{
+                    $scope.confirm(fa['new item inserted'] + ', ' + fa['number of changes:'] + ' ' + data.changes);
+                    $scope.close();
+                },
+                (err)=>{
+                    if (err.status === 409) {
+                        $scope.confirm(fa['error'] + ': ' + fa[err.data]);
+                    } else {
+                        $scope.confirm(fa['error']);
+                    }
+                }
+            );
+        });
+      } else {
+        //update
+        $scope.confirm(fa['confirm update'], ()=>{
+            var res = resource.update({where: $scope.item.id}, diff,
+                (data)=>{
+                    $scope.confirm(fa['item updated']);
+                },
+                (err)=>{
+                    if (err.status === 409) {
+                        $scope.confirm(fa['error'] + ': ' + fa[err.data]);
+                    } else {
+                        $scope.confirm(fa['error']);
+                    }
+                }
+            );
+        });
+      }
     };
     //close button click, unselect
     $scope.close = function() {

@@ -87,11 +87,11 @@ app.factory('socketio', function (socketFactory) {
       function($resource, socketio) {
           //remove cache
           socketio.on(urlobject, function () {
-            console.log('search keys for ', urlobject, resource_cache.keys());
+            //console.log('search keys for ', urlobject, resource_cache.keys());
             for (k of resource_cache.keys()) {
                 if (k.includes(`/restful/${urlobject}/`) || (k === `/restful/${urlobject}`)) {
                     resource_cache.remove(k);
-                    console.log(k, ' removed');
+                    //console.log(k, ' removed');
                 }
             };
           });
