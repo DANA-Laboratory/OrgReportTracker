@@ -33,11 +33,11 @@ form.card.form.mb-3(ng-action='update_or_insert()', ng-controller="urlgetControl
             .form-group.row
               label.col-2.col-form-label(for='family')= fa['family']
               .col
-                input#family.form-control(type='family', required, ng-model='item.lname')
+                input#family.form-control(type='text', required, ng-model='item.lname')
             .form-group.row
               label.col-5.col-form-label(for='pcode')= fa['employee id code']
               .col
-                input#pcode.form-control(type='number', required, ng-model='item.pcode')
+                input#pcode.form-control(type='text', required, ng-model='item.pcode')
             .form-group.row
               label.col-3.col-form-label(for='workunit')= fa['workunit']
               .col

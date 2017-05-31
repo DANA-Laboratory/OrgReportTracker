@@ -29,6 +29,7 @@ angular.module("PIR").controller('urlqueryController',function ($scope, $injecto
                 //urlobject === 'vVariableDef' && console.log($scope.data);
             } else {
                 $scope.data = res.sort(sort_by('lname'));
+                console.log(res);
             }
             if (callback !== undefined) {
                 callback($scope.data);

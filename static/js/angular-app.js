@@ -61,9 +61,11 @@ app.factory('socketio', function (socketFactory) {
             socketio.on(urlobject, function () {
               for (k of resource_cache.keys()) {
                   if (k.includes(`/restful/${urlobject}/`)) {
+                      console.log(k);
                       resource_cache.remove(k);
                   }
               };
+              console.log(resource_cache.keys());
             });
             return $resource(`/restful/${urlobject}/:where/:value`, {}, {
                 get: {method: 'GET', cache: resource_cache, isArray: false},
