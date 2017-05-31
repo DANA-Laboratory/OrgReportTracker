@@ -62,6 +62,7 @@ angular.module('PIR').directive('typeaheadDirective', ['User', 'VariableCat_1', 
                el.blur(()=>{
                  if(source.indexOf(el.val()) === -1) {
                    console.log(fa["Error : element not in list!"]);
+                   el.val('');
                  }
                });
              }
@@ -80,11 +81,12 @@ angular.module('PIR').directive('typeaheadDirective', ['User', 'VariableCat_1', 
          });
          //must set value property of typeahead if not
          el.blur(()=>{
-           if(el.val().length==0) {
-              var val = scope.item[(attrs.ngModel).split('.')[1]];
-              if (val.length>0) {
-                el.typeahead('val', val);
-              }
+           let val = scope.item[(attrs.ngModel).split('.')[1]];
+           if(!(fa[rowsource]).includes(val)){
+             el.val('');
+             console.log(val, ' not in list');
+           } else {
+             el.val(val);
            }
          });
       }

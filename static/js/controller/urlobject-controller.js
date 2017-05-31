@@ -85,7 +85,6 @@ angular.module("PIR").controller('urlgetController',function ($scope, $injector)
     };
     //get latest selected item if ($scope.config_show_only_latest===true) or (selectedkey) if ($scope.config_show_only_latest!==true) and load into $scope.item
     $scope.getselectedhandler = function() {
-        console.log('*************');
         if ($scope.config_show_only_latest === true) {
           //get latest selected item and load into $scope.item
           _where = (urlobject === 'Log') ? $scope.getlatestselected('User') : $scope.getlatestselected(urlobject);

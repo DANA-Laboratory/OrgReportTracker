@@ -1,4 +1,4 @@
-form.card.form.mb-3(ng-action='update_or_insert()', ng-controller="urlgetController", ng-init="init('User', getselectedhandler, selectedkey)")
+form.card.form.mb-3(ng-submit='update_or_insert()', ng-controller="urlgetController", ng-init="init('User', getselectedhandler, selectedkey)")
   include filtered-block-header.pug
   div(ng-hide='hide')
     .card-block
