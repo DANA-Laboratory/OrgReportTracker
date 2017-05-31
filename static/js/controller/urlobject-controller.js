@@ -22,14 +22,11 @@ angular.module("PIR").controller('urlqueryController',function ($scope, $injecto
         if(resource === undefined) {
             $scope.setResource(res, where_, callback_);
         }
-        //console.log('query ', urlobject);
         var res = resource.query(where, function() {
             if (urlobject !== 'User') {
                 $scope.data = res.sort(sort_by('code'));
-                //urlobject === 'vVariableDef' && console.log($scope.data);
             } else {
                 $scope.data = res.sort(sort_by('lname'));
-                console.log(res);
             }
             if (callback !== undefined) {
                 callback($scope.data);
@@ -82,10 +79,13 @@ angular.module("PIR").controller('urlgetController',function ($scope, $injector)
         resource = $injector.get(res);
         urlobject = res;
         handler();
-        $scope.$on('eventUpdateSelected', handler);
+        if ($scope.config_show_only_latest === true) {
+          $scope.$on('eventUpdateSelected', handler);
+        }
     };
     //get latest selected item if ($scope.config_show_only_latest===true) or (selectedkey) if ($scope.config_show_only_latest!==true) and load into $scope.item
     $scope.getselectedhandler = function() {
+        console.log('*************');
         if ($scope.config_show_only_latest === true) {
           //get latest selected item and load into $scope.item
           _where = (urlobject === 'Log') ? $scope.getlatestselected('User') : $scope.getlatestselected(urlobject);

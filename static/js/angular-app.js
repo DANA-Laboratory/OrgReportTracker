@@ -60,18 +60,15 @@ app.factory('socketio', function (socketFactory) {
             //remove cache
             socketio.on(urlobject, function () {
               for (k of resource_cache.keys()) {
-                  if (k.includes(`/restful/${urlobject}/`)) {
-                      console.log(k);
+                  if (k.includes(`/restful/${urlobject}/`) || (k === `/restful/${urlobject}`)) {
                       resource_cache.remove(k);
                   }
               };
-              console.log(resource_cache.keys());
             });
             return $resource(`/restful/${urlobject}/:where/:value`, {}, {
                 get: {method: 'GET', cache: resource_cache, isArray: false},
                 query: {method:'GET', cache: resource_cache, isArray:true, transformResponse: function (data)
                     {
-                        //console.log(resource_cache.info())
                         return angular.fromJson(data);
                     },
                 },
