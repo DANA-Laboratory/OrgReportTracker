@@ -169,8 +169,9 @@ angular.module("PIR").controller('urlgetController',function ($scope, $injector)
         $scope.confirm(fa['confirm insert'], ()=>{
             var res = resource.save({}, $scope.item,
                 (data)=>{
-                    $scope.confirm(fa['new item inserted'] + ', ' + fa['number of changes:'] + ' ' + data.changes);
-                    $scope.close();
+                    $scope.confirm(fa['new item inserted']);
+                    selectedkey = data.lastID;
+                    $scope.query();
                 },
                 (err)=>{
                     if (err.status === 409) {
@@ -183,20 +184,23 @@ angular.module("PIR").controller('urlgetController',function ($scope, $injector)
         });
       } else {
         //update
-        $scope.confirm(fa['confirm update'], ()=>{
-            var res = resource.update({where: $scope.item.id}, diff,
-                (data)=>{
-                    $scope.confirm(fa['item updated']);
-                },
-                (err)=>{
-                    if (err.status === 409) {
-                        $scope.confirm(fa['error'] + ': ' + fa[err.data]);
-                    } else {
-                        $scope.confirm(fa['error']);
-                    }
-                }
-            );
-        });
+        if ($scope.changed) {
+          $scope.confirm(fa['confirm update'], ()=>{
+              var res = resource.update({where: $scope.item.id}, diff,
+                  (data)=>{
+                      $scope.confirm(fa['item updated']);
+                      $scope.changed = false;
+                  },
+                  (err)=>{
+                      if (err.status === 409) {
+                          $scope.confirm(fa['error'] + ': ' + fa[err.data]);
+                      } else {
+                          $scope.confirm(fa['error']);
+                      }
+                  }
+              );
+          });
+        }
       }
     };
     //close button click, unselect

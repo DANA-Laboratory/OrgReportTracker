@@ -15,7 +15,7 @@ form.card.form.mb-3(ng-submit='update_or_insert()', ng-controller="urlgetControl
               label.col-2.col-form-label(for='password')= fa['password']
               .col
                 .input-group
-                  input#password.form-control(type='password', required, ng-model='_password')
+                  input#password.form-control(type='password', ng-model='_password')
                   span.input-group-btn
                     button.btn.btn-outline-danger(type="button", ng-click="updateitem('password', _password)")= fa["submit"]
                 small#passwordHelp.form-text.text-muted= fa['password help']
