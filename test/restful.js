@@ -174,4 +174,12 @@ describe('restful', function() {
             .expect(200)
             .end(done);
     });
+    it('should insert new report', function(done) {
+        agent
+            .post('/restful/ReportClass')
+            .send({caption: 'پیشرفت پروژه های عملیاتی', duration:'3M', User_owner: 1, caption_cat_1: 'منظر', caption_cat_2: 'هدف کلان', caption_cat_3: 'تمرکز استراتژیک', caption_variable:'پروژه عملیاتی'})
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .end(done);
+    });
 });
