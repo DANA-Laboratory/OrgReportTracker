@@ -33,40 +33,38 @@ angular.module('PIR').directive('typeaheadDirective', ['User', 'VariableCat_1', 
          var rec = resource.query({}, function(data) {
            var source = [];
            data.forEach((item)=>{source.push(rowItem(item))});
-           var rec = resource.query({}, function(data) {
-             el.typeahead(
-             options,
-             {
-               name: rowsource,
-               source: substringMatcher(source)
-             });
-             if(attrs.bind) {
-               if(scope.item !== undefined && (scope.item[attrs.bind] >= 0)) {
-                  var selectid = (id) => {
-                    var current = data.filter((item)=>{return (item.id === id)})[0];
-                    if(current !== undefined) {
-                      el.typeahead('val', rowItem(current));
-                    } else {
-                      console.log('no current value');
-                    }
-                  }
-                  selectid(scope.item[attrs.bind]);
-                  //select into typeahead when item updates
-                  scope.$watch(function(scope) { return scope.item[attrs.bind] },
-                    function() {selectid(scope.item[attrs.bind])}
-                  );
-               }
-               el.bind('typeahead:select', function(ev, suggestion) {
-                 scope.$apply(()=>{scope.item[attrs.bind] = data[source.indexOf(suggestion)].id});
-               });
-               el.blur(()=>{
-                 if(source.indexOf(el.val()) === -1) {
-                   console.log(fa["Error : element not in list!"]);
-                   el.val('');
-                 }
-               });
-             }
+           el.typeahead(
+           options,
+           {
+             name: rowsource,
+             source: substringMatcher(source)
            });
+           if(attrs.bind) {
+              var selectid = (id) => {
+                var current = data.filter((item)=>{return (item.id === id)})[0];
+                if(current !== undefined) {
+                  el.typeahead('val', rowItem(current));
+                } else {
+                  console.log('no current value');
+                }
+              }
+              if(scope.item !== undefined && (scope.item[attrs.bind] >= 0)) {
+                selectid(scope.item[attrs.bind]);
+              };
+              //select into typeahead when item updates
+              scope.$watch(function(scope) { return (scope.item !== undefined) ? scope.item[attrs.bind] : undefined},
+                function() { (scope.item !== undefined) && selectid(scope.item[attrs.bind])}
+              );
+              el.bind('typeahead:select', function(ev, suggestion) {
+                scope.$apply(()=>{scope.item[attrs.bind] = data[source.indexOf(suggestion)].id});
+              });
+              el.blur(()=>{
+                if(source.indexOf(el.val()) === -1) {
+                  console.log(fa["Error : element not in list!"]);
+                  el.val('');
+                }
+              });
+           }
          });
        } else {
          el.typeahead(
