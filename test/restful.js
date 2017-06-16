@@ -174,11 +174,55 @@ describe('restful', function() {
             .expect(200)
             .end(done);
     });
-    it('should insert new report', function(done) {
+    var newCR = {caption: 'پیشرفت پروژه های عملیاتی', duration:'3M', user_owner: 1, caption_cat_1: 'منظر', caption_cat_2: 'هدف کلان', caption_cat_3: 'تمرکز استراتژیک', caption_variable:'پروژه عملیاتی'};
+    it('should insert new report class', function(done) {
         agent
             .post('/restful/ReportClass')
-            .send({caption: 'پیشرفت پروژه های عملیاتی', duration:'3M', User_owner: 1, caption_cat_1: 'منظر', caption_cat_2: 'هدف کلان', caption_cat_3: 'تمرکز استراتژیک', caption_variable:'پروژه عملیاتی'})
+            .send(newCR)
             .expect('Content-Type', /json/)
+            .expect({lastID: 2})
+            .expect(200)
+            .end(done);
+    });
+    it('should get new report class', function(done) {
+        newCR.id = 2;
+        newCR.attribute = null;
+        agent
+            .get('/restful/ReportClass/2')
+            .expect('Content-Type', /json/)
+            .expect(newCR)
+            .expect(200)
+            .end(done);
+    });
+    it('should delete new report class', function(done) {
+        agent
+            .delete('/restful/ReportClass/2')
+            .expect({changes: 1})
+            .expect(200)
+            .end(done);
+    });
+    it('should new report class be removed', function(done) {
+        agent
+            .get('/restful/ReportClass/2')
+            .expect('not exsists')
+            .expect(400)
+            .end(done);
+    });
+    it('should insert new report class', function(done) {
+        agent
+            .post('/restful/ReportClass')
+            .send(newCR)
+            .expect('Content-Type', /json/)
+            .expect({lastID: 2})
+            .expect(200)
+            .end(done);
+    });
+    it('should update new report class', function(done) {
+        agent
+            .put('/restful/ReportClass/2')
+            .send({User_owner: 2})
+            .expect('Content-Type', /json/)
+            .expect({changes: 1})
             .expect(200)
             .end(done);
     });

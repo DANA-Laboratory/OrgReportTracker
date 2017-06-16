@@ -171,7 +171,10 @@ angular.module("PIR").controller('urlgetController',function ($scope, $injector)
                 (data)=>{
                     $scope.confirm(fa['new item inserted']);
                     selectedkey = data.lastID;
-                    $scope.query();
+                    $scope.newitem = false;
+                    $scope.updateSelected(urlobject, selectedkey);
+                    //handler();
+                    //$scope.query();
                 },
                 (err)=>{
                     if (err.status === 409) {
