@@ -226,4 +226,13 @@ describe('restful', function() {
             .expect(200)
             .end(done);
     });
+    it('should create new report based on selected class', function(done) {
+        agent
+            .post('/restful/Report')
+            .send({id:1, user_creator: 3,title:'test report', time_limit:12000, ip_user:'172.0.0.1', time_create:23000})
+            .expect('Content-Type', /json/)
+            .expect({lastID: 1})
+            .expect(200)
+            .end(done);
+    });
 });
