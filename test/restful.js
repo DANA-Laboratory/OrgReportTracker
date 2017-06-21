@@ -220,7 +220,7 @@ describe('restful', function() {
     it('should update new report class', function(done) {
         agent
             .put('/restful/ReportClass/2')
-            .send({User_owner: 2})
+            .send({user_owner: 2})
             .expect('Content-Type', /json/)
             .expect({changes: 1})
             .expect(200)
@@ -229,10 +229,26 @@ describe('restful', function() {
     it('should create new report based on selected class', function(done) {
         agent
             .post('/restful/Report')
-            .send({id:1, user_creator: 3,title:'test report', time_limit:12000, ip_user:'172.0.0.1', time_create:23000})
+            .send({id:1, user_creator: 3,title:'test report', time_limit:12000, ip_user:'172.0.0.1', time_create:23000, time_reference: 215454})
             .expect('Content-Type', /json/)
             .expect({lastID: 1})
             .expect(200)
-            .end(done);
+            .end(()=>{
+              agent
+                  .post('/restful/Report')
+                  .send({id:1, user_creator: 3,title:'test report', time_limit:12000, ip_user:'172.0.0.1', time_create:23000, time_reference: 215455})
+                  .expect('Content-Type', /json/)
+                  .expect({lastID: 2})
+                  .expect(200)
+                  .end(()=>{
+                    agent
+                        .post('/restful/Report')
+                        .send({id:1, user_creator: 3,title:'test report', time_limit:12000, ip_user:'172.0.0.1', time_create:23000, time_reference: 215456})
+                        .expect('Content-Type', /json/)
+                        .expect({lastID: 3})
+                        .expect(200)
+                        .end(done);                    
+                  })
+            })
     });
 });
