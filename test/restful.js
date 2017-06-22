@@ -5,7 +5,7 @@ const fs = require('fs');
 const config = require('config');
 const modelsSqlite3 = require('../lib/models-sqlite3');
 const validator = require('../lib/models-sqlite3/validate');
-
+const jmoment = require('jalali-moment');
 describe('restful', function() {
     before(function (done) {
         var db = null;
@@ -227,27 +227,34 @@ describe('restful', function() {
             .end(done);
     });
     it('should create new report based on selected class', function(done) {
+        var refday = jmoment('1396/03/31', 'jYYYY/jM/jD');
+        var refday_1 = refday.add(3, "jmonth");
+        var refday_2 = refday.add(6, "jmonth");
+        var time_limit = refday.add(2, "jday").unix();
+        var time_limit_1 = refday_1.add(2, "jday").unix();
+        var time_limit_2 = refday_2.add(2, "jday").unix();
+
         agent
             .post('/restful/Report')
-            .send({id:1, user_creator: 3,title:'test report', time_limit:12000, ip_user:'172.0.0.1', time_create:23000, time_reference: 215454})
+            .send({id:1, user_creator: 3,title:'test report', time_limit: time_limit, ip_user:'172.0.0.1', time_create: jmoment().unix(), time_reference: refday.unix()})
             .expect('Content-Type', /json/)
             .expect({lastID: 1})
             .expect(200)
             .end(()=>{
               agent
                   .post('/restful/Report')
-                  .send({id:1, user_creator: 3,title:'test report', time_limit:12000, ip_user:'172.0.0.1', time_create:23000, time_reference: 215455})
+                  .send({id:1, user_creator: 3,title:'test report', time_limit: time_limit_1, ip_user:'172.0.0.1', time_create: jmoment().unix(), time_reference: refday_1.unix()})
                   .expect('Content-Type', /json/)
                   .expect({lastID: 2})
                   .expect(200)
                   .end(()=>{
                     agent
                         .post('/restful/Report')
-                        .send({id:1, user_creator: 3,title:'test report', time_limit:12000, ip_user:'172.0.0.1', time_create:23000, time_reference: 215456})
+                        .send({id:1, user_creator: 3,title:'test report', time_limit: time_limit_2, ip_user:'172.0.0.1', time_create: jmoment().unix(), time_reference: refday_1.unix()})
                         .expect('Content-Type', /json/)
                         .expect({lastID: 3})
                         .expect(200)
-                        .end(done);                    
+                        .end(done);
                   })
             })
     });
