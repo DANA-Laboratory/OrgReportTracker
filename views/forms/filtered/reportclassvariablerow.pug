@@ -4,7 +4,7 @@
 label.col-1.col-form-label(for='reportclass')= fa['report']
 .col-2
   input#reportclass.form-control.form-control-sm.typeahead(typeahead-directive, bind='reportclass_id', rowsource="ReportClass", type="text", placeholder=`${fa['select report']}`, style="text-align:right")
-label.col-1.col-form-label(for='variablecat_3')= fa['VariableCat']['VariableCat_3']
+label.col-1.col-form-label.text-nowrap(for='variablecat_3')= fa['VariableCat']['VariableCat_3']
 .col-4
   input#variablecat_3.form-control.form-control-sm.typeahead(typeahead-directive, bind='variablecat_3_id', rowsource="VariableCat_3", type="text", placeholder=`${fa['select variablecat_3']}`, style="text-align:right")
 label.col-1.col-form-label(for='weight')= fa['weight']
