@@ -217,6 +217,15 @@ describe('restful', function() {
             .expect(200)
             .end(done);
     });
+    it('should insert new test report class', function(done) {
+        agent
+            .post('/restful/ReportClass')
+            .send({caption: 'گزارش آزمایشی', duration:'3M', user_owner: 1, caption_cat_1: 'منظر', caption_cat_2: 'هدف کلان', caption_cat_3: 'تمرکز استراتژیک', caption_variable:'پروژه عملیاتی'})
+            .expect('Content-Type', /json/)
+            .expect({lastID: 3})
+            .expect(200)
+            .end(done);
+    });
     it('should update new report class', function(done) {
         agent
             .put('/restful/ReportClass/2')
@@ -226,36 +235,45 @@ describe('restful', function() {
             .expect(200)
             .end(done);
     });
+    it('should add variableDef to report class', function(done) {
+      var f = [];
+      f[0] = done;
+      for (var i=1; i<5; i++) {
+        f[i] = ()=>{
+          i=i-1;
+          agent
+              .post('/restful/ReportClassVariable')
+              .send({reportclass_id:3, variabledef_id: 4-i, variablecat_3_id:1, weight:1})
+              .expect('Content-Type', /json/)
+              .expect({lastID: 43+3-i})
+              .expect(200)
+              .end(f[i]);
+        }
+      }
+      i-=1;
+      f[i]();
+    });
     it('should create new report based on selected class', function(done) {
+        this.timeout(9500);
         var refday = jmoment('1396/03/31', 'jYYYY/jM/jD');
-        var refday_1 = refday.add(3, "jmonth");
-        var refday_2 = refday.add(6, "jmonth");
         var time_limit = refday.add(2, "jday").unix();
-        var time_limit_1 = refday_1.add(2, "jday").unix();
-        var time_limit_2 = refday_2.add(2, "jday").unix();
-
-        agent
-            .post('/restful/Report')
-            .send({id:1, user_creator: 3,title:'test report', time_limit: time_limit, ip_user:'172.0.0.1', time_create: jmoment().unix(), time_reference: refday.unix()})
-            .expect('Content-Type', /json/)
-            .expect({lastID: 1})
-            .expect(200)
-            .end(()=>{
-              agent
-                  .post('/restful/Report')
-                  .send({id:1, user_creator: 3,title:'test report', time_limit: time_limit_1, ip_user:'172.0.0.1', time_create: jmoment().unix(), time_reference: refday_1.unix()})
-                  .expect('Content-Type', /json/)
-                  .expect({lastID: 2})
-                  .expect(200)
-                  .end(()=>{
-                    agent
-                        .post('/restful/Report')
-                        .send({id:1, user_creator: 3,title:'test report', time_limit: time_limit_2, ip_user:'172.0.0.1', time_create: jmoment().unix(), time_reference: refday_1.unix()})
-                        .expect('Content-Type', /json/)
-                        .expect({lastID: 3})
-                        .expect(200)
-                        .end(done);
-                  })
-            })
+        var f = [];
+        f[0] = done;
+        for (var i=1; i<20; i++) {
+          f[i] = ()=>{
+            i=i-1;
+            agent
+                .post('/restful/Report')
+                .send({id:3, user_creator: 3, title:'test report', time_limit: time_limit, ip_user:'172.0.0.1', time_create: jmoment().unix(), time_reference: refday.unix()})
+                .expect('Content-Type', /json/)
+                .expect({lastID: 19-i})
+                .expect(200)
+                .end(f[i]);
+            refday = refday.add(3, "jmonth");
+            time_limit = refday.add(2, "jday").unix();
+          }
+        }
+        i-=1;
+        f[i]();
     });
 });

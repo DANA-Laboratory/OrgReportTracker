@@ -53,7 +53,15 @@ app.controller('selectController', function ($scope) {
       }
       return ((key in selected) && selected[key].size>0) ? [...selected[key]] : -1;
     };
-    $scope.filter = function (item) {
+    var latestItem = undefined;
+    $scope.filter = function (item, index) {
+        if(index == 0){
+          latestItem = undefined;
+        } else {
+          if(latestItem !== undefined && latestItem.id == item.id) {
+            return false;
+          }
+        }
         var show = true;
         var hasrelation = false;
         for (key in selected) {
@@ -73,6 +81,10 @@ app.controller('selectController', function ($scope) {
                 }
             }
         }
-        return !hasrelation || show;
+        if(!hasrelation || show){
+          latestItem = item;
+          return true;
+        }
+        return false;
     };
 });
