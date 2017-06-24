@@ -8,7 +8,7 @@
       i.fa.fa-circle-o.fa-stack-2x.text-primary
   .collapse(role='tabpanel', aria-labelledby='headingOne', id= `${menuitem}`)
     .card-block.with-nav-block
-      div(ng-repeat='item in data.filter(filter)')
+      div(ng-repeat='item in filteredData')
         a(href=``, ng-click='selectitem(item.id)')
           i.fa.fa-check(ng-show='isSelected(item.id)')
           span.badge.badge-pill.badge-info.mx-1

@@ -5,6 +5,9 @@ angular.module("PIR").controller('urlqueryController',function ($scope, $injecto
     var where = undefined;
     var callback = undefined;
     const newitem = -2;//id for a new item
+    $scope.$on('eventUpdateSelected', () => {
+      $scope.filteredData = $scope.data.filter($scope.filter);
+    });
     //first use
     $scope.setResource = function(res, where_, callback_) {
       resource = $injector.get(res);
@@ -31,8 +34,11 @@ angular.module("PIR").controller('urlqueryController',function ($scope, $injecto
             if (callback !== undefined) {
                 callback($scope.data);
             }
+            $scope.filteredData = $scope.data;
         });
     };
+
+
     //check if an item is selected
     $scope.isSelected = function (id) {
         return $scope.selectedHas(urlobject, id);
