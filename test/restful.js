@@ -276,4 +276,44 @@ describe('restful', function() {
         i-=1;
         f[i]();
     });
+    it('should add value for variables', function (done) {
+        this.timeout(800000);
+        var randomdata = [];
+        var j=0;
+        var insert = (max, data) => {
+          var f = [];
+          f[0] = done;
+          for (var i=1; i<=max; i++) {
+            f[i] = () => {
+              i=i-1;
+              agent
+                .post('/restful/Value')
+                .send(data[i])
+                .expect({lastID: max-i})
+                .expect(200)
+                .end(f[i]);
+            }
+          }
+          i-=1;
+          f[i]();
+        };
+        agent
+            .get('/restful/Variable')
+            .expect('Content-Type', /json/)
+            .then((res)=>{
+                for (var i=0; i<5; i++) {
+                  for(var item of res.body){
+                    var rnd = Math.random();
+                    if(item.limit_lower !== null && item.limit_upper !== null) {
+                        rnd *= (item.limit_upper - item.limit_lower);
+                        rnd += item.limit_upper;
+                    }
+                    randomdata[j++] = {
+                        variable_id: item.id, value: rnd, time_update: jmoment().unix(), user_update: 1, ip_user: 'localhost'
+                    }
+                  }
+                }
+                insert(j-1, randomdata);
+            });
+    });
 });
