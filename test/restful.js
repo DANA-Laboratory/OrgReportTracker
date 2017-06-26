@@ -254,7 +254,7 @@ describe('restful', function() {
       f[i]();
     });
     it('should create new report based on selected class', function(done) {
-        this.timeout(9500);
+        this.timeout(15000);
         var refday = jmoment('1396/03/31', 'jYYYY/jM/jD');
         var time_limit = refday.add(2, "jday").unix();
         var f = [];
@@ -286,6 +286,7 @@ describe('restful', function() {
           for (var i=1; i<=max; i++) {
             f[i] = () => {
               i=i-1;
+              data[i].time_update = jmoment().unix();
               agent
                 .post('/restful/Value')
                 .send(data[i])
@@ -309,7 +310,7 @@ describe('restful', function() {
                         rnd += item.limit_upper;
                     }
                     randomdata[j++] = {
-                        variable_id: item.id, value: rnd, time_update: jmoment().unix(), user_update: 1, ip_user: 'localhost'
+                        variable_id: item.id, value: rnd, user_update: 1, ip_user: 'localhost'
                     }
                   }
                 }
