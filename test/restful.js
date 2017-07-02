@@ -276,6 +276,17 @@ describe('restful', function() {
         i-=1;
         f[i]();
     });
+    it('should set target for variables', function (done) {
+      agent
+          .get('/restful/vReport')
+          .expect('Content-Type', /json/)
+          .then((res) => {
+              for (item of res.body) {
+                  //console.log(item.variable_id, '---', item.time_reference);
+              }
+              done();
+          });
+    });
     it('should add value for variables', function (done) {
         this.timeout(800000);
         var randomdata = [];
