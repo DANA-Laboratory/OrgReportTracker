@@ -277,14 +277,40 @@ describe('restful', function() {
         f[i]();
     });
     it('should set target for variables', function (done) {
+      this.timeout(800000);
+      var targetdata = [];
+      var j=0;
+      var insert = (max, data) => {
+        var f = [];
+        f[0] = done;
+        for (var i=1; i<=max; i++) {
+          f[i] = () => {
+            i=i-1;
+            data[i].time_update = jmoment().unix();
+            agent
+              .post('/restful/Target')
+              .send(data[i])
+              .expect({lastID: max-i})
+              .expect(200)
+              .end(f[i]);
+          }
+        }
+        i-=1;
+        f[i]();
+      }
       agent
           .get('/restful/vReport')
           .expect('Content-Type', /json/)
           .then((res) => {
               for (item of res.body) {
-                  //console.log(item.variable_id, '---', item.time_reference);
+                  var rnd = Math.random();
+                  if(item.limit_lower !== null && item.limit_upper !== null) {
+                      rnd *= (item.limit_upper - item.limit_lower);
+                      rnd += item.limit_upper;
+                  }
+                  targetdata[j++]={value: rnd, time_target: item.time_reference, user_update: 1, ip_user: 'localhost', variable_id: item.variable_id};
               }
-              done();
+              insert(j-1, targetdata);
           });
     });
     it('should add value for variables', function (done) {
